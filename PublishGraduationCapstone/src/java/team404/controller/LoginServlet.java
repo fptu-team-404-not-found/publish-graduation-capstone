@@ -6,8 +6,9 @@
 package team404.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.Properties;
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import team404.user.UserDAO;
 import team404.user.UserDTO;
 import team404.utils.GoogleHelpers;
 import team404.utils.MyApplicationConstants;
@@ -54,11 +56,24 @@ public class LoginServlet extends HttpServlet {
                 String accessToken = googleHelper.getToken(code);
                 UserDTO user = googleHelper.getUserInfo(accessToken);
 
+                UserDAO userDAO = new UserDAO();
+
+                String id = user.getSub();
+                boolean idExisted = userDAO.checkId(id);
+
                 session.setAttribute("id", user.getSub());
                 session.setAttribute("email", user.getEmail());
                 session.setAttribute("name", user.getName());
                 session.setAttribute("picture", user.getPicture());
+
+                if (!idExisted) {
+                    userDAO.createNewAcccount(user);
+                }
             }
+        } catch (SQLException ex) {
+            log("LoginServlet_SQL: " + ex.getMessage());
+        } catch (NamingException ex) {
+            log("LoginServlet_Naming: " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
