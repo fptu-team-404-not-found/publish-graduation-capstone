@@ -7,10 +7,7 @@ package team404.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Properties;
 import javax.naming.NamingException;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,11 +39,8 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        ServletContext context = this.getServletContext();
-        Properties properties = (Properties) context.getAttribute("SITE_MAP");
-
         String code = request.getParameter("code");
-        String url = properties.getProperty(MyApplicationConstants.LoginFeatures.HOME_PAGE);
+        String url = MyApplicationConstants.LoginFeatures.HOME_PAGE;
 
         try {
             if (code == null || code.isEmpty()) {
@@ -75,8 +69,7 @@ public class LoginServlet extends HttpServlet {
         } catch (NamingException ex) {
             log("LoginServlet_Naming: " + ex.getMessage());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            response.sendRedirect(url);
         }
     }
 
