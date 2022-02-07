@@ -6,6 +6,7 @@
 package team404.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
@@ -37,8 +38,11 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        
         String code = request.getParameter("code");
         String url = MyApplicationConstants.LoginFeatures.HOME_PAGE;
 
@@ -48,28 +52,27 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 GoogleHelpers googleHelper = new GoogleHelpers();
                 String accessToken = googleHelper.getToken(code);
-                UserDTO user = googleHelper.getUserInfo(accessToken);
+                String json = googleHelper.getUserInfo(accessToken);
+                UserDTO user = googleHelper.getUserFromJson(json);
 
                 UserDAO userDAO = new UserDAO();
 
                 String id = user.getSub();
                 boolean idExisted = userDAO.checkId(id);
 
-                session.setAttribute("id", user.getSub());
-                session.setAttribute("email", user.getEmail());
-                session.setAttribute("name", user.getName());
-                session.setAttribute("picture", user.getPicture());
-
                 if (!idExisted) {
                     userDAO.createNewAcccount(user);
                 }
+                out.print(json);
+                response.flushBuffer();
+                out.flush();
             }
         } catch (SQLException ex) {
             log("LoginServlet_SQL: " + ex.getMessage());
         } catch (NamingException ex) {
             log("LoginServlet_Naming: " + ex.getMessage());
         } finally {
-            response.sendRedirect(url);
+            out.close();
         }
     }
 

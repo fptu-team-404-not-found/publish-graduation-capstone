@@ -30,7 +30,7 @@ public class UserDAO {
             if (con != null) {
                 //2. create SQL String
                 String sql = "Select sub "
-                        + "From [User] "
+                        + "From User_Table "
                         + "Where sub = ?";
                 //3. Create statement obj to load SQL string
                 //and set value to parameters
@@ -64,7 +64,7 @@ public class UserDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Insert Into [User]("
+                String sql = "Insert Into User_Table("
                         + "sub, email, name, picture"
                         + ") Values(?, ?, ?, ?)";
                 stm = con.prepareStatement(sql);
