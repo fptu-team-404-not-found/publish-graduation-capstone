@@ -30,11 +30,16 @@ public class GoogleHelpers {
         return accessToken;
     }
 
-    public UserDTO getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+    public String getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
         String link = MyApplicationConstants.GoogleLoginFeatures.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
+//        System.out.println("response: "+response);
+//        UserDTO user = new Gson().fromJson(response, UserDTO.class);
+//        System.out.println("user: "+user);
+        return response;
+    }
+    public UserDTO getUserFromJson(String response){
         UserDTO user = new Gson().fromJson(response, UserDTO.class);
-        System.out.println(user);
         return user;
     }
 }
