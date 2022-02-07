@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.controller;
 
 import java.io.IOException;
@@ -13,20 +8,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import team404.user.UserDAO;
 import team404.user.UserDTO;
 import team404.utils.GoogleHelpers;
-import team404.utils.MyApplicationConstants;
 
-/**
- *
- * @author jike
- */
 public class LoginServlet extends HttpServlet {
 
-//    public static final String LOGIN_PAGE = "login.html";
-//    public static final String WELCOME_PAGE = "welcome.jsp";
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,35 +25,30 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        
-        String code = request.getParameter("code");
-        String url = MyApplicationConstants.LoginFeatures.HOME_PAGE;
+
+        String token = request.getParameter("token");
 
         try {
-            if (code == null || code.isEmpty()) {
-            } else {
-                HttpSession session = request.getSession();
-                GoogleHelpers googleHelper = new GoogleHelpers();
-                String accessToken = googleHelper.getToken(code);
-                String json = googleHelper.getUserInfo(accessToken);
-                UserDTO user = googleHelper.getUserFromJson(json);
+            GoogleHelpers googleHelper = new GoogleHelpers();
+            String json = googleHelper.getUserInfo(token);
+            UserDTO user = googleHelper.getUserFromJson(json);
 
-                UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = new UserDAO();
 
-                String id = user.getSub();
-                boolean idExisted = userDAO.checkId(id);
+            String id = user.getSub();
+            boolean idExisted = userDAO.checkId(id);
 
-                if (!idExisted) {
-                    userDAO.createNewAcccount(user);
-                }
-                out.print(json);
-                response.flushBuffer();
-                out.flush();
+            if (!idExisted) {
+                userDAO.createNewAcccount(user);
             }
+
+            out.print(json);
+            response.flushBuffer();
+            out.flush();
         } catch (SQLException ex) {
             log("LoginServlet_SQL: " + ex.getMessage());
         } catch (NamingException ex) {

@@ -1,8 +1,3 @@
-/*
- * © 2022 tienhuynh-tn
- * All rights reserved!
- * For more information, please contact via my email: tien.huynhlt.tn@gmail.com
- */
 package team404.user;
 
 import java.sql.Connection;
@@ -12,10 +7,6 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import team404.utils.DBHelpers;
 
-/**
- *
- * @author Tien Huynh - Tien Huynh TN - Huynh Le Thuy Tien
- */
 public class UserDAO {
 
     Connection con = null;

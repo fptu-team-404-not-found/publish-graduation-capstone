@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.filter;
 
 import java.io.IOException;
@@ -21,22 +16,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author jike
- */
 public class DispatchFilter implements Filter {
-    
+
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
     // this value is null, this filter instance is not currently
     // configured. 
     private FilterConfig filterConfig = null;
-    
+
     public DispatchFilter() {
-    }    
-    
+    }
 
     /**
      *
@@ -50,30 +40,30 @@ public class DispatchFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest)request;
-        HttpServletResponse res = (HttpServletResponse)response;
-        
+        HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse res = (HttpServletResponse) response;
+
         String uri = req.getRequestURI();
         String url;
-        try{
+        try {
             //get site map
             ServletContext context = request.getServletContext();
-            Properties siteMap = (Properties)context.getAttribute("SITE_MAP");
+            Properties siteMap = (Properties) context.getAttribute("SITE_MAP");
             //get resources name
             int lastIndex = uri.lastIndexOf("/");
             String resource = uri.substring(lastIndex + 1);
             //get site mapping
             url = siteMap.getProperty(resource);
-            if(url != null){
+            if (url != null) {
                 RequestDispatcher rd = request.getRequestDispatcher(url);
                 rd.forward(request, response);
-            }else{
+            } else {
                 chain.doFilter(request, response);
             }
-        }catch(Throwable t){
+        } catch (Throwable t) {
             log(t.getMessage());
         }
-        
+
     }
 
     /**
@@ -95,16 +85,16 @@ public class DispatchFilter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
+            if (debug) {
                 log("DispatchFilter:Initializing filter");
             }
         }
@@ -123,20 +113,20 @@ public class DispatchFilter implements Filter {
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -153,7 +143,7 @@ public class DispatchFilter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -167,9 +157,9 @@ public class DispatchFilter implements Filter {
         }
         return stackTrace;
     }
-    
+
     public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
+        filterConfig.getServletContext().log(msg);
     }
-    
+
 }
