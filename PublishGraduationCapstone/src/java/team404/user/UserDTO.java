@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.user;
 
 import java.io.Serializable;
 
-/**
- *
- * @author jike
- */
-public class UserDTO implements Serializable{
+public class UserDTO implements Serializable {
+
     private String sub;
     private String email;
     private String name;
@@ -26,7 +18,7 @@ public class UserDTO implements Serializable{
         this.name = name;
         this.picture = picture;
     }
-    
+
     /**
      * @return the sub
      */
@@ -87,5 +79,5 @@ public class UserDTO implements Serializable{
     public String toString() {
         return "UserDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + '}';
     }
-    
+
 }
