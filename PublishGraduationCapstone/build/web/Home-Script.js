@@ -17,6 +17,9 @@ function onSignIn(googleUser) {
     url = url + access_token;
 
     var xhttp = new XMLHttpRequest();
+    
+    xhttp.open("GET", url);
+    xhttp.send();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
@@ -24,7 +27,4 @@ function onSignIn(googleUser) {
             console.log('data: ' + this.responseText);
         }
     };
-
-    xhttp.open("GET", url);
-    xhttp.send();
 }
