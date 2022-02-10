@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/PublishGraduationCapstone">
     <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
-              name="JohnyEnglish" password="Thuytien" 
+              name="JohnyEnglish" password="lamborghini" 
               type="javax.sql.DataSource" 
-              url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=TIENHUYNHTN" 
+              url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=SQLEXPRESS" 
               username="sa"/>
 </Context>
