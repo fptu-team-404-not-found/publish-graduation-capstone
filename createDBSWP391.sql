@@ -64,8 +64,9 @@ CREATE TABLE Project(
 	ViewNumber INT,
 	AuthorName NVARCHAR(50),
 	Note NTEXT,
+	ProjectAva TEXT,
 	-------------
-	TeamID int,
+	TeamID INT,
 	StateId INT,
 	PRIMARY KEY(ProjectID)
 )
@@ -272,11 +273,13 @@ CREATE TABLE Project(
 	PRIMARY KEY(ProjectID)
 )*/
 GO
-insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,TeamID,StateId) 
-values ('SP22HW', 'Project Siu Dinh',N'Đây là một project tuyệt vời mang đến hạnh phúc',null,'2022-Spring', 8,'Dustin',2,1)
-insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,TeamID,StateId) 
-values ('FA22SE01', 'Website public thành quả đồ án tốt nghiệp', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
-null, '2022-Spring', 5, 'Thanh Dat', 1, 2)
+insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,ProjectAva,TeamID,StateId) 
+values ('SP22SE02', 'Project Siu Dinh',N'Đây là một project tuyệt vời mang đến hạnh phúc',null,'2022-Spring', 8,'Dustin', 'https://media.sohuutritue.net.vn/files/huongmi/2021/10/06/tri-tue-nhan-tao-1606.jpeg',2,1)
+insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,ProjectAva,TeamID,StateId) 
+values ('FA22SE01', 'The public website of graduation project results', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
+null, '2022-Spring', 5, 'Thanh Dat', 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 1, 2)
+
+
 ------------------------------------------------------------------------insert upcoming---------------
 insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
 values('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
@@ -287,8 +290,11 @@ values('Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', null,'htt
 insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
 values('Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', null,'https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
 
-Select * 
-From UpcomingProject
+Select p.ProjectId, p.ProjectName, p.IntroductionContent, p.ProjectAva, t.TeamName
+From Project p inner join Team t
+On p.TeamID = t.TeamID
+Order by ViewNumber 
+Desc 
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
 create fulltext catalog SEARCH WITH ACCENT_SENSITIVITY = OFF
@@ -332,12 +338,18 @@ CREATE PROC SearchHome
 @SearchValue NVARCHAR(100)
 AS
 BEGIN 
-	SELECT ProjectId,ProjectName,RANK
+	SET NOCOUNT ON
+	DECLARE @TABLE TABLE (
+		ProjectId CHAR(8),
+		accuracy int
+	)
+	INSERT INTO @TABLE
+	SELECT ProjectId,RANK
 	FROM Project P
 	INNER JOIN FREETEXTTABLE(Project, *, @SearchValue) AS FT
 	ON P.ProjectId = FT.[KEY]
 	UNION
-	SELECT ProjectId,ProjectName,FTX.RANK
+	SELECT ProjectId,FTX.RANK
 	FROM Project P 
 	INNER JOIN Team T ON P.TeamID = T.TeamID
 	INNER JOIN TeamMember TM ON TM.TeamID = T.TeamID,
@@ -345,7 +357,7 @@ BEGIN
 	FROM FREETEXTTABLE(TeamMember, *, @SearchValue)) AS FTX
 	where TM.MemberID  = FTX.MemberID
 	UNION 
-	SELECT ProjectId,ProjectName,FTX.RANK
+	SELECT ProjectId,FTX.RANK
 	FROM Project P  
 	INNER JOIN Team T ON P.TeamID = T.TeamID
 	INNER JOIN Team_Supervisor TS ON TS.TeamID = T.TeamID
@@ -354,6 +366,9 @@ BEGIN
 	FROM FREETEXTTABLE(Supervisor, *, @SearchValue)) AS FTX
 	WHERE FTX.SupervisorID = TS.SupervisorID
 	ORDER BY RANK DESC;
+	SELECT P.ProjectId,ProjectName,P.ProjectAva
+	FROM Project P,@TABLE T
+	WHERE P.ProjectId = T.ProjectId
 END
 --DROP PROC SearchHome
 --EXECUTE SearchHome @SearchValue = N'Cadillac'

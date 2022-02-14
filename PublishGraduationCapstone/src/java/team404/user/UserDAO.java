@@ -56,7 +56,7 @@ public class UserDAO {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Insert Into User_Table("
-                        + "sub, email, name, picture"
+                        + "UserId, email, name, picture"
                         + ") Values(?, ?, ?, ?)";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, dto.getSub());

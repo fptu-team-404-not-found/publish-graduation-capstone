@@ -60,15 +60,8 @@ public class ProjectResource {
             jsObj.put("projectId", project.getProjectId());
             jsObj.put("projectName", project.getProjectName());
             jsObj.put("introductionContent", project.getIntroductionContent());
-            jsObj.put("details", project.getDetails());
-            jsObj.put("semester", project.getSemester());
-            jsObj.put("productUrl", project.getProductUrl());
-            jsObj.put("createDate", project.getCreateDate());
-            jsObj.put("viewNumber", project.getViewNumber());
-            jsObj.put("authorName", project.getAuthorName());
-            jsObj.put("note", project.getNote());
-            jsObj.put("teamId", project.getTeamId());
-            jsObj.put("stateId", project.getStateId());
+            jsObj.put("projectAva", project.getProjectAva());
+            jsObj.put("teamName", project.getTeamName());
             jsArr.add(jsObj);
         }
         String result = jsArr.toJSONString();
@@ -95,5 +88,44 @@ public class ProjectResource {
         String result = jsArr.toJSONString();
         return result;
     }
-
+    
+    @Path("/searchProject")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String searchProject(
+            @QueryParam("keyword") String keyword)
+    throws SQLException, NamingException{
+        ProjectDAO dao = new ProjectDAO();
+        dao.searchProject(keyword);
+        List<ProjectDTO> list = dao.getSearchProjectList();
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO project : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", project.getProjectId());
+            jsObj.put("projectName", project.getProjectName());
+            jsObj.put("projectAva", project.getProjectAva());
+            jsArr.add(jsObj);
+        }
+        String result = jsArr.toJSONString();
+        return result;
+    }
+    @Path("/filterProjectsBySemester")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String filterProjectsBySemester(
+            @QueryParam("semester") String semester)
+    throws SQLException, NamingException{
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.getFilterSemesterList(semester);
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO project : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", project.getProjectId());
+            jsObj.put("projectName", project.getProjectName());
+            jsObj.put("projectAva", project.getProjectAva());
+            jsArr.add(jsObj);
+        }
+        String result = jsArr.toJSONString();
+        return result;
+    }
 }
