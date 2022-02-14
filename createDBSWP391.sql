@@ -72,8 +72,7 @@ CREATE TABLE Project(
 GO
 CREATE TABLE ProjectVideo(
 	ProjectVideoId INT IDENTITY(1,1),
-	VideoName NVARCHAR(100),
-	Video TEXT,
+	VideoUrl TEXT,
 	---------------------
 	ProjectId CHAR(8),
 	PRIMARY KEY(ProjectVideoId)
@@ -81,8 +80,7 @@ CREATE TABLE ProjectVideo(
 GO
 CREATE TABLE ProjectImage(
 	ProjectImageID INT IDENTITY(1,1),
-	ImagesName NVARCHAR(100),
-	Images varbinary(MAX),
+	ImageUrl TEXT,
 	--------------------
 	ProjectId CHAR(8),
 	PRIMARY KEY(ProjectImageID)
@@ -99,7 +97,7 @@ GO
 CREATE TABLE TeamMember(
 	MemberID CHAR(8),
 	MemberName NVARCHAR(30),
-	MemberAvatar varbinary(MAX),
+	MemberAvatar TEXT,
 	Email NVARCHAR(50),
 	Phone CHAR(10),
 	BackupEmail NVARCHAR(50),
@@ -120,7 +118,7 @@ GO
 CREATE TABLE Supervisor(
 	SupervisorID CHAR(5),
 	SupervisorName NVARCHAR(30),
-	SupervisorImage varbinary(MAX),
+	SupervisorImage TEXT,
 	Information NVARCHAR(100),
 	Position VARCHAR(20),
 	PRIMARY KEY (SupervisorID)
@@ -145,7 +143,7 @@ CREATE TABLE UpcomingProject(
 	Location NVARCHAR(50),
 	Date NVARCHAR(100),
 	Description NVARCHAR(100),
-	Image varbinary(MAX),
+	Image TEXT,
 	PRIMARY KEY (Id)
 )
 CREATE TABLE States(
@@ -233,14 +231,20 @@ insert into Team(TeamName) values ('404 team')
 insert into Team(TeamName) values ('happy feet team')
 
 
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values ('SE111111', 'Rolls-Royce', 'rollsroyce@gmail.com','0123456789',1)
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values ('SE222222', 'Land Rover', 'LandRover@gmail.com','0123456789',1)
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values ('SE333333', 'Audi', 'audi@gmail.com','0123456789',1)
+insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) 
+values ('SE111111', 'Rolls-Royce', 'rollsroyce@gmail.com','0123456789',1)
+insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values 
+('SE222222', 'Land Rover', 'LandRover@gmail.com','0123456789',1)
+insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values 
+('SE333333', 'Audi', 'audi@gmail.com','0123456789',1)
 
 
-insert into Supervisor(SupervisorID,SupervisorName) values ('KTK','Kieu Trong Khanh')
-insert into Supervisor(SupervisorID,SupervisorName) values ('LHKP','Lam Huu Khanh Phuong')
-insert into Supervisor(SupervisorID,SupervisorName) values ('NTN','Nguyen The Hoang')
+insert into Supervisor(SupervisorID,SupervisorName) values 
+('KTK','Kieu Trong Khanh')
+insert into Supervisor(SupervisorID,SupervisorName) values 
+('LHKP','Lam Huu Khanh Phuong')
+insert into Supervisor(SupervisorID,SupervisorName) values 
+('NTN','Nguyen The Hoang')
 
 
 insert into Team_Supervisor(TeamID, SupervisorID) values (1,'KTK')
@@ -251,11 +255,6 @@ insert into Team_Supervisor(TeamID, SupervisorID) values (2,'NTN')
 insert into States(StateName) values ('Approving')
 insert into States(StateName) values ('Approved')
 insert into States(StateName) values ('Rejected')
-
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description]) values (N'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', N'15/12/2021', N'Quản lý chấm công bằng nhận diện khuôn mặt trong công ty LUG')
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description]) values (N'Warehouse management system for Sang Tam', N'HỘI TRƯỜNG A', N'15/12/2021', N'Hệ thống quản lý kho hàng cho Sang Tâm')
-
-
 /*
 CREATE TABLE Project(
 	ProjectId CHAR(8),
@@ -274,13 +273,90 @@ CREATE TABLE Project(
 )*/
 GO
 insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,TeamID,StateId) 
-values ('SP22HW', 'Project Siu Dinh',N'Đây là một project tuyệt vời mang đến hạnh phúc',null,'2022-Spring', 2,'Dustin',2,1)
+values ('SP22HW', 'Project Siu Dinh',N'Đây là một project tuyệt vời mang đến hạnh phúc',null,'2022-Spring', 8,'Dustin',2,1)
 insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,TeamID,StateId) 
 values ('FA22SE01', 'Website public thành quả đồ án tốt nghiệp', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
 null, '2022-Spring', 5, 'Thanh Dat', 1, 2)
+------------------------------------------------------------------------insert upcoming---------------
+insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+values('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
+insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+values('Smart city: Manage autonomous vehicle in resort', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://www.verdict.co.uk/wp-content/uploads/2021/08/shutterstock_1177506811.jpg')
+insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+values('Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322526/woman-vaping.jpg')
+insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+values('Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', null,'https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
 
-
-
-
+Select * 
+From UpcomingProject
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
+create fulltext catalog SEARCH WITH ACCENT_SENSITIVITY = OFF
+
+CREATE UNIQUE INDEX FK_SearchProject ON Project(ProjectId) ;  
+create fulltext index on Project
+(	
+		ProjectName							--Full-text index column name     
+        Language 1066
+
+)
+	KEY INDEX FK_SearchProject ON SEARCH 
+	WITH CHANGE_TRACKING AUTO;
+	GO
+--ALTER FULLTEXT INDEX ON district START FULL POPULATION;  
+
+CREATE UNIQUE INDEX FK_SearchTeamMember ON TeamMember(MemberID) ;  
+create fulltext index on TeamMember
+(	
+		MemberName							--Full-text index column name     
+        Language 1066
+
+)
+	KEY INDEX FK_SearchTeamMember ON SEARCH 
+	WITH CHANGE_TRACKING AUTO;
+	GO
+
+CREATE UNIQUE INDEX FK_SearchSupervisor ON Supervisor(SupervisorID) ;  
+create fulltext index on Supervisor
+(	
+		SupervisorName							--Full-text index column name     
+        Language 1066
+
+)
+	KEY INDEX FK_SearchSupervisor ON SEARCH 
+	WITH CHANGE_TRACKING AUTO;
+	GO
+
+
+CREATE PROC SearchHome
+@SearchValue NVARCHAR(100)
+AS
+BEGIN 
+	SELECT ProjectId,ProjectName,RANK
+	FROM Project P
+	INNER JOIN FREETEXTTABLE(Project, *, @SearchValue) AS FT
+	ON P.ProjectId = FT.[KEY]
+	UNION
+	SELECT ProjectId,ProjectName,FTX.RANK
+	FROM Project P 
+	INNER JOIN Team T ON P.TeamID = T.TeamID
+	INNER JOIN TeamMember TM ON TM.TeamID = T.TeamID,
+	(SELECT [KEY] MemberID,RANK
+	FROM FREETEXTTABLE(TeamMember, *, @SearchValue)) AS FTX
+	where TM.MemberID  = FTX.MemberID
+	UNION 
+	SELECT ProjectId,ProjectName,FTX.RANK
+	FROM Project P  
+	INNER JOIN Team T ON P.TeamID = T.TeamID
+	INNER JOIN Team_Supervisor TS ON TS.TeamID = T.TeamID
+	INNER JOIN Supervisor S ON S.SupervisorID = TS.SupervisorID,
+	(SELECT [KEY] SupervisorID ,RANK
+	FROM FREETEXTTABLE(Supervisor, *, @SearchValue)) AS FTX
+	WHERE FTX.SupervisorID = TS.SupervisorID
+	ORDER BY RANK DESC;
+END
+--DROP PROC SearchHome
+--EXECUTE SearchHome @SearchValue = N'Cadillac'
+--EXECUTE SearchHome @SearchValue = N'Siu Đỉnh'
+--EXECUTE SearchHome @SearchValue = N'Đinh'
+

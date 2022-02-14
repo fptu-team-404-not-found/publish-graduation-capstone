@@ -29,7 +29,9 @@ public class ProjectDTO implements Serializable{
 
     public ProjectDTO() {
     }
-
+    public ProjectDTO(int viewNumber){
+        this.viewNumber = viewNumber;
+    }
     public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String semester, String productUrl, String createDate, int viewNumber, String authorName, String note, int teamId, int stateId) {
         this.projectId = projectId;
         this.projectName = projectName;

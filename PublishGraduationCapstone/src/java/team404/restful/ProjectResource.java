@@ -6,8 +6,10 @@
 package team404.restful;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.jws.WebService;
 import javax.naming.NamingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -24,6 +26,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.upcomingproject.UpcomingProjectDAO;
+import team404.upcomingproject.UpcomingProjectDTO;
 
 /**
  * REST Web Service
@@ -31,9 +35,10 @@ import team404.project.ProjectDTO;
  * @author tienhltse151104
  */
 @Path("project")
+
 public class ProjectResource {
-     @Resource
-    private WebServiceContext wsContext;
+
+
     @Context
     private UriInfo context;
 
@@ -42,10 +47,11 @@ public class ProjectResource {
      */
     public ProjectResource() {
     }
+
     @Path("/getHighlightProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getHighlightProjects(){
+    public String getHighlightProjects() {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getProjectList();
         JSONArray jsArr = new JSONArray();
@@ -68,19 +74,26 @@ public class ProjectResource {
         String result = jsArr.toJSONString();
         return result;
     }
-//    @Path("/getViewProjects")
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public int getViewProjects(
-//            @QueryParam("ProjectId") String ProjectId)
-//    throws SQLException, NamingException{
-//        MessageContext mc = wsContext.getMessageContext();
-//        HttpSession session = ((HttpServletRequest)mc.get(MessageContext.SERVLET_REQUEST)).getSession();
-//        ProjectDAO dao = new ProjectDAO();
-//        if(session.isNew()){
-//            dao.updateView(ProjectId);
-//        }
-//        int view = dao.showView(ProjectId);
-//        return view;
-//    }
+    
+    @Path("/getUpcomingProjects")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUpcomingProjects(){
+        UpcomingProjectDAO dao = new UpcomingProjectDAO();
+        List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
+        JSONArray jsArr = new JSONArray();
+        for (UpcomingProjectDTO upcoming : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("upcomingProjectId", upcoming.getUpcomingProjectId());
+            jsObj.put("projectName", upcoming.getProjectName());
+            jsObj.put("location", upcoming.getLocation());
+            jsObj.put("date", upcoming.getDate());
+            jsObj.put("description", upcoming.getDescription());
+            jsObj.put("image", upcoming.getImage());
+            jsArr.add(jsObj);
+        }
+        String result = jsArr.toJSONString();
+        return result;
+    }
+
 }

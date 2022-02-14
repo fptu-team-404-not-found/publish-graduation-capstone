@@ -20,9 +20,9 @@ public class UserDAO {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 //2. create SQL String
-                String sql = "Select sub "
+                String sql = "Select UserId "
                         + "From User_Table "
-                        + "Where sub = ?";
+                        + "Where UserId = ?";
                 //3. Create statement obj to load SQL string
                 //and set value to parameters
                 stm = con.prepareStatement(sql);

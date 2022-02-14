@@ -58,8 +58,8 @@ public class ProjectDAO implements Serializable{
                 String sql = "Update Project "
                         + "Set ViewNumber = ViewNumber + 1 "
                         + "Where ProjectId = ? ";
-                stm.setString(1, projectId);
                 stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
                 stm.executeUpdate();
             }
         } finally{
@@ -79,8 +79,8 @@ public class ProjectDAO implements Serializable{
                 String sql = "Select ViewNumber "
                         + "From Project "
                         + "where ProjectId = ? ";
-                stm.setString(1, projectId);
                 stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
                 rs = stm.executeQuery();
                 if(rs.next()){
                     int view = rs.getInt("ViewNumber");
@@ -100,4 +100,5 @@ public class ProjectDAO implements Serializable{
         }
         return -1;
     }
+    
 }

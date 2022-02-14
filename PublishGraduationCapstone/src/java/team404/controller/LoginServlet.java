@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import team404.project.ProjectDAO;
 import team404.user.UserDAO;
 import team404.user.UserDTO;
 import team404.utils.GoogleHelpers;
@@ -33,19 +34,20 @@ public class LoginServlet extends HttpServlet {
         String token = request.getParameter("token");
 
         try {
+            
             GoogleHelpers googleHelper = new GoogleHelpers();
             String json = googleHelper.getUserInfo(token);
             UserDTO user = googleHelper.getUserFromJson(json);
 
             UserDAO userDAO = new UserDAO();
-
+            
             String id = user.getSub();
             boolean idExisted = userDAO.checkId(id);
 
             if (!idExisted) {
                 userDAO.createNewAcccount(user);
             }
-
+            
             out.print(json);
             response.flushBuffer();
             out.flush();
