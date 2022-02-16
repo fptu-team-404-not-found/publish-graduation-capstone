@@ -1,19 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.upcomingproject;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author jike
- */
-@XmlRootElement
-public class UpcomingProjectDTO implements Serializable{
+@XmlRootElement(name = "upcomingProject")
+public class UpcomingProjectDTO implements Serializable {
+
     private int upcomingProjectId;
     private String projectName;
     private String location;
@@ -32,7 +24,7 @@ public class UpcomingProjectDTO implements Serializable{
         this.description = description;
         this.image = image;
     }
-    
+
     /**
      * @return the upcomingProjectId
      */
@@ -116,5 +108,5 @@ public class UpcomingProjectDTO implements Serializable{
     public void setImage(String image) {
         this.image = image;
     }
-    
+
 }

@@ -1,18 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.restful;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Resource;
-import javax.jws.WebService;
 import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -20,8 +10,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.xml.ws.WebServiceContext;
-import javax.xml.ws.handler.MessageContext;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
@@ -31,30 +19,30 @@ import team404.team.TeamDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
-/**
- * REST Web Service
- *
- * @author tienhltse151104
- */
 @Path("project")
 
 public class ProjectResource {
 
-
     @Context
     private UriInfo context;
 
-    /**
-     * Creates a new instance of ProjectResource
-     */
     public ProjectResource() {
+    }
+
+    @Path("/getUpcomingProjects")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<UpcomingProjectDTO> getUpcomingProjects() {
+        UpcomingProjectDAO dao = new UpcomingProjectDAO();
+        List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
+        return list;
     }
 
     @Path("/getHighlightProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getHighlightProjects() 
-    throws SQLException, NamingException{
+    public String getHighlightProjects()
+            throws SQLException, NamingException {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getHighlightProjectList();
         JSONArray jsArr = new JSONArray();
@@ -72,33 +60,86 @@ public class ProjectResource {
         String result = jsArr.toJSONString();
         return result;
     }
-    
-    @Path("/getUpcomingProjects")
+
+    //-- TIENHUYNHTN --//
+    @Path("/showOtherProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UpcomingProjectDTO> getUpcomingProjects(){
-        UpcomingProjectDAO dao = new UpcomingProjectDAO();
-        List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
-        return list;
+    public String showOtherProjects() {
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.showOtherProjects();
+        JSONArray jsArr = new JSONArray();
+
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("projectAva", projectDTO.getProjectAva());
+
+            jsArr.add(jsObj);
+        }
+
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("otherProject", jsArr);
+
+        String result = jsObj.toJSONString();
+        return result;
     }
-    
+
     @Path("/searchProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProjectDTO> searchProject(
             @QueryParam("keyword") String keyword)
-    throws SQLException, NamingException{
+            throws SQLException, NamingException {
         ProjectDAO dao = new ProjectDAO();
         dao.searchProject(keyword);
         List<ProjectDTO> list = dao.getSearchProjectList();
         return list;
     }
+    
+    //-- TIENHUYNHTN --//
+    @Path("/filterSearchSemesterNumberOfResults")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String filterSearchSemesterNumberOfResults(
+            @QueryParam("semester") String semester) {
+        ProjectDAO dao = new ProjectDAO();
+        return String.valueOf(dao.filterSearchSemesterNumberOfResults(semester));
+    }
+    
+    //-- TIENHUYNHTN --//
+    @Path("/filterSearchSemesterGetProjects")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String filterSearchSemesterGetProjects(
+            @QueryParam("semester") String semester) {
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.filterSearchSemesterGetProjects(semester);
+        JSONArray jsArr = new JSONArray();
+        
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("projectAva", projectDTO.getProjectAva());
+
+            jsArr.add(jsObj);
+        }
+        
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("filterSearchSemesterProject", jsArr);
+
+        String result = jsObj.toJSONString();
+        return result;
+    }
+
     @Path("/filterProjectsBySemester")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProjectDTO> filterProjectsBySemester(
             @QueryParam("semester") String semester)
-    throws SQLException, NamingException{
+            throws SQLException, NamingException {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getFilterSemesterList(semester);
         return list;

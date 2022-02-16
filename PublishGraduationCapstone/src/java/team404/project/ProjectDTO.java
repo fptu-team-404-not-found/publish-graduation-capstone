@@ -1,21 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.project;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-import team404.team.TeamDTO;
 
+@XmlRootElement(name = "project")
+public class ProjectDTO implements Serializable {
 
-/**
- *
- * @author jike
- */
-@XmlRootElement
-public class ProjectDTO implements Serializable{
     private String projectId;
     private String projectName;
     private String introductionContent;
@@ -27,27 +17,29 @@ public class ProjectDTO implements Serializable{
     private String authorName;
     private String note;
     private String projectAva;
-//    private String teamName;
     private int teamId;
     private int stateId;
 
     public ProjectDTO() {
     }
-    public ProjectDTO(int viewNumber){
+
+    public ProjectDTO(int viewNumber) {
         this.viewNumber = viewNumber;
     }
-    public ProjectDTO(String projectId, String projectName, String introductionContent,String projectAva) {
+
+    public ProjectDTO(String projectId, String projectName, String introductionContent, String projectAva) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.introductionContent = introductionContent;
         this.projectAva = projectAva;
-//        this.teamName = teamName;
     }
-    public ProjectDTO(String projectId, String projectName,String projectAva) {
+
+    public ProjectDTO(String projectId, String projectName, String projectAva) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectAva = projectAva;
     }
+
     public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String semester, String productUrl, String createDate, int viewNumber, String authorName, String note, String projectAva, int teamId, int stateId) {
         this.projectId = projectId;
         this.projectName = projectName;
@@ -60,11 +52,10 @@ public class ProjectDTO implements Serializable{
         this.authorName = authorName;
         this.note = note;
         this.projectAva = projectAva;
-//        this.teamName = teamName;
         this.teamId = teamId;
         this.stateId = stateId;
     }
-    
+
     /**
      * @return the projectId
      */
@@ -219,20 +210,6 @@ public class ProjectDTO implements Serializable{
         this.projectAva = projectAva;
     }
 
-//    /**
-//     * @return the teamName
-//     */
-//    public String getTeamName() {
-//        return teamName;
-//    }
-//
-//    /**
-//     * @param teamName the teamName to set
-//     */
-//    public void setTeamName(String teamName) {
-//        this.teamName = teamName;
-//    }
-
     /**
      * @return the teamId
      */
@@ -261,7 +238,8 @@ public class ProjectDTO implements Serializable{
         this.stateId = stateId;
     }
 
-    
-    
-    
+    @Override
+    public String toString() {
+        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", introductionContent=" + introductionContent + ", details=" + details + ", semester=" + semester + ", productUrl=" + productUrl + ", createDate=" + createDate + ", viewNumber=" + viewNumber + ", authorName=" + authorName + ", note=" + note + ", projectAva=" + projectAva + ", teamId=" + teamId + ", stateId=" + stateId + '}';
+    }
 }
