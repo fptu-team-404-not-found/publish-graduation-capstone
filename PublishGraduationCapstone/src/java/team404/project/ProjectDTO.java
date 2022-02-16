@@ -27,7 +27,7 @@ public class ProjectDTO implements Serializable{
     private String authorName;
     private String note;
     private String projectAva;
-    private String teamName;
+//    private String teamName;
     private int teamId;
     private int stateId;
 
@@ -36,19 +36,19 @@ public class ProjectDTO implements Serializable{
     public ProjectDTO(int viewNumber){
         this.viewNumber = viewNumber;
     }
-    public ProjectDTO(String projectId, String projectName, String introductionContent,String projectAva, String teamName) {
+    public ProjectDTO(String projectId, String projectName, String introductionContent,String projectAva) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.introductionContent = introductionContent;
         this.projectAva = projectAva;
-        this.teamName = teamName;
+//        this.teamName = teamName;
     }
     public ProjectDTO(String projectId, String projectName,String projectAva) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectAva = projectAva;
     }
-    public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String semester, String productUrl, String createDate, int viewNumber, String authorName, String note, String projectAva, String teamName, int teamId, int stateId) {
+    public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String semester, String productUrl, String createDate, int viewNumber, String authorName, String note, String projectAva, int teamId, int stateId) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.introductionContent = introductionContent;
@@ -60,7 +60,7 @@ public class ProjectDTO implements Serializable{
         this.authorName = authorName;
         this.note = note;
         this.projectAva = projectAva;
-        this.teamName = teamName;
+//        this.teamName = teamName;
         this.teamId = teamId;
         this.stateId = stateId;
     }
@@ -219,19 +219,19 @@ public class ProjectDTO implements Serializable{
         this.projectAva = projectAva;
     }
 
-    /**
-     * @return the teamName
-     */
-    public String getTeamName() {
-        return teamName;
-    }
-
-    /**
-     * @param teamName the teamName to set
-     */
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
+//    /**
+//     * @return the teamName
+//     */
+//    public String getTeamName() {
+//        return teamName;
+//    }
+//
+//    /**
+//     * @param teamName the teamName to set
+//     */
+//    public void setTeamName(String teamName) {
+//        this.teamName = teamName;
+//    }
 
     /**
      * @return the teamId

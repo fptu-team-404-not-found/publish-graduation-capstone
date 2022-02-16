@@ -53,15 +53,24 @@ public class ProjectResource {
     @Path("/getHighlightProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProjectDTO> getHighlightProjects() 
+    public String getHighlightProjects() 
     throws SQLException, NamingException{
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getHighlightProjectList();
+        JSONArray jsArr = new JSONArray();
         TeamDAO teamDao = new TeamDAO();
         for (ProjectDTO project : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", project.getProjectId());
+            jsObj.put("projectName", project.getProjectName());
+            jsObj.put("introductionContent", project.getIntroductionContent());
+            jsObj.put("projectAva", project.getProjectAva());
             TeamDTO team = teamDao.getTeam(project.getProjectId());
+            jsObj.put("teamName", team.getTeamName());
+            jsArr.add(jsObj);
         }
-        return list;
+        String result = jsArr.toJSONString();
+        return result;
     }
     
     @Path("/getUpcomingProjects")

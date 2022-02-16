@@ -33,9 +33,8 @@ public class ProjectDAO implements Serializable {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select p.ProjectId, p.ProjectName, p.IntroductionContent, p.ProjectAva, t.TeamName "
-                        + "From Project p inner join Team t "
-                        + "On p.TeamID = t.TeamID "
+                String sql = "Select ProjectId, ProjectName, IntroductionContent, ProjectAva "
+                        + "From Project "
                         + "Order by ViewNumber "
                         + "Desc ";
                 stm = con.prepareStatement(sql);
@@ -43,7 +42,7 @@ public class ProjectDAO implements Serializable {
                 List<ProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
                     ProjectDTO dto = new ProjectDTO(rs.getString("ProjectId"), rs.getString("ProjectName"),
-                            rs.getString("IntroductionContent"), rs.getString("ProjectAva"), rs.getNString("TeamName"));
+                            rs.getString("IntroductionContent"), rs.getString("ProjectAva"));
                     list.add(dto);
                 }
                 return list;
