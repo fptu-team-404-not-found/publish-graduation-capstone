@@ -6,11 +6,13 @@
 package team404.upcomingproject;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jike
  */
+@XmlRootElement
 public class UpcomingProjectDTO implements Serializable{
     private int upcomingProjectId;
     private String projectName;
