@@ -6,11 +6,13 @@
 package team404.team;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author jike
  */
+@XmlRootElement
 public class TeamDTO implements Serializable{
     private int teamId;
     private String teamName;

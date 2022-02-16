@@ -29,7 +29,7 @@ public class ProjectDAO implements Serializable {
     private List<ProjectDTO> searchProjectList;
     private List<ProjectDTO> filterSemesterList;
 
-    public List<ProjectDTO> getProjectList() {
+    public List<ProjectDTO> getHighlightProjectList() {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -53,7 +53,8 @@ public class ProjectDAO implements Serializable {
         }
         return null;
     }
-
+    
+    
     public void updateView(String projectId)
             throws SQLException, NamingException {
         try {

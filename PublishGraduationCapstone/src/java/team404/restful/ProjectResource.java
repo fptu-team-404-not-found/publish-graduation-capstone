@@ -26,6 +26,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.team.TeamDAO;
+import team404.team.TeamDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
@@ -51,83 +53,45 @@ public class ProjectResource {
     @Path("/getHighlightProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getHighlightProjects() {
+    public List<ProjectDTO> getHighlightProjects() 
+    throws SQLException, NamingException{
         ProjectDAO dao = new ProjectDAO();
-        List<ProjectDTO> list = dao.getProjectList();
-        JSONArray jsArr = new JSONArray();
+        List<ProjectDTO> list = dao.getHighlightProjectList();
+        TeamDAO teamDao = new TeamDAO();
         for (ProjectDTO project : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("projectId", project.getProjectId());
-            jsObj.put("projectName", project.getProjectName());
-            jsObj.put("introductionContent", project.getIntroductionContent());
-            jsObj.put("projectAva", project.getProjectAva());
-            jsObj.put("teamName", project.getTeamName());
-            jsArr.add(jsObj);
+            TeamDTO team = teamDao.getTeam(project.getProjectId());
         }
-        String result = jsArr.toJSONString();
-        return result;
+        return list;
     }
     
     @Path("/getUpcomingProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getUpcomingProjects(){
+    public List<UpcomingProjectDTO> getUpcomingProjects(){
         UpcomingProjectDAO dao = new UpcomingProjectDAO();
         List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
-        /*
-        JSONArray jsArr = new JSONArray();
-        for (UpcomingProjectDTO upcoming : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("upcomingProjectId", upcoming.getUpcomingProjectId());
-            jsObj.put("projectName", upcoming.getProjectName());
-            jsObj.put("location", upcoming.getLocation());
-            jsObj.put("date", upcoming.getDate());
-            jsObj.put("description", upcoming.getDescription());
-            jsObj.put("image", upcoming.getImage());
-            jsArr.add(jsObj);
-        }
-        String result = jsArr.toJSONString();
-        */
         return list;
     }
     
     @Path("/searchProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String searchProject(
+    public List<ProjectDTO> searchProject(
             @QueryParam("keyword") String keyword)
     throws SQLException, NamingException{
         ProjectDAO dao = new ProjectDAO();
         dao.searchProject(keyword);
         List<ProjectDTO> list = dao.getSearchProjectList();
-        JSONArray jsArr = new JSONArray();
-        for (ProjectDTO project : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("projectId", project.getProjectId());
-            jsObj.put("projectName", project.getProjectName());
-            jsObj.put("projectAva", project.getProjectAva());
-            jsArr.add(jsObj);
-        }
-        String result = jsArr.toJSONString();
-        return result;
+        return list;
     }
     @Path("/filterProjectsBySemester")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String filterProjectsBySemester(
+    public List<ProjectDTO> filterProjectsBySemester(
             @QueryParam("semester") String semester)
     throws SQLException, NamingException{
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getFilterSemesterList(semester);
-        JSONArray jsArr = new JSONArray();
-        for (ProjectDTO project : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("projectId", project.getProjectId());
-            jsObj.put("projectName", project.getProjectName());
-            jsObj.put("projectAva", project.getProjectAva());
-            jsArr.add(jsObj);
-        }
-        String result = jsArr.toJSONString();
-        return result;
+        return list;
     }
 }
