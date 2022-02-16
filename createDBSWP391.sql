@@ -1,6 +1,5 @@
-﻿USE master
+USE master
 GO 
-
 
 IF EXISTS (SELECT * FROM sys.databases WHERE name='SWP391')
 DROP DATABASE SWP391
@@ -71,6 +70,7 @@ CREATE TABLE Project(
 	PRIMARY KEY(ProjectID)
 )
 GO
+
 CREATE TABLE ProjectVideo(
 	ProjectVideoId INT IDENTITY(1,1),
 	VideoUrl TEXT,
@@ -218,83 +218,113 @@ FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
 
 ------------------------------------------------------------------
-----------------------------Add value-----------------------------
-insert into Roles(RoleName) values('Guest')
-insert into Roles(RoleName) values('Editor')
-insert into Roles(RoleName) values('Contributor')
-insert into Roles(RoleName) values('Admin')
+----------------------------INSERT VALUE--------------------------
+INSERT INTO Roles(RoleName) VALUES('Guest')
+INSERT INTO Roles(RoleName) VALUES('Editor')
+INSERT INTO Roles(RoleName) VALUES('Contributor')
+INSERT INTO Roles(RoleName) VALUES('Admin')
 
-insert into User_Table(UserId,Name,Email) values(111111111111111111111,'Adam','adam@gmail.com')
-insert into User_Table(UserId,Name,Email) values(333333333333333333333,'Eva','eva@gmail.com')
-insert into User_Table(UserId,Name,Email) values(222222222222222222222,'Con ran','conran@gmail.com')
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(111111111111111111111, 'adam@gmail.com', 'Adam', 'https://i-giaitri.vnecdn.net/2019/03/28/adamlambert-1553749427-7614-1553749454_680x0.jpg', 4)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(222222222222222222222, 'eva@gmail.com', 'Eva', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', 3)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(333333333333333333333, 'conran@gmail.com', N'Con rắn', 'https://2.bp.blogspot.com/-9963WEZg_Oc/Wv0geGW-fiI/AAAAAAABTTQ/ykJ-GleRB64vOx6yg2YUrJc2gNtCROwTwCLcBGAs/s1600/snake-con-ran-compressor.png', 3)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(444444444444444444444, 'bebo@gmail.com', N'Bé Bơ', 'https://lh3.googleusercontent.com/lvatShFcVI9zx3xmESqIbudZOW_lsG5WwnnyQnybYFLTRBCPurE1z1L3jUVQlCKDCbuw6QSJ9l7B886o6K6SzKIPe06nDcqfkeLDRhcB7i26m579hjD1-wlV1LzLTaQ6L3cI9YZX', 3)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(555555555555555555555, 'meowmeow@gmail.com', N'Con mèo', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', 2)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(666666666666666666666, 'gaugau@gmail.com', N'Gâu Gâu', 'https://top5kythu.com/wp-content/uploads/Ch%C3%B3-Corgi.jpg', 2)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(777777777777777777777, 'capcap@gmail.com', N'Con vịt', 'https://product.hstatic.net/1000191320/product/vit-co-hoa-binh2.jpg', 2)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(888888888888888888888, 'ooooo@gmail.com', N'Con gà của thầy Hoàng', 'https://salt.tikicdn.com/cache/550x550/ts/product/84/ae/e3/04380681358b98e121682476ff685c00.jpg', 2)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(999999999999999999999, 'chipchip@gmail.com', N'Gà con', 'https://congtybinhquan.com/wp-content/uploads/2019/09/ga-con.jpg', 1)
+INSERT INTO User_Table(UserId, Email, Name, Picture, RoleId) 
+VALUES(101010101010101010101, 'ecec@gmail.com', N'Con heo', 'https://apc-health.vn/wp-content/uploads/2021/01/con-heo-compressed.jpg', 1)
 
-insert into Team(TeamName) values ('404 team')
-insert into Team(TeamName) values ('happy feet team')
+INSERT INTO Team(TeamName) VALUES('404 team')
+INSERT INTO Team(TeamName) VALUES('happy feet team')
+INSERT INTO Team(TeamName) VALUES('Sleepy 3 Friends')
+INSERT INTO Team(TeamName) VALUES('Sleepy 5 Friends')
+INSERT INTO Team(TeamName) VALUES(N'Gẫy')
+INSERT INTO Team(TeamName) VALUES('Forever Young')
+INSERT INTO Team(TeamName) VALUES('Team 7')
+INSERT INTO Team(TeamName) VALUES(N'5 Anh em siu nhơn')
+INSERT INTO Team(TeamName) VALUES(N'Team xanh lá')
+INSERT INTO Team(TeamName) VALUES(N'Nhóm 10')
 
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('KTK', N'Kiều Trọng Khánh', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('LHKP', N'Lâm Hữu Khánh Phương', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('NTN', N'Nguyễn Thế Hoàng', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('TTNV', N'Thân Thị Ngọc Vân', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('NTT', N'Nguyễn Trọng Tài', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('VTP', N'Vũ Thanh Phong', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('LVT', N'Lê Vũ Trường', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('TVS', N'Thân Văn Sử', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('TTMN', N'Trương Thị Mỹ Ngọc', NULL, NULL, NULL)
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('DNTH', N'Đoàn Nguyễn Thành Hòa', NULL, NULL, NULL)
 
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) 
-values ('SE111111', 'Rolls-Royce', 'rollsroyce@gmail.com','0123456789',1)
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values 
-('SE222222', 'Land Rover', 'LandRover@gmail.com','0123456789',1)
-insert into TeamMember(MemberID,MemberName,Email,Phone,TeamID) values 
-('SE333333', 'Audi', 'audi@gmail.com','0123456789',1)
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(1, 'KTK')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(1, 'LHKP')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(2, 'TTNV')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(3, 'LVT')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(4, 'LHKP')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(4, 'DNTH')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(5, 'NTT')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(6, 'LHKP')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(7, 'VTP')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(7, 'NTN')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(8, 'NTT')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(9, 'LHKP')
+INSERT INTO Team_Supervisor(TeamID, SupervisorID) VALUES(10, 'VTP')
 
+INSERT INTO TeamMember(MemberID, MemberName, MemberAvatar, Email, Phone, BackupEmail, TeamID) 
+VALUES('SE111111', 'Rolls-Royce', '', 'rollsroyce@gmail.com', '0123456789', '', 1)
+INSERT INTO TeamMember(MemberID, MemberName, MemberAvatar, Email, Phone, BackupEmail, TeamID) 
+VALUES('SE222222', 'Land Rover', '', 'LandRover@gmail.com', '0123456789', '', 1)
+INSERT INTO TeamMember(MemberID, MemberName, MemberAvatar, Email, Phone, BackupEmail, TeamID) 
+VALUES('SE333333', 'Audi', '', 'audi@gmail.com', '0123456789', '', 1)
 
-insert into Supervisor(SupervisorID,SupervisorName) values 
-('KTK','Kieu Trong Khanh')
-insert into Supervisor(SupervisorID,SupervisorName) values 
-('LHKP','Lam Huu Khanh Phuong')
-insert into Supervisor(SupervisorID,SupervisorName) values 
-('NTN','Nguyen The Hoang')
+INSERT INTO States(StateName) VALUES('Approving')
+INSERT INTO States(StateName) VALUES('Approved')
+INSERT INTO States(StateName) VALUES('Rejected')
 
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+VALUES('SP22SE02', 'Project Siu Dinh', N'Đây là một project tuyệt vời mang đến hạnh phúc', NULL, '2022-Spring', 8, 'Dustin', NULL, 'https://media.sohuutritue.net.vn/files/huongmi/2021/10/06/tri-tue-nhan-tao-1606.jpeg', 2, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+VALUES('FA22SE01', 'The public website of graduation project results', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
+NULL, '2022-Spring', 5, 'Thanh Dat', NULL, 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 1, 2)
 
-insert into Team_Supervisor(TeamID, SupervisorID) values (1,'KTK')
-insert into Team_Supervisor(TeamID, SupervisorID) values (1,'LHKP')
-insert into Team_Supervisor(TeamID, SupervisorID) values (2,'NTN')
+INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'SP22SE02')
+INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'FA22SE01')
 
+INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'SP22SE02')
+INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'FA22SE01')
 
-insert into States(StateName) values ('Approving')
-insert into States(StateName) values ('Approved')
-insert into States(StateName) values ('Rejected')
-/*
-CREATE TABLE Project(
-	ProjectId CHAR(8),
-	ProjectName NVARCHAR(100),
-	IntroductionContent NTEXT,
-	Details TEXT,
-	Semester CHAR(11),
-	ProductURL TEXT,
-	CreateDate datetime DEFAULT GetDate() NOT NULL,
-	ViewNumber INT,
-	AuthorName NVARCHAR(50),
-	Note NTEXT,
-	TeamID int,
-	StateId INT,
-	PRIMARY KEY(ProjectID)
-)*/
-GO
-insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,ProjectAva,TeamID,StateId) 
-values ('SP22SE02', 'Project Siu Dinh',N'Đây là một project tuyệt vời mang đến hạnh phúc',null,'2022-Spring', 8,'Dustin', 'https://media.sohuutritue.net.vn/files/huongmi/2021/10/06/tri-tue-nhan-tao-1606.jpeg',2,1)
-insert into Project(ProjectId ,ProjectName ,IntroductionContent,Details ,Semester,ViewNumber,AuthorName,ProjectAva,TeamID,StateId) 
-values ('FA22SE01', 'The public website of graduation project results', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
-null, '2022-Spring', 5, 'Thanh Dat', 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 1, 2)
+INSERT INTO SharePost(Details, AuthorName, Note, StateId, ProjectId)
+VALUES(N'Đây là bài sharing của Trần Ngọc Thắng', N'Trần Ngọc Thắng', NULL, 2, 'SP22SE02')
 
+INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SP22SE02')
 
-------------------------------------------------------------------------insert upcoming---------------
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
-values('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
-values('Smart city: Manage autonomous vehicle in resort', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://www.verdict.co.uk/wp-content/uploads/2021/08/shutterstock_1177506811.jpg')
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
-values('Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322526/woman-vaping.jpg')
-insert into UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
-values('Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', null,'https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
+INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
+VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', '111111111111111111111', 1, 'SP22SE02')
 
-Select p.ProjectId, p.ProjectName, p.IntroductionContent, p.ProjectAva, t.TeamName
-From Project p inner join Team t
-On p.TeamID = t.TeamID
-Order by ViewNumber 
-Desc 
+INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
+INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('Smart city: Manage autonomous vehicle in resort', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://www.verdict.co.uk/wp-content/uploads/2021/08/shutterstock_1177506811.jpg')
+INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', null,'https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322526/woman-vaping.jpg')
+INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', null,'https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
+
+INSERT INTO Sensitive_word(banned_word)
+VALUES
+	('no'), ('yes'), ('yah'), ('nope')
+
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
 create fulltext catalog SEARCH WITH ACCENT_SENSITIVITY = OFF
@@ -374,4 +404,3 @@ END
 --EXECUTE SearchHome @SearchValue = N'Cadillac'
 --EXECUTE SearchHome @SearchValue = N'Siu Đỉnh'
 --EXECUTE SearchHome @SearchValue = N'Đinh'
-
