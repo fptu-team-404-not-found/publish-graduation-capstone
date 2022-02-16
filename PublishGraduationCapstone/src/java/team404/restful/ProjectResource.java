@@ -74,6 +74,7 @@ public class ProjectResource {
     public String getUpcomingProjects(){
         UpcomingProjectDAO dao = new UpcomingProjectDAO();
         List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
+        /*
         JSONArray jsArr = new JSONArray();
         for (UpcomingProjectDTO upcoming : list) {
             JSONObject jsObj = new JSONObject();
@@ -86,7 +87,8 @@ public class ProjectResource {
             jsArr.add(jsObj);
         }
         String result = jsArr.toJSONString();
-        return result;
+        */
+        return list;
     }
     
     @Path("/searchProject")
