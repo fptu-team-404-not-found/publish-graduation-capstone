@@ -310,7 +310,15 @@ VALUES(N'Đây là bài sharing của Trần Ngọc Thắng', N'Trần Ngọc Th
 INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SP22SE02')
 
 INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', '111111111111111111111', 1, 'SP22SE02')
+VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', '111111111111111111111', NULL, 'SP22SE02')
+INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
+VALUES (N'Nhóm rất xuất sắc', '222222222222222222222', NULL, 'SP22SE02')
+
+INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
+VALUES (N'Siêu đỉnh', '333333333333333333333', 1, NULL)
+INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
+VALUES (N'Hay ghê', '444444444444444444444', 1, NULL)
+
 
 INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')

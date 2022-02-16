@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.controller;
 
 import java.io.IOException;
@@ -19,10 +14,6 @@ import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
 
-/**
- *
- * @author jike
- */
 @WebServlet(name = "ProjectDetailServlet", urlPatterns = {"/ProjectDetailServlet"})
 public class ProjectDetailServlet extends HttpServlet {
 
