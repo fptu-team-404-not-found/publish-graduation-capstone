@@ -38,10 +38,27 @@ public class ProjectDAO implements Serializable {
                 }
                 return list;
             }
-        } catch (Exception e) {
-
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
+
     }
 
     public void updateView(String projectId)
@@ -56,12 +73,23 @@ public class ProjectDAO implements Serializable {
                 stm.setString(1, projectId);
                 stm.executeUpdate();
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -82,15 +110,23 @@ public class ProjectDAO implements Serializable {
                     return view;
                 }
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return -1;
@@ -116,12 +152,27 @@ public class ProjectDAO implements Serializable {
                 }
                 return list;
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }
-
 
     public List<ProjectDTO> getFilterSemesterList(String semester) {
         try {
@@ -144,8 +195,24 @@ public class ProjectDAO implements Serializable {
                 }
                 return list;
             }
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }
@@ -290,9 +357,9 @@ public class ProjectDAO implements Serializable {
                     String intro = rs.getNString("IntroductionContent");
                     String details = rs.getNString("Details");
                     String recap = rs.getNString("Recap");
-                    
+
                     ProjectDTO dto = new ProjectDTO(id, projectName, intro, details, recap);
-                    
+
                     return dto;
                 }
             }
