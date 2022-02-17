@@ -36,14 +36,6 @@ public class LoginServlet extends HttpServlet {
         String token = request.getParameter("token");
 
         try {
-            ProjectDAO dao = new ProjectDAO();
-            String[] semester = {"2022-Spring", "2022-Summer"};
-            List<ProjectDTO> list = dao.filterSearchSemesterGetProjectsRemake(semester);
-            for (ProjectDTO projectDTO : list) {
-                System.out.println(projectDTO.toString());
-            }
-            int result = dao.filterSearchSemesterNumberOfResults(semester);
-            System.out.println("result: "+result);
             GoogleHelpers googleHelper = new GoogleHelpers();
             String json = googleHelper.getUserInfo(token);
             UserDTO user = googleHelper.getUserFromJson(json);
