@@ -12,13 +12,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
-import team404.projectimage.ProjectImageDAO;
-import team404.supervisor.SupervisorDAO;
-import team404.supervisor.SupervisorDTO;
 import team404.team.TeamDAO;
 import team404.team.TeamDTO;
-import team404.teammember.TeamMemberDAO;
-import team404.teammember.TeamMemberDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
@@ -90,6 +85,7 @@ public class ProjectResource {
         return result;
     }
 
+    //SERVLET
     @Path("/searchProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -111,6 +107,7 @@ public class ProjectResource {
         return result;
     }
 
+    //SERVLET
     @Path("/filterProjectsBySemester")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -133,4 +130,12 @@ public class ProjectResource {
 
     }
     
+    @Path("/showProjectDetails") 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showProjectDetails(
+            @QueryParam("projectId") String projectId) {
+        ProjectDAO dao = new ProjectDAO();
+        return dao.showProjectDetails(projectId);
+    }
 }

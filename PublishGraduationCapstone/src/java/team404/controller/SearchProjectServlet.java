@@ -1,18 +1,30 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package team404.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import javax.naming.NamingException;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import team404.user.UserDAO;
-import team404.user.UserDTO;
-import team404.utils.GoogleHelpers;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 
-public class LoginServlet extends HttpServlet {
+/**
+ *
+ * @author tienhltse151104
+ */
+@WebServlet(name = "SearchProjectServlet", urlPatterns = {"/SearchProjectServlet"})
+public class SearchProjectServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -25,34 +37,33 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
 
-        String token = request.getParameter("token");
+        String keyword = request.getParameter("keyword");
 
         try {
-            GoogleHelpers googleHelper = new GoogleHelpers();
-            String json = googleHelper.getUserInfo(token);
-            UserDTO user = googleHelper.getUserFromJson(json);
-
-            UserDAO userDAO = new UserDAO();
-
-            String id = user.getSub();
-            boolean idExisted = userDAO.checkId(id);
-
-            if (!idExisted) {
-                userDAO.createNewAcccount(user);
+            ProjectDAO dao = new ProjectDAO();
+            List<ProjectDTO> list = dao.getSearchProjectList(keyword);
+            
+            JSONArray jsArr = new JSONArray();
+            for (ProjectDTO projectDTO : list) {
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("projectId", projectDTO.getProjectId());
+                jsObj.put("projectName", projectDTO.getProjectName());
+                jsObj.put("projectAva", projectDTO.getProjectAva());
+                jsArr.add(jsObj);
             }
-
-            out.print(json);
-            response.flushBuffer();
-            out.flush();
-        } catch (SQLException ex) {
-            log("LoginServlet_SQL: " + ex.getMessage());
-        } catch (NamingException ex) {
-            log("LoginServlet_Naming: " + ex.getMessage());
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("searchProject", jsArr);
+            
+            out.print(jsObj);
+            //response.flushBuffer();
+            //out.flush();
+            
+            RequestDispatcher rd = request.getRequestDispatcher("Search-BE.html");
+            rd.forward(request, response);
         } finally {
             out.close();
         }
