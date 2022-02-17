@@ -8,15 +8,15 @@ public class ProjectDTO implements Serializable {
 
     private String projectId;
     private String projectName;
+    private String projectAva;
+    private String semester;
     private String introductionContent;
     private String details;
-    private String semester;
-    private String productUrl;
+    private String recap;
     private String createDate;
     private int viewNumber;
     private String authorName;
     private String note;
-    private String projectAva;
     private int teamId;
     private int stateId;
 
@@ -40,20 +40,12 @@ public class ProjectDTO implements Serializable {
         this.projectAva = projectAva;
     }
 
-    public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String semester, String productUrl, String createDate, int viewNumber, String authorName, String note, String projectAva, int teamId, int stateId) {
+    public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String recap) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.introductionContent = introductionContent;
         this.details = details;
-        this.semester = semester;
-        this.productUrl = productUrl;
-        this.createDate = createDate;
-        this.viewNumber = viewNumber;
-        this.authorName = authorName;
-        this.note = note;
-        this.projectAva = projectAva;
-        this.teamId = teamId;
-        this.stateId = stateId;
+        this.recap = recap;
     }
 
     /**
@@ -85,6 +77,34 @@ public class ProjectDTO implements Serializable {
     }
 
     /**
+     * @return the projectAva
+     */
+    public String getProjectAva() {
+        return projectAva;
+    }
+
+    /**
+     * @param projectAva the projectAva to set
+     */
+    public void setProjectAva(String projectAva) {
+        this.projectAva = projectAva;
+    }
+
+    /**
+     * @return the semester
+     */
+    public String getSemester() {
+        return semester;
+    }
+
+    /**
+     * @param semester the semester to set
+     */
+    public void setSemester(String semester) {
+        this.semester = semester;
+    }
+
+    /**
      * @return the introductionContent
      */
     public String getIntroductionContent() {
@@ -113,31 +133,17 @@ public class ProjectDTO implements Serializable {
     }
 
     /**
-     * @return the semester
+     * @return the recap
      */
-    public String getSemester() {
-        return semester;
+    public String getRecap() {
+        return recap;
     }
 
     /**
-     * @param semester the semester to set
+     * @param recap the recap to set
      */
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    /**
-     * @return the productUrl
-     */
-    public String getProductUrl() {
-        return productUrl;
-    }
-
-    /**
-     * @param productUrl the productUrl to set
-     */
-    public void setProductUrl(String productUrl) {
-        this.productUrl = productUrl;
+    public void setRecap(String recap) {
+        this.recap = recap;
     }
 
     /**
@@ -197,20 +203,6 @@ public class ProjectDTO implements Serializable {
     }
 
     /**
-     * @return the projectAva
-     */
-    public String getProjectAva() {
-        return projectAva;
-    }
-
-    /**
-     * @param projectAva the projectAva to set
-     */
-    public void setProjectAva(String projectAva) {
-        this.projectAva = projectAva;
-    }
-
-    /**
      * @return the teamId
      */
     public int getTeamId() {
@@ -237,9 +229,6 @@ public class ProjectDTO implements Serializable {
     public void setStateId(int stateId) {
         this.stateId = stateId;
     }
-
-    @Override
-    public String toString() {
-        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", introductionContent=" + introductionContent + ", details=" + details + ", semester=" + semester + ", productUrl=" + productUrl + ", createDate=" + createDate + ", viewNumber=" + viewNumber + ", authorName=" + authorName + ", note=" + note + ", projectAva=" + projectAva + ", teamId=" + teamId + ", stateId=" + stateId + '}';
-    }
+    
+    
 }

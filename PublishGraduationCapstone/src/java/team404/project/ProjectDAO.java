@@ -272,6 +272,54 @@ public class ProjectDAO implements Serializable {
             }
         }
 
+<<<<<<< HEAD
+=======
+        return null;
+    }
+
+    public ProjectDTO getProjectDetailsInPojectDetail(String projectId) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select ProjectId, ProjectName, IntroductionContent, Details, Recap "
+                        + "From Project "
+                        + "Where ProjectId = ?";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String id = rs.getString("ProjectId");
+                    String projectName = rs.getString("ProjectName");
+                    String intro = rs.getNString("IntroductionContent");
+                    String details = rs.getNString("Details");
+                    String recap = rs.getNString("Recap");
+                    
+                    ProjectDTO dto = new ProjectDTO(id, projectName, intro, details, recap);
+                    
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+>>>>>>> Tien
         return null;
     }
 }

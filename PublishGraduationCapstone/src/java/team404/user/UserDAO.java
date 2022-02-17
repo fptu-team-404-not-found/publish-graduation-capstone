@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.utils.DBHelpers;
 
@@ -78,5 +80,44 @@ public class UserDAO {
             }
         }
         return false;
+    }
+
+    public UserDTO getUserNamePictureByUserId(String userId) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select Name, Picture "
+                        + "From User_Table "
+                        + "Where UserId = ?";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, userId);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String name = rs.getNString("Name");
+                    String picture = rs.getString("Picture");
+                    UserDTO dto = new UserDTO(name, picture);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 }

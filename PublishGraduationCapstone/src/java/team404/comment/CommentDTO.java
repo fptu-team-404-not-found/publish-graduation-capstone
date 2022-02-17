@@ -2,44 +2,38 @@ package team404.comment;
 
 import java.sql.Timestamp;
 import javax.xml.bind.annotation.XmlRootElement;
+import team404.project.ProjectDTO;
+import team404.user.UserDTO;
 
 @XmlRootElement(name = "comment")
 public class CommentDTO {
     private int commentId;
     private Timestamp commentDate;
     private String commentContent;
-    private String userId;
+    
     private int postId;
-    private String projectId;
+    private UserDTO user;
+    private ProjectDTO project;
 
     public CommentDTO() {
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, String userId, String projectId) {
+    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, int postId, UserDTO user, ProjectDTO project) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
-        this.userId = userId;
-        this.projectId = projectId;
+        this.postId = postId;
+        this.user = user;
+        this.project = project;
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, String userId, int postId) {
+    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, UserDTO user) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
-        this.userId = userId;
-        this.postId = postId;
+        this.user = user;
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, String userId, int postId, String projectId) {
-        this.commentId = commentId;
-        this.commentDate = commentDate;
-        this.commentContent = commentContent;
-        this.userId = userId;
-        this.postId = postId;
-        this.projectId = projectId;
-    }
-    
     /**
      * @return the commentId
      */
@@ -83,20 +77,6 @@ public class CommentDTO {
     }
 
     /**
-     * @return the userId
-     */
-    public String getUserId() {
-        return userId;
-    }
-
-    /**
-     * @param userId the userId to set
-     */
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    /**
      * @return the postId
      */
     public int getPostId() {
@@ -111,18 +91,32 @@ public class CommentDTO {
     }
 
     /**
-     * @return the projectId
+     * @return the user
      */
-    public String getProjectId() {
-        return projectId;
+    public UserDTO getUser() {
+        return user;
     }
 
     /**
-     * @param projectId the projectId to set
+     * @param user the user to set
      */
-    public void setProjectId(String projectId) {
-        this.projectId = projectId;
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
-    
+
+    /**
+     * @return the project
+     */
+    public ProjectDTO getProject() {
+        return project;
+    }
+
+    /**
+     * @param project the project to set
+     */
+    public void setProject(ProjectDTO project) {
+        this.project = project;
+    }
+
     
 }
