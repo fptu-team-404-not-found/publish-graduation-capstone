@@ -104,10 +104,6 @@ body {
     font-size: 120%;
 }
 
-.web-name-container {
-    position: relative;
-}
-
 #home-login {
     color: #ffffff;
     border: 2px solid #ffffff;
@@ -124,24 +120,70 @@ body {
     position: fixed;
     font-size: 90%;
     letter-spacing: 0.06em;
+    display: none;
 }
+
+.web-name-container {
+    position: relative;
+    display: inline-block;
+}
+
 
 #home-login:hover {
     color:#F47124;
     background-color: #000000e8;
 }
 
-#web-name {
+#web-name-logo-img {
     width: 100%;
+}
+
+#web-name {
+    width: 70%;
     height: auto;
-    margin-top: 6%;
-    text-align: center;
+    margin-top: 5%;
     letter-spacing: 0.06em;
     font-family: sans-serif;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
+    font-size: 100%;
+    display: block;
+    float: right;
+}
+
+#web-name-line {
+    display: inline-block;
+    width: 4%;
+    background-color: #F47124;
+    height: 2em;
+    position: absolute;
+    margin-left: 500%;
+    margin-top: 10%;
+}
+
+#web-name-logo {
+    width: 3%;
+    margin-top: 4%;
+    float: left;
+    margin-left: 4%;
+    position: relative;
+}
+
+#web-teamname {
+    position: absolute;
+    margin-left: 30%;
+    display: inline-block;
+    margin-top: 35%;
+    font-size: 90%;
+}
+
+#web-name-logo-img {
+    width: 100%;
+    height: 100%;
+    margin-top: 10%;
 }
 
 #upcoming-container-home {
+    clear: both;
     background-image: linear-gradient(180deg, #F47124 15.49%, rgba(244, 113, 36, 0) 144.39%), url('https://vcdn-vnexpress.vnecdn.net/2020/12/17/a-nh-1-vne-jpg-1608192150-1536-1608192324.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -161,13 +203,18 @@ body {
 }
 
 #upcoming-comingUp {
-    text-decoration: #ffffff solid underline;
-    text-underline-position: under;
-    text-decoration-thickness: 12%;
-    font-size: 240%;
+    font-size: 200%;
     letter-spacing: 0.1em;
-    padding-bottom: 6%;
     font-family: sans-serif;
+}
+
+#upcoming-line {
+    width: 10em;
+    display: inline-block;
+    background-color: #ffffff;
+    height: 0.3em;
+    margin-bottom: 4%;
+    margin-top: 2%;
 }
 
 #upcoming-day {
@@ -570,8 +617,3 @@ body {
     width: 100%;
     border-radius: 16%;
 }
-
-
-
-
-

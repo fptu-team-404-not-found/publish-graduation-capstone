@@ -99,6 +99,7 @@ public class ProjectResource {
             jsObj.put("projectId", projectDTO.getProjectId());
             jsObj.put("projectName", projectDTO.getProjectName());
             jsObj.put("projectAva", projectDTO.getProjectAva());
+            jsObj.put("semester", projectDTO.getSemester());
             jsArr.add(jsObj);
         }
         JSONObject jsObj = new JSONObject();
@@ -107,6 +108,7 @@ public class ProjectResource {
         return result;
     }
 
+    /*
     //SERVLET
     @Path("/filterProjectsBySemester")
     @GET
@@ -128,7 +130,7 @@ public class ProjectResource {
         String result = jsObj.toJSONString();
         return result;
 
-    }
+    }*/
     
     @Path("/showProjectDetails") 
     @GET

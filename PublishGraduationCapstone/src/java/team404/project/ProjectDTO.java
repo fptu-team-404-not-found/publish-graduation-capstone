@@ -21,6 +21,19 @@ public class ProjectDTO implements Serializable {
     private int stateId;
 
     public ProjectDTO() {
+        projectId = "";
+        projectName = "";
+        projectAva = "";
+        semester = "";
+        introductionContent = "";
+        details = "";
+        recap = "";
+        createDate = "";
+        viewNumber = 0;
+        authorName = "";
+        note = "";
+        teamId = 0;
+        stateId = 0;
     }
 
     public ProjectDTO(int viewNumber) {
