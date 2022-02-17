@@ -271,9 +271,6 @@ public class ProjectDAO implements Serializable {
                 Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-<<<<<<< HEAD
-=======
         return null;
     }
 
@@ -318,8 +315,6 @@ public class ProjectDAO implements Serializable {
                 Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
->>>>>>> Tien
         return null;
     }
 }
