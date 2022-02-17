@@ -3,11 +3,14 @@ package team404.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 import team404.user.UserDAO;
 import team404.user.UserDTO;
 import team404.utils.GoogleHelpers;
@@ -33,6 +36,14 @@ public class LoginServlet extends HttpServlet {
         String token = request.getParameter("token");
 
         try {
+            ProjectDAO dao = new ProjectDAO();
+            String[] semester = {"2022-Spring", "2022-Summer"};
+            List<ProjectDTO> list = dao.filterSearchSemesterGetProjectsRemake(semester);
+            for (ProjectDTO projectDTO : list) {
+                System.out.println(projectDTO.toString());
+            }
+            int result = dao.filterSearchSemesterNumberOfResults(semester);
+            System.out.println("result: "+result);
             GoogleHelpers googleHelper = new GoogleHelpers();
             String json = googleHelper.getUserInfo(token);
             UserDTO user = googleHelper.getUserFromJson(json);

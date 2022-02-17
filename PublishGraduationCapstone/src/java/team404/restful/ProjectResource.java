@@ -175,14 +175,14 @@ public class ProjectResource {
     }
 
     //-- TIENHUYNHTN --//
-    @Path("/filterSearchSemesterNumberOfResults")
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String filterSearchSemesterNumberOfResults(
-            @QueryParam("semester") String semester) {
-        ProjectDAO dao = new ProjectDAO();
-        return String.valueOf(dao.filterSearchSemesterNumberOfResults(semester));
-    }
+//    @Path("/filterSearchSemesterNumberOfResults")
+//    @GET
+//    @Produces(MediaType.TEXT_PLAIN)
+//    public String filterSearchSemesterNumberOfResults(
+//            @QueryParam("semester") String semester) {
+//        ProjectDAO dao = new ProjectDAO();
+//        return String.valueOf(dao.filterSearchSemesterNumberOfResults(semester));
+//    }
 
     //-- TIENHUYNHTN --//
     @Path("/filterSearchSemesterGetProjects")
@@ -230,4 +230,5 @@ public class ProjectResource {
         return result;
 
     }
+    
 }

@@ -229,6 +229,11 @@ public class ProjectDTO implements Serializable {
     public void setStateId(int stateId) {
         this.stateId = stateId;
     }
+
+    @Override
+    public String toString() {
+        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", semester=" + semester + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", viewNumber=" + viewNumber + ", authorName=" + authorName + ", note=" + note + ", teamId=" + teamId + ", stateId=" + stateId + '}';
+    }
     
     
 }
