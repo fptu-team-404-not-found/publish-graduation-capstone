@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import team404.utils.DBHelpers;
 
 public class UpcomingProjectDAO implements Serializable {
@@ -30,7 +32,7 @@ public class UpcomingProjectDAO implements Serializable {
                 return list;
             }
         } catch (Exception ex) {
-
+            Logger.getLogger(UpcomingProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }

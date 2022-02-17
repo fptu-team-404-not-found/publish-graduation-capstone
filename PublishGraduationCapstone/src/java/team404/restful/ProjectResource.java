@@ -41,8 +41,7 @@ public class ProjectResource {
     @Path("/getHighlightProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String getHighlightProjects()
-            throws SQLException, NamingException {
+    public String getHighlightProjects() {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getHighlightProjectList();
         JSONArray jsArr = new JSONArray();
@@ -57,7 +56,9 @@ public class ProjectResource {
             jsObj.put("teamName", team.getTeamName());
             jsArr.add(jsObj);
         }
-        String result = jsArr.toJSONString();
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("getHighlightProjects", jsArr);
+        String result = jsObj.toJSONString();
         return result;
     }
 
@@ -89,15 +90,24 @@ public class ProjectResource {
     @Path("/searchProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProjectDTO> searchProject(
-            @QueryParam("keyword") String keyword)
-            throws SQLException, NamingException {
+    public String searchProject(
+            @QueryParam("keyword") String keyword) {
         ProjectDAO dao = new ProjectDAO();
-        dao.searchProject(keyword);
-        List<ProjectDTO> list = dao.getSearchProjectList();
-        return list;
+        List<ProjectDTO> list = dao.getSearchProjectList(keyword);
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("projectAva", projectDTO.getProjectAva());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("searchProject", jsArr);
+        String result = jsObj.toJSONString();
+        return result;
     }
-    
+
     //-- TIENHUYNHTN --//
     @Path("/filterSearchSemesterNumberOfResults")
     @GET
@@ -107,7 +117,7 @@ public class ProjectResource {
         ProjectDAO dao = new ProjectDAO();
         return String.valueOf(dao.filterSearchSemesterNumberOfResults(semester));
     }
-    
+
     //-- TIENHUYNHTN --//
     @Path("/filterSearchSemesterGetProjects")
     @GET
@@ -117,7 +127,7 @@ public class ProjectResource {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.filterSearchSemesterGetProjects(semester);
         JSONArray jsArr = new JSONArray();
-        
+
         for (ProjectDTO projectDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", projectDTO.getProjectId());
@@ -126,7 +136,7 @@ public class ProjectResource {
 
             jsArr.add(jsObj);
         }
-        
+
         JSONObject jsObj = new JSONObject();
         jsObj.put("filterSearchSemesterProject", jsArr);
 
@@ -137,11 +147,22 @@ public class ProjectResource {
     @Path("/filterProjectsBySemester")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProjectDTO> filterProjectsBySemester(
-            @QueryParam("semester") String semester)
-            throws SQLException, NamingException {
+    public String filterProjectsBySemester(
+            @QueryParam("semester") String semester) {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getFilterSemesterList(semester);
-        return list;
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("projectAva", projectDTO.getProjectAva());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("filterProjectsBySemester", jsArr);
+        String result = jsObj.toJSONString();
+        return result;
+
     }
 }
