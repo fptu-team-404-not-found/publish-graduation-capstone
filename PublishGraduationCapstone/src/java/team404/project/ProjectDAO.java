@@ -150,11 +150,12 @@ public class ProjectDAO implements Serializable {
                 rs = stm.executeQuery();
                 List<ProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
-                    String projectId = rs.getString("ProjectId");
-                    String projectName = rs.getNString("ProjectName");
-                    String projectAva = rs.getString("ProjectAva");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(rs.getString("ProjectId"));
+                    dto.setProjectName(rs.getNString("ProjectName"));
+                    dto.setProjectAva(rs.getString("ProjectAva"));
+                    dto.setSemester(rs.getString("Semester"));
 
-                    ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
                     list.add(dto);
                 }
                 return list;

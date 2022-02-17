@@ -53,6 +53,7 @@ public class SearchProjectServlet extends HttpServlet {
                 jsObj.put("projectId", projectDTO.getProjectId());
                 jsObj.put("projectName", projectDTO.getProjectName());
                 jsObj.put("projectAva", projectDTO.getProjectAva());
+                jsObj.put("semester", projectDTO.getSemester());
                 jsArr.add(jsObj);
             }
             JSONObject jsObj = new JSONObject();
@@ -61,9 +62,10 @@ public class SearchProjectServlet extends HttpServlet {
             out.print(jsObj);
             //response.flushBuffer();
             //out.flush();
-            
+            /*
             RequestDispatcher rd = request.getRequestDispatcher("Search-BE.html");
             rd.forward(request, response);
+            */
         } finally {
             out.close();
         }

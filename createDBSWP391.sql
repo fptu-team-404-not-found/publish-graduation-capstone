@@ -430,7 +430,7 @@ BEGIN
 	FROM FREETEXTTABLE(Supervisor, *, @SearchValue)) AS FTX
 	WHERE FTX.SupervisorID = TS.SupervisorID
 	ORDER BY RANK DESC;
-	SELECT P.ProjectId,ProjectName,P.ProjectAva
+	SELECT P.ProjectId,ProjectName,P.ProjectAva,Semester
 	FROM Project P,@TABLE T
 	WHERE P.ProjectId = T.ProjectId
 END
