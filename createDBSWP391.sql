@@ -318,13 +318,17 @@ INSERT INTO Project(ProjectId, ProjectName, ProjectAva, Semester, IntroductionCo
 VALUES('FA22SE01', 'The public website of graduation project results', 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 
 '2022-Spring', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.', 'Details', 'Recap', 
 5, 'Thanh Dat', NULL, 1, 2)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('SU22SE03', 'Robot Housework', N'Đây là sản phẩm Robot giúp việc nhà giúp cho con người', Null, '2022-Summer', 10, 'Josh', Null, 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/66086960_324180855138412_4642165623210639360_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OQpz3qUDCUcAX_lCxfX&tn=vVav3Ax8uG2OLcGR&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT8rThBFT9ghmQD17F0jBcD7pXYr9WKWVKBkDXtleb2qhg&oe=623429C3',3,1)
+
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'SP22SE02')
 INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'FA22SE01')
-
+INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'SU22SE03')
 /*
 INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'SP22SE02')
 INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'FA22SE01')
+INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'SU22SE03')
 */
 
 INSERT INTO SharePost(Details, Note, MemberID, SupervisorID, StateId, ProjectId)
