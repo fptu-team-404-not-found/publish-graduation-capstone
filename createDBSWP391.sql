@@ -43,9 +43,10 @@ CREATE TABLE SharePost(
 	PostId INT IDENTITY(1,1),
 	Details NTEXT,
 	CreateDate datetime DEFAULT GetDate() NOT NULL,
-	AuthorName NVARCHAR(50),
 	Note NTEXT,
 	-------------
+	MemberID CHAR(8),
+	SupervisorID CHAR(5),
 	StateId INT,
 	ProjectId CHAR(8),
 	PRIMARY KEY(PostID)
@@ -55,15 +56,15 @@ GO
 CREATE TABLE Project(
 	ProjectId CHAR(8),
 	ProjectName NVARCHAR(100),
-	IntroductionContent NTEXT,
-	Details TEXT,
+	ProjectAva TEXT,
 	Semester CHAR(11),
-	ProductURL TEXT,
+	IntroductionContent NTEXT,
+	Details NTEXT,
+	Recap NTEXT,
 	CreateDate datetime DEFAULT GetDate() NOT NULL,
 	ViewNumber INT,
 	AuthorName NVARCHAR(50),
 	Note NTEXT,
-	ProjectAva TEXT,
 	-------------
 	TeamID INT,
 	StateId INT,
@@ -71,6 +72,7 @@ CREATE TABLE Project(
 )
 GO
 
+/*
 CREATE TABLE ProjectVideo(
 	ProjectVideoId INT IDENTITY(1,1),
 	VideoUrl TEXT,
@@ -79,6 +81,8 @@ CREATE TABLE ProjectVideo(
 	PRIMARY KEY(ProjectVideoId)
 )
 GO
+*/
+
 CREATE TABLE ProjectImage(
 	ProjectImageID INT IDENTITY(1,1),
 	ImageUrl TEXT,
@@ -132,12 +136,15 @@ CREATE TABLE Favorite(
 	ProjectId  	CHAR(8),
 	PRIMARY KEY (FavoriteID)
 )
+GO
 
 CREATE TABLE Sensitive_word(
 	wordID INT IDENTITY(1,1),
 	banned_word NTEXT,
 	PRIMARY KEY (wordID)
 )
+GO 
+
 CREATE TABLE UpcomingProject(
 	Id INT IDENTITY(1,1),
 	ProjectName NVARCHAR(100),
@@ -147,12 +154,14 @@ CREATE TABLE UpcomingProject(
 	Image TEXT,
 	PRIMARY KEY (Id)
 )
+GO
+
 CREATE TABLE States(
 	StateId INT IDENTITY(1,1),
 	StateName VARCHAR(10),
 	PRIMARY KEY (StateId)
 )
-
+GO
 
 ----------------------------------------ADD CONSTRAINT-----------------------------------------
 ---USER---
@@ -160,7 +169,7 @@ ALTER TABLE User_Table ADD CONSTRAINT has_Role
 FOREIGN KEY (RoleId) REFERENCES Roles(RoleId)
 GO 
 
-----COMMNET----
+----COMMENT----
 ALTER TABLE Comment ADD CONSTRAINT has_User
 FOREIGN KEY (UserId) REFERENCES User_Table(UserId)
 GO 
@@ -178,6 +187,12 @@ GO
 ALTER TABLE SharePost ADD CONSTRAINT FK_HsProject
 FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
+ALTER TABLE SharePost ADD CONSTRAINT FK_WritePost
+FOREIGN KEY (MemberID) REFERENCES TeamMember(MemberID)
+GO 
+ALTER TABLE SharePost ADD CONSTRAINT FK_SupervisorWrite
+FOREIGN KEY (SupervisorID) REFERENCES Supervisor(SupervisorID)
+GO 
 
 ---PROJECT---
 ALTER TABLE Project ADD CONSTRAINT has_ProjectState
@@ -192,15 +207,18 @@ ALTER TABLE ProjectImage ADD CONSTRAINT has_Images
 FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
 
+/*
 ---PROJECT VIDEO---
 ALTER TABLE ProjectVideo ADD CONSTRAINT has_VIDEO
 FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
+*/
 
 ---TEAM MEMBER---
 ALTER TABLE TeamMember ADD CONSTRAINT has_Team
 FOREIGN KEY (TeamID) REFERENCES Team(TeamID)
 GO 
+
 ---TEAM SUPERVISOR---
 ALTER TABLE Team_Supervisor ADD CONSTRAINT has_Supervisor
 FOREIGN KEY (SupervisorID) REFERENCES Supervisor(SupervisorID)
@@ -292,20 +310,25 @@ INSERT INTO States(StateName) VALUES('Approving')
 INSERT INTO States(StateName) VALUES('Approved')
 INSERT INTO States(StateName) VALUES('Rejected')
 
-INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
-VALUES('SP22SE02', 'Project Siu Dinh', N'Đây là một project tuyệt vời mang đến hạnh phúc', NULL, '2022-Spring', 8, 'Dustin', NULL, 'https://media.sohuutritue.net.vn/files/huongmi/2021/10/06/tri-tue-nhan-tao-1606.jpeg', 2, 1)
-INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
-VALUES('FA22SE01', 'The public website of graduation project results', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.',
-NULL, '2022-Spring', 5, 'Thanh Dat', NULL, 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 1, 2)
+INSERT INTO Project(ProjectId, ProjectName, ProjectAva, Semester, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, TeamID, StateId) 
+VALUES('SP22SE02', 'Project Siu Dinh', 'https://media.sohuutritue.net.vn/files/huongmi/2021/10/06/tri-tue-nhan-tao-1606.jpeg', '2022-Spring', 
+N'Đây là một project tuyệt vời mang đến hạnh phúc', N'Đây là một project tuyệt vời mang đến hạnh phúc', N'Đây là một project tuyệt vời mang đến hạnh phúc', 8, 
+'Dustin', NULL, 2, 1)
+INSERT INTO Project(ProjectId, ProjectName, ProjectAva, Semester, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, TeamID, StateId) 
+VALUES('FA22SE01', 'The public website of graduation project results', 'http://dreamworld.edu.vn/uploads/Du%20h%E1%BB%8Dc%20ng%C3%A0nh%20Technology%20t%E1%BA%A1i%20M%E1%BB%B9.jpg', 
+'2022-Spring', N'Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.', 'Details', 'Recap', 
+5, 'Thanh Dat', NULL, 1, 2)
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'SP22SE02')
 INSERT INTO ProjectImage(ImageUrl, ProjectId) VALUES('', 'FA22SE01')
 
+/*
 INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'SP22SE02')
 INSERT INTO ProjectVideo(VideoUrl, ProjectId) VALUES('', 'FA22SE01')
+*/
 
-INSERT INTO SharePost(Details, AuthorName, Note, StateId, ProjectId)
-VALUES(N'Đây là bài sharing của Trần Ngọc Thắng', N'Trần Ngọc Thắng', NULL, 2, 'SP22SE02')
+INSERT INTO SharePost(Details, Note, MemberID, SupervisorID, StateId, ProjectId)
+VALUES(N'Đây là bài sharing của Trần Ngọc Thắng', NULL, 'SE111111', 'KTK', 2, 'SP22SE02')
 
 INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SP22SE02')
 
@@ -318,7 +341,6 @@ INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId)
 VALUES (N'Siêu đỉnh', '333333333333333333333', 1, NULL)
 INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
 VALUES (N'Hay ghê', '444444444444444444444', 1, NULL)
-
 
 INSERT INTO UpcomingProject(ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', null,'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
