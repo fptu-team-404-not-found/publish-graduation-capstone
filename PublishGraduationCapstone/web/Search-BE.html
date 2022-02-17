@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Dat mai dinh</h1>
+        <div id="show"></div>
+
+        <script>
+            console.log('tien');
+            function getUrlVars() {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+                        function (m, key, value) {
+                            vars[key] = value;
+                            console.log('var: ' + vars[key]); ///para here
+                        });
+                return vars;
+            }
+
+            var fType = getUrlVars()["type"];
+            console.log('type: ' + fType); //undefine
+            
+        </script>
+    </body>
+</html>
