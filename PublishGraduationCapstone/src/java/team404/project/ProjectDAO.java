@@ -96,45 +96,32 @@ public class ProjectDAO implements Serializable {
         return -1;
     }
 
-    public List<ProjectDTO> getSearchProjectList() {
-        return searchProjectList;
-    }
-
-    public void searchProject(String keyword)
-            throws SQLException, NamingException {
+    public List<ProjectDTO> getSearchProjectList(String keyword) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "EXECUTE SearchHome "
                         + "@SearchValue = ? ";
                 stm = con.prepareStatement(sql);
-                stm.setNString(1, keyword);
+                stm.setString(1, keyword);
                 rs = stm.executeQuery();
+                List<ProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
                     String projectId = rs.getString("ProjectId");
                     String projectName = rs.getNString("ProjectName");
                     String projectAva = rs.getString("ProjectAva");
 
                     ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
-                    if (this.searchProjectList == null) {
-                        this.searchProjectList = new ArrayList<>();
-                    }
-                    this.searchProjectList.add(dto);
+                    list.add(dto);
                 }
+                return list;
             }
-        } finally {
-
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
-            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
+
 
     public List<ProjectDTO> getFilterSemesterList(String semester) {
         try {
@@ -155,11 +142,10 @@ public class ProjectDAO implements Serializable {
                     ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
                     list.add(dto);
                 }
-                System.out.println("lele: " + list);
                 return list;
             }
         } catch (Exception ex) {
-
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
@@ -286,6 +272,8 @@ public class ProjectDAO implements Serializable {
             }
         }
 
+<<<<<<< HEAD
+=======
         return null;
     }
 
@@ -331,6 +319,7 @@ public class ProjectDAO implements Serializable {
             }
         }
 
+>>>>>>> Tien
         return null;
     }
 }

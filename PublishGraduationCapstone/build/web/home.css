@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
   
 body {
@@ -17,9 +18,9 @@ body {
     display: inline-block;
     width: 100%;
     position: fixed;
-    overflow: auto;
     top: 0;
     height: 8%;
+    z-index: 999;
 }
 
 #menu ul {
@@ -62,12 +63,37 @@ body {
     height: auto;
 }
 
-.fa-magnifying-glass {
+.home-find-icon-normal {
     color: #F47124;
     float: right;
     width: 4%;
     margin-top: 1%;
     font-size: 120%;
+}
+
+.home-find-icon-search {
+    color: #F47124;
+    position: absolute;
+    margin-left: 91%;
+    margin-top: 1.2%;
+}
+
+#home-search-container {
+    width: 27%;
+    margin-top: 0.4%;
+    margin-left: 67%; 
+    position: absolute;
+    padding: 0.5%;
+    border-radius: 2em;
+    display: none;
+}
+
+#home-search-text {
+    width: 100%;
+    padding: 2%;
+    border-radius: 2em;
+    font-size: 50%;
+    position: absolute;
 }
 
 .fa-user {
@@ -76,6 +102,33 @@ body {
     width: 4%;
     margin-top: 1%;
     font-size: 120%;
+}
+
+.web-name-container {
+    position: relative;
+}
+
+#home-login {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 0.8em;
+    font-weight: 600;
+    width: 7%;
+    float: right;
+    top: 7.9%;
+    right: 4%;
+    margin-right: -2.5%;
+    background-color: #000000;
+    padding: 0.5%;
+    text-align: center;
+    position: fixed;
+    font-size: 90%;
+    letter-spacing: 0.06em;
+}
+
+#home-login:hover {
+    color:#F47124;
+    background-color: #000000e8;
 }
 
 #web-name {
@@ -104,6 +157,7 @@ body {
 #upcoming-home {
     float: left;
     width: 58%;
+    margin-left: 2%;
 }
 
 #upcoming-comingUp {
@@ -161,16 +215,82 @@ body {
 }
 
 .upcoming-img-big {
-    width: 120%;
-    height: 28em;
-    margin-left: -30%;
+    width: 100%;
+    height: 26em;
+    margin-left: -16%;
 }
 
 .upcoming-img-text {
     display: inline;
 }
 
-#hightlight-home{
+.upcoming-img {
+    position: relative;
+    width: 18%;
+    display: inline-block;
+    margin-right: 1%;
+}
+
+.upcoming-img-container {
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    opacity: 0%;
+}
+
+.upcoming-img-container:hover {
+    background: linear-gradient(#00000036,#000000a9);
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    opacity: 100%;
+}
+
+.upcoming-text-img {
+    position: absolute;
+    bottom: 52%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+    font-size: 80%;
+}
+
+.upcoming-img-line {
+    position: absolute;
+    bottom: 50%;
+    left: 4%;
+    width: 1.5em;
+    height: 0.12em;
+    background-color: #ffffff;
+}
+
+.upcoming-img-team {
+    position: absolute;
+    bottom: 40%;
+    font-size: 65%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+}
+
+.upcoming-img-content {
+    position: absolute;
+    bottom: 15%;
+    font-size: 42%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+}
+
+.upcoming-img-more {
+    position: absolute;
+    bottom: 3%;
+    font-size: 60%;
+    color: #ffffff;
+    left: 35%;
+}
+
+#hightlight-home {
     width: 70%;
     background-color: #ffffff;
     margin: 0 auto;
@@ -202,18 +322,103 @@ body {
 #hightlight-project {
     letter-spacing: 0.06em;
     font-size: 106%;
+    width: 20%;
 }
 
 #hightlight-project-img {
-    width: 100%;
+    margin-left: 2%;
+    display: flex;
+    overflow-x: auto;
+    width: 96%;
     height: 100%;
     padding-top: 2%;
+    position: relative;
+}
+
+#hightlight-project-img::-webkit-scrollbar {
+    height: 0.5em;
+}
+ 
+#hightlight-project-img::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 4em;
+    background-clip: padding-box;
+    background: #f4702452; 
+}
+
+#hightlight-project-img::-webkit-scrollbar-thumb:hover {
+    -webkit-border-radius: 4em;
+    background: #f47024b0; 
 }
 
 .hightlight-img {
-    display: inline;
-    margin-left: 2%;
-    margin-right: -2.5%;
+    margin-left: 1%;
+    margin-right: 0.5%;
+    position: relative;
+    width: 18%;
+    flex: 0 0 auto;
+}
+
+.hightlight-img-container {
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    opacity: 0%;
+}
+
+.hightlight-img-container:hover {
+    background: linear-gradient(#00000036,#000000a9);
+    position: absolute;
+    width: 100%;
+    height: 98%;
+    opacity: 100%;
+}
+
+.hightlight-project-img-container {
+    width: 100%;
+    height: 10em;
+}
+
+.hightlight-img-text {
+    position: absolute;
+    bottom: 46%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+}
+
+.hightlight-img-line {
+    position: absolute;
+    bottom: 44%;
+    left: 4%;
+    width: 1em;
+    height: 0.08em;
+    background-color: #ffffff;
+}
+
+.hightlight-img-team {
+    position: absolute;
+    bottom: 34%;
+    font-size: 65%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+}
+
+.hightlight-img-content {
+    position: absolute;
+    bottom: 15%;
+    font-size: 42%;
+    color: #ffffff;
+    left: 4%;
+    letter-spacing: 0.06em;
+}
+
+.hightlight-img-more {
+    position: absolute;
+    bottom: 4%;
+    font-size: 60%;
+    color: #ffffff;
+    left: 35%;
 }
 
 #other-project-home {

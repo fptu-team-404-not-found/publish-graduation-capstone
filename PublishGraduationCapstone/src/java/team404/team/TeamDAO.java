@@ -7,7 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.NamingException;
+import team404.project.ProjectDAO;
 import team404.utils.DBHelpers;
 
 public class TeamDAO implements Serializable {
@@ -38,8 +41,7 @@ public class TeamDAO implements Serializable {
         return null;
     }
 
-    public TeamDTO getTeam(String projectId)
-            throws SQLException, NamingException {
+    public TeamDTO getTeam(String projectId) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -55,16 +57,23 @@ public class TeamDAO implements Serializable {
                     return dto;
                 }
             }
-
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return null;
