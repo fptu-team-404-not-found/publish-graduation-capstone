@@ -2,18 +2,19 @@ package team404.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import javax.naming.NamingException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 
-@WebServlet(name = "ProjectDetailServlet", urlPatterns = {"/ProjectDetailServlet"})
-public class ProjectDetailServlet extends HttpServlet {
+@WebServlet(name = "FilterSemesterInSearchServlet", urlPatterns = {"/FilterSemesterInSearchServlet"})
+public class FilterSemesterInSearchServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,28 +30,30 @@ public class ProjectDetailServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-
-        String projectId = request.getParameter("projectId");
+        
+        String[] semester = request.getParameterValues("semester");
         try {
-            // count view features
-            HttpSession session = request.getSession();
             ProjectDAO dao = new ProjectDAO();
-            if (session.isNew()) {
-                dao.updateView(projectId);
-            }
-            
-            //project details
-            String jsProjectDetails = dao.showProjectDetails(projectId);
+            List<ProjectDTO> list = dao.filterSearchSemesterGetProjects(semester);
 
-            out.print(jsProjectDetails);
+            JSONArray jsArr = new JSONArray();
+            for (ProjectDTO projectDTO : list) {
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("projectId", projectDTO.getProjectId());
+                jsObj.put("projectName", projectDTO.getProjectName());
+                jsObj.put("projectAva", projectDTO.getProjectAva());
+
+                jsArr.add(jsObj);
+            }
+
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("filterSearchSemesterProject", jsArr);
+            int numberOfFilterResults = dao.filterSearchSemesterNumberOfResults(semester);
+            jsObj.put("numberOfFilterResults", numberOfFilterResults);
+            
+            out.print(jsObj);
             response.flushBuffer();
             out.flush();
-            // dùng xmlhttprequest bên servlet trả json ra FE lụm 
-            // từng project sẽ là thẻ <a> truyền vào servlet và projectId
-        } catch (SQLException ex) {
-            log("ProjectDetailServlet_SQL: " + ex.getMessage());
-        } catch (NamingException ex) {
-            log("ProjectDetailServlet_Naming: " + ex.getMessage());
         } finally {
             out.close();
         }
