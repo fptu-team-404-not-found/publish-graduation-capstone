@@ -15,7 +15,7 @@
     <div id="menu">
         <ul>
             <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png"></li>
-            <li class="nav-home-1"><a href="#">Home</a></li>
+            <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
@@ -28,11 +28,11 @@
         <div id="home-search-container">
             <span>
                 <input type="text" name="home-search-text" id="home-search-text" placeholder="Student’s name, Project’s name, Lecturer’s name ">
-                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                <i class="fa-solid fa-magnifying-glass home-find-icon-search" onclick="showSearchPage()"></i>
             </span>
         </div>
-        
     </div>
+
     <div id="web-name-container">
         <div id="web-name-logo">
             <img id="web-name-logo-img" src="img/team-logo.png"/>
@@ -63,46 +63,7 @@
                     </div>
                     <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
                 </div>
-                <div class="upcoming-img">
-                    <div class="upcoming-img-container">
-                        <p class="upcoming-text-img">PROJECT 1</p>
-                        <p class="upcoming-img-line"></p>
-                        <p class="upcoming-img-team">Team A</p>
-                        <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
-                        <p class="upcoming-img-more">More...</p>
-                    </div>
-                    <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
-                </div>
-                <div class="upcoming-img">
-                    <div class="upcoming-img-container">
-                        <p class="upcoming-text-img">PROJECT 1</p>
-                        <p class="upcoming-img-line"></p>
-                        <p class="upcoming-img-team">Team A</p>
-                        <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
-                        <p class="upcoming-img-more">More...</p>
-                    </div>
-                    <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
-                </div>
-                <div class="upcoming-img">
-                    <div class="upcoming-img-container">
-                        <p class="upcoming-text-img">PROJECT 1</p>
-                        <p class="upcoming-img-line"></p>
-                        <p class="upcoming-img-team">Team A</p>
-                        <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
-                        <p class="upcoming-img-more">More...</p>
-                    </div>
-                    <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
-                </div>
-                <div class="upcoming-img">
-                    <div class="upcoming-img-container">
-                        <p class="upcoming-text-img">PROJECT 1</p>
-                        <p class="upcoming-img-line"></p>
-                        <p class="upcoming-img-team">Team A</p>
-                        <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
-                        <p class="upcoming-img-more">More...</p>
-                    </div>
-                    <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
-                </div>
+
                
             </div>
         </div>
@@ -111,7 +72,7 @@
         </div>
     </div>
     
-    <div id="hightlight-home">
+    <div id="hightlight-home" onload="showHightLight()">
         <span id="hightlight-text">HIGHLIGHT</span>
         <span id="hightlight-line"></span>
         <span id="hightlight-project">Projects</span>
@@ -243,7 +204,10 @@
             <span class="other-img"><img class="other-project-img" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg"><p class="other-project-img-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit</p></span>
             <span class="other-img"><img class="other-project-img" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg"><p class="other-project-img-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit</p></span>
         </div>
-        <div id="other-project-viewmore">View more</div>
+        <a href="http://localhost:8084/PublishGraduationCapstone/AllProduct.html">
+            <div id="other-project-viewmore">View more</div>
+        </a>
+       
     </div>
 
     <div id="footer-home">
@@ -272,6 +236,7 @@
             <span id="footer-copyright-text">2022 by 404</span>
         </div>
     </div>
+    
     <script language="javascript">
         function showLogin() {
             var hidden = document.getElementById('home-login');
@@ -287,6 +252,19 @@
             else hidden.style.display = 'none';
         }
 
+        var usernameInput = document.querySelector('#home-search-text').value;
+        console.log('lala: ' + usernameInput);   
+
+        function showSearchPage() {
+            usernameInput = document.querySelector('#home-search-text').value;
+            console.log('lala: ' + usernameInput);   
+            sessionStorage.setItem("keyword", usernameInput);
+            
+            location.replace("http://localhost:8084/PublishGraduationCapstone/search.html");
+        }
+
     </script>
+
+    <script src="home.js"></script>
 </body>
 </html>

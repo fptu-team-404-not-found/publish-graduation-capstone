@@ -13,6 +13,7 @@ body {
     background-color: #EEEEEE;
 }
 
+/*-----------------------------------day la menu--------------------------------------------------*/
 #menu {
     background-color: #000000;
     display: inline-block;
@@ -103,6 +104,7 @@ body {
     margin-top: 1%;
     font-size: 120%;
 }
+/*-----------------------------------day la hết menu--------------------------------------------------*/
 
 #home-login {
     color: #ffffff;
@@ -426,6 +428,7 @@ body {
 }
 
 .hightlight-img-text {
+    font-size: 70%;
     position: absolute;
     bottom: 46%;
     color: #ffffff;
@@ -445,19 +448,23 @@ body {
 .hightlight-img-team {
     position: absolute;
     bottom: 34%;
-    font-size: 65%;
+    font-size: 60%;
     color: #ffffff;
     left: 4%;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.04em;
+    font-weight: 700;
 }
 
 .hightlight-img-content {
     position: absolute;
+    overflow: hidden;
     bottom: 15%;
     font-size: 42%;
     color: #ffffff;
     left: 4%;
     letter-spacing: 0.06em;
+    display: inline-block;
+    height: 15%;
 }
 
 .hightlight-img-more {
@@ -528,7 +535,7 @@ body {
     color: rgba(0, 0, 0, 0.57);
     margin-bottom: 4%;
 }
-
+/*----------------------------------------------đây là footer--------------------------------------*/
 #footer-home-left {
     float: left;
     width: 60%;
@@ -617,3 +624,5 @@ body {
     width: 100%;
     border-radius: 16%;
 }
+/*----------------------------------------------đây là footer--------------------------------------*/
+

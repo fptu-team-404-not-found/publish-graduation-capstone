@@ -274,6 +274,12 @@ INSERT INTO Team(TeamName) VALUES(N'5 Anh em siu nhơn')
 INSERT INTO Team(TeamName) VALUES(N'Team xanh lá')
 INSERT INTO Team(TeamName) VALUES(N'Nhóm 10')
 
+INSERT INTO Team(TeamName) VALUES(N'Team 7 Anh em Cầu Vồng')
+INSERT INTO Team(TeamName) VALUES(N'Cùng nhau kiếm tiền')
+INSERT INTO Team(TeamName) VALUES(N'Quăng Lựu Đạn')
+INSERT INTO Team(TeamName) VALUES(N'Đi về nhà Team')
+INSERT INTO Team(TeamName) VALUES(N'Thích đi nhậu')
+
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('KTK', N'Kiều Trọng Khánh', NULL, NULL, NULL)
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('LHKP', N'Lâm Hữu Khánh Phương', NULL, NULL, NULL)
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position) VALUES('NTN', N'Nguyễn Thế Hoàng', NULL, NULL, NULL)
@@ -358,6 +364,47 @@ VALUES('Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', null
 INSERT INTO Sensitive_word(banned_word)
 VALUES
 	('no'), ('yes'), ('yah'), ('nope')
+--------------------------------------
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('SU22SE04','Project Siu Chats',N'Đây là một project mang đến chất lượng về mặt thiết kế lẫn nội dung và performance',null,'2022-Summer',
+4, 'Ngoc Thang', Null, 'https://vti-solutions-assets.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/10/08095533/Human-Intelligence-Can-Fix-AI-Shortcomings-1.jpg',4,1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('SP22SE05','Robot Police', N'Một dự án về cảnh sát robot điều tiết giao thông giúp con người',Null,'2022-Spring', 15, 'Mark zuckerberg', null,
+'https://cdnmedia.baotintuc.vn/Upload/e9GdNZvHDFi8lZSWc6ubA/files/2019/08/robot8819.jpeg',5,1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('FA22SE06', 'Medical Robot', N'Một dự án về robot giúp đỡ chăm sóc bệnh nhân trong bệnh viện', null, '2022-Fall', 7, 'Rooney', null,
+'https://www.medicaldevice-network.com/wp-content/uploads/sites/23/2019/12/MD-1.jpg', 6, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('FA22SE07', 'Online Shopping Website Project', N'Đây là một website về buôn bán giày dép thuộc dòng web ecommerce', null, '2022-Fall', 11,
+'Ronaldo', null, 'https://itinfonity.com/wp-content/uploads/2020/10/Ecommerce-Website-Development-1024x1024.png', 7, 1)
+---
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SP22SE08', 'Shoes Shopping Website Project Version Sieu Cap ',N'Đây là một website về buôn bán giày dép thuộc dòng web ecommerce',null,
+'2022-Spring', 20, 'G.Bale', null, 'https://cdn.pixabay.com/photo/2016/11/19/15/58/camera-1840054_960_720.jpg', 8, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('SU22SE09', 'Book Shopping Website Project', N'Đây là một website về buôn bán tất cả loại sách thuộc dòng web ecommerce', null,
+'2022-Summer', 14, 'Peter', null, 'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',9,1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('FA22SE10', 'Go Travel', N'Đây là một website giúp chúng ta có thể đặt vé đi du lịch khắp thế giới chỉ cần lên xe thì sẽ có người đèo ', null,
+'2022-Fall', 50, 'Justin Beer', null, 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',10,1)
+---------tới đây
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('FA22SE11', 'Events In FPT University', N'Đây là một dự án giúp cho toàn bộ sinh viên và học sinh có thể theo dõi được các hoạt động của trường FPT', null,
+'2022-Fall', 17, 'Allison', null, 'https://daihoc.fpt.edu.vn/media/2020/02/event.jpg', 11, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SU22SE12', 'Go English Breaking', N'Dự án này là một app giúp cho học sinh học tiếng anh dễ dàng với người nước ngoài', null,
+'2022-Summer', 22, 'Q.Kha', null, 'https://www.explosion.com/wp-content/uploads/2020/03/english-online-class.jpg', 12, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values('SP22SE13', 'Student Management In University', N'Đây là một app quản lý toàn bộ sinh viên học sinh trong 1 trường đại học', null,
+'2022-Spring', 19, 'Maguire', null, 'https://edu-happy.com/wp-content/uploads/2021/01/student-management-system-2.jpg', 13, 1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SP22SE14', 'Coffee Management', N'Đây là một dự án quản lý toàn bộ hoạt động buôn bán cà phê của một cửa hàng', null,
+'2022-Spring', 16, 'Aka Thanh Dat', null, 'https://play-lh.googleusercontent.com/OhLUOF6mZAC4HmM4rfldRNq_cVSKCNBkNI9TrpZmr9A2gQo6jsAvLEWkoh02o_UfIA',14,1)
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SU22SE15', 'Robot Making Cars', N'Đây là một dự án về tự động hóa lắp ráp xe hơi trong cộng nghiệp làm xe hơi', null,
+'2022-Summer', 26, 'Rashford', null, 'https://asiame.vn/wp-content/uploads/2019/09/Robot-c%C3%B4ng-nghi%E1%BB%87p-610x400.jpg', 15, 1)
+
+
 
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------

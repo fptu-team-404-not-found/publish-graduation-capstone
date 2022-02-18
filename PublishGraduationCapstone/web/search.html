@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="search.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="team-logo2.png">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Trang Search Nè</title>
+</head>
+
+<body>
+    <div id="menu">
+        <ul>
+            <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+            </li>
+            <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
+            <li class="nav-home-2"><a href="#">Semester</a></li>
+            <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
+        </ul>
+        <div id="icon-show-login" onclick="showLogin()">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div onclick="showSearch()">
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
+        </div>
+        <div id="home-search-container">
+            <span>
+                <input type="text" name="home-search-text" id="home-search-text"
+                    placeholder="Student’s name, Project’s name, Lecturer’s name " onkeypress="return showSearchPage()">
+                <i class="fa-solid fa-magnifying-glass home-find-icon-search" onclick="showSearchPage()"></i>
+            </span>
+        </div>
+
+    </div>
+
+    <div id="search-result-tag">
+        <span id="search-result-title">RESULT</span>
+        <div id="search-result-countresult"><span></span></div>
+    </div>
+    <div id="search-result">
+        <div id="search-semesters">
+            <p id="search-semesters-title">Semester</p>
+            <span id="hightlight-line"></span>
+            <ul>
+                <form action="">
+                    <li><input type="checkbox" class="search-semester-text">Spring 2019</li>
+                    <li><input type="checkbox" class="search-semester-text">Summer 2019</li>
+                    <li><input type="checkbox" class="search-semester-text">Fall 2019</li>
+                    <li><input type="checkbox" class="search-semester-text">Spring 2020</li>
+                    <li><input type="checkbox" class="search-semester-text">Summer 2020</li>
+                    <li><input type="checkbox" class="search-semester-text">Fall 2020</li>
+                    <li><input type="checkbox" class="search-semester-text">Spring 2021</li>
+                    <li><input type="checkbox" class="search-semester-text">Summer 2021</li>
+                    <li><input type="checkbox" class="search-semester-text">Fall 2021</li>
+                    <li><input type="checkbox" class="search-semester-text">Spring 2022</li> 
+                </form>
+            </ul>
+            <span id="hightlight-line"></span>
+        </div>
+
+        <div id="search-result-projects">
+            
+        </div>
+    </div>
+
+    <div id="footer-home">
+        <div id="footer-home-left">
+            <h3 id="footer-header-text">FPT UNIVERSITY HCM</h3>
+            <p id="footer-address-text">Lô E2a-7, Đường D1, Khu Công nghệ cao, P.Long Thạnh Mỹ, Tp. Thủ Đức, TP.HCM.</p>
+            <div id="footer-phone-text">
+                <span class="footer-icon"><i class="fa-solid fa-phone"></i></span>
+                <span class="footer-text">(028) 7300 5588</span>
+            </div>
+            <div id="footer-mail">
+                <span class="footer-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="footer-text">daihoc.hcm@fpt.edu.vn</span>
+            </div>
+        </div>
+        <div id="footer-home-right">
+            <p id="footer-home-contact">CONTACT US</p>
+            <div id="footer-icon-contact-container">
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/2048px-Facebook_logo_36x36.svg.png">
+                </div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png">
+                </div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://i.pinimg.com/originals/60/6f/e3/606fe391d5a5c014d52d8694b6aa4efd.jpg"></div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://brandlogos.net/wp-content/uploads/2020/03/YouTube-icon-SVG-512x512.png"></div>
+            </div>
+            <br />
+            <span><i class="fa-solid fa-copyright"></i></span>
+            <span id="footer-copyright-text">2022 by 404</span>
+        </div>
+    </div>
+
+
+    <script language="javascript">
+        function showLogin() {
+            var hidden = document.getElementById('home-login');
+            if (hidden.style.display === 'none')
+                hidden.style.display = 'block';
+            else hidden.style.display = 'none';
+        }
+
+        function showSearch() {
+            var hidden = document.getElementById('home-search-container');
+            if (hidden.style.display === 'none')
+                hidden.style.display = 'block';
+            else hidden.style.display = 'none';
+        }
+
+        var usernameInput = document.querySelector('input[name="home-search-text"]');
+        console.log('Lay1: ' + usernameInput);
+        console.log('Lay2: ' + String(usernameInput));
+        var firstkeyword = sessionStorage.getItem('keyword');
+        console.log('lala: ' + firstkeyword);
+        var usernameInputText = '';
+        var apiOrginal = "/PublishGraduationCapstone/api/project/searchProject?keyword=";
+        var api = '';
+        usernameInput.onchange = function (e) {
+            usernameInputText = e.target.value;
+            console.log('lele: ' + usernameInputText);
+            api = apiOrginal + usernameInputText;
+            return api;
+        };
+
+        function init() {
+            if (firstkeyword != "") {
+                api = apiOrginal + firstkeyword;
+                sessionStorage.setItem("keyword", "");
+                showSearchPage();
+            }      
+        }
+
+
+        function showSearchPage() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", api);
+            xhttp.send();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    var res = this.responseText;
+
+                    var jsonData = JSON.parse(res);
+
+                    const listProject = document.querySelector('#search-result-projects');
+                    const resultCount = document.querySelector('#search-result-countresult');
+                    var count = jsonData.searchProject.length;
+                    let projects = new Array();
+
+                    resultCount.innerHTML = `<span>${count} Results</span>`;
+                    if (count == 0) {
+                        resultCount.innerHTML = `<span>${count} Results</span>`;
+                    }
+                    if (count == 1) {
+                        resultCount.innerHTML = `<span>${count} Result</span>`;
+                    }
+
+                    jsonData.searchProject.forEach(counter => {
+                        var project = `<span id="search-result-project">
+                            <img class="search-result-project-image" src="${counter.projectAva}">
+                            <p class="search-result-project-title">${counter.projectName}</p>
+                            </span>`
+
+
+                        projects.push(project);
+                    });
+                    listProject.innerHTML = projects.join('');
+                }
+            };
+        }
+        init();
+
+    </script>
+</body>
+
+</html>
