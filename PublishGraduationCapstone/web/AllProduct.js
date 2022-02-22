@@ -20,7 +20,10 @@ function showAllProduct() {
                 var project =`
                 <span class="other-img">
                 <img class="other-project-img" src="${counter.projectAva}" > 
-                <p class="other-project-img-text">${counter.projectName}</p> </span>`
+                <p class="other-project-img-text">${counter.projectName}</p> 
+                <div class="hidden">${counter.projectId}</div>
+                </span>
+                `
 
                 projects.push(project);
             });

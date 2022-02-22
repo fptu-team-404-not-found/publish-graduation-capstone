@@ -387,7 +387,7 @@ values('SU22SE09', 'Book Shopping Website Project', N'Đây là một website v�
 INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
 values('FA22SE10', 'Go Travel', N'Đây là một website giúp chúng ta có thể đặt vé đi du lịch khắp thế giới chỉ cần lên xe thì sẽ có người đèo ', null,
 '2022-Fall', 50, 'Justin Beer', null, 'https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',10,1)
----------tới đây
+
 INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
 values('FA22SE11', 'Events In FPT University', N'Đây là một dự án giúp cho toàn bộ sinh viên và học sinh có thể theo dõi được các hoạt động của trường FPT', null,
 '2022-Fall', 17, 'Allison', null, 'https://daihoc.fpt.edu.vn/media/2020/02/event.jpg', 11, 1)
@@ -403,8 +403,13 @@ values ('SP22SE14', 'Coffee Management', N'Đây là một dự án quản lý t
 INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
 values ('SU22SE15', 'Robot Making Cars', N'Đây là một dự án về tự động hóa lắp ráp xe hơi trong cộng nghiệp làm xe hơi', null,
 '2022-Summer', 26, 'Rashford', null, 'https://asiame.vn/wp-content/uploads/2019/09/Robot-c%C3%B4ng-nghi%E1%BB%87p-610x400.jpg', 15, 1)
-
-
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SU22SE16', 'Poker Blackjack', N'Đây là một dự án về tự động hóa lắp ráp xe hơi trong cộng nghiệp làm xe hơi', null,
+'2022-Summer', 26, 'Rashford', null, 'https://cdn.pixabay.com/photo/2017/08/12/09/17/industry-2633878_960_720.jpg', 15, 1)
+---------tới đây
+INSERT INTO Project(ProjectId, ProjectName, IntroductionContent, Details, Semester, ViewNumber, AuthorName, Note, ProjectAva, TeamID, StateId) 
+values ('SU22SE17', 'Poker Blueberry', N'Đây là một dự án về tự động hóa lắp ráp xe hơi trong cộng nghiệp làm xe hơi', null,
+'2022-Summer', 26, 'Rashford', null, 'https://cdn.pixabay.com/photo/2016/08/07/14/59/blueberries-1576398_960_720.jpg', 15, 1)
 
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
