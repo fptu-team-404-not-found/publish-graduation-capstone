@@ -17,7 +17,10 @@
 <body>
     <div id="menu">
         <ul>
-            <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+            <li>
+                <a href="http://localhost:8084/PublishGraduationCapstone/">
+                    <img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+                </a>
             </li>
             <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
             <li class="nav-home-2"><a href="#">Semester</a></li>
@@ -58,14 +61,14 @@
                     <li><input type="checkbox" class="search-semester-text">Spring 2021</li>
                     <li><input type="checkbox" class="search-semester-text">Summer 2021</li>
                     <li><input type="checkbox" class="search-semester-text">Fall 2021</li>
-                    <li><input type="checkbox" class="search-semester-text">Spring 2022</li> 
+                    <li><input type="checkbox" class="search-semester-text">Spring 2022</li>
                 </form>
             </ul>
             <span id="hightlight-line"></span>
         </div>
 
         <div id="search-result-projects">
-            
+
         </div>
     </div>
 
@@ -138,7 +141,7 @@
                 api = apiOrginal + firstkeyword;
                 sessionStorage.setItem("keyword", "");
                 showSearchPage();
-            }      
+            }
         }
 
 
@@ -166,12 +169,14 @@
                     }
 
                     jsonData.searchProject.forEach(counter => {
-                        var project = `<span id="search-result-project">
-                            <img class="search-result-project-image" src="${counter.projectAva}">
-                            <p class="search-result-project-title">${counter.projectName}</p>
-                            </span>`
-
-
+                        var project = 
+                        `
+                        <span id="search-result-project">
+                        <img class="search-result-project-image" src="${counter.projectAva}">
+                        <p class="search-result-project-title">${counter.projectName}</p>
+                        <div class="hidden">${counter.projectId}</div>
+                        </span>
+                        `
                         projects.push(project);
                     });
                     listProject.innerHTML = projects.join('');

@@ -10,21 +10,31 @@ function showOtherProject() {
             var res = this.responseText;
 
             var jsonData = JSON.parse(res);
-
+            console.log(jsonData);
             const listProject = document.querySelector('#other-project-img');
-            
-           let projects = new Array();
-          
-            jsonData.otherProject.forEach(counter => {
-                var project =`
-                <span class="other-img">
-                <img class="other-project-img" src="${counter.projectAva}" > 
-                <p class="other-project-img-text">${counter.projectName}</p> </span>
-                `
+            let projects = new Array();
+            var arrayLenght = jsonData.otherProject.length;
+            if(arrayLenght>18)
+                arrayLenght = 18;
+            else
+                arrayLenght = jsonData.otherProject.length;
 
+            for (var i = 0; i < arrayLenght; i++) {
+                var counter = jsonData.otherProject[i];
+
+                var project =
+                    `
+            <span class="other-img">
+            <img class="other-project-img" src="${counter.projectAva}" > 
+            <p class="other-project-img-text">${counter.projectName}</p> 
+            <div class="hidden">${counter.projectId}</div>
+            </span>
+            `
                 projects.push(project);
-            });
+            };
             listProject.innerHTML = projects.join('');
+
+
         }
     };
 }
@@ -44,11 +54,11 @@ function showHightLight() {
             var jsonData = JSON.parse(res);
 
             const listProject = document.querySelector('#hightlight-project-img');
-            
-           let projects = new Array();
-          
+
+            let projects = new Array();
+
             jsonData.getHighlightProjects.forEach(counter => {
-                var project =`
+                var project = `
                 <div class="hightlight-img">
                 <div class="hightlight-img-container">
                     <p class="hightlight-img-text">${counter.projectName}</p>
@@ -56,9 +66,10 @@ function showHightLight() {
                     <p class="hightlight-img-team">${counter.teamName}</p>
                     <p class="hightlight-img-content">${counter.introductionContent}</p>
                     <p class="hightlight-img-more">More...</p>
+                    <div class="hidden">${counter.projectId}</div>
                 </div>
                 <img class="hightlight-project-img-container" src="${counter.projectAva}">
-            </div>
+                </div>
                 `
 
                 projects.push(project);
@@ -67,5 +78,12 @@ function showHightLight() {
         }
     };
 }
-showHightLight() ;
+showHightLight();
 
+function showUpcoming(){
+
+}
+
+function hoverUpcoming(){
+    
+}

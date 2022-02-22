@@ -254,3 +254,5 @@ body {
   width: 100%;
   border-radius: 16%;
 }
+
+.hidden { display: none; }
