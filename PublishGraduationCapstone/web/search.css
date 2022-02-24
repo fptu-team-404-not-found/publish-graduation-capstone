@@ -273,18 +273,19 @@ body {
     padding-bottom: 2%;
 }
 
-#search-semesters li {
+.checkbox label {
     font-size: 70%;
-    padding: 4%;
-    padding-top: 2%;
+
     margin-left: 10%;
     font-family: sans-serif;
     font-size: 60%;
+    clear: both;
 }
 
-.search-semester-text {
-    margin-right: 5%;
-    float:left;
+.checkbox {
+    padding-top: 2%;
+    padding-bottom: 2%;
+
 }
 
 #search-result-projects {

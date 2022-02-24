@@ -26,13 +26,15 @@
         <div id="icon-show-login" onclick="showLogin()">
             <i  class="fa-solid fa-user" ></i>
         </div>
-        <div>
-            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" onclick="showSearch()"></i>
+        <div class="SearchIcon" onclick="showSearch()">
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" ></i>
         </div>
         <div id="home-search-container">
             <span>
                 <input type="text" name="home-search-text" id="home-search-text" placeholder="Student’s name, Project’s name, Lecturer’s name ">
-                <i class="fa-solid fa-magnifying-glass home-find-icon-search" onclick="showSearchPage()"></i>
+                <div class="SearchIcon" onclick="showSearchPage()">
+                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                </div>
             </span>
         </div>
     </div>
@@ -241,34 +243,6 @@
         </div>
     </div>
     
-    <script language="javascript">
-        function showLogin() {
-            var hidden = document.getElementById('home-login');
-            if (hidden.style.display === 'none') 
-                hidden.style.display = 'block';
-            else hidden.style.display = 'none';
-        }
-
-        function showSearch() {
-            var hidden = document.getElementById('home-search-container');
-            if (hidden.style.display === 'none') 
-                hidden.style.display = 'block';
-            else hidden.style.display = 'none';
-        }
-
-        var usernameInput = document.querySelector('#home-search-text').value;
-        console.log('lala: ' + usernameInput);   
-
-        function showSearchPage() {
-            usernameInput = document.querySelector('#home-search-text').value;
-            console.log('lala: ' + usernameInput);   
-            sessionStorage.setItem("keyword", usernameInput);
-            
-            location.replace("http://localhost:8084/PublishGraduationCapstone/search.html");
-        }
-
-    </script>
-
     <script src="home.js"></script>
 </body>
 </html>

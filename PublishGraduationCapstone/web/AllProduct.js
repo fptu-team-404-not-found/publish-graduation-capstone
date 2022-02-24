@@ -1,4 +1,28 @@
-//window.onload = 
+function showLogin() {
+    var hidden = document.getElementById('home-login');
+    if (hidden.style.display === 'none') 
+        hidden.style.display = 'block';
+    else hidden.style.display = 'none';
+}
+
+function showSearch() {
+    var hidden = document.getElementById('home-search-container');
+    if (hidden.style.display === 'none') 
+        hidden.style.display = 'block';
+    else hidden.style.display = 'none';
+}
+
+var usernameInput = document.querySelector('#home-search-text').value;
+console.log('lala: ' + usernameInput);   
+
+function showSearchPage() {
+    usernameInput = document.querySelector('#home-search-text').value;
+    console.log('lala: ' + usernameInput);   
+    sessionStorage.setItem("keyword", usernameInput);
+    
+    location.replace("http://localhost:8084/PublishGraduationCapstone/search.html");
+}
+ 
 function showAllProduct() {
     var xhttp = new XMLHttpRequest();
     var api = "/PublishGraduationCapstone/api/project/showOtherProjects";
