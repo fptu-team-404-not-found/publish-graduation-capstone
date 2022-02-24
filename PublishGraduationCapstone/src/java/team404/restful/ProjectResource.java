@@ -30,10 +30,27 @@ public class ProjectResource {
     @Path("/getUpcomingProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<UpcomingProjectDTO> getUpcomingProjects() {
+    public String getUpcomingProjects() {
         UpcomingProjectDAO dao = new UpcomingProjectDAO();
+        JSONArray jsArr = new JSONArray();
         List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
-        return list;
+        TeamDAO teamDao = new TeamDAO();
+        for (UpcomingProjectDTO upcomingProjectDTO : list) {
+           JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", upcomingProjectDTO.getUpcomingProjectId());
+            jsObj.put("projectName", upcomingProjectDTO.getProjectName());
+            jsObj.put("projectLocation", upcomingProjectDTO.getLocation());
+            jsObj.put("projectDate", upcomingProjectDTO.getDate());
+            jsObj.put("projectDescription", upcomingProjectDTO.getDescription());
+            jsObj.put("projectImage", upcomingProjectDTO.getImage());
+            jsArr.add(jsObj); 
+        }
+        
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("getUpcomingProjects", jsArr);
+        
+        String result = jsObj.toJSONString();
+        return result;
     }
 
     @Path("/getHighlightProjects")
