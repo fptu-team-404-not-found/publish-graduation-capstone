@@ -1,7 +1,8 @@
 package team404.user;
 
 import java.io.Serializable;
-
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class UserDTO implements Serializable {
 
     private String sub;

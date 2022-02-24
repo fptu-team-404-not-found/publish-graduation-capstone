@@ -15,8 +15,7 @@ public class UserDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
-    public boolean checkId(String id)
-            throws SQLException, NamingException {
+    public boolean checkId(String id) {
         try {
             //1. make connection to DB
             con = DBHelpers.makeConnection();
@@ -36,23 +35,30 @@ public class UserDAO {
                     return true;
                 }
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
         return false;
     }
 
-    public boolean createNewAcccount(UserDTO dto)
-            throws SQLException, NamingException {
+    public boolean createNewAcccount(UserDTO dto){
 
         try {
             con = DBHelpers.makeConnection();
@@ -71,12 +77,23 @@ public class UserDAO {
                 }
             }
 
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return false;

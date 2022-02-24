@@ -26,7 +26,7 @@ public class UpcomingProjectDAO implements Serializable {
                 rs = stm.executeQuery();
                 List<UpcomingProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
-                    UpcomingProjectDTO dto = new UpcomingProjectDTO(rs.getInt("Id"), rs.getString("ProjectName"), rs.getString("Location"), rs.getString("Date"), rs.getString("Description"), rs.getString("Image"));
+                    UpcomingProjectDTO dto = new UpcomingProjectDTO(rs.getString("Id"), rs.getString("ProjectName"), rs.getString("Location"), rs.getString("Date"), rs.getString("Description"), rs.getNString("TeamName"), rs.getString("Image"));
                     list.add(dto);
                 }
                 return list;
