@@ -256,3 +256,22 @@ body {
 }
 
 .hidden { display: none; }
+
+#home-login {
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  border-radius: 0.8em;
+  font-weight: 600;
+  width: 7%;
+  float: right;
+  top: 7.9%;
+  right: 4%;
+  margin-right: -2.5%;
+  background-color: #000000;
+  padding: 0.5%;
+  text-align: center;
+  position: fixed;
+  font-size: 90%;
+  letter-spacing: 0.06em;
+  display: none;
+}
