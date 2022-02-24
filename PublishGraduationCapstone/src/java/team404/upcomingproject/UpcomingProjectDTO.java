@@ -6,36 +6,38 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "upcomingProject")
 public class UpcomingProjectDTO implements Serializable {
 
-    private int upcomingProjectId;
+    private String upcomingProjectId;
     private String projectName;
     private String location;
     private String date;
     private String description;
+    private String teamName;
     private String image;
 
     public UpcomingProjectDTO() {
     }
 
-    public UpcomingProjectDTO(int upcomingProjectId, String projectName, String location, String date, String description, String image) {
+    public UpcomingProjectDTO(String upcomingProjectId, String projectName, String location, String date, String description, String teamName, String image) {
         this.upcomingProjectId = upcomingProjectId;
         this.projectName = projectName;
         this.location = location;
         this.date = date;
         this.description = description;
+        this.teamName = teamName;
         this.image = image;
     }
-
+    
     /**
      * @return the upcomingProjectId
      */
-    public int getUpcomingProjectId() {
+    public String getUpcomingProjectId() {
         return upcomingProjectId;
     }
 
     /**
      * @param upcomingProjectId the upcomingProjectId to set
      */
-    public void setUpcomingProjectId(int upcomingProjectId) {
+    public void setUpcomingProjectId(String upcomingProjectId) {
         this.upcomingProjectId = upcomingProjectId;
     }
 
@@ -96,6 +98,20 @@ public class UpcomingProjectDTO implements Serializable {
     }
 
     /**
+     * @return the teamName
+     */
+    public String getTeamName() {
+        return teamName;
+    }
+
+    /**
+     * @param teamName the teamName to set
+     */
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    /**
      * @return the image
      */
     public String getImage() {
@@ -108,5 +124,7 @@ public class UpcomingProjectDTO implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
+
+    
 
 }

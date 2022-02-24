@@ -49,10 +49,6 @@ public class LoginServlet extends HttpServlet {
             out.print(json);
             response.flushBuffer();
             out.flush();
-        } catch (SQLException ex) {
-            log("LoginServlet_SQL: " + ex.getMessage());
-        } catch (NamingException ex) {
-            log("LoginServlet_Naming: " + ex.getMessage());
         } finally {
             out.close();
         }
