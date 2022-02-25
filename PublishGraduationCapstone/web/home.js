@@ -105,11 +105,9 @@ function showHightLight() {
 }
 showHightLight();
 
-function showUpcoming(){
-
-}
-
-function hoverUpcoming(){
-
-}
-
+var input = document.getElementById("home-search-text");
+   input.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {  
+        showSearchPage();
+    }
+  });

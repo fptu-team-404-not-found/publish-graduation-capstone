@@ -57,6 +57,9 @@ function showAllProduct() {
 }
 showAllProduct();
 
-function renderProject() {
-
-}
+var input = document.getElementById("home-search-text");
+   input.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {  
+        showSearchPage();
+    }
+  });

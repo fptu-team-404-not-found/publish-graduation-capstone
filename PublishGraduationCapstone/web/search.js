@@ -146,3 +146,10 @@ function change() {
       hiddenElems[i].style.display = "none";
     }
   }
+
+  var input = document.getElementById("home-search-text");
+  input.addEventListener("keydown", function (e) {
+   if (e.keyCode === 13) {  
+       showSearchPage();
+   }
+ });
