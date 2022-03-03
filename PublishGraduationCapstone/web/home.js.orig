@@ -1,5 +1,9 @@
 function showLogin() {
+<<<<<<< HEAD
+    /*Alo alo alo alo Theng*/
+=======
     /*Ban Tien hua no conflit*/
+>>>>>>> Theng
     var hidden = document.getElementById('home-login');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
