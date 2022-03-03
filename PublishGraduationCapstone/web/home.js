@@ -1,5 +1,5 @@
 function showLogin() {
-    /*TienTienTien*/
+    /*MainMainMain*/
     var hidden = document.getElementById('home-login');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
