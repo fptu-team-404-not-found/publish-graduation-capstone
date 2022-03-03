@@ -45,7 +45,7 @@ function showAllProduct() {
                 <span class="other-img">
                 <img class="other-project-img" src="${counter.projectAva}" > 
                 <p class="other-project-img-text">${counter.projectName}</p> 
-                <div class="hidden">${counter.projectId}</div>
+                <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
                 </span>
                 `
 

@@ -14,7 +14,7 @@ function showSearch() {
 
 var usernameInput = document.querySelector('input[name="home-search-text"]');
 console.log('Lay1: ' + usernameInput);
-console.log('Lay2: ' + String(usernameInput));
+
 var firstkeyword = sessionStorage.getItem('keyword');
 console.log('lala: ' + firstkeyword);
 var usernameInputText = '';
@@ -65,7 +65,7 @@ function showSearchPage() {
                 <span id="search-result-project" class="${counter.semester.trim()}">
                 <img class="search-result-project-image" src="${counter.projectAva}">
                 <p class="search-result-project-title">${counter.projectName}</p>
-                <div class="hidden">${counter.projectId}</div>
+                <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
                 </span>
               
                 `

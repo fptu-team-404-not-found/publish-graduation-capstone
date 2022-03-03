@@ -12,11 +12,10 @@ function showSearch() {
     else hidden.style.display = 'none';
 }
 
-var usernameInput = document.querySelector('#home-search-text').value;
-console.log('lala: ' + usernameInput);   
+  
 
 function showSearchPage() {
-    usernameInput = document.querySelector('#home-search-text').value;
+    var usernameInput = document.querySelector('#home-search-text').value;
     console.log('lala: ' + usernameInput);   
     sessionStorage.setItem("keyword", usernameInput);
     
@@ -49,10 +48,10 @@ function showOtherProject() {
 
                 var project =
                     `
-            <span class="other-img">
+            <span class="other-img" onclick=" projectRedirect(this)">
             <img class="other-project-img" src="${counter.projectAva}" > 
             <p class="other-project-img-text">${counter.projectName}</p> 
-            <div class="hidden">${counter.projectId}</div>
+            <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
             </span>
             `
                 projects.push(project);
@@ -84,14 +83,14 @@ function showHightLight() {
 
             jsonData.getHighlightProjects.forEach(counter => {
                 var project = `
-                <div class="hightlight-img">
+                <div class="hightlight-img" onclick="projectRedirect(this)">
                 <div class="hightlight-img-container">
                     <p class="hightlight-img-text">${counter.projectName}</p>
                     <p class="hightlight-img-line"></p>
                     <p class="hightlight-img-team">${counter.teamName}</p>
                     <p class="hightlight-img-content">${counter.introductionContent}</p>
                     <p class="hightlight-img-more">More...</p>
-                    <div class="hidden">${counter.projectId}</div>
+                    <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
                 </div>
                 <img class="hightlight-project-img-container" src="${counter.projectAva}">
                 </div>
@@ -105,9 +104,19 @@ function showHightLight() {
 }
 showHightLight();
 
+//search by enter
 var input = document.getElementById("home-search-text");
    input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  
         showSearchPage();
     }
   });
+
+  //redirect to project detail
+  function projectRedirect(div){
+    var projectId = div.querySelector('.upcoming-img-id').innerText;
+    console.log(projectId);
+    sessionStorage.setItem("projectId", projectId);
+    
+    location.replace("http://localhost:8084/PublishGraduationCapstone/Project_Main.html");
+  }

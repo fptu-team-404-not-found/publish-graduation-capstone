@@ -185,10 +185,10 @@ body {
     margin-bottom: 2%;
 }
 
-#intro-information-img {
+#intro-information-vid {
     width: 55%;
     float: left;
-    height: auto;
+    height: 300px;
 }
 
 #intro-information-text {
