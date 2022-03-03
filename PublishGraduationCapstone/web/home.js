@@ -1,4 +1,5 @@
 function showLogin() {
+    /*Ban Tien hua no conflit*/
     var hidden = document.getElementById('home-login');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
