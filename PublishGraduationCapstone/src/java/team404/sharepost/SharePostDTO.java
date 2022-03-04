@@ -1,18 +1,21 @@
 package team404.sharepost;
 
 import java.sql.Timestamp;
+import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
 import team404.states.StatesDTO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDTO;
 
+@XmlRootElement(name = "sharePost")
 public class SharePostDTO {
+
     private int postId;
     private String title;
     private String details;
     private Timestamp createDate;
     private String note;
-    
+
     private TeamMemberDTO student;
     private SupervisorDTO supervisor;
     private StatesDTO state;
@@ -28,6 +31,18 @@ public class SharePostDTO {
         supervisor = null;
         state = null;
         project = null;
+    }
+
+    public SharePostDTO(int postId, String title, String details, Timestamp createDate, String note, TeamMemberDTO student, SupervisorDTO supervisor, StatesDTO state, ProjectDTO project) {
+        this.postId = postId;
+        this.title = title;
+        this.details = details;
+        this.createDate = createDate;
+        this.note = note;
+        this.student = student;
+        this.supervisor = supervisor;
+        this.state = state;
+        this.project = project;
     }
 
     /**
@@ -156,4 +171,8 @@ public class SharePostDTO {
         this.project = project;
     }
 
+    @Override
+    public String toString() {
+        return "SharePostDTO{" + "postId=" + postId + ", title=" + title + ", details=" + details + ", createDate=" + createDate + ", note=" + note + ", student=" + student + ", supervisor=" + supervisor + ", state=" + state + ", project=" + project + '}';
+    }
 }

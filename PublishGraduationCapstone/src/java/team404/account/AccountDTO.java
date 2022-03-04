@@ -1,8 +1,9 @@
-package team404.user;
+package team404.account;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
+
+@XmlRootElement(name = "account")
 public class AccountDTO implements Serializable {
 
     private String sub;
@@ -10,6 +11,7 @@ public class AccountDTO implements Serializable {
     private String name;
     private String picture;
     private int roleId;
+
     public AccountDTO() {
         sub = "";
         email = "";
@@ -17,7 +19,6 @@ public class AccountDTO implements Serializable {
         picture = "";
         roleId = 1;
     }
-
 
     public AccountDTO(String sub, String email, String name, String picture, int roleId) {
         this.sub = sub;
@@ -95,7 +96,4 @@ public class AccountDTO implements Serializable {
     public String toString() {
         return "UserDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + ", roleId=" + roleId + '}';
     }
-
-    
-
 }

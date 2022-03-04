@@ -1,10 +1,13 @@
 package team404.favorite;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
-import team404.user.AccountDTO;
+import team404.account.AccountDTO;
 
-public class FavoriteDTO implements Serializable{
+@XmlRootElement(name = "favorite")
+public class FavoriteDTO implements Serializable {
+
     private int favoriteId;
     private AccountDTO user;
     private ProjectDTO project;
@@ -20,7 +23,7 @@ public class FavoriteDTO implements Serializable{
         this.user = user;
         this.project = project;
     }
-    
+
     /**
      * @return the favoriteId
      */
@@ -61,5 +64,10 @@ public class FavoriteDTO implements Serializable{
      */
     public void setProject(ProjectDTO project) {
         this.project = project;
+    }
+
+    @Override
+    public String toString() {
+        return "FavoriteDTO{" + "favoriteId=" + favoriteId + ", user=" + user + ", project=" + project + '}';
     }
 }

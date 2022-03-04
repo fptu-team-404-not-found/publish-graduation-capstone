@@ -3,8 +3,9 @@ package team404.roles;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-public class RolesDTO implements Serializable{
+@XmlRootElement(name = "roles")
+public class RolesDTO implements Serializable {
+
     private int roleId;
     private String roleName;
 
@@ -17,7 +18,7 @@ public class RolesDTO implements Serializable{
         this.roleId = roleId;
         this.roleName = roleName;
     }
-    
+
     /**
      * @return the roleId
      */
@@ -50,6 +51,4 @@ public class RolesDTO implements Serializable{
     public String toString() {
         return "RolesDTO{" + "roleId=" + roleId + ", roleName=" + roleName + '}';
     }
-    
-    
 }

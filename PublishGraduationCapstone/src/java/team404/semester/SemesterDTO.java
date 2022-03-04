@@ -3,8 +3,9 @@ package team404.semester;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-public class SemesterDTO implements Serializable{
+@XmlRootElement(name = "semester")
+public class SemesterDTO implements Serializable {
+
     private int semesterId;
     private String semesterName;
 
@@ -17,8 +18,7 @@ public class SemesterDTO implements Serializable{
         this.semesterId = semesterId;
         this.semesterName = semesterName;
     }
-    
-    
+
     /**
      * @return the semesterId
      */
@@ -51,5 +51,4 @@ public class SemesterDTO implements Serializable{
     public String toString() {
         return "SemesterDTO{" + "semesterId=" + semesterId + ", semesterName=" + semesterName + '}';
     }
-    
 }

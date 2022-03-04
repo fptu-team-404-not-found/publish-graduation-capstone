@@ -1,18 +1,25 @@
 package team404.projectimage;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import team404.project.ProjectDTO;
+
+@XmlRootElement(name = "projectImage")
 public class ProjectImageDTO {
-    
+
     private int projectImageId;
     private String imageUrl;
-    private String ProjectId;
+    private ProjectDTO project;
 
     public ProjectImageDTO() {
+        projectImageId = 0;
+        imageUrl = "";
+        project = null;
     }
 
-    public ProjectImageDTO(int projectImageId, String imageUrl, String ProjectId) {
+    public ProjectImageDTO(int projectImageId, String imageUrl, ProjectDTO project) {
         this.projectImageId = projectImageId;
         this.imageUrl = imageUrl;
-        this.ProjectId = ProjectId;
+        this.project = project;
     }
 
     /**
@@ -44,18 +51,21 @@ public class ProjectImageDTO {
     }
 
     /**
-     * @return the ProjectId
+     * @return the project
      */
-    public String getProjectId() {
-        return ProjectId;
+    public ProjectDTO getProject() {
+        return project;
     }
 
     /**
-     * @param ProjectId the ProjectId to set
+     * @param project the project to set
      */
-    public void setProjectId(String ProjectId) {
-        this.ProjectId = ProjectId;
+    public void setProject(ProjectDTO project) {
+        this.project = project;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "ProjectImageDTO{" + "projectImageId=" + projectImageId + ", imageUrl=" + imageUrl + ", project=" + project + '}';
+    }
 }

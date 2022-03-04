@@ -12,7 +12,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
-import team404.user.AccountDAO;
+import team404.account.AccountDAO;
 
 @Path("admin")
 public class AdminModeResource {

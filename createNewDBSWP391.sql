@@ -142,7 +142,6 @@ CREATE TABLE UpcomingProject(
 	Location NVARCHAR(50),
 	Date NVARCHAR(100),
 	Description NVARCHAR(500),
-	TeamName NVARCHAR(100),
 	Image TEXT,
 	PRIMARY KEY (Id)
 )
@@ -634,14 +633,14 @@ VALUES (N'Siêu đỉnh', '333333333333333333333', 1, 'FA19SE06')
 INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
 VALUES (N'Hay ghê', '444444444444444444444', 1, 'FA19SE06')
 
-INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [TeamName], [Image]) 
-VALUES('SP23SE01', 'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', N'Nhóm 5 chú thỏ','https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
-INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [TeamName], [Image]) 
-VALUES('SP23SE02', 'Smart city: Manage autonomous vehicle in resort', N'HỘI TRƯỜNG B', '16/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', N'Nhóm năng suất','https://www.verdict.co.uk/wp-content/uploads/2021/08/shutterstock_1177506811.jpg')
-INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [TeamName], [Image]) 
-VALUES('SP23SE03', 'Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', N'Nhóm Cân Team','https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322526/woman-vaping.jpg')
-INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [TeamName], [Image]) 
-VALUES('SP23SE04', 'Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', N'Nhóm MF (Moto Forever)','https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE01', 'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE02', 'Smart city: Manage autonomous vehicle in resort', N'HỘI TRƯỜNG B', '16/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://www.verdict.co.uk/wp-content/uploads/2021/08/shutterstock_1177506811.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE03', 'Smoking People Detection', N'HỘI TRƯỜNG B', '16/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://cdn-prod.medicalnewstoday.com/content/images/articles/322/322526/woman-vaping.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE04', 'Influencer Marketing Platform', N'HỘI TRƯỜNG A', '18/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://www.botreetechnologies.com/blog/wp-content/uploads/2019/07/influencer-marketing-platform-1200x675.jpg')
 
 INSERT INTO Sensitive_word(banned_word)
 VALUES

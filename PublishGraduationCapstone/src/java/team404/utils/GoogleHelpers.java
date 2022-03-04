@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Request;
-import team404.user.AccountDTO;
+import team404.account.AccountDTO;
 
 public class GoogleHelpers {
 
