@@ -195,8 +195,9 @@ public class ProjectDAO implements Serializable {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Select ProjectId, ProjectName, ProjectAva "
-                        + "From Project "
-                        + "Where Semester = ? ";
+                        + "From Project p inner join Semester s "
+                        + "on p.SemesterId = s.SemesterId "
+                        + "Where s.SemesterName = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, semester);
                 rs = stm.executeQuery();
