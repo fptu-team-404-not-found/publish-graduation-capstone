@@ -6,8 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import team404.user.AccountDAO;
-import team404.user.AccountDTO;
+import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 import team404.utils.GoogleHelpers;
 
 public class LoginServlet extends HttpServlet {

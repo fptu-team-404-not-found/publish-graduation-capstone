@@ -1,7 +1,9 @@
 package team404.supervisor;
 
-import team404.user.AccountDTO;
+import javax.xml.bind.annotation.XmlRootElement;
+import team404.account.AccountDTO;
 
+@XmlRootElement(name = "supervisor")
 public class SupervisorDTO {
     
     private String supervisorId;
@@ -31,7 +33,6 @@ public class SupervisorDTO {
         this.status = status;
         this.user = user;
     }
-
     
     /**
      * @return the supervisorId
@@ -118,6 +119,9 @@ public class SupervisorDTO {
     public void setUser(AccountDTO user) {
         this.user = user;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "SupervisorDTO{" + "supervisorId=" + supervisorId + ", supervisorName=" + supervisorName + ", supervisorImage=" + supervisorImage + ", information=" + information + ", postion=" + postion + ", status=" + status + ", user=" + user + '}';
+    }
 }

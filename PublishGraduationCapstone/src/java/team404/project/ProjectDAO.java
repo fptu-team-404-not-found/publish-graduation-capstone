@@ -29,7 +29,7 @@ public class ProjectDAO implements Serializable {
 
     private List<ProjectDTO> searchProjectList;
 
-    public List<ProjectDTO> getHighlightProjectList() {
+    public List<ProjectDTO> getHighlightProjectList() { //Lỗi
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -141,7 +141,7 @@ public class ProjectDAO implements Serializable {
         return -1;
     }
 
-    public List<ProjectDTO> getSearchProjectList(String keyword) {
+    public List<ProjectDTO> getSearchProjectList(String keyword) { //Lỗi
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -241,7 +241,7 @@ public class ProjectDAO implements Serializable {
     public List<ProjectDTO> showOtherProjects() {
         try {
             con = DBHelpers.makeConnection();
-            String sql = "Select ProjectId, ProjectName, ProjectAva "
+            String sql = "Select ProjectId, ProjectName, ProjectAva, IntroductionContent "
                     + "From Project ";
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
@@ -252,11 +252,13 @@ public class ProjectDAO implements Serializable {
                 String projectId = rs.getString("ProjectId");
                 String projectName = rs.getNString("ProjectName");
                 String projectAva = rs.getString("ProjectAva");
+                String introductionContent = rs.getNString("IntroductionContent");
 
                 ProjectDTO dto = new ProjectDTO();
                 dto.setProjectId(projectId);
                 dto.setProjectName(projectName);
                 dto.setProjectAva(projectAva);
+                dto.setIntroductionContent(introductionContent);
                 list.add(dto);
             }
 
@@ -284,97 +286,7 @@ public class ProjectDAO implements Serializable {
     }
 
     //-- TIENHUYNHTN --//
-    public int filterSearchSemesterNumberOfResults(String[] semester) {
-        int numberResults = 0;
-        try {
-            con = DBHelpers.makeConnection();
-            String sql = "Select * "
-                    + "From Project "
-                    + "Where Semester = ? ";
-            stm = con.prepareStatement(sql);
-            for (String listSemeter : semester) {
-                stm.setString(1, listSemeter);
-                rs = stm.executeQuery();
-                while (rs.next()) {
-                    numberResults += 1;
-                }
-            }
-
-            return numberResults;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stm != null) {
-                    stm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return -1;
-    }
-
-    public List<ProjectDTO> filterSearchSemesterGetProjects(String[] semester) {
-        try {
-            con = DBHelpers.makeConnection();
-            String sql = "Select ProjectId, ProjectName, ProjectAva "
-                    + "From Project "
-                    + "Where Semester = ? ";
-            stm = con.prepareStatement(sql);
-            List<ProjectDTO> list = new ArrayList<>();
-            for (String listSemeter : semester) {
-                stm.setString(1, listSemeter);
-                rs = stm.executeQuery();
-                while (rs.next()) {
-                    String projectId = rs.getString("ProjectId");
-                    String projectName = rs.getNString("ProjectName");
-                    String projectAva = rs.getString("ProjectAva");
-
-                    ProjectDTO dto = new ProjectDTO();
-                    dto.setProjectId(projectId);
-                    dto.setProjectName(projectName);
-                    dto.setProjectAva(projectAva);
-                    list.add(dto);
-                }
-            }
-
-            return list;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stm != null) {
-                    stm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return null;
-    }
-
-    public ProjectDTO getProjectDetailsInPojectDetail(String projectId) {
+    public ProjectDTO getProjectDetailsInPojectDetail(String projectId) { //Lỗi
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -418,7 +330,8 @@ public class ProjectDAO implements Serializable {
         return null;
     }
 
-    public String showProjectDetails(String projectId) {
+    //-- TIENHUYNHTN --//
+    public String showProjectDetails(String projectId) { //Lỗi
         ProjectDAO projectDAO = new ProjectDAO();
         ProjectImageDAO projectImageDAO = new ProjectImageDAO();
         TeamMemberDAO teamMemberDAO = new TeamMemberDAO();

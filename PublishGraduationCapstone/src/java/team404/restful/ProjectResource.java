@@ -27,7 +27,7 @@ public class ProjectResource {
     public ProjectResource() {
     }
 
-    @Path("/getUpcomingProjects")
+    @Path("/getUpcomingProjects") //Lỗi
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getUpcomingProjects() {
@@ -74,7 +74,7 @@ public class ProjectResource {
         return result;
     }
     
-    //-- TIENHUYNHTN --// //Sửa lại cho đồng bộ
+    //-- TIENHUYNHTN --// //OK
     @Path("/showOtherProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -88,6 +88,7 @@ public class ProjectResource {
             jsObj.put("projectId", projectDTO.getProjectId());
             jsObj.put("projectName", projectDTO.getProjectName());
             jsObj.put("projectAva", projectDTO.getProjectAva());
+            jsObj.put("introductionContent", projectDTO.getIntroductionContent());
 
             jsArr.add(jsObj);
         }
@@ -120,32 +121,8 @@ public class ProjectResource {
         String result = jsObj.toJSONString();
         return result;
     }
-
-    /*
-    //SERVLET
-    @Path("/filterProjectsBySemester")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String filterProjectsBySemester(
-            @QueryParam("semester") String semester) {
-        ProjectDAO dao = new ProjectDAO();
-        List<ProjectDTO> list = dao.getFilterSemesterList(semester);
-        JSONArray jsArr = new JSONArray();
-        for (ProjectDTO projectDTO : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("projectId", projectDTO.getProjectId());
-            jsObj.put("projectName", projectDTO.getProjectName());
-            jsObj.put("projectAva", projectDTO.getProjectAva());
-            jsArr.add(jsObj);
-        }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("filterProjectsBySemester", jsArr);
-        String result = jsObj.toJSONString();
-        return result;
-
-    }*/
     
-    //-- TIENHUYNHTN --//
+    //-- TIENHUYNHTN --// //Lỗi
     @Path("/showProjectDetails") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -155,8 +132,8 @@ public class ProjectResource {
         return dao.showProjectDetails(projectId);
     }
     
-    //-- TIENHUYNHTN --//
-    @Path("/getCommentsOfProject")
+    //-- TIENHUYNHTN --// //OK
+    @Path("/getCommentsOfProject") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getCommentsOfProject(

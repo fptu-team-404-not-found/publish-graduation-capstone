@@ -10,8 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.project.ProjectDAO;
-import team404.user.AccountDAO;
-import team404.user.AccountDTO;
+import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 import team404.utils.DBHelpers;
 
 public class SupervisorDAO {
@@ -20,6 +20,7 @@ public class SupervisorDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
+    //-- TIENHUYNHTN --//
     public List<SupervisorDTO> getSupervisorsInPojectDetail(String projectId) {
         try {
             con = DBHelpers.makeConnection();

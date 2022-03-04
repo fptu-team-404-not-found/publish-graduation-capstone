@@ -1,4 +1,4 @@
-package team404.user;
+package team404.account;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -58,7 +58,7 @@ public class AccountDAO {
         return false;
     }
 
-    public boolean createNewAcccount(AccountDTO dto){
+    public boolean createNewAcccount(AccountDTO dto) {
 
         try {
             con = DBHelpers.makeConnection();
@@ -105,16 +105,18 @@ public class AccountDAO {
             if (con != null) {
                 String sql = "Select Name, Picture "
                         + "From Account "
-                        + "Where UserId = ?";
+                        + "Where UserId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, userId);
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     String name = rs.getNString("Name");
                     String picture = rs.getString("Picture");
+
                     AccountDTO dto = new AccountDTO();
                     dto.setName(name);
                     dto.setPicture(picture);
+
                     return dto;
                 }
             }
@@ -139,6 +141,7 @@ public class AccountDAO {
         }
         return null;
     }
+
     public AccountDTO getUserInforByUserId(String userId) {
         try {
             con = DBHelpers.makeConnection();
@@ -175,12 +178,11 @@ public class AccountDAO {
         }
         return null;
     }
-    public void updateRole(String userId, int roleId)
-    {
-        try{
+
+    public void updateRole(String userId, int roleId) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null)
-            {
+            if (con != null) {
                 String sql = "Update Account "
                         + "Set RoleId = ? "
                         + "Where UserId = ? ";
@@ -188,7 +190,7 @@ public class AccountDAO {
                 stm.setInt(1, roleId);
                 stm.setString(2, userId);
                 stm.executeUpdate();
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -196,7 +198,7 @@ public class AccountDAO {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                
+
                 if (stm != null) {
                     stm.close();
                 }

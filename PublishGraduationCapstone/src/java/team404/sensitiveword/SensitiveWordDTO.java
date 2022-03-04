@@ -1,8 +1,11 @@
 package team404.sensitiveword;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class SensitiveWordDTO implements Serializable{
+@XmlRootElement(name = "sensitiveWord")
+public class SensitiveWordDTO implements Serializable {
+
     private int wordId;
     private String bannedWord;
 
@@ -15,7 +18,7 @@ public class SensitiveWordDTO implements Serializable{
         this.wordId = wordId;
         this.bannedWord = bannedWord;
     }
-    
+
     /**
      * @return the wordId
      */
@@ -43,6 +46,9 @@ public class SensitiveWordDTO implements Serializable{
     public void setBannedWord(String bannedWord) {
         this.bannedWord = bannedWord;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "SensitiveWordDTO{" + "wordId=" + wordId + ", bannedWord=" + bannedWord + '}';
+    }
 }

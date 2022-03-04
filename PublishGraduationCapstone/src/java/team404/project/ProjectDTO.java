@@ -1,8 +1,10 @@
 package team404.project;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.semester.SemesterDTO;
+import team404.states.StatesDTO;
 
 @XmlRootElement(name = "project")
 public class ProjectDTO implements Serializable {
@@ -10,57 +12,47 @@ public class ProjectDTO implements Serializable {
     private String projectId;
     private String projectName;
     private String projectAva;
-    private SemesterDTO semester;
+    private String videoUrl;
     private String introductionContent;
     private String details;
     private String recap;
-    private String createDate;
-    private int viewNumber;
+    private Timestamp createDate;
     private String authorName;
+    private int viewNumber;
     private String note;
-    private int teamId;
-    private int stateId;
+    private StatesDTO state;
+    private SemesterDTO semester;
 
     public ProjectDTO() {
         projectId = "";
         projectName = "";
         projectAva = "";
-        semester = null;
+        videoUrl = "";
         introductionContent = "";
         details = "";
         recap = "";
-        createDate = "";
-        viewNumber = 0;
+        createDate = null;
         authorName = "";
+        viewNumber = 0;
         note = "";
-        teamId = 0;
-        stateId = 0;
+        state = null;
+        semester = null;
     }
 
-    public ProjectDTO(int viewNumber) {
-        this.viewNumber = viewNumber;
-    }
-
-    public ProjectDTO(String projectId, String projectName, String introductionContent, String projectAva) {
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.introductionContent = introductionContent;
-        this.projectAva = projectAva;
-    }
-
-    public ProjectDTO(String projectId, String projectName, String projectAva, SemesterDTO semester) {
+    public ProjectDTO(String projectId, String projectName, String projectAva, String videoUrl, String introductionContent, String details, String recap, Timestamp createDate, String authorName, int viewNumber, String note, StatesDTO state, SemesterDTO semester) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectAva = projectAva;
-        this.semester = semester;
-    }
-
-    public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String recap) {
-        this.projectId = projectId;
-        this.projectName = projectName;
+        this.videoUrl = videoUrl;
         this.introductionContent = introductionContent;
         this.details = details;
         this.recap = recap;
+        this.createDate = createDate;
+        this.authorName = authorName;
+        this.viewNumber = viewNumber;
+        this.note = note;
+        this.state = state;
+        this.semester = semester;
     }
 
     /**
@@ -105,7 +97,19 @@ public class ProjectDTO implements Serializable {
         this.projectAva = projectAva;
     }
 
-    
+    /**
+     * @return the videoUrl
+     */
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    /**
+     * @param videoUrl the videoUrl to set
+     */
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
 
     /**
      * @return the introductionContent
@@ -152,29 +156,15 @@ public class ProjectDTO implements Serializable {
     /**
      * @return the createDate
      */
-    public String getCreateDate() {
+    public Timestamp getCreateDate() {
         return createDate;
     }
 
     /**
      * @param createDate the createDate to set
      */
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Timestamp createDate) {
         this.createDate = createDate;
-    }
-
-    /**
-     * @return the viewNumber
-     */
-    public int getViewNumber() {
-        return viewNumber;
-    }
-
-    /**
-     * @param viewNumber the viewNumber to set
-     */
-    public void setViewNumber(int viewNumber) {
-        this.viewNumber = viewNumber;
     }
 
     /**
@@ -192,6 +182,20 @@ public class ProjectDTO implements Serializable {
     }
 
     /**
+     * @return the viewNumber
+     */
+    public int getViewNumber() {
+        return viewNumber;
+    }
+
+    /**
+     * @param viewNumber the viewNumber to set
+     */
+    public void setViewNumber(int viewNumber) {
+        this.viewNumber = viewNumber;
+    }
+
+    /**
      * @return the note
      */
     public String getNote() {
@@ -206,34 +210,18 @@ public class ProjectDTO implements Serializable {
     }
 
     /**
-     * @return the teamId
+     * @return the state
      */
-    public int getTeamId() {
-        return teamId;
+    public StatesDTO getState() {
+        return state;
     }
 
     /**
-     * @param teamId the teamId to set
+     * @param state the state to set
      */
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
+    public void setState(StatesDTO state) {
+        this.state = state;
     }
-
-    /**
-     * @return the stateId
-     */
-    public int getStateId() {
-        return stateId;
-    }
-
-    /**
-     * @param stateId the stateId to set
-     */
-    public void setStateId(int stateId) {
-        this.stateId = stateId;
-    }
-
-    
 
     /**
      * @return the semester
@@ -251,8 +239,6 @@ public class ProjectDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", semester=" + semester + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", viewNumber=" + viewNumber + ", authorName=" + authorName + ", note=" + note + ", teamId=" + teamId + ", stateId=" + stateId + '}';
+        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + '}';
     }
-    
-    
 }

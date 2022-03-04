@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-import team404.user.AccountDAO;
-import team404.user.AccountDTO;
+import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 import team404.utils.DBHelpers;
 
 public class CommentDAO {
@@ -24,9 +24,9 @@ public class CommentDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, User_Table.UserId "
-                        + "From Comment JOIN User_Table "
-                        + "ON Comment.UserId = User_Table.UserId "
+                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, Account.UserId "
+                        + "From Comment JOIN Account "
+                        + "ON Comment.UserId = Account.UserId "
                         + "Where ProjectId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, projectId);
@@ -39,12 +39,16 @@ public class CommentDAO {
                     String commentContent = rs.getNString("CommentContent");
                     String userId = rs.getString("UserId");
 
-                    AccountDAO userDao = new AccountDAO();
-                    AccountDTO userDTO = userDao.getUserNamePictureByUserId(userId);
+                    AccountDAO userDAO = new AccountDAO();
+                    AccountDTO userDTO = userDAO.getUserNamePictureByUserId(userId);
 
-                    //CommentDTO commentDTO = new CommentDTO(commentId, commentDate, commentContent, userDTO);
+                    CommentDTO commentDTO = new CommentDTO();
+                    commentDTO.setCommentId(commentId);
+                    commentDTO.setCommentDate(commentDate);
+                    commentDTO.setCommentContent(commentContent);
+                    commentDTO.setUser(userDTO);
 
-                    //list.add(commentDTO);
+                    list.add(commentDTO);
                 }
                 return list;
             }
@@ -63,43 +67,5 @@ public class CommentDAO {
         }
 
         return null;
-    }
-
-    public int getNumberCommentsOfProject(String projectId) {
-        try {
-            con = DBHelpers.makeConnection();
-            if (con != null) {
-                String sql = "Select COUNT(*) AS [Number Of Comments] "
-                        + "From Comment "
-                        + "Where ProjectId = ?";
-                stm = con.prepareStatement(sql);
-                stm.setString(1, projectId);
-                rs = stm.executeQuery();
-                if (rs.next()) {
-                    int numberOfComments = rs.getInt("Number Of Comments");
-                    return numberOfComments;
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NamingException ex) {
-            Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (stm != null) {
-                    stm.close();
-                }
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(CommentDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return 0;
     }
 }

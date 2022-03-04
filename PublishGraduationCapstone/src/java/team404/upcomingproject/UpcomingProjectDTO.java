@@ -11,19 +11,23 @@ public class UpcomingProjectDTO implements Serializable {
     private String location;
     private String date;
     private String description;
-    private String teamName;
     private String image;
 
     public UpcomingProjectDTO() {
+        upcomingProjectId = "";
+        projectName = "";
+        location = "";
+        date = "";
+        description = "";
+        image = "";
     }
 
-    public UpcomingProjectDTO(String upcomingProjectId, String projectName, String location, String date, String description, String teamName, String image) {
+    public UpcomingProjectDTO(String upcomingProjectId, String projectName, String location, String date, String description, String image) {
         this.upcomingProjectId = upcomingProjectId;
         this.projectName = projectName;
         this.location = location;
         this.date = date;
         this.description = description;
-        this.teamName = teamName;
         this.image = image;
     }
     
@@ -96,21 +100,7 @@ public class UpcomingProjectDTO implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    /**
-     * @return the teamName
-     */
-    public String getTeamName() {
-        return teamName;
-    }
-
-    /**
-     * @param teamName the teamName to set
-     */
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
+    
     /**
      * @return the image
      */
@@ -125,6 +115,8 @@ public class UpcomingProjectDTO implements Serializable {
         this.image = image;
     }
 
-    
-
+    @Override
+    public String toString() {
+        return "UpcomingProjectDTO{" + "upcomingProjectId=" + upcomingProjectId + ", projectName=" + projectName + ", location=" + location + ", date=" + date + ", description=" + description + ", image=" + image + '}';
+    }
 }

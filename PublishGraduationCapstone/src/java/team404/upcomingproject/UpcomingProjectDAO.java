@@ -16,7 +16,7 @@ public class UpcomingProjectDAO implements Serializable {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
-    public List<UpcomingProjectDTO> getUpcomingProjectList() {
+    public List<UpcomingProjectDTO> getUpcomingProjectList() { //Lỗi
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {

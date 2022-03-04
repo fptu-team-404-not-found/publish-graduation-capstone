@@ -1,10 +1,12 @@
 package team404.teammember;
 
+import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
-import team404.user.AccountDTO;
+import team404.account.AccountDTO;
 
+@XmlRootElement(name = "teamMember")
 public class TeamMemberDTO {
-    
+
     private String memberId;
     private String memberName;
     private String memberAvatar;
@@ -32,7 +34,7 @@ public class TeamMemberDTO {
         this.user = user;
         this.project = project;
     }
-    
+
     /**
      * @return the memberId
      */
@@ -131,7 +133,8 @@ public class TeamMemberDTO {
         this.project = project;
     }
 
-    
-    
-    
+    @Override
+    public String toString() {
+        return "TeamMemberDTO{" + "memberId=" + memberId + ", memberName=" + memberName + ", memberAvatar=" + memberAvatar + ", phone=" + phone + ", backupEmail=" + backupEmail + ", user=" + user + ", project=" + project + '}';
+    }
 }

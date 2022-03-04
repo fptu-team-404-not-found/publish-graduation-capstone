@@ -1,12 +1,21 @@
 package team404.states;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "states")
 public class StatesDTO {
+
     private int stateId;
     private String stateName;
 
     public StatesDTO() {
         stateId = 0;
         stateName = "";
+    }
+
+    public StatesDTO(int stateId, String stateName) {
+        this.stateId = stateId;
+        this.stateName = stateName;
     }
 
     /**
@@ -36,6 +45,9 @@ public class StatesDTO {
     public void setStateName(String stateName) {
         this.stateName = stateName;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "StatesDTO{" + "stateId=" + stateId + ", stateName=" + stateName + '}';
+    }
 }

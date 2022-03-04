@@ -18,6 +18,7 @@ public class ProjectImageDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
+    //-- TIENHUYNHTN --//
     public List<String> getProjectImagesInPojectDetail(String projectId) {
         try {
             con = DBHelpers.makeConnection();
@@ -33,7 +34,7 @@ public class ProjectImageDAO {
                     String url = rs.getString("ImageUrl");
                     list.add(url);
                 }
-                
+
                 return list;
             }
         } catch (SQLException ex) {

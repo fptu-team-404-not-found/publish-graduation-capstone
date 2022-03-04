@@ -10,24 +10,23 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.utils.DBHelpers;
 
-public class SemesterDAO implements Serializable{
+public class SemesterDAO implements Serializable {
+
     Connection con = null;
     PreparedStatement stm = null;
     ResultSet rs = null;
-    public SemesterDTO getSemesterName(int semesterId)
-    {
-        try{
+
+    public SemesterDTO getSemesterName(int semesterId) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null)
-            {
+            if (con != null) {
                 String sql = "Select SemesterId, SemesterName "
                         + "From Semester "
                         + "Where SemesterId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, semesterId);
                 rs = stm.executeQuery();
-                if(rs.next())
-                {
+                if (rs.next()) {
                     int semesterId2 = rs.getInt("SemesterId");
                     String semesterName = rs.getString("SemesterName");
                     SemesterDTO dto = new SemesterDTO(semesterId, semesterName);
