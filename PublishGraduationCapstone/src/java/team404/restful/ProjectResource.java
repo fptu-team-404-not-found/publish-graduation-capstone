@@ -10,6 +10,8 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import team404.comment.CommentDAO;
+import team404.comment.CommentDTO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
@@ -72,7 +74,7 @@ public class ProjectResource {
         return result;
     }
     
-    //-- TIENHUYNHTN --//
+    //-- TIENHUYNHTN --// //Sửa lại cho đồng bộ
     @Path("/showOtherProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -97,7 +99,6 @@ public class ProjectResource {
         return result;
     }
 
-    //SERVLET
     @Path("/searchProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -144,6 +145,7 @@ public class ProjectResource {
 
     }*/
     
+    //-- TIENHUYNHTN --//
     @Path("/showProjectDetails") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -151,5 +153,31 @@ public class ProjectResource {
             @QueryParam("projectId") String projectId) {
         ProjectDAO dao = new ProjectDAO();
         return dao.showProjectDetails(projectId);
+    }
+    
+    //-- TIENHUYNHTN --//
+    @Path("/getCommentsOfProject")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getCommentsOfProject(
+            @QueryParam("projectId") String projectId) {
+        CommentDAO dao = new CommentDAO();
+        List<CommentDTO> list = dao.getCommentsOfProject(projectId);
+        
+        JSONArray jsArr = new JSONArray();
+        for (CommentDTO commentDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("commentId", commentDTO.getCommentId());
+            jsObj.put("commentDate", commentDTO.getCommentDate());
+            jsObj.put("commentContent", commentDTO.getCommentContent());
+            jsObj.put("userAva", commentDTO.getUser().getPicture());
+            jsObj.put("userName", commentDTO.getUser().getName());
+            
+            jsArr.add(jsObj);
+        }
+        
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("commentsOfProject", jsArr);
+        return jsObj.toJSONString();
     }
 }

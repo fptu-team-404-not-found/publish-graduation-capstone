@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.semester;
 
 import java.io.Serializable;
@@ -15,10 +10,6 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.utils.DBHelpers;
 
-/**
- *
- * @author jike
- */
 public class SemesterDAO implements Serializable{
     Connection con = null;
     PreparedStatement stm = null;
