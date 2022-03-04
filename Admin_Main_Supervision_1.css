@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+/* nav */
+#admin-main-nav {
+    width: 100%;
+    background-color: #F47124;
+    height: 2em;
+    line-height: 2em;
+    display: flex;
+}
+
+#admin-main-nav-title {
+    letter-spacing: 0.08em;
+    padding-left: 2%;
+    font-size: 110%;
+    color: #FFFFFF;
+    width: 20%;
+}
+
+#admin-main-nav-login {
+    font-size: 70%;
+    color: #FFFFFF;
+    letter-spacing: 0.08em; 
+    width: 76%;
+    text-align: right;
+    margin-right: 0.5%;
+}
+
+#admin-main-nav-login-img-container {
+    width: 1.6em;
+    margin-top: 0.2em;
+}
+
+#admin-main-nav-login-img {
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid #EEEEEE;
+}
+
+/* menu dọc trái */
+#admin-main-menu-container {
+    margin: 2%;
+    display: inline-flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#admin-main-menu-container a.active{
+    background-color: #F47124;
+    color: #FFFFFF;
+    border-radius: 1em;
+}
+
+#admin-main-menu-container a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 1em;
+}
+
+.admin-main-menu-list {
+    text-decoration: none;
+    color: #F47124;
+    padding: 0.8em;
+    margin-bottom: 4%;
+    line-height: 1.5em;
+    width: 6em;
+    text-align: center;
+}
+
+.admin-main-menu-list-icon {
+    font-size: 120%;
+}
+
+.admin-main-menu-list-text {
+    font-size: 70%;
+}
+
+/* Account list right */
+
+#admin-main-account-list {
+    float: right;
+    width: 75%;
+    margin-top: 2%;
+}
+
+/* Add supervisor */
+#admin-main-supervisor-add {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    font-size: 80%;
+    width: 10em;
+    display: inline-flex;
+    height: 2em;
+}
+
+#admin-main-supervisor-add:hover {
+    background-color: #f4702450;
+}
+
+.add-btn {
+    color: #F47124;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding-right: 0.2em;
+    margin-top: 0.2em;
+}
+
+#admin-main-supervisor-add-btn {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: #000000;
+    height: 2em;
+    line-height: 2.5em;
+}
+
+
+/* Account list right search */
+
+#admin-main-account-list-search-container { 
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    color: #F47124;
+    font-size: 80%;
+    width: 12em;
+    line-height: 1.8em;
+    height: 1.8em;
+    display: inline-flex;
+}
+
+#admin-main-account-list-search {
+    border: none;
+    color: #F47124;
+    padding: 2%;
+    width: 12em;
+}
+
+#admin-main-account-list-search::placeholder {
+    color: #F47124;
+}
+
+#admin-main-account-list-search:focus {
+    outline: 0;
+}
+
+/* Accoun list right table*/
+#admin-main-account-list-table {
+    display: flex;
+    width: 80%;
+    background-color: #F47124;
+    margin-top: 2%;
+    padding: 0.6%;
+    border-radius: 1em;
+    justify-content: space-between;
+}
+
+.admin-main-account-list-table-title {
+    width: 10em;
+    font-size: 80%;
+    margin-left: 2em;
+}
+
+#admin-main-account-list-infors {
+    width: 80%;
+    padding: 0.4em;
+    border-radius: 1em;
+    font-size: 80%;
+    vertical-align: middle;
+    color: #F47124;
+}
+
+.admin-main-account-list-infor {
+    display: flex;
+    line-height: 1.5em;
+    width: 100%;
+    padding: 0.6em 2em;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    margin-bottom: 0.15em;
+    box-shadow: 0px 6px 4px rgba(65, 54, 54, 0.2);
+    border-radius: 0.1em;
+    text-align: left;
+}
+
+.admin-main-account-list-infor p {
+    width: 14em;
+    overflow: hidden;  
+    height: 1.5em;
+}
+
+.admin-main-account-list-infor span {
+    width: 13em;
+    text-align: center;
+}
+
+.admin-main-account-list-page-number {
+    margin-top: 2em;
+    width: 80%;
+    text-align: center;
+    font-size: 80%;
+}
+
+.admin-main-account-list-page-number a {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number a.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+

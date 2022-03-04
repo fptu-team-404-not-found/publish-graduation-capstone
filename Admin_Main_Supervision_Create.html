@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Admin_Main_Supervision_Create.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div id="admin-main-nav">
+        <p id="admin-main-nav-title">ADMIN MODE</p>
+        <p id="admin-main-nav-login">QUANNDD2</p>
+        <p id="admin-main-nav-login-img-container">
+            <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
+        </p>
+    </div>
+
+    <!-- menu dọc trái -->
+    <div id="admin-main-menu-container">
+        <a href="Admin_Main_1.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-address-card"></i></p>
+            <p class="admin-main-menu-list-text">Account list</p>
+        </a>
+        <a href="Admin_Main_Post_1.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-list"></i></p>
+            <p class="admin-main-menu-list-text">Post list</p>
+        </a>
+        <a href="#" class="admin-main-menu-list active">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-chalkboard-user"></i></p>
+            <p class="admin-main-menu-list-text">Supervisor list</p>
+        </a>
+        <a href="Admin_Main_Wordlist_1.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-comments"></i></p>
+            <p class="admin-main-menu-list-text">Word list</p>
+        </a>
+    </div>
+
+    <div id="admin-main-supervisor-create-new">
+        <h2 id="admin-main-supervisor-create-new-title">NEW SUPERVISOR</h2>
+        <p id="admin-main-supervisor-create-new-line"></p>
+        <div id="admin-main-supervisor-create-new-name-container">
+            <span id="admin-main-supervisor-create-new-name-text">Name</span>
+            <span><input type="text" name="supervisor-name" id="admin-main-supervisor-create-new-name"
+                    placeholder="Eg. Nguyễn Thế Hoàng, Kiều Trọng Khánh"></span>
+            <br>
+            <span id="admin-main-supervisor-create-new-position-container">Position</span>
+            <span><input type="text" name="supervisor-mail" id="admin-main-supervisor-create-new-position"
+                    placeholder="Eg. Head of ,.."></span>
+            <br>
+            <div id="admin-main-supervisor-create-new-information-container">
+                <span id="admin-main-supervisor-create-new-information">Information</span>
+                <span><textarea id="admin-main-supervisor-infor"
+                        placeholder="Cày code không cày rank / Happy code - Happy money - Happy life"></textarea></span>
+            </div>
+
+
+            <div class="preview-supervisor-img-container">
+                <img id="preview-supervisor-img" src="./img.jpg" />
+                <label for="preview-supervisor-img-input">Upload Image</label>
+                <input accept="image/*" type="file" id="preview-supervisor-img-input" />
+            </div>
+
+        </div>
+        <br>
+        <div id="admin-main-supervisor-create-btn-container">
+            <input type="button" value="Add new supervisor" id="admin-main-supervisor-create-btn">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const input = document.getElementById('preview-supervisor-img-input');
+        const image = document.getElementById('preview-supervisor-img');
+
+        input.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                const src = URL.createObjectURL(e.target.files[0]);
+                image.src = src;
+            }
+        });
+    </script>
+</body>
+
+</html>
