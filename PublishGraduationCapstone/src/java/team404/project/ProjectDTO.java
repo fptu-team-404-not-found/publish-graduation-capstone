@@ -2,6 +2,7 @@ package team404.project;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
+import team404.semester.SemesterDTO;
 
 @XmlRootElement(name = "project")
 public class ProjectDTO implements Serializable {
@@ -9,7 +10,7 @@ public class ProjectDTO implements Serializable {
     private String projectId;
     private String projectName;
     private String projectAva;
-    private String semester;
+    private SemesterDTO semester;
     private String introductionContent;
     private String details;
     private String recap;
@@ -24,7 +25,7 @@ public class ProjectDTO implements Serializable {
         projectId = "";
         projectName = "";
         projectAva = "";
-        semester = "";
+        semester = null;
         introductionContent = "";
         details = "";
         recap = "";
@@ -47,10 +48,11 @@ public class ProjectDTO implements Serializable {
         this.projectAva = projectAva;
     }
 
-    public ProjectDTO(String projectId, String projectName, String projectAva) {
+    public ProjectDTO(String projectId, String projectName, String projectAva, SemesterDTO semester) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectAva = projectAva;
+        this.semester = semester;
     }
 
     public ProjectDTO(String projectId, String projectName, String introductionContent, String details, String recap) {
@@ -103,19 +105,7 @@ public class ProjectDTO implements Serializable {
         this.projectAva = projectAva;
     }
 
-    /**
-     * @return the semester
-     */
-    public String getSemester() {
-        return semester;
-    }
-
-    /**
-     * @param semester the semester to set
-     */
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
+    
 
     /**
      * @return the introductionContent
@@ -241,6 +231,22 @@ public class ProjectDTO implements Serializable {
      */
     public void setStateId(int stateId) {
         this.stateId = stateId;
+    }
+
+    
+
+    /**
+     * @return the semester
+     */
+    public SemesterDTO getSemester() {
+        return semester;
+    }
+
+    /**
+     * @param semester the semester to set
+     */
+    public void setSemester(SemesterDTO semester) {
+        this.semester = semester;
     }
 
     @Override

@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
-import team404.user.UserDAO;
-import team404.user.UserDTO;
+import team404.user.AccountDAO;
+import team404.user.AccountDTO;
 import team404.utils.DBHelpers;
 
 public class CommentDAO {
@@ -39,8 +39,8 @@ public class CommentDAO {
                     String commentContent = rs.getNString("CommentContent");
                     String userId = rs.getString("UserId");
 
-                    UserDAO userDao = new UserDAO();
-                    UserDTO userDTO = userDao.getUserNamePictureByUserId(userId);
+                    AccountDAO userDao = new AccountDAO();
+                    AccountDTO userDTO = userDao.getUserNamePictureByUserId(userId);
 
                     CommentDTO commentDTO = new CommentDTO(commentId, commentDate, commentContent, userDTO);
 

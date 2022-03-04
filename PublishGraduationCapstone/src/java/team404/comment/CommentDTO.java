@@ -3,7 +3,7 @@ package team404.comment;
 import java.sql.Timestamp;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
-import team404.user.UserDTO;
+import team404.user.AccountDTO;
 
 @XmlRootElement(name = "comment")
 public class CommentDTO {
@@ -12,13 +12,13 @@ public class CommentDTO {
     private String commentContent;
     
     private int postId;
-    private UserDTO user;
+    private AccountDTO user;
     private ProjectDTO project;
 
     public CommentDTO() {
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, int postId, UserDTO user, ProjectDTO project) {
+    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, int postId, AccountDTO user, ProjectDTO project) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
@@ -27,7 +27,7 @@ public class CommentDTO {
         this.project = project;
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, UserDTO user) {
+    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, AccountDTO user) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
@@ -93,14 +93,14 @@ public class CommentDTO {
     /**
      * @return the user
      */
-    public UserDTO getUser() {
+    public AccountDTO getUser() {
         return user;
     }
 
     /**
      * @param user the user to set
      */
-    public void setUser(UserDTO user) {
+    public void setUser(AccountDTO user) {
         this.user = user;
     }
 

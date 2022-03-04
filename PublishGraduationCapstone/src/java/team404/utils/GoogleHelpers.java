@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Request;
-import team404.user.UserDTO;
+import team404.user.AccountDTO;
 
 public class GoogleHelpers {
 
@@ -14,8 +14,8 @@ public class GoogleHelpers {
         return response;
     }
 
-    public UserDTO getUserFromJson(String response) {
-        UserDTO user = new Gson().fromJson(response, UserDTO.class);
+    public AccountDTO getUserFromJson(String response) {
+        AccountDTO user = new Gson().fromJson(response, AccountDTO.class);
         return user;
     }
 }

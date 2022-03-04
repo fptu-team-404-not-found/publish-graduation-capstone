@@ -13,6 +13,8 @@ import javax.naming.NamingException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.projectimage.ProjectImageDAO;
+import team404.semester.SemesterDAO;
+import team404.semester.SemesterDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDAO;
@@ -149,12 +151,18 @@ public class ProjectDAO implements Serializable {
                 stm.setString(1, keyword);
                 rs = stm.executeQuery();
                 List<ProjectDTO> list = new ArrayList<>();
+                SemesterDAO semesterDao = new SemesterDAO();
+                SemesterDTO semesterDto = new SemesterDTO();
+
                 while (rs.next()) {
-                    ProjectDTO dto = new ProjectDTO();
-                    dto.setProjectId(rs.getString("ProjectId"));
-                    dto.setProjectName(rs.getNString("ProjectName"));
-                    dto.setProjectAva(rs.getString("ProjectAva"));
-                    dto.setSemester(rs.getString("Semester"));
+
+//                    dto.setProjectId(rs.getString("ProjectId"));
+//                    dto.setProjectName(rs.getNString("ProjectName"));
+//                    dto.setProjectAva(rs.getString("ProjectAva"));
+//                    dto.getSemester().setSemesterId(rs.getInt("SemesterId"));
+//                    dto.setSemester(rs.getString("Semester"));
+                    semesterDto = semesterDao.getSemesterName(rs.getInt("SemesterId"));
+                    ProjectDTO dto = new ProjectDTO(rs.getString("ProjectId"), rs.getNString("ProjectName"), rs.getString("ProjectAva"), semesterDto);
 
                     list.add(dto);
                 }
@@ -198,7 +206,10 @@ public class ProjectDAO implements Serializable {
                     String projectName = rs.getNString("ProjectName");
                     String projectAva = rs.getString("ProjectAva");
 
-                    ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
                     list.add(dto);
                 }
                 return list;
@@ -241,7 +252,10 @@ public class ProjectDAO implements Serializable {
                 String projectName = rs.getNString("ProjectName");
                 String projectAva = rs.getString("ProjectAva");
 
-                ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
+                ProjectDTO dto = new ProjectDTO();
+                dto.setProjectId(projectId);
+                dto.setProjectName(projectName);
+                dto.setProjectAva(projectAva);
                 list.add(dto);
             }
 
@@ -326,7 +340,10 @@ public class ProjectDAO implements Serializable {
                     String projectName = rs.getNString("ProjectName");
                     String projectAva = rs.getString("ProjectAva");
 
-                    ProjectDTO dto = new ProjectDTO(projectId, projectName, projectAva);
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
                     list.add(dto);
                 }
             }
@@ -422,7 +439,7 @@ public class ProjectDAO implements Serializable {
             JSONObject jsObjectMem = new JSONObject();
             jsObjectMem.put("memberName", teamMemberDTO.getMemberName());
             jsObjectMem.put("memberAva", teamMemberDTO.getMemberAvatar());
-            jsObjectMem.put("memberEmail", teamMemberDTO.getEmail());
+            jsObjectMem.put("memberEmail", teamMemberDTO.getUser().getEmail());
             jsObjectMem.put("memberPhone", teamMemberDTO.getPhone());
 
             jsArrTeamMem.add(jsObjectMem);

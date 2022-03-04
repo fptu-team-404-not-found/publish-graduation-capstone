@@ -5,23 +5,19 @@
             <url>src/java/team404/controller/LoginServlet.java</url>
             <bookmark id="1">
                 <name/>
-                <line>39</line>
+                <line>36</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/home.js</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/controller/ProjectDetailServlet.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/Project_Main.html</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/META-INF/context.xml</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/ProjectResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/project/ProjectDAO.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/user/UserDTO.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/user/UserDAO.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/roles/RolesDAO.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/roles/RolesDTO.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/AdminModeResource.java</file>
+            <file>file:/E:/FPT%20University/ProjectF/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/controller/LoginServlet.java</file>
         </group>
-=======
-        <group/>
->>>>>>> daa786a657068731c47c0b33f540140d1f7a85d1
     </open-files>
 </project-private>

@@ -1,25 +1,38 @@
 package team404.teammember;
 
+import team404.project.ProjectDTO;
+import team404.user.AccountDTO;
+
 public class TeamMemberDTO {
     
     private String memberId;
     private String memberName;
     private String memberAvatar;
-    private String email;
     private String phone;
     private String backupEmail;
-    private int teamId;
+    private AccountDTO user;
+    private ProjectDTO project;
 
     public TeamMemberDTO() {
+        memberId = "";
+        memberName = "";
+        memberAvatar = "";
+        phone = "";
+        backupEmail = "";
+        user = null;
+        project = null;
     }
 
-    public TeamMemberDTO(String memberName, String memberAvatar, String email, String phone) {
+    public TeamMemberDTO(String memberId, String memberName, String memberAvatar, String phone, String backupEmail, AccountDTO user, ProjectDTO project) {
+        this.memberId = memberId;
         this.memberName = memberName;
         this.memberAvatar = memberAvatar;
-        this.email = email;
         this.phone = phone;
+        this.backupEmail = backupEmail;
+        this.user = user;
+        this.project = project;
     }
-
+    
     /**
      * @return the memberId
      */
@@ -63,20 +76,6 @@ public class TeamMemberDTO {
     }
 
     /**
-     * @return the email
-     */
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     * @param email the email to set
-     */
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    /**
      * @return the phone
      */
     public String getPhone() {
@@ -105,18 +104,34 @@ public class TeamMemberDTO {
     }
 
     /**
-     * @return the teamId
+     * @return the user
      */
-    public int getTeamId() {
-        return teamId;
+    public AccountDTO getUser() {
+        return user;
     }
 
     /**
-     * @param teamId the teamId to set
+     * @param user the user to set
      */
-    public void setTeamId(int teamId) {
-        this.teamId = teamId;
+    public void setUser(AccountDTO user) {
+        this.user = user;
     }
+
+    /**
+     * @return the project
+     */
+    public ProjectDTO getProject() {
+        return project;
+    }
+
+    /**
+     * @param project the project to set
+     */
+    public void setProject(ProjectDTO project) {
+        this.project = project;
+    }
+
+    
     
     
 }
