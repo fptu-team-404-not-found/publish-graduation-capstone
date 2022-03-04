@@ -12,8 +12,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
-import team404.team.TeamDAO;
-import team404.team.TeamDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
@@ -34,7 +32,6 @@ public class ProjectResource {
         UpcomingProjectDAO dao = new UpcomingProjectDAO();
         JSONArray jsArr = new JSONArray();
         List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
-        TeamDAO teamDao = new TeamDAO();
         for (UpcomingProjectDTO upcomingProjectDTO : list) {
            JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", upcomingProjectDTO.getUpcomingProjectId());
@@ -61,15 +58,12 @@ public class ProjectResource {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getHighlightProjectList();
         JSONArray jsArr = new JSONArray();
-        TeamDAO teamDao = new TeamDAO();
         for (ProjectDTO project : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", project.getProjectId());
             jsObj.put("projectName", project.getProjectName());
             jsObj.put("introductionContent", project.getIntroductionContent());
             jsObj.put("projectAva", project.getProjectAva());
-            TeamDTO team = teamDao.getTeam(project.getProjectId());
-            jsObj.put("teamName", team.getTeamName());
             jsArr.add(jsObj);
         }
         JSONObject jsObj = new JSONObject();
@@ -117,7 +111,7 @@ public class ProjectResource {
             jsObj.put("projectId", projectDTO.getProjectId());
             jsObj.put("projectName", projectDTO.getProjectName());
             jsObj.put("projectAva", projectDTO.getProjectAva());
-            jsObj.put("semester", projectDTO.getSemester());
+            jsObj.put("semester", projectDTO.getSemester().getSemesterName());
             jsArr.add(jsObj);
         }
         JSONObject jsObj = new JSONObject();

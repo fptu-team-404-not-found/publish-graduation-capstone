@@ -3,26 +3,28 @@ package team404.user;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
-public class UserDTO implements Serializable {
+public class AccountDTO implements Serializable {
 
     private String sub;
     private String email;
     private String name;
     private String picture;
-
-    public UserDTO() {
+    private int roleId;
+    public AccountDTO() {
+        sub = "";
+        email = "";
+        name = "";
+        picture = "";
+        roleId = 1;
     }
 
-    public UserDTO(String name, String picture) {
-        this.name = name;
-        this.picture = picture;
-    }
 
-    public UserDTO(String sub, String email, String name, String picture) {
+    public AccountDTO(String sub, String email, String name, String picture, int roleId) {
         this.sub = sub;
         this.email = email;
         this.name = name;
         this.picture = picture;
+        this.roleId = roleId;
     }
 
     /**
@@ -81,9 +83,19 @@ public class UserDTO implements Serializable {
         this.picture = picture;
     }
 
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
     @Override
     public String toString() {
-        return "UserDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + '}';
+        return "UserDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + ", roleId=" + roleId + '}';
     }
+
+    
 
 }
