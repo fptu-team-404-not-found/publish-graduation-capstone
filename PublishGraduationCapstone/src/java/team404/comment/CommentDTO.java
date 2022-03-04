@@ -3,6 +3,7 @@ package team404.comment;
 import java.sql.Timestamp;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
+import team404.sharepost.SharePostDTO;
 import team404.user.AccountDTO;
 
 @XmlRootElement(name = "comment")
@@ -11,27 +12,17 @@ public class CommentDTO {
     private Timestamp commentDate;
     private String commentContent;
     
-    private int postId;
+    private SharePostDTO post;
     private AccountDTO user;
     private ProjectDTO project;
 
     public CommentDTO() {
-    }
-
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, int postId, AccountDTO user, ProjectDTO project) {
-        this.commentId = commentId;
-        this.commentDate = commentDate;
-        this.commentContent = commentContent;
-        this.postId = postId;
-        this.user = user;
-        this.project = project;
-    }
-
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, AccountDTO user) {
-        this.commentId = commentId;
-        this.commentDate = commentDate;
-        this.commentContent = commentContent;
-        this.user = user;
+        commentId = 0;
+        commentDate = null;
+        commentContent = "";
+        post = null;
+        user = null;
+        project = null;
     }
 
     /**
@@ -77,17 +68,17 @@ public class CommentDTO {
     }
 
     /**
-     * @return the postId
+     * @return the post
      */
-    public int getPostId() {
-        return postId;
+    public SharePostDTO getPost() {
+        return post;
     }
 
     /**
-     * @param postId the postId to set
+     * @param post the post to set
      */
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setPost(SharePostDTO post) {
+        this.post = post;
     }
 
     /**
@@ -117,6 +108,6 @@ public class CommentDTO {
     public void setProject(ProjectDTO project) {
         this.project = project;
     }
-
+    
     
 }
