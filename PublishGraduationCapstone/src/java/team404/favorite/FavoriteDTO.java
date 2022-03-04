@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team404.favorite;
 
 import java.io.Serializable;
 import team404.project.ProjectDTO;
 import team404.user.AccountDTO;
 
-/**
- *
- * @author jike
- */
 public class FavoriteDTO implements Serializable{
     private int favoriteId;
     private AccountDTO user;
@@ -71,6 +62,4 @@ public class FavoriteDTO implements Serializable{
     public void setProject(ProjectDTO project) {
         this.project = project;
     }
-    
-    
 }

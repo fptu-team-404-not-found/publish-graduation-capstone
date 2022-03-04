@@ -1,5 +1,5 @@
 
- function showLogin() {
+function showLogin() {
     var hidden = document.getElementById('home-login');
     if (hidden.style.display === 'none') 
         hidden.style.display = 'block';
@@ -36,7 +36,6 @@ function showProjectTitle(){
     };
 }
 showProjectTitle();
-
 
 function showProjectIntro(){
    var xhttp = new XMLHttpRequest();
@@ -131,7 +130,6 @@ function showProjectSupervisor(){
 }
 showProjectSupervisor();
 
-
 function showProjectDetails(){
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", api);
@@ -149,7 +147,6 @@ function showProjectDetails(){
     };
 }
 showProjectDetails();
-
 
 function showProjectRecap(){
     var xhttp = new XMLHttpRequest();
