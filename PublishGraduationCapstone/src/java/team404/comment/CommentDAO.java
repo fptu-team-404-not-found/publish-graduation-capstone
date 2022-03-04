@@ -42,9 +42,9 @@ public class CommentDAO {
                     AccountDAO userDao = new AccountDAO();
                     AccountDTO userDTO = userDao.getUserNamePictureByUserId(userId);
 
-                    CommentDTO commentDTO = new CommentDTO(commentId, commentDate, commentContent, userDTO);
+                    //CommentDTO commentDTO = new CommentDTO(commentId, commentDate, commentContent, userDTO);
 
-                    list.add(commentDTO);
+                    //list.add(commentDTO);
                 }
                 return list;
             }

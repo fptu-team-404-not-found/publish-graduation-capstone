@@ -41,6 +41,7 @@ GO
 
 CREATE TABLE SharePost(
 	PostId INT IDENTITY(1,1),
+	Title NTEXT,
 	Details NTEXT,
 	CreateDate datetime DEFAULT GetDate() NOT NULL,
 	Note NTEXT,
@@ -617,8 +618,8 @@ VALUES('https://cdn.pixabay.com/photo/2021/02/23/09/26/cat-6042858_960_720.jpg',
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2022/02/14/20/09/bird-7013754_960_720.jpg', 'SU20SE02')
 
-INSERT INTO SharePost(Details, Note, StudentId, SupervisorID, StateId, ProjectId)
-VALUES(N'Đây là bài sharing của Rolls-Royce', NULL, 'SE111111', 'KTK', 2, 'SU20SE02')
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả', N'Đây là bài sharing của Rolls-Royce', NULL, 'SE111111', 'KTK', 2, 'SU20SE02')
 
 
 INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SU20SE02')
