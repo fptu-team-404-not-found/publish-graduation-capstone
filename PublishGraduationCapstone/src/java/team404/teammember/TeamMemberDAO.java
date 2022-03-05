@@ -10,7 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.project.ProjectDAO;
-import team404.account.AccountDAO;
 import team404.account.AccountDTO;
 import team404.utils.DBHelpers;
 
@@ -25,27 +24,33 @@ public class TeamMemberDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select MemberName, MemberAvatar, Phone, UserId "
-                        + "From TeamMember "
-                        + "Where ProjectId = ? ";
+                String sql = "Select TeamMember.StudentId, TeamMember.MemberName, TeamMember.MemberAvatar, TeamMember.Phone, Account.Email "
+                        + "From TeamMember JOIN Account "
+                        + "On TeamMember.ProjectId = ? AND Account.UserId = TeamMember.UserId ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, projectId);
                 rs = stm.executeQuery();
                 List<TeamMemberDTO> list = new ArrayList<>();
-                AccountDAO userDao = new AccountDAO();
-                AccountDTO userDto = new AccountDTO();
+
                 while (rs.next()) {
+                    String studentId = rs.getString("StudentId");
                     String memberName = rs.getNString("MemberName");
                     String memberAvatar = rs.getString("MemberAvatar");
                     String phone = rs.getString("Phone");
-                    userDto = userDao.getUserInforByUserId(rs.getString("UserId"));
-                    TeamMemberDTO dto = new TeamMemberDTO();
-                    dto.setMemberName(memberName);
-                    dto.setMemberAvatar(memberAvatar);
-                    dto.setPhone(phone);
-                    dto.setUser(userDto);
+                    String email = rs.getString("Email");
 
-                    list.add(dto);
+                    TeamMemberDTO teamMemberDTO = new TeamMemberDTO();
+                    AccountDTO user = new AccountDTO();
+
+                    user.setEmail(email);
+
+                    teamMemberDTO.setMemberId(studentId);
+                    teamMemberDTO.setMemberName(memberName);
+                    teamMemberDTO.setMemberAvatar(memberAvatar);
+                    teamMemberDTO.setPhone(phone);
+                    teamMemberDTO.setUser(user);
+
+                    list.add(teamMemberDTO);
                 }
 
                 return list;

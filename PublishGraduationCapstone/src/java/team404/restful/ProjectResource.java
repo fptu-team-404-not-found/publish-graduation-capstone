@@ -122,7 +122,7 @@ public class ProjectResource {
         return result;
     }
     
-    //-- TIENHUYNHTN --// //Lỗi
+    //-- TIENHUYNHTN --// //OK
     @Path("/showProjectDetails") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

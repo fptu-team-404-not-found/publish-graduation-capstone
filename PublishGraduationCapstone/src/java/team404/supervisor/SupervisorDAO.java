@@ -10,8 +10,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.project.ProjectDAO;
-import team404.account.AccountDAO;
-import team404.account.AccountDTO;
 import team404.utils.DBHelpers;
 
 public class SupervisorDAO {
@@ -35,19 +33,18 @@ public class SupervisorDAO {
                 stm.setString(1, projectId);
                 rs = stm.executeQuery();
                 List<SupervisorDTO> list = new ArrayList<>();
-                AccountDAO userDao = new AccountDAO();
-                AccountDTO userDto = new AccountDTO();
                 while (rs.next()) {
-                    String supervisorId = rs.getString("SupervisorID");
                     String supervisorName = rs.getNString("SupervisorName");
                     String supervisorImage = rs.getString("SupervisorImage");
                     String supervisorInfo = rs.getNString("Information");
                     String supervisorPosition = rs.getString("Position");
-                    boolean supervisorStatus = rs.getBoolean("Status");
-                    userDto = userDao.getUserInforByUserId(rs.getString("UserId"));
 
-                    SupervisorDTO dto = new SupervisorDTO(supervisorId, supervisorName, supervisorImage, supervisorInfo, supervisorPosition, supervisorStatus, userDto);
-                    list.add(dto);
+                    SupervisorDTO supervisorDTO = new SupervisorDTO();
+                    supervisorDTO.setSupervisorName(supervisorName);
+                    supervisorDTO.setSupervisorImage(supervisorImage);
+                    supervisorDTO.setInformation(supervisorInfo);
+                    supervisorDTO.setPostion(supervisorPosition);
+                    list.add(supervisorDTO);
                 }
 
                 return list;

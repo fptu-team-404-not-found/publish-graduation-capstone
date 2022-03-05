@@ -296,7 +296,7 @@ public class ProjectDAO implements Serializable {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select ProjectId, ProjectName, IntroductionContent, Details, Recap "
+                String sql = "Select ProjectId, ProjectName, VideoUrl, IntroductionContent, Details, Recap "
                         + "From Project "
                         + "Where ProjectId = ?";
                 stm = con.prepareStatement(sql);
@@ -305,6 +305,7 @@ public class ProjectDAO implements Serializable {
                 if (rs.next()) {
                     String id = rs.getString("ProjectId");
                     String projectName = rs.getString("ProjectName");
+                    String videoUrl = rs.getString("VideoUrl");
                     String intro = rs.getNString("IntroductionContent");
                     String details = rs.getNString("Details");
                     String recap = rs.getNString("Recap");
@@ -312,9 +313,11 @@ public class ProjectDAO implements Serializable {
                     ProjectDTO dto = new ProjectDTO();
                     dto.setProjectId(id);
                     dto.setProjectName(projectName);
+                    dto.setVideoUrl(videoUrl);
                     dto.setIntroductionContent(intro);
                     dto.setDetails(details);
                     dto.setRecap(recap);
+                    
                     return dto;
                 }
             }
@@ -341,32 +344,36 @@ public class ProjectDAO implements Serializable {
     }
 
     //-- TIENHUYNHTN --//
-    public String showProjectDetails(String projectId) { //Lỗi
+    public String showProjectDetails(String projectId) { 
         ProjectDAO projectDAO = new ProjectDAO();
-        ProjectImageDAO projectImageDAO = new ProjectImageDAO();
         TeamMemberDAO teamMemberDAO = new TeamMemberDAO();
         SupervisorDAO supervisorDAO = new SupervisorDAO();
+        ProjectImageDAO projectImageDAO = new ProjectImageDAO();
 
         ProjectDTO projectDTO = projectDAO.getProjectDetailsInPojectDetail(projectId);
-        List<String> listUrlImages = projectImageDAO.getProjectImagesInPojectDetail(projectId);
-        List<TeamMemberDTO> listTeamMemDTO = teamMemberDAO.getTeamMembersInPojectDetail(projectId);
+        List<TeamMemberDTO> listTeamMemberDTO = teamMemberDAO.getTeamMembersInPojectDetail(projectId);
         List<SupervisorDTO> listSupervisorDTO = supervisorDAO.getSupervisorsInPojectDetail(projectId);
+        List<String> listUrlImages = projectImageDAO.getProjectImagesInPojectDetail(projectId);
 
         JSONArray jsArray = new JSONArray();
         JSONObject jsObject = new JSONObject();
         jsObject.put("projectId", projectDTO.getProjectId());
         jsObject.put("projectName", projectDTO.getProjectName());
-        jsObject.put("projectIntro", projectDTO.getIntroductionContent());
+        jsObject.put("videoUrl", projectDTO.getVideoUrl());
+        jsObject.put("introductionContent", projectDTO.getIntroductionContent());
+        jsObject.put("details", projectDTO.getDetails());
+        jsObject.put("recap", projectDTO.getRecap());
 
         JSONArray jsArrTeamMem = new JSONArray();
-        for (TeamMemberDTO teamMemberDTO : listTeamMemDTO) {
-            JSONObject jsObjectMem = new JSONObject();
-            jsObjectMem.put("memberName", teamMemberDTO.getMemberName());
-            jsObjectMem.put("memberAva", teamMemberDTO.getMemberAvatar());
-            jsObjectMem.put("memberEmail", teamMemberDTO.getUser().getEmail());
-            jsObjectMem.put("memberPhone", teamMemberDTO.getPhone());
+        for (TeamMemberDTO teamMemberDTO : listTeamMemberDTO) {
+            JSONObject jsObjectMember = new JSONObject();
+            jsObjectMember.put("memberId", teamMemberDTO.getMemberId());
+            jsObjectMember.put("memberName", teamMemberDTO.getMemberName());
+            jsObjectMember.put("memberAva", teamMemberDTO.getMemberAvatar());
+            jsObjectMember.put("memberEmail", teamMemberDTO.getUser().getEmail());
+            jsObjectMember.put("memberPhone", teamMemberDTO.getPhone());
 
-            jsArrTeamMem.add(jsObjectMem);
+            jsArrTeamMem.add(jsObjectMember);
         }
         jsObject.put("listMember", jsArrTeamMem);
 
@@ -382,9 +389,7 @@ public class ProjectDAO implements Serializable {
         }
         jsObject.put("listSupervisor", jsArrSupervisor);
 
-        jsObject.put("projectDetails", projectDTO.getDetails());
-        jsObject.put("projectRecap", projectDTO.getRecap());
-
+        
         JSONArray jsArrImage = new JSONArray();
         for (String imageUrl : listUrlImages) {
             JSONObject jsObjectImg = new JSONObject();
