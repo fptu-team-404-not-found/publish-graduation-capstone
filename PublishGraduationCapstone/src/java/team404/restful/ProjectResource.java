@@ -133,7 +133,7 @@ public class ProjectResource {
     }
     
     //-- TIENHUYNHTN --// //OK
-    @Path("/getCommentsOfProject") 
+    @Path("/showCommentsOfProject") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getCommentsOfProject(
