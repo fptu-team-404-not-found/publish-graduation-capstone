@@ -10,6 +10,7 @@ function onSignIn(googleUser) {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail());
 
+
     // The ID token you need to pass to your backend:
     var access_token = googleUser.getAuthResponse().access_token;
 
@@ -17,14 +18,37 @@ function onSignIn(googleUser) {
     url = url + access_token;
 
     var xhttp = new XMLHttpRequest();
-    
+
     xhttp.open("GET", url);
     xhttp.send();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             //using data here
-            console.log('data: ' + this.responseText);
+
+            var res = this.responseText;
+            var jsonData = JSON.parse(res);
+
+            jsonData.information.forEach(counter => {
+                sessionStorage.setItem("sub", counter.sub);
+                sessionStorage.setItem("email", counter.email);
+                sessionStorage.setItem("name", counter.name);
+                sessionStorage.setItem("picture", counter.picture);
+                sessionStorage.setItem("roleId", counter.roleId);
+                sessionStorage.setItem("token", counter.token);
+            });
+            if(this.responseText !== null){
+                location.replace('Search-BE.html');
+            }
         }
     };
+}
+function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        alert("You have been signed out successfully");
+        sessionStorage.clear();
+        $(".g-signin2").css("display", "block");
+        $(".data").css("display", "none");
+    });
 }

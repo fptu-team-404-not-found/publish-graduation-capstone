@@ -211,4 +211,41 @@ public class AccountDAO {
         }
 
     }
+    public int getRole(String id) {
+        try {
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "Select r.[RoleId] "
+                        + "From Account a inner join Roles r "
+                        + "On a.RoleId = r.RoleId "
+                        + "Where UserId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, id);
+                rs = stm.executeQuery();
+                if(rs.next()){
+                    int role = rs.getInt("RoleId");
+                    return role;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return -1;
+    }
 }
