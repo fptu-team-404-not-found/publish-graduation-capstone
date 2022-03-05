@@ -29,7 +29,7 @@ public class ProjectDAO implements Serializable {
 
     private List<ProjectDTO> searchProjectList;
 
-    public List<ProjectDTO> getHighlightProjectList() { //Lỗi
+    public List<ProjectDTO> getHighlightProjectList() { 
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -41,8 +41,11 @@ public class ProjectDAO implements Serializable {
                 rs = stm.executeQuery();
                 List<ProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
-                    ProjectDTO dto = new ProjectDTO(rs.getString("ProjectId"), rs.getString("ProjectName"),
-                            rs.getString("IntroductionContent"), rs.getString("ProjectAva"));
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(rs.getString("ProjectId"));
+                    dto.setProjectName(rs.getNString("ProjectName"));
+                    dto.setIntroductionContent(rs.getString("IntroductionContent"));
+                    dto.setProjectAva(rs.getString("ProjectAva"));
                     list.add(dto);
                 }
                 return list;
@@ -141,7 +144,7 @@ public class ProjectDAO implements Serializable {
         return -1;
     }
 
-    public List<ProjectDTO> getSearchProjectList(String keyword) { //Lỗi
+    public List<ProjectDTO> getSearchProjectList(String keyword) { 
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -162,8 +165,11 @@ public class ProjectDAO implements Serializable {
 //                    dto.getSemester().setSemesterId(rs.getInt("SemesterId"));
 //                    dto.setSemester(rs.getString("Semester"));
                     semesterDto = semesterDao.getSemesterName(rs.getInt("SemesterId"));
-                    ProjectDTO dto = new ProjectDTO(rs.getString("ProjectId"), rs.getNString("ProjectName"), rs.getString("ProjectAva"), semesterDto);
-
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(rs.getString("ProjectId"));
+                    dto.setProjectName(rs.getNString("ProjectName"));
+                    dto.setProjectAva(rs.getString("ProjectAva"));
+                    dto.setSemester(semesterDto);
                     list.add(dto);
                 }
                 return list;
@@ -286,7 +292,7 @@ public class ProjectDAO implements Serializable {
     }
 
     //-- TIENHUYNHTN --//
-    public ProjectDTO getProjectDetailsInPojectDetail(String projectId) { //Lỗi
+    public ProjectDTO getProjectDetailsInPojectDetail(String projectId) { // Dat ms chỉnh một chút phần truyèn tham số constructor
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -303,8 +309,12 @@ public class ProjectDAO implements Serializable {
                     String details = rs.getNString("Details");
                     String recap = rs.getNString("Recap");
 
-                    ProjectDTO dto = new ProjectDTO(id, projectName, intro, details, recap);
-
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(id);
+                    dto.setProjectName(projectName);
+                    dto.setIntroductionContent(intro);
+                    dto.setDetails(details);
+                    dto.setRecap(recap);
                     return dto;
                 }
             }
