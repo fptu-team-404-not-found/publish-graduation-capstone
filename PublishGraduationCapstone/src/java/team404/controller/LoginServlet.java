@@ -31,7 +31,6 @@ public class LoginServlet extends HttpServlet {
         String token = request.getParameter("token");
 
         try {
-            
             GoogleHelpers googleHelper = new GoogleHelpers();
             String json = googleHelper.getUserInfo(token);
             AccountDTO user = googleHelper.getUserFromJson(json);
