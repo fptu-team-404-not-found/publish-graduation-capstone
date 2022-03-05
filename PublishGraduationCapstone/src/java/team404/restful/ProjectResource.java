@@ -145,7 +145,7 @@ public class ProjectResource {
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentId", commentDTO.getCommentId());
-            jsObj.put("commentDate", commentDTO.getCommentDate());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toGMTString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());
