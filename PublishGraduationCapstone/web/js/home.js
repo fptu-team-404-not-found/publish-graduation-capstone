@@ -87,7 +87,6 @@ function showHightLight() {
                 <div class="hightlight-img-container">
                     <p class="hightlight-img-text">${counter.projectName}</p>
                     <p class="hightlight-img-line"></p>
-                    <p class="hightlight-img-team">${counter.teamName}</p>
                     <p class="hightlight-img-content">${counter.introductionContent}</p>
                     <p class="hightlight-img-more">More...</p>
                     <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
@@ -191,10 +190,6 @@ console.log(showUpcoming(function(jsonData) {
     console.log("Show ne :" + jsonData);
     comingProjects = jsonData;
 }));
-
-function hoverUpcoming() {
-
-}
 
 function showThisUpcoming(div) {
     var thisProjectId = div.querySelector('.upcoming-img-id').innerText;
