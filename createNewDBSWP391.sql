@@ -618,8 +618,9 @@ INSERT INTO ProjectImage(ImageUrl, ProjectId)
 VALUES('https://cdn.pixabay.com/photo/2022/02/14/20/09/bird-7013754_960_720.jpg', 'SU20SE02')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
-VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả', N'Đây là bài sharing của Rolls-Royce', NULL, 'SE111111', 'KTK', 2, 'SU20SE02')
-
+VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả', N'Đây là bài sharing của Rolls-Royce', NULL, 'SE111111', null, 2, 'SU20SE02')
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Hãy luôn luôn tìm hiểu thứ mới. Với châm ngôn code không chạy hãy đốt nhang cầu ông bà.', N'Đây là bài sharing của Kiều Trọng Khánh', NULL, Null, 'KTK', 2, 'SU20SE02')
 
 INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SU20SE02')
 
@@ -736,4 +737,15 @@ join Supervisor su
 on ps.SupervisorID = su.SupervisorID
 join ProjectImage [pi]
 on [pi].ProjectId = p.ProjectId
+Where p.ProjectId = 'SU20SE02'
+
+Select sp.PostId, sp.Title, tm.StudentId, tm.MemberAvatar, su.SupervisorID, su.SupervisorImage, p.ProjectId
+From Project p inner join SharePost sp
+on p.ProjectId = sp.ProjectId
+inner join TeamMember tm 
+on sp.StudentId = tm.StudentId
+inner join States st 
+on st.StateId = sp.StateId
+inner join Supervisor su
+on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'

@@ -27,7 +27,7 @@ public class ProjectResource {
     public ProjectResource() {
     }
 
-    @Path("/getUpcomingProjects") //Lỗi
+    @Path("/getUpcomingProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getUpcomingProjects() {

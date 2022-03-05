@@ -71,4 +71,52 @@ public class SupervisorDAO {
 
         return null;
     }
+    public SupervisorDTO getInforSup (String supervisorId){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null)
+            {
+                String sql = "Select SupervisorID, SupervisorName, SupervisorImage, Information, Position "
+                        + "From Supervisor "
+                        + "Where SupervisorID = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, supervisorId);
+                rs = stm.executeQuery();
+                if(rs.next())
+                {
+                    String supervisorId2 = rs.getString("SupervisorID");
+                    String supervisorName = rs.getNString("SupervisorName");
+                    String supervisorImage = rs.getString("SupervisorImage");
+                    String information = rs.getNString("Information");
+                    String position = rs.getString("Position");
+                    SupervisorDTO dto = new SupervisorDTO();
+                    dto.setSupervisorId(supervisorId);
+                    dto.setSupervisorName(supervisorName);
+                    dto.setSupervisorImage(supervisorImage);
+                    dto.setInformation(information);
+                    dto.setPostion(position);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
 }
