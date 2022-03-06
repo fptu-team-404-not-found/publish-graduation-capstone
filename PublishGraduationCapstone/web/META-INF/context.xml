@@ -9,13 +9,13 @@
 </Context>-->
  
 <!--Đạt nè-->
-<Context path="/PublishGraduationCapstone">
+<!--<Context path="/PublishGraduationCapstone">
     <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
               name="JohnyEnglish" password="lamborghini" 
               type="javax.sql.DataSource" 
               url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=SQLEXPRESS" 
               username="sa"/>
-</Context>
+</Context>-->
 
 <!--Thang ne-->
 <!--<Context path="/PublishGraduationCapstone">

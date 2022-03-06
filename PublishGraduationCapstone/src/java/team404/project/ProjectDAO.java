@@ -247,7 +247,7 @@ public class ProjectDAO implements Serializable {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select ProjectId, ProjectName, ProjectAva "
+                String sql = "Select ProjectId, ProjectName, ProjectAva, IntroductionContent "
                         + "From Project "
                         + "Where ProjectId = ? ";
                 stm = con.prepareStatement(sql);
@@ -257,11 +257,12 @@ public class ProjectDAO implements Serializable {
                     String projectId2 = rs.getString("ProjectId");
                     String projectName = rs.getNString("ProjectName");
                     String projectAva = rs.getString("ProjectAva");
-
+                    String introductionContent = rs.getNString("IntroductionContent");
                     ProjectDTO dto = new ProjectDTO();
                     dto.setProjectId(projectId);
                     dto.setProjectName(projectName);
                     dto.setProjectAva(projectAva);
+                    dto.setIntroductionContent(introductionContent);
                     return dto;
                 }
             }

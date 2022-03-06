@@ -237,6 +237,7 @@ body {
     position: absolute;
     top: 10%;
     left: 10%;
+    object-fit: cover;
 }
 
 .project-team-member-name {
@@ -331,6 +332,7 @@ body {
     border-radius: 50%;
     border: 3px solid #F47124;
     padding: 6%;
+    object-fit: cover;
 }
 
 .project-supervisor-img-class {
@@ -569,14 +571,17 @@ body {
 #project-commented-img {
     margin-top: 4%;
     margin-left: 10%;
-    width: 6%;
-    height: auto;
     float: left;
+    
+    
 }
 
 #project-commented-img-1 {
-    width: 100%;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
+    object-fit: cover;
+
 }
 
 #project-commented-text {
@@ -694,9 +699,12 @@ body {
 }
 
 #project-sharing-experience-img {
-    width: 4em;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     border: 4px solid #F47124;
+    object-fit: cover;
+
 }
 
 #project-sharing-experience-text-container {
@@ -715,12 +723,13 @@ body {
 
 .project-sharing-experience-text-viewmore {
     text-align: right;
-    opacity: 10%;
+    opacity: 0%;
     color: #F47124;
 }
 
-.project-sharing-experience-text-viewmore:hover {
+.project-sharing-experience-container:hover  .project-sharing-experience-text-viewmore{
     opacity: 100%;
+    transition:ease-in-out 0.5s;
 }
 
 #project-sharing-other-title {
