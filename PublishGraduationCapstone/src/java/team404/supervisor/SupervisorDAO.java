@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 import team404.project.ProjectDAO;
 import team404.utils.DBHelpers;
 
@@ -71,19 +73,18 @@ public class SupervisorDAO {
 
         return null;
     }
-    public SupervisorDTO getInforSup (String supervisorId){
-        try{
+
+    public SupervisorDTO getInforSup(String supervisorId) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null)
-            {
+            if (con != null) {
                 String sql = "Select SupervisorID, SupervisorName, SupervisorImage, Information, Position "
                         + "From Supervisor "
                         + "Where SupervisorID = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, supervisorId);
                 rs = stm.executeQuery();
-                if(rs.next())
-                {
+                if (rs.next()) {
                     String supervisorId2 = rs.getString("SupervisorID");
                     String supervisorName = rs.getNString("SupervisorName");
                     String supervisorImage = rs.getString("SupervisorImage");
@@ -97,6 +98,57 @@ public class SupervisorDAO {
                     dto.setPostion(position);
                     return dto;
                 }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<SupervisorDTO> getAllSupervisors() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select UserId, SupervisorID, SupervisorName, [Status] "
+                        + "From Supervisor "
+                        + "Order BY UserId "
+                        + "ASC";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<SupervisorDTO> list = new ArrayList<>();
+                
+                AccountDAO accountDao = new AccountDAO();
+                AccountDTO accountDto = new AccountDTO();
+                while(rs.next()){
+                    String supervisorId = rs.getString("SupervisorID");
+                    String supervisorName = rs.getString("SupervisorName");
+                    boolean status = rs.getBoolean("Status");
+                    accountDto = accountDao.getUserInforByUserId(rs.getString("UserId"));
+                    
+                    SupervisorDTO dto = new SupervisorDTO();
+                    dto.setUser(accountDto);
+                    dto.setSupervisorId(supervisorId);
+                    dto.setSupervisorName(supervisorName);
+                    dto.setStatus(status);
+                    list.add(dto);
+                }
+                return list;
             }
         } catch (SQLException ex) {
             Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
