@@ -618,7 +618,13 @@ INSERT INTO ProjectImage(ImageUrl, ProjectId)
 VALUES('https://cdn.pixabay.com/photo/2022/02/14/20/09/bird-7013754_960_720.jpg', 'SU20SE02')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
-VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả', N'Đây là bài sharing của Rolls-Royce', NULL, 'SE111111', null, 2, 'SU20SE02')
+VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả',
+N'Đây là bài sharing của Rolls-Royce',
+NULL, 
+'SE111111', 
+null,
+2,
+'SU20SE02')
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Hãy luôn luôn tìm hiểu thứ mới. Với châm ngôn code không chạy hãy đốt nhang cầu ông bà.', N'Đây là bài sharing của Kiều Trọng Khánh', NULL, Null, 'KTK', 2, 'SU20SE02')
 
@@ -633,6 +639,8 @@ INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId)
 VALUES (N'Siêu đỉnh', '333333333333333333333', 1, 'FA19SE06')
 INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
 VALUES (N'Hay ghê', '444444444444444444444', 1, 'FA19SE06')
+INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
+VALUES (N'gà', '444444444444444444444', 1, 'FA19SE06')
 
 INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('SP23SE01', 'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '15/12/2021', N'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://www.ebillity.com/wp-content/uploads/2020/09/post-time-clock-kiosk.jpg')
@@ -749,3 +757,7 @@ on st.StateId = sp.StateId
 inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
+
+select * 
+from Project
+where ProjectId = 'SU20SE02'

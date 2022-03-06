@@ -38,7 +38,7 @@ public class ShareResource {
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentId", commentDTO.getCommentId());
-            jsObj.put("commentDate", commentDTO.getCommentDate());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toLocaleString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());
@@ -64,15 +64,11 @@ public class ShareResource {
             JSONObject jsObj = new JSONObject();
             jsObj.put("postId", sharePostDTO.getPostId());
             jsObj.put("title", sharePostDTO.getTitle());
-            if (sharePostDTO.getStudent() == null) {
-                jsObj.put("memberAvatar", sharePostDTO.getStudent());
-            } else {
-                jsObj.put("memberAvatar", sharePostDTO.getStudent().getMemberAvatar());
+            if (sharePostDTO.getStudent() != null) {
+                 jsObj.put("Avatar", sharePostDTO.getStudent().getMemberAvatar());
             }
-            if (sharePostDTO.getSupervisor() == null) {
-                jsObj.put("supervisorImage", sharePostDTO.getSupervisor());
-            } else {
-                jsObj.put("supervisorImage", sharePostDTO.getSupervisor().getSupervisorImage());
+            if (sharePostDTO.getSupervisor() != null) {
+                jsObj.put("Avatar", sharePostDTO.getSupervisor().getSupervisorImage());
             }
 
             jsArr.add(jsObj);
@@ -93,22 +89,19 @@ public class ShareResource {
         JSONObject jsObj = new JSONObject();
         jsObj.put("title", dto.getTitle());
         jsObj.put("details", dto.getDetails());
-        jsObj.put("createDate", dto.getCreateDate());
-        if (dto.getStudent() == null) {
-            jsObj.put("memberName", dto.getStudent());
-        } else {
-            jsObj.put("memberName", dto.getStudent().getMemberName());
+        jsObj.put("createDate", dto.getCreateDate().toLocaleString());
+        if (dto.getStudent() != null) {
+           jsObj.put("AuthorName", dto.getStudent().getMemberName());
         }
-        if (dto.getSupervisor() == null) {
-            jsObj.put("supervisorName", dto.getSupervisor());
-        } else {
-            jsObj.put("supervisorName", dto.getSupervisor().getSupervisorName());
-        }
+        if (dto.getSupervisor() != null) {
+           jsObj.put("AuthorName", dto.getSupervisor().getSupervisorName());
+           }
         ProjectDTO projectDto = projectDao.getSingleProject(dto.getProject().getProjectId());
         JSONObject jsObj2 = new JSONObject();
         jsObj2.put("ProjectId", projectDto.getProjectId());
         jsObj2.put("ProjectName", projectDto.getProjectName());
-        jsObj2.put("ProjectAva", projectDto.getProjectAva());
+        jsObj2.put("ProjectAva", projectDto.getProjectAva());;
+        jsObj2.put("ProjectIntroduction", projectDto.getIntroductionContent());;
         
         jsObj.put("project", jsObj2);
         JSONObject jsObjM = new JSONObject();

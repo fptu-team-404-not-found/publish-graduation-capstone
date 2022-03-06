@@ -16,7 +16,7 @@ function showSearch() {
 
 function showSearchPage() {
     var usernameInput = document.querySelector('#home-search-text').value;
-    console.log('lala: ' + usernameInput);   
+    console.log('lala: ' + usernameInput);
 
     sessionStorage.setItem("keyword", usernameInput);
 
@@ -25,38 +25,26 @@ function showSearchPage() {
 
 
 var projectId = sessionStorage.getItem('projectId');
-var apiOrginal = "/PublishGraduationCapstone/api/project/showProjectDetails?projectId=";
-var api = '';
 
-if (projectId != "") {
-    api = apiOrginal + projectId;
-}
 
-function showProjectTitle() {
+function showProject() {
+    var apiOrginal = "/PublishGraduationCapstone/ProjectDetailServlet?projectId=";
+    var api = '';
+
+    if (projectId != "") {
+        api = apiOrginal + projectId;
+    }
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", api);
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
+
             var jsonData = JSON.parse(res);
+            //show title
             document.getElementById("project-title").innerHTML = jsonData.projectName
-            console.log("title ne: " + jsonData.projectName);
-
-        }
-    };
-}
-showProjectTitle();
-
-function showProjectIntro() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
+            //show intro
             var video = 'https://www.youtube.com'
             if (jsonData.videoUrl != null)
                 video = jsonData.videoUrl
@@ -70,28 +58,11 @@ function showProjectIntro() {
                     ${jsonData.introductionContent}
             </p>
             `
-
-        }
-    };
-}
-showProjectIntro();
-
-function showProjectMember() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
-
+            //Show member
             const memberList = document.querySelector('#project-team-container');
-            let projects = new Array();
-
-
+            let projectsMembers = new Array();
             jsonData.listMember.forEach(counter => {
-                var project =
+                var projectMember =
                     `
                 <div class="project-team-member">
                 <div class="project-team-member-color-black">
@@ -105,32 +76,17 @@ function showProjectMember() {
                 <span class="project-phone-icon"><i class="fa-solid fa-phone"></i></span>
                 <span class="project-phone-text">${counter.memberPhone}</span>
                 </div>
-              
                 `
-                projects.push(project);
+                projectsMembers.push(projectMember);
             });
-            memberList.innerHTML = projects.join('');
-        }
-    };
-}
-showProjectMember();
+            memberList.innerHTML = projectsMembers.join('');
 
-function showProjectSupervisor() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
-
+            //show supervisor
             const supervisorList = document.querySelector('#project-supervisors-container');
-            let projects = new Array();
-
+            let projectsSupervisorS = new Array();
 
             jsonData.listSupervisor.forEach(counter => {
-                var project =
+                var supervisor =
                     `
                 <div class="project-supervisor">
                 <div class="project-supervisor-img-class"><img class="project-supervisor-img"
@@ -144,77 +100,32 @@ function showProjectSupervisor() {
                 </div>
                 </div>
                 `
-                projects.push(project);
+                projectsSupervisorS.push(supervisor);
             });
-            supervisorList.innerHTML = projects.join('');
-        }
-    };
-}
-showProjectSupervisor();
+            supervisorList.innerHTML = projectsSupervisorS.join('');
 
-function showProjectDetails() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
-
+            //show project details
             document.getElementById("project-detail-text").innerHTML = jsonData.projectDetails;
-
-
-        }
-    };
-}
-showProjectDetails();
-
-function showProjectRecap() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
-
+            //show project recap
             document.getElementById("project-recap-text").innerHTML = jsonData.projectRecap;
-
-        }
-    };
-}
-showProjectRecap();
-
-function showProjectImage() {
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
-
+            //show project image
             const imgList = document.querySelector('#project-images-container');
-            let projects = new Array();
-
+            let projectsImages = new Array();
 
             jsonData.listUrlImage.forEach(counter => {
-                var project =
+                var image =
                     `
                 <div>
                 <img id="project-images-img" src="${counter.imageUrl}">
                 </div>
                 `
-                projects.push(project);
+                projectsImages.push(image);
             });
-            imgList.innerHTML = projects.join('');
+            imgList.innerHTML = projectsImages.join('');
         }
     };
 }
-showProjectImage();
+showProject();
 
 function showOtherproject() {
     var xhttp = new XMLHttpRequest();
@@ -235,7 +146,6 @@ function showOtherproject() {
 
             for (var i = 0; i < arrayLenght; i++) {
                 var counter = jsonData.otherProject[i];
-
                 var project =
                     `
                     <div class="project-sharing-other-img" onclick="projectRedirect(this)">
@@ -249,7 +159,7 @@ function showOtherproject() {
                             src="${counter.projectAva}">
                             <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
                     </div>
-                `
+                    `
                 projects.push(project);
             };
             listProject.innerHTML = projects.join('');
@@ -260,38 +170,22 @@ function showOtherproject() {
 }
 showOtherproject();
 
-function projectRedirect(div){
-    var projectId = div.querySelector('.upcoming-img-id').innerText;
-    console.log(projectId);
-    sessionStorage.setItem("projectId", projectId);
-    
-    location.replace("http://localhost:8084/PublishGraduationCapstone/Project_Main.html");
-  }
+function showComment() {
+    var xhttp = new XMLHttpRequest();
+    var apiShowcoment = "/PublishGraduationCapstone/api/project/showCommentsOfProject?projectId=";
+    var apiComment = apiShowcoment + projectId;
+    xhttp.open("GET", apiComment);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            var jsonData = JSON.parse(res);
+            const listProject = document.querySelector('#project-commented-container-all');
 
-  var input = document.getElementById("home-search-text");
-  input.addEventListener("keydown", function(e) {
-      if (e.keyCode === 13) {
-          showSearchPage();
-      }
-    });
-
-    function showComment(){
-        var xhttp = new XMLHttpRequest();
-        var apiShowcoment = "/PublishGraduationCapstone/api/project/showCommentsOfProject?projectId=SU20SE02";
-       
-        xhttp.open("GET", apiShowcoment);
-        xhttp.send();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                var res = this.responseText;
-                var jsonData = JSON.parse(res);
-                const listProject = document.querySelector('#project-commented-container-all');
-    
-                let projects = new Array();
-                for (var i = jsonData.commentsOfProject.length-1; i >= 0 ; i--) {
-                    console.log("mang dai: " + i)
-                    var counter = jsonData.commentsOfProject[i];
-                    var project = `
+            let projects = new Array();
+            for (var i = jsonData.commentsOfProject.length - 1; i >= 0; i--) {
+                var counter = jsonData.commentsOfProject[i];
+                var project = `
                     <div id="project-commented-container">
                         <span id="project-commented-img"><img id="project-commented-img-1" src="${counter.userAva}"
                                 alt="ava img"></span>
@@ -301,10 +195,80 @@ function projectRedirect(div){
                         <p id="project-commented-leave-text">${counter.commentContent}</p>
                     </div>
                     `
-                    projects.push(project);
-                }
-                listProject.innerHTML = projects.join('');
+                projects.push(project);
             }
-        };
+            listProject.innerHTML = projects.join('');
+        }
+    };
+}
+showComment();
+
+function showSharePostList() {
+    var xhttp = new XMLHttpRequest();
+    var apishowSharePost = "/PublishGraduationCapstone/api/share/showSharePostList?projectId=";
+    var apiSharePost = apishowSharePost + projectId;
+
+    xhttp.open("GET", apiSharePost);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            var jsonData = JSON.parse(res);
+
+            const listProject = document.querySelector('#project-sharing-container-all');
+
+            let projects = new Array();
+            var arrayLenght = jsonData.showSharePostList.length;
+            if (arrayLenght > 3)
+                arrayLenght = 3;
+            else
+                arrayLenght = jsonData.showSharePostList.length;
+
+            for (var i = 0; i < arrayLenght; i++) {
+                var counter = jsonData.showSharePostList[i];
+                var project =
+                    `
+                    <div class="project-sharing-experience-container" onclick="sharePostRedirect(this)">
+                    <div id="project-sharing-experience-img-container">
+                        <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
+                    </div>
+                    <div id="project-sharing-experience-text-container">
+                        <p>${counter.title}</p>
+                        <p class="project-sharing-experience-text-viewmore">View more...</p>
+                    </div>
+                    <p class="share-id" style="display: none">${counter.postId}</p>
+                    </div>
+                `
+                projects.push(project);
+            };
+            listProject.innerHTML = projects.join('');
+        }
+    };
+}
+showSharePostList();
+
+//redirect to project 
+function projectRedirect(div) {
+    var projectId = div.querySelector('.upcoming-img-id').innerText;
+    console.log(projectId);
+    sessionStorage.setItem("projectId", projectId);
+
+    location.replace("http://localhost:8084/PublishGraduationCapstone/Project_Main.html");
+}
+
+//show search page by enter
+var input = document.getElementById("home-search-text");
+input.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        showSearchPage();
     }
-    showComment();
+});
+
+//redirect to share post
+function sharePostRedirect(div) {
+    var sharePostId = div.querySelector('.share-id').innerText;
+    console.log(sharePostId);
+    sessionStorage.setItem("sharePostId", sharePostId);
+
+    location.replace("http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html");
+}
