@@ -2,6 +2,7 @@ package team404.account;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
+import team404.roles.RolesDTO;
 
 @XmlRootElement(name = "account")
 public class AccountDTO implements Serializable {
@@ -10,24 +11,24 @@ public class AccountDTO implements Serializable {
     private String email;
     private String name;
     private String picture;
-    private int roleId;
+    private RolesDTO role;
 
     public AccountDTO() {
         sub = "";
         email = "";
         name = "";
         picture = "";
-        roleId = 1;
+        role = null;
     }
 
-    public AccountDTO(String sub, String email, String name, String picture, int roleId) {
+    public AccountDTO(String sub, String email, String name, String picture, RolesDTO roleId) {
         this.sub = sub;
         this.email = email;
         this.name = name;
         this.picture = picture;
-        this.roleId = roleId;
+        this.role = roleId;
     }
-
+    
     /**
      * @return the sub
      */
@@ -84,16 +85,24 @@ public class AccountDTO implements Serializable {
         this.picture = picture;
     }
 
-    public int getRoleId() {
-        return roleId;
+    /**
+     * @return the roleId
+     */
+    public RolesDTO getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    /**
+     * @param roleId the roleId to set
+     */
+    public void setRole(RolesDTO role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "UserDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + ", roleId=" + roleId + '}';
+        return "AccountDTO{" + "sub=" + sub + ", email=" + email + ", name=" + name + ", picture=" + picture + ", role=" + role + '}';
     }
+    
+    
 }

@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
             jsObj.put("email", account.getEmail());
             jsObj.put(("name"), account.getName());
             jsObj.put("picture", account.getPicture());
-            jsObj.put("roleId", role);
+            jsObj.put("roleId", account.getRole().getRoleId());
             jsObj.put("token", token);
             jsArr.add(jsObj);
             JSONObject jsObjDAD = new JSONObject();
