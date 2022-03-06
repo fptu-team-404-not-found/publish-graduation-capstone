@@ -56,5 +56,42 @@ public class RolesDAO implements Serializable{
         }
         return null;
     }
-    
+    public RolesDTO getRoles(int roleId){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "Select * "
+                        + "From Roles "
+                        + "Where RoleId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setInt(1, roleId);
+                rs = stm.executeQuery();
+                if(rs.next()){
+                    int roleId2 = rs.getInt("RoleId");
+                    String roleName = rs.getString("RoleName");
+                    RolesDTO dto = new RolesDTO(roleId, roleName);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RolesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(RolesDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(RolesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
 }

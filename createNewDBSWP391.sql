@@ -758,6 +758,6 @@ inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
 
-select * 
-from Project
-where ProjectId = 'SU20SE02'
+Select acc.UserId, acc.Email, r.RoleName
+From Account acc inner join Roles r
+On acc.RoleId = r.RoleId
