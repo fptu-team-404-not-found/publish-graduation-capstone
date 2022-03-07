@@ -1,0 +1,289 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+/* ----------------------- */
+#staff-edit-post-container {
+    width: 96%;
+    margin-top: 2em;
+    display: inline-flex;
+    justify-content: center;
+}
+
+#staff-edit-post-semester-container {
+    background-color: #FFFFFF;
+    width: 16%;
+    padding: 0.8em;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    letter-spacing: 0.06em;
+    height: 5em;
+    margin-left: 3em;
+}
+
+#staff-edit-post {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+#staff-edit-post-id-container {
+    background-color: #FFFFFF;
+    width: 16%;
+    padding: 0.8em;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    letter-spacing: 0.06em;
+    height: 5em;
+    margin-left: 1em;
+}
+
+#staff-edit-post-id {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#staff-edit-post-title-container {
+    background-color: #FFFFFF;
+    width: 80%;
+    padding: 0.8em;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    letter-spacing: 0.06em;
+    height: 5em;
+    margin-left: 1em;
+}
+
+#staff-edit-post-title {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#staff-edit-post-supervisor {
+    margin: auto;
+    width: 94%;
+    display: flex;
+    justify-content: center;
+}
+
+#staff-edit-post-supervisor-container {
+    background-color: #FFFFFF;
+    margin-top: 2em;
+    margin-right: 1em;
+    padding: 1em;
+    width: 25%;
+    background-color: #FFFFFF;
+    padding: 0.8em;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    letter-spacing: 0.06em;
+    height: 5em;
+}
+
+/* team name */
+#staff-edit-post-teamname-container {
+    width: 93%;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 2em;
+    padding: 1em;
+    padding-bottom: 2em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-teamname-title {
+    margin-top: 0.5em;
+    background-color: #F47124;
+    width: 100%;
+    padding: 0.5em;
+    color: #FFFFFF;
+}
+
+#staff-edit-post-teamname-id {
+    width: 12%;
+    display: inline-block;
+}
+
+#staff-edit-post-teamname-name {
+    width: 20%;
+    display: inline-block;
+}
+
+#staff-edit-post-teamname-mail {
+    width: 20%;
+    display: inline-block;
+}
+
+#staff-edit-post-teamname-phone {
+    width: 12%;
+    display: inline-block;
+}
+
+#staff-edit-post-teamname-images {
+    display: inline-block;
+}
+
+#staff-edit-post-teamname-container > p {
+    font-size: 140%;
+}
+
+#staff-edit-post-teamname-content-id {
+    width: 12%;
+    display: inline-block;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    border: 1px solid #F47124;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-teamname-content-name {
+    width: 20%;
+    display: inline-block;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    margin-left: -0.25em;
+    border: 1px solid #F47124;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-teamname-content-mail {
+    width: 20%;
+    display: inline-block;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    margin-left: -0.25em;
+    border: 1px solid #F47124;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-teamname-content-phone {
+    width: 12%;
+    display: inline-block;
+    margin-top: 0.5em;
+    margin-left: -0.25em;
+    padding: 0.4em;
+    border: 1px solid #F47124;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-teamname-content-img {
+    width: 35%;
+    display: inline-block;
+    margin-top: 0.5em;
+    margin-left: -0.25em;
+    padding: 0.4em;
+    border: 1px solid #F47124;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-intro-word-container {
+    background-color: #FFFFFF;
+    width: 93%;
+    margin: auto;
+    height: 50em;
+    margin-top: 1em;
+    padding: 1em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#staff-edit-post-intro-word-container > p {
+    margin-bottom: 0.5em;
+    font-size: 140%;
+}
+
+#staff-edit-post-intro-img-link-container {
+    background-color: #FFFFFF;
+    width: 93%;
+    margin: auto;
+    margin-top: 1em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1em;
+}
+
+#staff-edit-post-intro-img-link-text {
+    font-size: 140%;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+#staff-edit-post-intro-img-link-container-flex {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 1em;
+}
+
+#staff-edit-post-intro-img-link {
+    width: 50%;
+    height: 2em;
+    border: 1px solid #F47124;
+    border-radius: 5px;
+}
+
+#staff-edit-post-intro-img {
+    width: 40%;
+}
+
+#staff-edit-post-btn-container {
+    width: 93%;
+    margin: auto;
+}
+
+.staff-edit-post-btn {
+    padding: 0.4em;
+    font-weight: 700;
+    font-size: 120%;
+    margin: 2em 0em;
+    width: 7em;
+    margin-right: 0.5em;
+    border-radius: 1em;
+    border: none;
+    background-color: #c1c1c1;
+    letter-spacing: 0.06em;
+}
+
+.staff-edit-submit-btn {
+    background-color: #F47124;
+}
+
+.staff-edit-post-btn:hover {
+    background-color: #FFFFFF;
+    color: #F47124;
+    border: 1px solid #F47124;
+}
+
+
+
+
+
+

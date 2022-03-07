@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Staff_EditPost.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <title>Edit Page</title>
+</head>
+
+<body>
+    <div id="staff-edit-post-container">
+        <div id="staff-edit-post-semester-container">
+            <p>Semester</p>
+            <select name="staff-edit-post" id="staff-edit-post">
+                <option value="1">Spring-2019</option>
+                <option value="2">Summer-2019</option>
+                <option value="3">Fall-2019</option>
+                <option value="4">Spring-2020</option>
+                <option value="5">Summer-2020</option>
+                <option value="6">Fall-2020</option>
+                <option value="7">Spring-2021</option>
+                <option value="8">Summer-2021</option>
+                <option value="9">Fall-2021</option>
+            </select>
+        </div>
+        <div id="staff-edit-post-id-container">
+            <p>ID</p>
+            <input type="text" name="staff-edit-post-id" id="staff-edit-post-id">
+        </div>
+        <div id="staff-edit-post-title-container">
+            <p>Title</p>
+            <input type="text" name="staff-edit-post-title" id="staff-edit-post-title">
+        </div>
+    </div>
+    <div id="staff-edit-post-supervisor">
+        <div id="staff-edit-post-supervisor-container">
+            <p>Supervisors</p>
+            <select name="staff-edit-post" id="staff-edit-post">
+                <option value="staff-edit-post-choose">Choose supervisor</option>
+                <option value="staff-edit-post-choose-1">Nguyễn Thế Hoàng</option>
+                <option value="staff-edit-post-choose-2">Thân Thị Ngọc Vân</option>
+            </select>
+        </div>
+        <div id="staff-edit-post-supervisor-container">
+            <p>Supervisors</p>
+            <select name="staff-edit-post" id="staff-edit-post">
+                <option value="staff-edit-post-choose">Choose supervisor</option>
+                <option value="staff-edit-post-choose-1">Nguyễn Thế Hoàng</option>
+                <option value="staff-edit-post-choose-2">Thân Thị Ngọc Vân</option>
+            </select>
+        </div>
+    </div>
+    <div id="staff-edit-post-teamname-container">
+        <p>Members</p>
+        <div id="staff-edit-post-teamname-title">
+            <span id="staff-edit-post-teamname-id">ID</span>
+            <span id="staff-edit-post-teamname-name">Name</span>
+            <span id="staff-edit-post-teamname-mail">Mail</span>
+            <span id="staff-edit-post-teamname-phone">Phone</span>
+            <span id="staff-edit-post-teamname-images">Images</span>
+        </div>
+
+        <div id="staff-edit-post-teamname-content">
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-id"
+                    placeholder="E.g. SE150999,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-name"
+                    placeholder="E.g. Thúy Phượng,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-mail"
+                    placeholder="E.g. phuongnltse150999@fpt.edu.vn,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-phone"
+                    placeholder="E.g. 0921220406,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-img"
+                    placeholder="E.g. cái này tui chưa hiểu phải làm gì!?!"></span>
+        </div>
+        <div id="staff-edit-post-teamname-content">
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-id"
+                    placeholder="E.g. SE150999,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-name"
+                    placeholder="E.g. Thúy Phượng,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-mail"
+                    placeholder="E.g. phuongnltse150999@fpt.edu.vn,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-phone"
+                    placeholder="E.g. 0921220406,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-img"
+                    placeholder="E.g. cái này tui chưa hiểu phải làm gì!?!"></span>
+        </div>
+        <div id="staff-edit-post-teamname-content">
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-id"
+                    placeholder="E.g. SE150999,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-name"
+                    placeholder="E.g. Thúy Phượng,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-mail"
+                    placeholder="E.g. phuongnltse150999@fpt.edu.vn,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-phone"
+                    placeholder="E.g. 0921220406,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-img"
+                    placeholder="E.g. cái này tui chưa hiểu phải làm gì!?!"></span>
+        </div>
+        <div id="staff-edit-post-teamname-content">
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-id"
+                    placeholder="E.g. SE150999,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-name"
+                    placeholder="E.g. Thúy Phượng,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-mail"
+                    placeholder="E.g. phuongnltse150999@fpt.edu.vn,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-phone"
+                    placeholder="E.g. 0921220406,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-img"
+                    placeholder="E.g. cái này tui chưa hiểu phải làm gì!?!"></span>
+        </div>
+        <div id="staff-edit-post-teamname-content">
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-id"
+                    placeholder="E.g. SE150999,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-name"
+                    placeholder="E.g. Thúy Phượng,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-mail"
+                    placeholder="E.g. phuongnltse150999@fpt.edu.vn,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-phone"
+                    placeholder="E.g. 0921220406,..."></span>
+            <span><input type="text" name="" id="staff-edit-post-teamname-content-img"
+                    placeholder="E.g. cái này tui chưa hiểu phải làm gì!?!"></span>
+        </div>
+    </div>
+    <div id="staff-edit-post-intro-word-container">
+        <p>Introduction</p>
+        <form>
+            <textarea name="ten" id="staff-edit-post-intro-word"></textarea>
+        </form>
+    </div>
+
+    <div id="staff-edit-post-intro-word-container">
+        <p>Details</p>
+        <form>
+            <textarea name="ten" id="staff-edit-post-intro-detail"></textarea>
+        </form>
+    </div>
+
+    <div id="staff-edit-post-intro-word-container">
+        <p>Recap</p>
+        <form>
+            <textarea name="ten" id="staff-edit-post-intro-recap"></textarea>
+        </form>
+    </div>
+
+    <div id="staff-edit-post-intro-img-link-container">
+        <p id="staff-edit-post-intro-img-link-text">Images Link</p>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" id="staff-edit-post-intro-img-link">
+            <img id="staff-edit-post-intro-img"
+                src="https://thietkedohoa.hcmuni.fpt.edu.vn/storage/app/media/Event/CONG%20CHIEU%20PHIM%20TOT%20NGHIEP/CoverSmall.jpg"
+                alt="">
+        </div>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" id="staff-edit-post-intro-img-link">
+            <img id="staff-edit-post-intro-img"
+                src="https://thietkedohoa.hcmuni.fpt.edu.vn/storage/app/media/Event/CONG%20CHIEU%20PHIM%20TOT%20NGHIEP/CoverSmall.jpg"
+                alt="">
+        </div>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" id="staff-edit-post-intro-img-link">
+            <img id="staff-edit-post-intro-img"
+                src="https://thietkedohoa.hcmuni.fpt.edu.vn/storage/app/media/Event/CONG%20CHIEU%20PHIM%20TOT%20NGHIEP/CoverSmall.jpg"
+                alt="">
+        </div>
+    </div>
+
+    <div id="staff-edit-post-btn-container">
+        <input type="button" value="Preview" class="staff-edit-post-btn">
+        <input type="button" value="Submit" class="staff-edit-post-btn staff-edit-submit-btn">
+    </div>
+
+    <script>
+        CKEDITOR.replace('staff-edit-post-intro-word');
+        CKEDITOR.replace('staff-edit-post-intro-detail');
+        CKEDITOR.replace('staff-edit-post-intro-recap');
+        CKEDITOR.on('instanceLoaded', function (e) {
+            e.editor.resize(1380, 720)
+        });
+    </script>
+</body>
+
+</html>
