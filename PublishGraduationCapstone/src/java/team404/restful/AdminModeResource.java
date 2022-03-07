@@ -14,6 +14,8 @@ import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.supervisor.SupervisorDAO;
+import team404.supervisor.SupervisorDTO;
 
 @Path("admin")
 public class AdminModeResource {
@@ -26,24 +28,7 @@ public class AdminModeResource {
      */
     public AdminModeResource() {
     }
-    @Path("/showAccountList") 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String showAccountList(){
-        AccountDAO dao = new AccountDAO();
-        List<AccountDTO> list = dao.getAllAccountList();
-        JSONArray jsArr = new JSONArray();
-        for (AccountDTO accountDTO : list) {
-            JSONObject jsObj = new JSONObject();
-            jsObj.put("userID", accountDTO.getSub());
-            jsObj.put("email", accountDTO.getEmail());
-            jsObj.put("roleName", accountDTO.getRole().getRoleName());
-            jsArr.add(jsObj);
-        }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showAccountList", jsArr);
-        return jsObj.toJSONString();
-    }
+    
     @Path("/showSupervisorList") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

@@ -64,6 +64,7 @@ public class ShareResource {
         String result = commentDAO.commentOnShare(shareId, email, commentContent);
         
         return result;
+    }
 
     @Path("/showSharePostList")
     @GET
