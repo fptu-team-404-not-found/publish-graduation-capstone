@@ -2,6 +2,7 @@ package team404.restful;
 
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Path;
@@ -12,6 +13,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.comment.CommentDAO;
 import team404.comment.CommentDTO;
+import team404.favorite.FavoriteDAO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
@@ -145,7 +147,7 @@ public class ProjectResource {
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentId", commentDTO.getCommentId());
-            jsObj.put("commentDate", commentDTO.getCommentDate());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());
@@ -157,4 +159,32 @@ public class ProjectResource {
         jsObj.put("commentsOfProject", jsArr);
         return jsObj.toJSONString();
     }
+    
+    //-- TIENHUYNHTN --// //OK
+    @Path("/bookmark")
+    @GET
+    public String bookmark(
+            @QueryParam("projectId") String projectId, 
+            @QueryParam("email") String email) {
+        FavoriteDAO favoriteDAO = new FavoriteDAO();
+        boolean status = favoriteDAO.bookmark(projectId, email);
+        
+        if (status)
+            return "Bookmark Success!";
+        return "Bookmark Fail!";
+    }
+    
+    //-- TIENHUYNHTN --// //OK
+    @Path("/commentOnProject")
+    @POST
+    public String commentOnProject(
+            @QueryParam("projectId") String projectId, 
+            @QueryParam("email") String email, 
+            @QueryParam("commentContent") String commentContent) {
+        CommentDAO commentDAO = new CommentDAO();
+        String result = commentDAO.commentOnProject(projectId, email, commentContent);
+        
+        return result;
+    }
+    
 }

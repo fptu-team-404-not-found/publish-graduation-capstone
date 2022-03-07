@@ -13,6 +13,7 @@ import org.json.simple.JSONObject;
 import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
 import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 
 @Path("admin")
 public class AdminModeResource {
@@ -45,6 +46,7 @@ public class AdminModeResource {
         return result;
     }
     
+    //Lỗi
     @Path("/updateRoleForAccount") 
     @GET
     public void updateRoleForAccount(
@@ -52,5 +54,22 @@ public class AdminModeResource {
             @QueryParam("RoleId") int RoleId) {
         AccountDAO dao = new AccountDAO();
         dao.updateRole(UserId, RoleId);
+    }
+    
+    //-- TIENHUYNHTN --// //OK
+    @Path("/showAccountList")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showAccountList() {
+        AccountDAO accountDAO = new AccountDAO();
+        List<AccountDTO> list = accountDAO.showAccountList();
+        JSONArray jsArr = new JSONArray();
+        for (AccountDTO accountDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("email", accountDTO.getEmail());
+            jsObj.put("role", accountDTO.getRole().getRoleName());
+            jsArr.add(jsObj);
+        }
+        return jsArr.toJSONString();
     }
 }

@@ -38,12 +38,13 @@ public class LoginServlet extends HttpServlet {
 
             AccountDAO userDAO = new AccountDAO();
 
-            String id = user.getSub();
-            boolean idExisted = userDAO.checkId(id);
+            //Lỗi
+            //String id = user.getSub();
+            //boolean idExisted = userDAO.checkId(id);
 
-            if (!idExisted) {
-                userDAO.createNewAcccount(user);
-            }
+//            if (!idExisted) {
+//                userDAO.createNewAcccount(user);
+//            }
 
             out.print(json);
             response.flushBuffer();

@@ -26,7 +26,7 @@ public class TeamMemberDAO {
             if (con != null) {
                 String sql = "Select TeamMember.StudentId, TeamMember.MemberName, TeamMember.MemberAvatar, TeamMember.Phone, Account.Email "
                         + "From TeamMember JOIN Account "
-                        + "On TeamMember.ProjectId = ? AND Account.UserId = TeamMember.UserId ";
+                        + "On TeamMember.ProjectId = ? AND Account.Email = TeamMember.Account ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, projectId);
                 rs = stm.executeQuery();

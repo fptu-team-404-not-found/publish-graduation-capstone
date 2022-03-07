@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.sensitiveword.SensitiveWordDAO;
 import team404.utils.DBHelpers;
 
 public class CommentDAO {
@@ -24,9 +25,9 @@ public class CommentDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, Account.UserId "
+                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, Account.Email "
                         + "From Comment JOIN Account "
-                        + "ON Comment.UserId = Account.UserId "
+                        + "ON Comment.Account = Account.Email "
                         + "Where ProjectId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, projectId);
@@ -37,10 +38,10 @@ public class CommentDAO {
                     int commentId = rs.getInt("CommentId");
                     Timestamp commentDate = rs.getTimestamp("CommentDate");
                     String commentContent = rs.getNString("CommentContent");
-                    String userId = rs.getString("UserId");
+                    String email = rs.getString("Email");
 
                     AccountDAO userDAO = new AccountDAO();
-                    AccountDTO userDTO = userDAO.getUserNamePictureByUserId(userId);
+                    AccountDTO userDTO = userDAO.getUserNamePictureByEmail(email);
 
                     CommentDTO commentDTO = new CommentDTO();
                     commentDTO.setCommentId(commentId);
@@ -68,14 +69,14 @@ public class CommentDAO {
 
         return null;
     }
-    
+
     public List<CommentDTO> getCommentsOfShare(String postId) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, Account.UserId "
+                String sql = "Select Comment.CommentId, Comment.CommentDate, Comment.CommentContent, Account.Email "
                         + "From Comment JOIN Account "
-                        + "ON Comment.UserId = Account.UserId "
+                        + "ON Comment.Account = Account.Email "
                         + "Where PostId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, postId);
@@ -86,10 +87,10 @@ public class CommentDAO {
                     int commentId = rs.getInt("CommentId");
                     Timestamp commentDate = rs.getTimestamp("CommentDate");
                     String commentContent = rs.getNString("CommentContent");
-                    String userId = rs.getString("UserId");
+                    String email = rs.getString("Email");
 
                     AccountDAO userDAO = new AccountDAO();
-                    AccountDTO userDTO = userDAO.getUserNamePictureByUserId(userId);
+                    AccountDTO userDTO = userDAO.getUserNamePictureByEmail(email);
 
                     CommentDTO commentDTO = new CommentDTO();
                     commentDTO.setCommentId(commentId);
@@ -116,5 +117,103 @@ public class CommentDAO {
         }
 
         return null;
+    }
+
+    public String containBannedWords(String commentContent) {
+        SensitiveWordDAO sensitiveWordDAO = new SensitiveWordDAO();
+        List<String> list = sensitiveWordDAO.getBannedWordList();
+        for (String bannedWord : list) {
+            if (commentContent.contains(bannedWord)) {
+                return bannedWord;
+            }
+        }
+
+        return "";
+    }
+
+    public String commentOnProject(String projectId, String email, String commentContent) {
+        try {
+            String bannedWord = containBannedWords(commentContent);
+            if (!"".equals(bannedWord)) {
+                return bannedWord;
+            }
+
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Insert into Comment(CommentContent, Account, ProjectId) "
+                        + "Values(?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, commentContent);
+                stm.setString(2, email);
+                stm.setString(3, projectId);
+                int affectedRows = stm.executeUpdate();
+                if (affectedRows > 0) {
+                    return "";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NamingException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return "";
+    }
+
+    public String commentOnShare(String shareId, String email, String commentContent) {
+        try {
+            String bannedWord = containBannedWords(commentContent);
+            if (!"".equals(bannedWord)) {
+                return bannedWord;
+            }
+
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Insert into Comment(CommentContent, Account, PostId) "
+                        + "Values(?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, commentContent);
+                stm.setString(2, email);
+                stm.setString(3, shareId);
+                int affectedRows = stm.executeUpdate();
+                if (affectedRows > 0) {
+                    return "";
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NamingException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return "";
     }
 }

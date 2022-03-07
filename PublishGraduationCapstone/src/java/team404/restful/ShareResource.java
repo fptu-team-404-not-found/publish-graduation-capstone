@@ -2,6 +2,7 @@ package team404.restful;
 
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Path;
@@ -22,6 +23,7 @@ public class ShareResource {
     public ShareResource() {
     }
 
+    //-- TIENHUYNHTN --//
     @Path("showCommentsOfShare")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -45,5 +47,18 @@ public class ShareResource {
         JSONObject jsObj = new JSONObject();
         jsObj.put("commentsOfShare", jsArr);
         return jsObj.toJSONString();
+    }
+    
+    //-- TIENHUYNHTN --// //OK
+    @Path("/commentOnShare")
+    @POST
+    public String commentOnProject(
+            @QueryParam("shareId") String shareId, 
+            @QueryParam("email") String email, 
+            @QueryParam("commentContent") String commentContent) {
+        CommentDAO commentDAO = new CommentDAO();
+        String result = commentDAO.commentOnShare(shareId, email, commentContent);
+        
+        return result;
     }
 }
