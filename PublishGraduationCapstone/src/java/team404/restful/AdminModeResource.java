@@ -26,7 +26,44 @@ public class AdminModeResource {
      */
     public AdminModeResource() {
     }
-
+    @Path("/showAccountList") 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showAccountList(){
+        AccountDAO dao = new AccountDAO();
+        List<AccountDTO> list = dao.getAllAccountList();
+        JSONArray jsArr = new JSONArray();
+        for (AccountDTO accountDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("userID", accountDTO.getSub());
+            jsObj.put("email", accountDTO.getEmail());
+            jsObj.put("roleName", accountDTO.getRole().getRoleName());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showAccountList", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/showSupervisorList") 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showSupervisorList(){
+        SupervisorDAO dao = new SupervisorDAO();
+        List<SupervisorDTO> list = dao.getAllSupervisors();
+        JSONArray jsArr = new JSONArray();
+        for (SupervisorDTO supervisorDTO :  list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
+            jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
+            jsObj.put("status", supervisorDTO.isStatus());
+            jsObj.put("userID", supervisorDTO.getUser().getSub());
+            
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showSupervisorList", jsArr);
+        return jsObj.toJSONString();
+    }
     @Path("/showRoleForAccount") 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

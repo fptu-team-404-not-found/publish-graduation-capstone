@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
 import team404.utils.DBHelpers;
 
@@ -158,9 +159,21 @@ public class AccountDAO {
                 stm = con.prepareStatement(sql);
                 stm.setString(1, userId);
                 rs = stm.executeQuery();
+                RolesDAO rolesDao = new RolesDAO();
+                RolesDTO rolesDto = new RolesDTO();
                 if (rs.next()) {
-                    //AccountDTO dto = new AccountDTO(rs.getString("UserId"), rs.getString("Email"), rs.getNString("Name"), rs.getString("Picture"), rs.getInt("RoleId"));
-                    //return dto;
+                    String userId2 = rs.getString("UserId");
+                    String email = rs.getString("Email");
+                    String name = rs.getNString("Name");
+                    String picture = rs.getString("Picture");
+                    rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
+                    AccountDTO dto = new AccountDTO();
+                    dto.setSub(userId2);
+                    dto.setEmail(email);
+                    dto.setName(name);
+                    dto.setPicture(picture);
+                    dto.setRole(rolesDto);
+                    return dto;
                 }
             }
         } catch (SQLException ex) {
@@ -242,6 +255,91 @@ public class AccountDAO {
                     accountDTO.setRole(rolesDTO);
                     
                     list.add(accountDTO);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public int getRole(String id) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select r.[RoleId] "
+                        + "From Account a inner join Roles r "
+                        + "On a.RoleId = r.RoleId "
+                        + "Where UserId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, id);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    int role = rs.getInt("RoleId");
+                    return role;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return -1;
+    }
+
+    public List<AccountDTO> getAllAccountList() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select acc.UserId, acc.Email, r.RoleId "
+                        + "From Account acc inner join Roles r "
+                        + "On acc.RoleId = r.RoleId ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<AccountDTO> list = new ArrayList<>();
+                
+                RolesDAO rolesDao = new RolesDAO();
+                RolesDTO rolesDto = new RolesDTO();
+                while(rs.next()){
+                    String userId = rs.getString("UserId");
+                    String email = rs.getString("Email");
+                    rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
+                    AccountDTO dto = new AccountDTO();
+                    dto.setSub(userId);
+                    dto.setEmail(email);
+                    dto.setRole(rolesDto);
+                    list.add(dto);
                 }
                 return list;
             }

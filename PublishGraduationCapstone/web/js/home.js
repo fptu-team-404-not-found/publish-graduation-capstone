@@ -49,9 +49,11 @@ function showOtherProject() {
                 var project =
                     `
             <span class="other-img" onclick=" projectRedirect(this)">
+            <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
             <img class="other-project-img" src="${counter.projectAva}" > 
             <p class="other-project-img-text">${counter.projectName}</p> 
             <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
+            </a>
             </span>
             `
                 projects.push(project);
@@ -84,16 +86,18 @@ function showHightLight() {
             jsonData.getHighlightProjects.forEach(counter => {
                 var project = `
                 <div class="hightlight-img" onclick="projectRedirect(this)">
+                <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
                 <div class="hightlight-img-container">
                     <p class="hightlight-img-text">${counter.projectName}</p>
                     <p class="hightlight-img-line"></p>
-                    <p class="hightlight-img-team">${counter.teamName}</p>
                     <p class="hightlight-img-content">${counter.introductionContent}</p>
                     <p class="hightlight-img-more">More...</p>
                     <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
                 </div>
                 <img class="hightlight-project-img-container" src="${counter.projectAva}">
+                </a>
                 </div>
+
                 `
 
                 projects.push(project);
@@ -117,8 +121,6 @@ input.addEventListener("keydown", function(e) {
     var projectId = div.querySelector('.upcoming-img-id').innerText;
     console.log(projectId);
     sessionStorage.setItem("projectId", projectId);
-    
-    location.replace("http://localhost:8084/PublishGraduationCapstone/Project_Main.html");
   }
 
 
@@ -191,10 +193,6 @@ console.log(showUpcoming(function(jsonData) {
     console.log("Show ne :" + jsonData);
     comingProjects = jsonData;
 }));
-
-function hoverUpcoming() {
-
-}
 
 function showThisUpcoming(div) {
     var thisProjectId = div.querySelector('.upcoming-img-id').innerText;

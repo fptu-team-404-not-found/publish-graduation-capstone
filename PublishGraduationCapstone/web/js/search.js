@@ -62,10 +62,12 @@ function showSearchPage() {
             jsonData.searchProject.forEach(counter => {
                 var project = 
                 `
-                <span id="search-result-project" class="${counter.semester.trim()}">
+                <span id="search-result-project" class="${counter.semester}" onclick="projectRedirect(this)">
+                <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
                 <img class="search-result-project-image" src="${counter.projectAva}">
                 <p class="search-result-project-title">${counter.projectName}</p>
                 <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
+                </a>
                 </span>
               
                 `
@@ -153,3 +155,9 @@ function change() {
        showSearchPage();
    }
  });
+
+ function projectRedirect(div){
+  var projectId = div.querySelector('.upcoming-img-id').innerText;
+  console.log(projectId);
+  sessionStorage.setItem("projectId", projectId);
+}

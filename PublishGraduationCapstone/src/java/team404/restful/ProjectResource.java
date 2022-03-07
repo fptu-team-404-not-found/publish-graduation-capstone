@@ -29,7 +29,7 @@ public class ProjectResource {
     public ProjectResource() {
     }
 
-    @Path("/getUpcomingProjects") //Lỗi
+    @Path("/getUpcomingProjects")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getUpcomingProjects() {
@@ -147,7 +147,7 @@ public class ProjectResource {
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentId", commentDTO.getCommentId());
-            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toLocaleString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());

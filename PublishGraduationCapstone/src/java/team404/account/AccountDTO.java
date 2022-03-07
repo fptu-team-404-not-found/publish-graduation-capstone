@@ -86,4 +86,6 @@ public class AccountDTO implements Serializable {
     public String toString() {
         return "AccountDTO{" + "email=" + email + ", name=" + name + ", picture=" + picture + ", role=" + role + '}';
     }
+    
+    
 }

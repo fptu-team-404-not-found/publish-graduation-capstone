@@ -718,8 +718,6 @@ VALUES
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
 '0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com')
 
-
-
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2017/06/05/07/58/butterfly-2373175_960_720.png', 'SU20SE02')
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
@@ -797,7 +795,6 @@ null,
 'NTH',
 2,
 'SU78SE14')
-
 
 INSERT INTO Favorite(Account , ProjectId) VALUES('audi@gmail.com', 'SU20SE02')
 
@@ -942,5 +939,3 @@ on st.StateId = sp.StateId
 inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
-
-insert into TeamMember(StudentId) values ('SE151479')

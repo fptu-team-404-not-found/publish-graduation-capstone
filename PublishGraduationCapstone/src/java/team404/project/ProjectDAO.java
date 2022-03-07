@@ -29,7 +29,7 @@ public class ProjectDAO implements Serializable {
 
     private List<ProjectDTO> searchProjectList;
 
-    public List<ProjectDTO> getHighlightProjectList() { 
+    public List<ProjectDTO> getHighlightProjectList() {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -144,7 +144,7 @@ public class ProjectDAO implements Serializable {
         return -1;
     }
 
-    public List<ProjectDTO> getSearchProjectList(String keyword) { 
+    public List<ProjectDTO> getSearchProjectList(String keyword) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -243,6 +243,51 @@ public class ProjectDAO implements Serializable {
         return null;
     }
 
+    public ProjectDTO getSingleProject(String projectId) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select ProjectId, ProjectName, ProjectAva, IntroductionContent "
+                        + "From Project "
+                        + "Where ProjectId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String projectId2 = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    String projectAva = rs.getString("ProjectAva");
+                    String introductionContent = rs.getNString("IntroductionContent");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
+                    dto.setIntroductionContent(introductionContent);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
     //-- TIENHUYNHTN --//
     public List<ProjectDTO> showOtherProjects() {
         try {
@@ -317,7 +362,7 @@ public class ProjectDAO implements Serializable {
                     dto.setIntroductionContent(intro);
                     dto.setDetails(details);
                     dto.setRecap(recap);
-                    
+
                     return dto;
                 }
             }
@@ -344,7 +389,7 @@ public class ProjectDAO implements Serializable {
     }
 
     //-- TIENHUYNHTN --//
-    public String showProjectDetails(String projectId) { 
+    public String showProjectDetails(String projectId) {
         ProjectDAO projectDAO = new ProjectDAO();
         TeamMemberDAO teamMemberDAO = new TeamMemberDAO();
         SupervisorDAO supervisorDAO = new SupervisorDAO();
@@ -389,7 +434,6 @@ public class ProjectDAO implements Serializable {
         }
         jsObject.put("listSupervisor", jsArrSupervisor);
 
-        
         JSONArray jsArrImage = new JSONArray();
         for (String imageUrl : listUrlImages) {
             JSONObject jsObjectImg = new JSONObject();

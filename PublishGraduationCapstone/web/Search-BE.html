@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-signin-client_id" content="905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com">
+    </head>
+    <body>
+
+        <a href="home.html" onclick="signOut();">Sign Out</a>
+        <script>
+            var id = sessionStorage.getItem("sub");
+            var email = sessionStorage.getItem("email");
+            var name = sessionStorage.getItem("name");
+            var picture = sessionStorage.getItem("picture");
+            var role = sessionStorage.getItem("roleId");
+            var token = sessionStorage.getItem("token");
+            console.log("sub: "+ id);
+            console.log("email "+ email);
+            console.log("name "+ name);
+            console.log("picture "+ picture);
+            console.log("roleId "+ role);
+            console.log("token "+ token);
+            function onLoad() {
+                gapi.load('auth2', function () {
+                    gapi.auth2.init();
+                });
+            }
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    sessionStorage.clear();
+                    alert('You have been signed out');
+                    console.log('User signed out.');
+                });
+            }
+ 
+        </script>
+        <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+        <!--        <script>
+                    console.log('tien');
+                    function getUrlVars() {
+                        var vars = {};
+                        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+                                function (m, key, value) {
+                                    vars[key] = value;
+                                    console.log('var: ' + vars[key]); ///para here
+                                });
+                        return vars;
+                    }
+        
+                    var fType = getUrlVars()["type"];
+                    console.log('type: ' + fType); //undefine
+                    
+                </script>-->
+    </body>
+</html>

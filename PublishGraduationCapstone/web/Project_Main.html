@@ -18,39 +18,56 @@
 <body>
     <div id="menu">
         <ul>
-            <li><img id="background-img" src="./img/logo-fptu.png">
+            <li>
+                <a href="http://localhost:8084/PublishGraduationCapstone/">
+                    <img id="background-img" src="./img/logo-fptu.png">
+                </a>
             </li>
-            <li class="nav-home-1"><a href="home.html">Home</a></li>
+            <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
         <div id="icon-show-login" onclick="showLogin()">
             <i class="fa-solid fa-user"></i>
-            <button id="home-login" name="button" type="button">Login</button>
         </div>
-        <div id="menu-show-search" onclick="showSearch()">
+        <div class="SearchIcon" onclick="showSearch()">
             <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
         </div>
         <div id="home-search-container">
             <span>
                 <input type="text" name="home-search-text" id="home-search-text"
                     placeholder="Student’s name, Project’s name, Lecturer’s name ">
-                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                <div class="SearchIcon" onclick="showSearchPage()">
+                    <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                </div>
             </span>
         </div>
-
     </div>
+
+
     <div id="project-main-infor">
         <h1 id="project-title">PHẦN MỀM QUẢN LÝ TRƯỜNG MẦM NON TIÊN PHƯỢNG</h1>
         <div id="project-introduction">
             <p class="title">INTRODUCTION</p>
             <div id="intro-information">
-
-                <iframe id="intro-information-vid" src="https://www.youtube.com/embed/CxwJrzEdw1U" 
-                title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                 allowfullscreen></iframe>
-                <p id="intro-information-text">Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm
+                
+                
+                <p id="intro-information-text">
+                    <iframe id="intro-information-vid" src="https://www.youtube.com/embed/CxwJrzEdw1U" 
+                    title="YouTube video player" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+                    Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm
+                    Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về
+                    Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.
+                    Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát
+                    triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do
+                    làm Project, sơ lược về việc phát triển của những phần mềm tương tự.Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm
+                    Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về
+                    Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.
+                    Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát
+                    triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do
+                    làm Project, sơ lược về việc phát triển của những phần mềm tương tự.Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm
                     Project, sơ lược về việc phát triển của những phần mềm tương tự. Phần này sẽ chứa đoạn giới thiệu về
                     Project, có thể bao gồm lý do làm Project, sơ lược về việc phát triển của những phần mềm tương tự.
                     Phần này sẽ chứa đoạn giới thiệu về Project, có thể bao gồm lý do làm Project, sơ lược về việc phát
@@ -228,23 +245,27 @@
                 </div>
 
                 <p id="project-comment-count"> comments</p>
+                <div id="project-commented-container-all">
+                    <div id="project-commented-container">
+                        <span id="project-commented-img">
+                            <img id="project-commented-img-1" src="img/Tien-img.jpg"
+                                alt=""></span>
+                        <span id="project-commented-text">Thủy Tiên</span>
+                        <span id="project-commented-line">-</span>
+                        <span id="project-commented-date">22/02/2022</span>
+                        <p id="project-commented-leave-text">Đồ án hay và nhân văn quá!</p>
+                    </div>
 
-                <div id="project-commented-container">
-                    <span id="project-commented-img"><img id="project-commented-img-1" src="img/Tien-img.jpg"
-                            alt=""></span>
-                    <span id="project-commented-text">Thủy Tiên</span>
-                    <span id="project-commented-line">-</span>
-                    <span id="project-commented-date">22/02/2022</span>
-                    <p id="project-commented-leave-text">Đồ án hay và nhân văn quá!</p>
-                </div>
-
-                <div id="project-commented-container">
-                    <span id="project-commented-img"><img id="project-commented-img-1" src="img/Phuong-img.jpg"
-                            alt=""></span>
-                    <span id="project-commented-text">Thúy Phượng</span>
-                    <span id="project-commented-line">-</span>
-                    <span id="project-commented-date">21/02/2022</span>
-                    <p id="project-commented-leave-text">Nhóm quá xuất sắc và chất lượng</p>
+                    <div id="project-commented-container">
+                        <span id="project-commented-img">
+                            <img id="project-commented-img-1" src="img/Phuong-img.jpg"
+                                alt="">
+                        </span>
+                        <span id="project-commented-text">Thúy Phượng</span>
+                        <span id="project-commented-line">-</span>
+                        <span id="project-commented-date">21/02/2022</span>
+                        <p id="project-commented-leave-text">Nhóm quá xuất sắc và chất lượng</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -254,6 +275,7 @@
     <div id="project-sharing-container">
         <div id="project-sharing-experience">
             <p id="project-sharing-experience-title">Sharing about this Project</p>
+            <div id="project-sharing-container-all">
             <div class="project-sharing-experience-container">
                 <div id="project-sharing-experience-img-container">
                     <img id="project-sharing-experience-img" src="img/thay-Hoang-img.jpg" alt="">
@@ -282,8 +304,10 @@
                 </div>
             </div>
         </div>
+        </div>
         <div id="project-sharing-other-project">
             <p id="project-sharing-other-title">Other Projects</p>
+            <div id="project-sharing-other-project-container">
             <div class="project-sharing-other-img">
                 <div class="project-sharing-other-container">
                     <p class="project-sharing-other-img-text">PROJECT 1</p>
@@ -341,7 +365,10 @@
                 <img class="project-sharing-other-img-container"
                     src="https://bigdata-vn.com/wp-content/uploads/2021/10/Hinh-nen-phong-canh-dep.jpg">
             </div>
+            </div>
+            <a href="http://localhost:8084/PublishGraduationCapstone/AllProduct.html" style="text-decoration: none">
             <div class="project-sharing-other-viewmore">View More</div>
+            </a>
         </div>
     </div>
 

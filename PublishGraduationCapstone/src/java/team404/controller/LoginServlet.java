@@ -2,10 +2,14 @@ package team404.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
 import team404.utils.GoogleHelpers;
@@ -31,24 +35,41 @@ public class LoginServlet extends HttpServlet {
         String token = request.getParameter("token");
 
         try {
+      
             
             GoogleHelpers googleHelper = new GoogleHelpers();
             String json = googleHelper.getUserInfo(token);
-            AccountDTO user = googleHelper.getUserFromJson(json);
+            
+            AccountDTO account = googleHelper.getUserFromJson(json);
 
-            AccountDAO userDAO = new AccountDAO();
+            AccountDAO accountDAO = new AccountDAO();
+            String id = account.getSub();
+            boolean idExisted = accountDAO.checkId(id);
 
-            //Lỗi
-            //String id = user.getSub();
-            //boolean idExisted = userDAO.checkId(id);
-
-//            if (!idExisted) {
-//                userDAO.createNewAcccount(user);
-//            }
-
-            out.print(json);
+            if (!idExisted) {
+                accountDAO.createNewAcccount(account);
+            }
+            int role = accountDAO.getRole(id);
+            
+            JSONArray jsArr = new JSONArray();
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("sub", account.getSub());
+            jsObj.put("email", account.getEmail());
+            jsObj.put(("name"), account.getName());
+            jsObj.put("picture", account.getPicture());
+            jsObj.put("roleId", account.getRole().getRoleId());
+            jsObj.put("token", token);
+            jsArr.add(jsObj);
+            JSONObject jsObjDAD = new JSONObject();
+            jsObjDAD.put("information", jsArr);
+            
+            
+            out.print(jsObjDAD);
             response.flushBuffer();
             out.flush();
+//            RequestDispatcher rd = request.getRequestDispatcher("Search-BE.html");
+//            rd.forward(request, response);
+            
         } finally {
             out.close();
         }

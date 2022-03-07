@@ -42,10 +42,12 @@ function showAllProduct() {
           
             jsonData.otherProject.forEach(counter => {
                 var project =`
-                <span class="other-img">
+                <span class="other-img" onclick=" projectRedirect(this)">
+                <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
                 <img class="other-project-img" src="${counter.projectAva}" > 
                 <p class="other-project-img-text">${counter.projectName}</p> 
                 <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
+                </a>
                 </span>
                 `
 
@@ -63,3 +65,9 @@ var input = document.getElementById("home-search-text");
         showSearchPage();
     }
   });
+
+  function projectRedirect(div){
+    var projectId = div.querySelector('.upcoming-img-id').innerText;
+    console.log(projectId);
+    sessionStorage.setItem("projectId", projectId);
+  }
