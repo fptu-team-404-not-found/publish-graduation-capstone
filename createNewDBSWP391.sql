@@ -937,6 +937,3 @@ inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
 
-select * 
-from Project
-where ProjectId = 'SU20SE02'
