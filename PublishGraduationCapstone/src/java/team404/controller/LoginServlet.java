@@ -43,7 +43,6 @@ public class LoginServlet extends HttpServlet {
             AccountDTO account = googleHelper.getUserFromJson(json);
 
             AccountDAO accountDAO = new AccountDAO();
-
             String id = account.getSub();
             boolean idExisted = accountDAO.checkId(id);
 

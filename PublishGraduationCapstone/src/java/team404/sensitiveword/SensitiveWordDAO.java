@@ -58,5 +58,44 @@ public class SensitiveWordDAO implements Serializable{
         }
         return null;
     }
+  
+  public List<String> getBannedWordList() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select banned_word "
+                        + "From Sensitive_word ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<String> list = new ArrayList<>();
+                while (rs.next()) {
+                    String word = rs.getNString("banned_word");
+                    list.add(word);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SensitiveWordDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SensitiveWordDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }  finally {
+            try {
+                if (rs != null) {
+
+                    rs.close();
+
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SensitiveWordDAO.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+        }
+        return null;
+    }
     
 }

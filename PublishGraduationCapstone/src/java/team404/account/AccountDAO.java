@@ -19,6 +19,7 @@ public class AccountDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
+    //Lỗi
     public boolean checkId(String id) {
         try {
             //1. make connection to DB
@@ -62,6 +63,7 @@ public class AccountDAO {
         return false;
     }
 
+    //Lỗi
     public boolean createNewAcccount(AccountDTO dto) {
 
         try {
@@ -71,7 +73,7 @@ public class AccountDAO {
                         + "UserId, email, name, picture"
                         + ") Values(?, ?, ?, ?)";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, dto.getSub());
+                //stm.setString(1, dto.getSub());
                 stm.setString(2, dto.getEmail());
                 stm.setString(3, dto.getName());
                 stm.setString(4, dto.getPicture());
@@ -103,15 +105,15 @@ public class AccountDAO {
         return false;
     }
 
-    public AccountDTO getUserNamePictureByUserId(String userId) {
+    public AccountDTO getUserNamePictureByEmail(String email) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Select Name, Picture "
                         + "From Account "
-                        + "Where UserId = ? ";
+                        + "Where Email = ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, userId);
+                stm.setString(1, email);
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     String name = rs.getNString("Name");
@@ -146,6 +148,7 @@ public class AccountDAO {
         return null;
     }
 
+    //Lỗi
     public AccountDTO getUserInforByUserId(String userId) {
         try {
             con = DBHelpers.makeConnection();
@@ -195,6 +198,7 @@ public class AccountDAO {
         return null;
     }
 
+    //Lỗi
     public void updateRole(String userId, int roleId) {
         try {
             con = DBHelpers.makeConnection();
@@ -225,7 +229,55 @@ public class AccountDAO {
                 Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
 
+    public List<AccountDTO> showAccountList() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select Account.Email, Roles.RoleName, Roles.RoleId "
+                        + "From Account JOIN Roles "
+                        + "On Account.RoleId = Roles.RoleId ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                
+                List<AccountDTO> list = new ArrayList<>();
+                
+                while(rs.next()) {
+                    String email = rs.getString("Email");
+                    String roleName = rs.getString("RoleName");
+                    int roleId = rs.getInt("RoleId");
+                    
+                    RolesDTO rolesDTO = new RolesDTO(roleId, roleName);
+                    
+                    AccountDTO accountDTO = new AccountDTO();
+                    accountDTO.setEmail(email);
+                    accountDTO.setRole(rolesDTO);
+                    
+                    list.add(accountDTO);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 
     public int getRole(String id) {

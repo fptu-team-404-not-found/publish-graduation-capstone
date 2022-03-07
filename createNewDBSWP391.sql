@@ -14,7 +14,7 @@ CREATE TABLE Comment(
 	CommentDate DATETIME DEFAULT GetDate() NOT NULL,
 	CommentContent NText,
 	---------------
-	UserId CHAR(21),
+	Account VARCHAR(50),
 	PostId INT,
 	ProjectId CHAR(8),
 	PRIMARY KEY(CommentID)
@@ -22,13 +22,12 @@ CREATE TABLE Comment(
 GO
 
 CREATE TABLE Account(
-	UserId CHAR(21),
 	Email VARCHAR(50),
 	Name NVARCHAR(50),
 	Picture TEXT,
 	----
 	RoleId INT,
-	PRIMARY KEY(UserId)
+	PRIMARY KEY(Email)
 )
 GO
 
@@ -94,7 +93,7 @@ CREATE TABLE TeamMember(
 	Phone CHAR(10),
 	BackupEmail NVARCHAR(50),
 	---------------------
-	UserId CHAR(21) UNIQUE,
+	Account VARCHAR(50) UNIQUE,
 	ProjectId CHAR(8),
 	PRIMARY KEY(StudentId)
 )
@@ -116,14 +115,14 @@ CREATE TABLE Supervisor(
 	Position VARCHAR(50),
 	Status BIT,
 	----
-	UserId CHAR(21) UNIQUE,
+	Account VARCHAR(50) UNIQUE,
 	PRIMARY KEY (SupervisorID)
 )
 GO
 
 CREATE TABLE Favorite(
 	FavoriteID 	INT IDENTITY(1,1),
-	UserId		CHAR(21) ,
+	Account VARCHAR(50) ,
 	ProjectId  	CHAR(8),
 	PRIMARY KEY (FavoriteID)
 )
@@ -161,7 +160,7 @@ FOREIGN KEY (RoleId) REFERENCES Roles(RoleId)
 GO 
 ----COMMENT----
 ALTER TABLE Comment ADD CONSTRAINT has_User
-FOREIGN KEY (UserId) REFERENCES Account(UserId)
+FOREIGN KEY (Account) REFERENCES Account(Email)
 GO 
 ALTER TABLE Comment ADD CONSTRAINT has_Comment
 FOREIGN KEY (PostId) REFERENCES SharePost(PostId)
@@ -203,7 +202,7 @@ ALTER TABLE TeamMember ADD CONSTRAINT has_AProject
 FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
 ALTER TABLE TeamMember ADD CONSTRAINT is_a_Account
-FOREIGN KEY (UserId) REFERENCES Account(UserId)
+FOREIGN KEY (Account) REFERENCES Account(Email)
 GO
 ---PROJECT SUPERVISOR---
 ALTER TABLE Project_Supervisor ADD CONSTRAINT has_Supervisor0213
@@ -214,14 +213,14 @@ FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
 ---FAVORITE---
 ALTER TABLE Favorite ADD CONSTRAINT has_FKUser
-FOREIGN KEY (UserId) REFERENCES Account(UserId)
+FOREIGN KEY (Account) REFERENCES Account(Email)
 GO 
 ALTER TABLE Favorite ADD CONSTRAINT has_FKPost
 FOREIGN KEY (ProjectId) REFERENCES Project(ProjectId)
 GO 
 ---SUPERVISOR---
 ALTER TABLE Supervisor ADD CONSTRAINT is_also_a_account
-FOREIGN KEY (UserId) REFERENCES Account(UserId)
+FOREIGN KEY (Account) REFERENCES Account(Email)
 GO 
 ------------------------------------------------------------------
 ----------------------------INSERT VALUE--------------------------
@@ -232,124 +231,124 @@ INSERT INTO Roles(RoleName) VALUES('Admin') -- người có thể duyệt bài
 
 
 
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111111, 'adam@gmail.com', 'Adam', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'adam@gmail.com', 'Adam', 
 'https://i-giaitri.vnecdn.net/2019/03/28/adamlambert-1553749427-7614-1553749454_680x0.jpg', 3)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(222222222222222222222, 'eva@gmail.com', 'Eva', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'eva@gmail.com', 'Eva', 
 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(333333333333333333333, 'conran@gmail.com', N'Con rắn', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'conran@gmail.com', N'Con rắn', 
 'https://2.bp.blogspot.com/-9963WEZg_Oc/Wv0geGW-fiI/AAAAAAABTTQ/ykJ-GleRB64vOx6yg2YUrJc2gNtCROwTwCLcBGAs/s1600/snake-con-ran-compressor.png', 4)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(444444444444444444444, 'bebo@gmail.com', N'Bé Bơ', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'bebo@gmail.com', N'Bé Bơ', 
 'https://lh3.googleusercontent.com/lvatShFcVI9zx3xmESqIbudZOW_lsG5WwnnyQnybYFLTRBCPurE1z1L3jUVQlCKDCbuw6QSJ9l7B886o6K6SzKIPe06nDcqfkeLDRhcB7i26m579hjD1-wlV1LzLTaQ6L3cI9YZX', 3)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(555555555555555555555, 'meowmeow@gmail.com', N'Con mèo', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'meowmeow@gmail.com', N'Con mèo', 
 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(666666666666666666666, 'gaugau@gmail.com', N'Gâu Gâu', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'gaugau@gmail.com', N'Gâu Gâu', 
 'https://top5kythu.com/wp-content/uploads/Ch%C3%B3-Corgi.jpg', 4)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(777777777777777777777, 'capcap@gmail.com', N'Con vịt', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'capcap@gmail.com', N'Con vịt', 
 'https://product.hstatic.net/1000191320/product/vit-co-hoa-binh2.jpg', 3)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(888888888888888888888, 'ooooo@gmail.com', N'Con gà của thầy Hoàng', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'ooooo@gmail.com', N'Con gà của thầy Hoàng', 
 'https://salt.tikicdn.com/cache/550x550/ts/product/84/ae/e3/04380681358b98e121682476ff685c00.jpg', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(999999999999999999999, 'chipchip@gmail.com', N'Gà con', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'chipchip@gmail.com', N'Gà con', 
 'https://congtybinhquan.com/wp-content/uploads/2019/09/ga-con.jpg', 4)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(101010101010101010101, 'ecec@gmail.com', N'Con heo', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'ecec@gmail.com', N'Con heo', 
 'https://apc-health.vn/wp-content/uploads/2021/01/con-heo-compressed.jpg', 3)
 
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111112, 'khanhkt@gmail.com', N'KhanhKT', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('khanhkt@gmail.com', N'KhanhKT', 
 'https://scontent.fsgn13-1.fna.fbcdn.net/v/t31.18172-8/13662207_272322603140453_8701666325899781861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=abc084&_nc_ohc=jElVkoSIFrAAX8pXBUI&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-vYxg2D5mbOT8dz3tRF3AEc4LiOyaeBEWwgbSGg4W1DA&oe=62480A7A', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111113, 'phuonglhk@gmail.com', N'PhuongLVK', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('phuonglhk@gmail.com', N'PhuongLVK', 
 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111114, 'hoangNT@gmail.com', N'HoangNT', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('hoangNT@gmail.com', N'HoangNT', 
 'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=-Pfr0VuhNOQAX99qFt3&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9fy7cQQwi1VAjFXu7jQ95bIuQ2kp3kDAmI4VS0eY4bVg&oe=62260997', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111115, 'vanTTN@gmail.com', N'VanTTN', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('vanTTN@gmail.com', N'VanTTN', 
 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111116, 'taiNT@gmail.com', N'TaiNT', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('taiNT@gmail.com', N'TaiNT', 
 'https://lh3.googleusercontent.com/a-/AOh14GiG-AjMkw2LfRrqtjyBJGssiIA1x6mLuJCxqYYDCA=s64-c', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111117, 'phongVT@gmail.com', N'PhongVT', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('phongVT@gmail.com', N'PhongVT', 
 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111118, 'truongLV@gmail.com', N'TruongLV', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'truongLV@gmail.com', N'TruongLV', 
 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111119, 'suTV@gmail.com', N'SuTV', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES( 'suTV@gmail.com', N'SuTV', 
 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111120, 'ngocTTM@gmail.com', N'NgocTTM', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'ngocTTM@gmail.com', N'NgocTTM', 
 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 1)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111121, 'hoaDNT@gmail.com', N'HoaDNT', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('hoaDNT@gmail.com', N'HoaDNT', 
 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 1)
 
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111122, 'rollsroyce@gmail.com', N'Rolls-Royce', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('rollsroyce@gmail.com', N'Rolls-Royce', 
 'https://vcdn-vnexpress.vnecdn.net/2020/09/02/2021-Rolls-ROyce-Ghost-3-3617-1599022529.jpg', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111123, 'landrover@gmail.com', N'Land Rover', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('landrover@gmail.com', N'Land Rover', 
 'https://tuvanmuaxe.vn/upload/upload_img/images/bang-gia-xe-land-rover-2019-viet-nam-tuvanmuaxe-3.jpg', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(111111111111111111124, 'audi@gmail.com', N'Audi R8', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('audi@gmail.com', N'Audi R8', 
 'https://giaxeoto.vn/admin/upload/images/resize/640-Audi-R8-2021-co-gia-bao-nhieu.jpg', 2)
 
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(112111111111111111124, 'thang@gmail.com', N'Trần Ngọc Thắng', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES( 'thang@gmail.com', N'Trần Ngọc Thắng', 
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/90442064_1347089058830700_353250228188479488_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=fR-1GCyN3XAAX-cYWj5&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT93cuxR34ymr2X3mGDb-J-creMTgw62KkX_Eq9qOsrWlg&oe=624C0691', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(113111111111111111124, 'quan@gmail.com', N'Nguyễn Đào Đức Quân', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES( 'quan@gmail.com', N'Nguyễn Đào Đức Quân', 
 'https://scontent.fsgn5-10.fna.fbcdn.net/v/t1.6435-9/66439857_2382597965309850_8228950987432263680_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=174925&_nc_ohc=pU5U2y8EQdIAX_pKDR8&tn=AmENxgdPJzpEBtxj&_nc_ht=scontent.fsgn5-10.fna&oh=00_AT9OUvIKXoY1L-PP0VopRhqxBqpqle9Y_bP65FuyFFn9eg&oe=624AB915', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(114111111111111111124, 'phuong@gmail.com', N'Nguyễn Lâm Thúy Phượng', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('phuong@gmail.com', N'Nguyễn Lâm Thúy Phượng', 
 'https://scontent.fsgn5-13.fna.fbcdn.net/v/t39.30808-6/272992556_1618574551809609_4963409416272511926_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=0Lz-nM-TtGsAX-E_n4o&_nc_ht=scontent.fsgn5-13.fna&oh=00_AT-4EoXx-86iVmy94EKl36cAOrrcF4VECNDM3LUIUTEFUg&oe=6229D080', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(115111111111111111124, 'tien@gmail.com', N'Huỳnh Lê Thủy Tiên', 
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES( 'tien@gmail.com', N'Huỳnh Lê Thủy Tiên', 
 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/264331665_3189718317924473_4855449393009392948_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=174925&_nc_ohc=_7BpD7mr-O4AX9YUpvi&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT_gISL8D5240CqBM7pZiMGJDY5Q7yc03IJ1JurVoDL2SA&oe=62299508', 2)
-INSERT INTO Account(UserId, Email, Name, Picture, RoleId) 
-VALUES(116111111111111111124, 'dat@gmail.com', N'Trần Thành Đạt', 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('dat@gmail.com', N'Trần Thành Đạt', 
 'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/72557491_1132682380269336_870149971758809088_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=Hwfal_V5z8gAX_W19F4&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT9XtwONf7tLhwG-8wk-eIVp9uMldEnSWGYiS-3Qh8UKxw&oe=624BBB33', 2)
 
-INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, UserId) 
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, Account ) 
 VALUES
 ('KTK', N'Kiều Trọng Khánh', 'https://scontent.fsgn13-1.fna.fbcdn.net/v/t31.18172-8/13662207_272322603140453_8701666325899781861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=abc084&_nc_ohc=jElVkoSIFrAAX8pXBUI&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-vYxg2D5mbOT8dz3tRF3AEc4LiOyaeBEWwgbSGg4W1DA&oe=62480A7A',
-N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 111111111111111111112),
+N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 'khanhkt@gmail.com'),
 
 ('LHKP', N'Lâm Hữu Khánh Phương', 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 
-NULL, NULL, 111111111111111111113),
+NULL, NULL, 'phuonglhk@gmail.com'),
 
 ('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=-Pfr0VuhNOQAX99qFt3&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9fy7cQQwi1VAjFXu7jQ95bIuQ2kp3kDAmI4VS0eY4bVg&oe=62260997', 
-N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 111111111111111111114),
+N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 'hoangNT@gmail.com'),
 
 ('TTNV', N'Thân Thị Ngọc Vân', 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04',
-'', N'Lecturer at FPT University HCM', 111111111111111111115),
+'', N'Lecturer at FPT University HCM', 'vanTTN@gmail.com'),
 
 ('NTT', N'Nguyễn Trọng Tài', 'https://lh3.googleusercontent.com/a-/AOh14GiG-AjMkw2LfRrqtjyBJGssiIA1x6mLuJCxqYYDCA=s64-c',
-NULL, N'Lecturer at FPT University HCM', 111111111111111111116),
+NULL, N'Lecturer at FPT University HCM', 'taiNT@gmail.com'),
 
 ('VTP', N'Vũ Thanh Phong', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 111111111111111111117),
+NULL, N'Lecturer at FPT University HCM', 'phongVT@gmail.com'),
 
 ('LVT', N'Lê Vũ Trường', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 111111111111111111118),
+NULL, N'Lecturer at FPT University HCM', 'truongLV@gmail.com'),
 
 ('TVS', N'Thân Văn Sử', 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/151858679_267986801521509_9002274583163747363_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=5mSrCnjhnV4AX9Vq73T&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT8LBvIekLLFPfeUtnD7TUQIyjA2VlXZF2_rRF2MvgNTVQ&oe=624B385F', 
-N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 111111111111111111119),
+N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 'suTV@gmail.com'),
 
 ('TTMN', N'Trương Thị Mỹ Ngọc', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 111111111111111111120),
+NULL, N'Lecturer at FPT University HCM', 'ngocTTM@gmail.com'),
 ('DNTH', N'Đoàn Nguyễn Thành Hòa', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 111111111111111111121)
+NULL, N'Lecturer at FPT University HCM', 'hoaDNT@gmail.com')
 
 INSERT INTO States(StateName) VALUES('Approving')
 INSERT INTO States(StateName) VALUES('Approved')
@@ -690,29 +689,34 @@ VALUES('SP19SE04', 'NTH'),
 
 
 -- tới đây rồi 
-INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId,UserId) 
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
 VALUES
-('SE111111', 'Rolls-Royce', 'https://vcdn-vnexpress.vnecdn.net/2020/09/02/2021-Rolls-ROyce-Ghost-3-3617-1599022529.jpg', '0123456789', 'rollsroyce@gmail.com', 'SU20SE02', 111111111111111111122),
-('SE222222', 'Land Rover', 'https://tuvanmuaxe.vn/upload/upload_img/images/bang-gia-xe-land-rover-2019-viet-nam-tuvanmuaxe-3.jpg',  '0123456789', 'LandRover@gmail.com', 'SU20SE02', 111111111111111111123), 
-('SE333333', 'Audi', 'https://giaxeoto.vn/admin/upload/images/resize/640-Audi-R8-2021-co-gia-bao-nhieu.jpg', '0123456789', 'audi@gmail.com', 'SU20SE02', 111111111111111111124),
+('SE111111', 'Rolls-Royce', 'https://vcdn-vnexpress.vnecdn.net/2020/09/02/2021-Rolls-ROyce-Ghost-3-3617-1599022529.jpg', 
+'0123456789', 'rollsroyce@gmail.com', 'SU20SE02', 'rollsroyce@gmail.com'),
+('SE222222', 'Land Rover', 'https://tuvanmuaxe.vn/upload/upload_img/images/bang-gia-xe-land-rover-2019-viet-nam-tuvanmuaxe-3.jpg',
+'0123456789', 'LandRover@gmail.com', 'SU20SE02', 'landrover@gmail.com'), 
+('SE333333', 'Audi', 'https://giaxeoto.vn/admin/upload/images/resize/640-Audi-R8-2021-co-gia-bao-nhieu.jpg',
+'0123456789', 'audi@gmail.com', 'SU20SE02', 'audi@gmail.com'),
 
 ('SE151478', N'Trần Ngọc Thắng',
 'https://scontent.fsgn5-13.fna.fbcdn.net/v/t1.6435-9/176403404_1653771231495813_8737993120589149592_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=6FCJKCzVKZoAX_vRdKd&_nc_ht=scontent.fsgn5-13.fna&oh=00_AT9qj5cO-nmI_7wTSDzbL6DghGx6zB8_SrnaVTmddxDCqA&oe=624A79FB', 
-'0123456789', 'thang@fpt.edu.com', 'SU78SE14', 112111111111111111124),
+'0123456789', 'thang@fpt.edu.com', 'SU78SE14', 'thang@gmail.com'),
+
 ('SE121311', N'Nguyễn Đào Đức Quân',
 'https://scontent.fsgn5-12.fna.fbcdn.net/v/t1.6435-9/135462321_2851510705085238_5255117934326662452_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=9WL2JA0e1xwAX8nWYFH&_nc_ht=scontent.fsgn5-12.fna&oh=00_AT8K_wL0IW1pijiWoNuPz8t9Bm7XSO1DXOABBs_TFXIyMQ&oe=62493F62', 
-'0123456789', 'quan@gmail.edu.com', 'SU78SE14', 113111111111111111124),
+'0123456789', 'quan@gmail.edu.com', 'SU78SE14', 'quan@gmail.com'),
+
 ('SE811131', N'Nguyễn Lâm Thúy Phượng',
 'https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-9/117801229_1236226840044384_5312147700656844303_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=zNOOMXb-B4QAX-AUcGu&_nc_ht=scontent.fsgn5-8.fna&oh=00_AT_yrSl9IAmu7Hn5yEbIwyd8JIuuPowS_JgA8c5oO9AKRQ&oe=624BD9C2', 
-'0123456789', 'phuong@gmail.edu.com', 'SU78SE14', 114111111111111111124),
+'0123456789', 'phuong@gmail.edu.com', 'SU78SE14', 'phuong@gmail.com'),
+
 ('SE821131', N'Huỳnh Lê Thủy Tiên',
 'https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/272908202_3227262997503338_854943145488623253_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=wLSlLWzfnckAX84IoQp&_nc_ht=scontent.fsgn5-9.fna&oh=00_AT9aXr4lr3kZ7H067xvCyVpnMbY_2yBE9Ebr8uyNIHSiaQ&oe=622A9D44', 
-'0123456789', 'tien@gmail.edu.com', 'SU78SE14', 115111111111111111124),
+'0123456789', 'tien@gmail.edu.com', 'SU78SE14', 'tien@gmail.com'),
+
 ('SE921131', N'Trần Thành Đạt',
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
-'0123456789', 'tien@gmail.edu.com', 'SU78SE14', 116111111111111111124)
-
-
+'0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com')
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2017/06/05/07/58/butterfly-2373175_960_720.png', 'SU20SE02')
@@ -792,34 +796,33 @@ null,
 2,
 'SU78SE14')
 
+INSERT INTO Favorite(Account , ProjectId) VALUES('audi@gmail.com', 'SU20SE02')
 
-INSERT INTO Favorite(UserId, ProjectId) VALUES('111111111111111111111', 'SU20SE02')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', 'bebo@gmail.com', NULL, 'SU20SE02')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Nhóm rất xuất sắc', 'bebo@gmail.com', NULL, 'SU20SE02')
 
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', '111111111111111111111', NULL, 'SU20SE02')
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Nhóm rất xuất sắc', '222222222222222222222', NULL, 'SU20SE02')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', 'meowmeow@gmail.com', NULL, 'SU78SE14')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Nhóm rất xuất sắc, đáng khen', 'vanTTN@gmail.com', NULL, 'SU78SE14')
 
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', '111111111111111111111', NULL, 'SU78SE14')
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Nhóm rất xuất sắc, đáng khen', '111111111111111111115', NULL, 'SU78SE14')
+INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
+VALUES (N'Siêu đỉnh', 'meowmeow@gmail.com', 1, 'FA19SE06')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Hay ghê', 'meowmeow@gmail.com', 1, 'FA19SE06')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'gà', 'chipchip@gmail.com', 1, 'FA19SE06')
 
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Siêu đỉnh', '333333333333333333333', 1, 'FA19SE06')
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Hay ghê', '444444444444444444444', 1, 'FA19SE06')
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'gà', '444444444444444444444', 1, 'FA19SE06')
-
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Tuyệt hảo', '333333333333333333333', 3, null)
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Thật cảm Động', '444444444444444444444', 3, null)
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'gớt nước mắt mấy fen ơi', '444444444444444444444', 4, null)
-INSERT INTO Comment(CommentContent, UserId, PostId, ProjectId) 
-VALUES (N'Tuyệt hảo quá', '333333333333333333333', 4, null)
+INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
+VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 3, null)
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Thật cảm Động', 'chipchip@gmail.com', 3, null)
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'gớt nước mắt mấy fen ơi', 'thang@gmail.com', 4, null)
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Tuyệt hảo quá', 'chipchip@gmail.com', 4, null)
 
 INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('SP23SE01', 'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '12h30 - 15/12/2021', N'Có rất nhiều biến thể của Lorem Ipsum mà bạn có thể tìm thấy, nhưng đa số được biến đổi bằng cách thêm các yếu tố hài hước, các từ ngẫu nhiên có khi không có vẻ gì là có ý nghĩa.', 'https://cdn.pixabay.com/photo/2015/11/09/14/43/laptop-1035345_960_720.jpg')
@@ -832,7 +835,7 @@ VALUES('SP23SE04', 'Influencer Marketing Platform', N'HỘI TRƯỜNG A', '7h00 
 
 INSERT INTO Sensitive_word(banned_word)
 VALUES
-	('no'), ('yes'), ('yah'), ('nope')
+	('dume'), ('quan que'), ('duma')
 --------------------------------------
 
 
@@ -936,4 +939,3 @@ on st.StateId = sp.StateId
 inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
-
