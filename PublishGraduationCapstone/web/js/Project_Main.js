@@ -105,9 +105,9 @@ function showProject() {
             supervisorList.innerHTML = projectsSupervisorS.join('');
 
             //show project details
-            document.getElementById("project-detail-text").innerHTML = jsonData.projectDetails;
+            document.getElementById("project-detail-text").innerHTML = jsonData.details;
             //show project recap
-            document.getElementById("project-recap-text").innerHTML = jsonData.projectRecap;
+            document.getElementById("project-recap-text").innerHTML = jsonData.recap;
             //show project image
             const imgList = document.querySelector('#project-images-container');
             let projectsImages = new Array();
@@ -149,6 +149,7 @@ function showOtherproject() {
                 var project =
                     `
                     <div class="project-sharing-other-img" onclick="projectRedirect(this)">
+                    <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
                         <div class="project-sharing-other-container">
                             <p class="project-sharing-other-img-text">${counter.projectName}</p>
                             <p class="project-sharing-other-img-line"></p>
@@ -158,6 +159,7 @@ function showOtherproject() {
                         <img class="project-sharing-other-img-container"
                             src="${counter.projectAva}">
                             <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
+                    </a>
                     </div>
                     `
                 projects.push(project);
@@ -228,16 +230,20 @@ function showSharePostList() {
                 var counter = jsonData.showSharePostList[i];
                 var project =
                     `
+                  
                     <div class="project-sharing-experience-container" onclick="sharePostRedirect(this)">
-                    <div id="project-sharing-experience-img-container">
+                    <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none">
+                        <div id="project-sharing-experience-img-container">
                         <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
-                    </div>
-                    <div id="project-sharing-experience-text-container">
+                        </div>
+                        <div id="project-sharing-experience-text-container">
                         <p>${counter.title}</p>
                         <p class="project-sharing-experience-text-viewmore">View more...</p>
+                        </div>
+                        <p class="share-id" style="display: none">${counter.postId}</p>
+                    </a>
                     </div>
-                    <p class="share-id" style="display: none">${counter.postId}</p>
-                    </div>
+                    
                 `
                 projects.push(project);
             };
@@ -252,8 +258,6 @@ function projectRedirect(div) {
     var projectId = div.querySelector('.upcoming-img-id').innerText;
     console.log(projectId);
     sessionStorage.setItem("projectId", projectId);
-
-    location.replace("http://localhost:8084/PublishGraduationCapstone/Project_Main.html");
 }
 
 //show search page by enter
@@ -270,5 +274,4 @@ function sharePostRedirect(div) {
     console.log(sharePostId);
     sessionStorage.setItem("sharePostId", sharePostId);
 
-    location.replace("http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html");
 }
