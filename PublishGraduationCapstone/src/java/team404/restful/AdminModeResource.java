@@ -41,7 +41,7 @@ public class AdminModeResource {
             jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsObj.put("status", supervisorDTO.isStatus());
-            jsObj.put("userID", supervisorDTO.getUser().getSub());
+            jsObj.put("email", supervisorDTO.getUser().getEmail());
             
             jsArr.add(jsObj);
         }
@@ -68,14 +68,14 @@ public class AdminModeResource {
         return result;
     }
     
-    //Lỗi
+    
     @Path("/updateRoleForAccount") 
     @GET
     public void updateRoleForAccount(
-            @QueryParam("UserId") String UserId,
+            @QueryParam("email") String email,
             @QueryParam("RoleId") int RoleId) {
         AccountDAO dao = new AccountDAO();
-        dao.updateRole(UserId, RoleId);
+        dao.updateRole(email, RoleId);
     }
     
     //-- TIENHUYNHTN --// //OK

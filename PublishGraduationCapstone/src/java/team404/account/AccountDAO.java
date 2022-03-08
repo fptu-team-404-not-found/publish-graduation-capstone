@@ -19,20 +19,20 @@ public class AccountDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
-    //Lỗi
-    public boolean checkId(String id) {
+    
+    public boolean checkEmail(String email) {
         try {
             //1. make connection to DB
             con = DBHelpers.makeConnection();
             if (con != null) {
                 //2. create SQL String
-                String sql = "Select UserId "
+                String sql = "Select Email "
                         + "From Account "
-                        + "Where UserId = ?";
+                        + "Where Email = ?";
                 //3. Create statement obj to load SQL string
                 //and set value to parameters
                 stm = con.prepareStatement(sql);
-                stm.setString(1, id);
+                stm.setString(1, email);
                 //4. execute query
                 rs = stm.executeQuery();
                 //5. process result
@@ -63,20 +63,20 @@ public class AccountDAO {
         return false;
     }
 
-    //Lỗi
+    
     public boolean createNewAcccount(AccountDTO dto) {
 
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Insert Into Account("
-                        + "UserId, email, name, picture"
-                        + ") Values(?, ?, ?, ?)";
+                String sql = "Insert Into Account"
+                        + "(Email, Name, Picture, RoleId)"
+                        + " Values(?, ?, ?, 1)";
                 stm = con.prepareStatement(sql);
-                //stm.setString(1, dto.getSub());
-                stm.setString(2, dto.getEmail());
-                stm.setString(3, dto.getName());
-                stm.setString(4, dto.getPicture());
+                RolesDAO rolesDao = new RolesDAO();
+                stm.setString(1, dto.getEmail());
+                stm.setString(2, dto.getName());
+                stm.setString(3, dto.getPicture());
                 int affectedRow = stm.executeUpdate();
                 if (affectedRow > 0) {
                     return true;
@@ -148,28 +148,26 @@ public class AccountDAO {
         return null;
     }
 
-    //Lỗi
-    public AccountDTO getUserInforByUserId(String userId) {
+    
+    public AccountDTO getUserInforByEmail(String email) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Select * "
                         + "From Account "
-                        + "Where UserId = ?";
+                        + "Where Email = ?";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, userId);
+                stm.setString(1, email);
                 rs = stm.executeQuery();
                 RolesDAO rolesDao = new RolesDAO();
                 RolesDTO rolesDto = new RolesDTO();
                 if (rs.next()) {
-                    String userId2 = rs.getString("UserId");
-                    String email = rs.getString("Email");
+                    String email2 = rs.getString("Email");
                     String name = rs.getNString("Name");
                     String picture = rs.getString("Picture");
                     rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
                     AccountDTO dto = new AccountDTO();
-                    dto.setSub(userId2);
-                    dto.setEmail(email);
+                    dto.setEmail(email2);
                     dto.setName(name);
                     dto.setPicture(picture);
                     dto.setRole(rolesDto);
@@ -198,17 +196,17 @@ public class AccountDAO {
         return null;
     }
 
-    //Lỗi
-    public void updateRole(String userId, int roleId) {
+    
+    public void updateRole(String email, int roleId) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Update Account "
                         + "Set RoleId = ? "
-                        + "Where UserId = ? ";
+                        + "Where Email = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setInt(1, roleId);
-                stm.setString(2, userId);
+                stm.setString(2, email);
                 stm.executeUpdate();
 
             }
@@ -280,16 +278,16 @@ public class AccountDAO {
         return null;
     }
 
-    public int getRole(String id) {
+    public int getRole(String email) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Select r.[RoleId] "
                         + "From Account a inner join Roles r "
                         + "On a.RoleId = r.RoleId "
-                        + "Where UserId = ? ";
+                        + "Where Email = ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, id);
+                stm.setString(1, email);
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     int role = rs.getInt("RoleId");
@@ -322,7 +320,7 @@ public class AccountDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select acc.UserId, acc.Email, r.RoleId "
+                String sql = "Select acc.Email, r.RoleId "
                         + "From Account acc inner join Roles r "
                         + "On acc.RoleId = r.RoleId ";
                 stm = con.prepareStatement(sql);
@@ -332,11 +330,9 @@ public class AccountDAO {
                 RolesDAO rolesDao = new RolesDAO();
                 RolesDTO rolesDto = new RolesDTO();
                 while(rs.next()){
-                    String userId = rs.getString("UserId");
                     String email = rs.getString("Email");
                     rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
                     AccountDTO dto = new AccountDTO();
-                    dto.setSub(userId);
                     dto.setEmail(email);
                     dto.setRole(rolesDto);
                     list.add(dto);
