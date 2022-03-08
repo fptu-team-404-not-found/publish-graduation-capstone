@@ -30,11 +30,11 @@ function onSignIn(googleUser) {
             var jsonData = JSON.parse(res);
 
             jsonData.information.forEach(counter => {
-                sessionStorage.setItem("email", counter.email);
-                sessionStorage.setItem("name", counter.name);
-                sessionStorage.setItem("picture", counter.picture);
-                sessionStorage.setItem("roleId", counter.roleId);
-                sessionStorage.setItem("token", counter.token);
+                localStorage.setItem("email", counter.email);
+                localStorage.setItem("name", counter.name);
+                localStorage.setItem("picture", counter.picture);
+                localStorage.setItem("roleId", counter.roleId);
+                localStorage.setItem("token", counter.token);
             });
             if(this.responseText !== null){
                 location.replace('Search-BE.html');
@@ -46,7 +46,7 @@ function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         alert("You have been signed out successfully");
-        sessionStorage.clear();
+        localStorage.clear();
         $(".g-signin2").css("display", "block");
         $(".data").css("display", "none");
     });

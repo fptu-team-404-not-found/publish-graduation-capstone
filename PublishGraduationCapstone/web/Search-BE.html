@@ -11,11 +11,11 @@
 
         <a href="home.html" onclick="signOut();">Sign Out</a>
         <script>
-            var email = sessionStorage.getItem("email");
-            var name = sessionStorage.getItem("name");
-            var picture = sessionStorage.getItem("picture");
-            var role = sessionStorage.getItem("roleId");
-            var token = sessionStorage.getItem("token");
+            var email = localStorage.getItem("email");
+            var name = localStorage.getItem("name");
+            var picture = localStorage.getItem("picture");
+            var role = localStorage.getItem("roleId");
+            var token = localStorage.getItem("token");
             console.log("email "+ email);
             console.log("name "+ name);
             console.log("picture "+ picture);
@@ -29,7 +29,7 @@
             function signOut() {
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
-                    sessionStorage.clear();
+                    localStorage.clear();
                     alert('You have been signed out');
                     console.log('User signed out.');
                 });
