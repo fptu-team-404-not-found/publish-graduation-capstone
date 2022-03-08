@@ -132,9 +132,13 @@
     </div>
     <div id="staff-edit-post-intro-word-container">
         <p>Introduction</p>
-        <form>
+        <div id="staff-edit-post-intro-word-box">
+            <iframe id="staff-edit-post-intro-video" src="https://www.youtube.com/embed/kV3famkRaA4?list=RDu6Fc1vsOhlI"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
             <textarea name="ten" id="staff-edit-post-intro-word"></textarea>
-        </form>
+        </div>
     </div>
 
     <div id="staff-edit-post-intro-word-container">
@@ -179,7 +183,6 @@
     </div>
 
     <script>
-        CKEDITOR.replace('staff-edit-post-intro-word');
         CKEDITOR.replace('staff-edit-post-intro-detail');
         CKEDITOR.replace('staff-edit-post-intro-recap');
         CKEDITOR.on('instanceLoaded', function (e) {

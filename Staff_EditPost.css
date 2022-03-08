@@ -160,7 +160,6 @@ body {
     margin-top: 0.5em;
     padding: 0.4em;
     border: 1px solid #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #staff-edit-post-teamname-content-name {
@@ -168,9 +167,8 @@ body {
     display: inline-block;
     margin-top: 0.5em;
     padding: 0.4em;
-    margin-left: -0.25em;
+    margin-left: -0.4em;
     border: 1px solid #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #staff-edit-post-teamname-content-mail {
@@ -178,36 +176,32 @@ body {
     display: inline-block;
     margin-top: 0.5em;
     padding: 0.4em;
-    margin-left: -0.25em;
+    margin-left: -0.4em;
     border: 1px solid #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #staff-edit-post-teamname-content-phone {
     width: 12%;
     display: inline-block;
     margin-top: 0.5em;
-    margin-left: -0.25em;
+    margin-left: -0.4em;
     padding: 0.4em;
     border: 1px solid #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #staff-edit-post-teamname-content-img {
-    width: 35%;
+    width: 36%;
     display: inline-block;
     margin-top: 0.5em;
-    margin-left: -0.25em;
+    margin-left: -0.45em;
     padding: 0.4em;
     border: 1px solid #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #staff-edit-post-intro-word-container {
     background-color: #FFFFFF;
     width: 93%;
     margin: auto;
-    height: 50em;
     margin-top: 1em;
     padding: 1em;
     font-weight: 700;
@@ -215,9 +209,28 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+#staff-edit-post-intro-video {
+    width: 40em;
+    height: 20em;
+}
+
+#staff-edit-post-intro-word {
+    width: 50em;
+    height: 30em;
+    resize: none;
+    padding: 1em;
+    margin-right: 2em;
+    text-indent: 2em;
+}
+
 #staff-edit-post-intro-word-container > p {
     margin-bottom: 0.5em;
     font-size: 140%;
+}
+
+#staff-edit-post-intro-word-box{
+    display: flex;
+    justify-content: space-between;
 }
 
 #staff-edit-post-intro-img-link-container {
