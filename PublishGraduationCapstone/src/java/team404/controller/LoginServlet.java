@@ -50,13 +50,12 @@ public class LoginServlet extends HttpServlet {
                 accountDAO.createNewAcccount(account);
             }
             int role = accountDAO.getRole(email);
-            
             JSONArray jsArr = new JSONArray();
             JSONObject jsObj = new JSONObject();
             jsObj.put("email", account.getEmail());
             jsObj.put(("name"), account.getName());
             jsObj.put("picture", account.getPicture());
-            jsObj.put("roleId", account.getRole().getRoleId());
+            jsObj.put("roleId", role);
             jsObj.put("token", token);
             jsArr.add(jsObj);
             JSONObject jsObjDAD = new JSONObject();
