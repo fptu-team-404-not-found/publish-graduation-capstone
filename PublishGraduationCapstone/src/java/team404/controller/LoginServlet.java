@@ -43,17 +43,16 @@ public class LoginServlet extends HttpServlet {
             AccountDTO account = googleHelper.getUserFromJson(json);
 
             AccountDAO accountDAO = new AccountDAO();
-            String id = account.getSub();
-            boolean idExisted = accountDAO.checkId(id);
+            String email = account.getEmail();
+            boolean idExisted = accountDAO.checkEmail(email);
 
             if (!idExisted) {
                 accountDAO.createNewAcccount(account);
             }
-            int role = accountDAO.getRole(id);
+            int role = accountDAO.getRole(email);
             
             JSONArray jsArr = new JSONArray();
             JSONObject jsObj = new JSONObject();
-            jsObj.put("sub", account.getSub());
             jsObj.put("email", account.getEmail());
             jsObj.put(("name"), account.getName());
             jsObj.put("picture", account.getPicture());

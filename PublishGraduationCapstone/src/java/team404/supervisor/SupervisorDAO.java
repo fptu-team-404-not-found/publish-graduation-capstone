@@ -125,10 +125,9 @@ public class SupervisorDAO {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select UserId, SupervisorID, SupervisorName, [Status] "
+                String sql = "Select Account, SupervisorID, SupervisorName, [Status] "
                         + "From Supervisor "
-                        + "Order BY UserId "
-                        + "ASC";
+                        + "Order BY Account ";
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<SupervisorDTO> list = new ArrayList<>();
@@ -139,7 +138,7 @@ public class SupervisorDAO {
                     String supervisorId = rs.getString("SupervisorID");
                     String supervisorName = rs.getString("SupervisorName");
                     boolean status = rs.getBoolean("Status");
-                    accountDto = accountDao.getUserInforByUserId(rs.getString("UserId"));
+                    accountDto = accountDao.getUserInforByEmail(rs.getString("Account"));
                     
                     SupervisorDTO dto = new SupervisorDTO();
                     dto.setUser(accountDto);

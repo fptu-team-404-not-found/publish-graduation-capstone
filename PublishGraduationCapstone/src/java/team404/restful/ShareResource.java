@@ -110,7 +110,7 @@ public class ShareResource {
         }
         if (dto.getSupervisor() != null) {
            jsObj.put("AuthorName", dto.getSupervisor().getSupervisorName());
-           }
+        }
         ProjectDTO projectDto = projectDao.getSingleProject(dto.getProject().getProjectId());
         JSONObject jsObj2 = new JSONObject();
         jsObj2.put("ProjectId", projectDto.getProjectId());

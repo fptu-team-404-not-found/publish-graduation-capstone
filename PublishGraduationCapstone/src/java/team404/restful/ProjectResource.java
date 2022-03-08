@@ -43,7 +43,6 @@ public class ProjectResource {
             jsObj.put("projectLocation", upcomingProjectDTO.getLocation());
             jsObj.put("projectDate", upcomingProjectDTO.getDate());
             jsObj.put("projectDescription", upcomingProjectDTO.getDescription());
-//            jsObj.put("teamName", upcomingProjectDTO.getTeamName());
             jsObj.put("projectImage", upcomingProjectDTO.getImage());
             jsArr.add(jsObj); 
         }

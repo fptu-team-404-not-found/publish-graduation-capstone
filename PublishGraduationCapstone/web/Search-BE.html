@@ -11,13 +11,11 @@
 
         <a href="home.html" onclick="signOut();">Sign Out</a>
         <script>
-            var id = sessionStorage.getItem("sub");
             var email = sessionStorage.getItem("email");
             var name = sessionStorage.getItem("name");
             var picture = sessionStorage.getItem("picture");
             var role = sessionStorage.getItem("roleId");
             var token = sessionStorage.getItem("token");
-            console.log("sub: "+ id);
             console.log("email "+ email);
             console.log("name "+ name);
             console.log("picture "+ picture);

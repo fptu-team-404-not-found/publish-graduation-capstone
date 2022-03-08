@@ -16,7 +16,7 @@ public class UpcomingProjectDAO implements Serializable {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
-    public List<UpcomingProjectDTO> getUpcomingProjectList() { //Lỗi
+    public List<UpcomingProjectDTO> getUpcomingProjectList() { 
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -26,7 +26,8 @@ public class UpcomingProjectDAO implements Serializable {
                 rs = stm.executeQuery();
                 List<UpcomingProjectDTO> list = new ArrayList<>();
                 while (rs.next()) {
-                    UpcomingProjectDTO dto = new UpcomingProjectDTO(rs.getString("Id"), rs.getString("ProjectName"), rs.getString("Location"), rs.getString("Date"), rs.getString("Description"), rs.getString("Image"));
+                    UpcomingProjectDTO dto = new UpcomingProjectDTO(rs.getString("Id"), rs.getString("ProjectName"), 
+                            rs.getString("Location"), rs.getString("Date"), rs.getString("Description"), rs.getString("Image"));
                     list.add(dto);
                 }
                 return list;
