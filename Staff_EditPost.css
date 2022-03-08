@@ -211,7 +211,16 @@ body {
 
 #staff-edit-post-intro-video {
     width: 40em;
-    height: 20em;
+    height: 2em;
+    border-radius: 0.5em;
+    border: 1px solid #F47124;
+    padding: 1em;
+}
+
+#staff-edit-post-intro-video-onload {
+    width: 40em;
+    height: 22em;
+    margin-top: 2%;
 }
 
 #staff-edit-post-intro-word {
@@ -221,6 +230,8 @@ body {
     padding: 1em;
     margin-right: 2em;
     text-indent: 2em;
+    border: 1px solid #F47124;
+    border-radius: 0.2em;
 }
 
 #staff-edit-post-intro-word-container > p {

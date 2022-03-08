@@ -133,10 +133,10 @@
     <div id="staff-edit-post-intro-word-container">
         <p>Introduction</p>
         <div id="staff-edit-post-intro-word-box">
-            <iframe id="staff-edit-post-intro-video" src="https://www.youtube.com/embed/kV3famkRaA4?list=RDu6Fc1vsOhlI"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
+            <div id="staff-edit-post-intro-video-container">
+                <input type="text" name="staff-edit-post-intro-video" id="staff-edit-post-intro-video">
+                <div id="staff-edit-post-intro-video-onload"></div>
+            </div>
             <textarea name="ten" id="staff-edit-post-intro-word"></textarea>
         </div>
     </div>
@@ -183,8 +183,12 @@
     </div>
 
     <script>
-        CKEDITOR.replace('staff-edit-post-intro-detail');
-        CKEDITOR.replace('staff-edit-post-intro-recap');
+        CKEDITOR.replace('staff-edit-post-intro-detail', {
+            extraPlugins: 'justify',
+        });
+        CKEDITOR.replace('staff-edit-post-intro-recap', {
+            extraPlugins: 'justify',
+        });
         CKEDITOR.on('instanceLoaded', function (e) {
             e.editor.resize(1380, 720)
         });
