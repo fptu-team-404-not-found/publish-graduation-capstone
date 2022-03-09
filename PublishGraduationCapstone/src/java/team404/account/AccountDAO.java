@@ -19,7 +19,6 @@ public class AccountDAO {
     PreparedStatement stm = null;
     ResultSet rs = null;
 
-    
     public boolean checkEmail(String email) {
         try {
             //1. make connection to DB
@@ -62,6 +61,7 @@ public class AccountDAO {
 
         return false;
     }
+
     public AccountDTO getEmail(String email) {
         try {
             //1. make connection to DB
@@ -107,7 +107,7 @@ public class AccountDAO {
 
         return null;
     }
-    
+
     public boolean createNewAcccount(AccountDTO dto) {
 
         try {
@@ -192,7 +192,6 @@ public class AccountDAO {
         return null;
     }
 
-    
     public AccountDTO getUserInforByEmail(String email) {
         try {
             con = DBHelpers.makeConnection();
@@ -240,7 +239,6 @@ public class AccountDAO {
         return null;
     }
 
-    
     public void updateRole(String email, int roleId) {
         try {
             con = DBHelpers.makeConnection();
@@ -282,20 +280,20 @@ public class AccountDAO {
                         + "On Account.RoleId = Roles.RoleId ";
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
-                
+
                 List<AccountDTO> list = new ArrayList<>();
-                
-                while(rs.next()) {
+
+                while (rs.next()) {
                     String email = rs.getString("Email");
                     String roleName = rs.getString("RoleName");
                     int roleId = rs.getInt("RoleId");
-                    
+
                     RolesDTO rolesDTO = new RolesDTO(roleId, roleName);
-                    
+
                     AccountDTO accountDTO = new AccountDTO();
                     accountDTO.setEmail(email);
                     accountDTO.setRole(rolesDTO);
-                    
+
                     list.add(accountDTO);
                 }
                 return list;
@@ -370,16 +368,62 @@ public class AccountDAO {
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<AccountDTO> list = new ArrayList<>();
-                
+
                 RolesDAO rolesDao = new RolesDAO();
                 RolesDTO rolesDto = new RolesDTO();
-                while(rs.next()){
+                while (rs.next()) {
                     String email = rs.getString("Email");
                     rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
                     AccountDTO dto = new AccountDTO();
                     dto.setEmail(email);
                     dto.setRole(rolesDto);
                     list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<AccountDTO> searchAccountInAdmin(String keyword) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select Email, RoleId "
+                        + "From Account "
+                        + "Where Email Like ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, "%"+keyword+"%");
+                rs = stm.executeQuery();
+                List<AccountDTO> list = new ArrayList<>();
+                RolesDAO rolesDao = new RolesDAO();
+                RolesDTO rolesDto = new RolesDTO();
+                while(rs.next()){
+                    String email = rs.getString("Email");
+                    rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
+                    AccountDTO accountDTO = new AccountDTO();
+                    accountDTO.setEmail(email);
+                    accountDTO.setRole(rolesDto);
+
+                    list.add(accountDTO);
                 }
                 return list;
             }
