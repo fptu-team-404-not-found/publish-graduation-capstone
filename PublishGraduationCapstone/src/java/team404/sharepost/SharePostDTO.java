@@ -1,6 +1,7 @@
 package team404.sharepost;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
 import team404.states.StatesDTO;
@@ -13,7 +14,7 @@ public class SharePostDTO {
     private int postId;
     private String title;
     private String details;
-    private Timestamp createDate;
+    private Date createDate;
     private String note;
 
     private TeamMemberDTO student;
@@ -33,7 +34,7 @@ public class SharePostDTO {
         project = null;
     }
 
-    public SharePostDTO(int postId, String title, String details, Timestamp createDate, String note, TeamMemberDTO student, SupervisorDTO supervisor, StatesDTO state, ProjectDTO project) {
+    public SharePostDTO(int postId, String title, String details, Date createDate, String note, TeamMemberDTO student, SupervisorDTO supervisor, StatesDTO state, ProjectDTO project) {
         this.postId = postId;
         this.title = title;
         this.details = details;
@@ -90,14 +91,14 @@ public class SharePostDTO {
     /**
      * @return the createDate
      */
-    public Timestamp getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
     /**
      * @param createDate the createDate to set
      */
-    public void setCreateDate(Timestamp createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -175,4 +176,6 @@ public class SharePostDTO {
     public String toString() {
         return "SharePostDTO{" + "postId=" + postId + ", title=" + title + ", details=" + details + ", createDate=" + createDate + ", note=" + note + ", student=" + student + ", supervisor=" + supervisor + ", state=" + state + ", project=" + project + '}';
     }
+
+    
 }

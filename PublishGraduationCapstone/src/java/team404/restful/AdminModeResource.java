@@ -1,5 +1,6 @@
 package team404.restful;
 
+import java.sql.Date;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -14,6 +15,8 @@ import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.comment.CommentDAO;
+import team404.comment.CommentDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 
@@ -93,5 +96,46 @@ public class AdminModeResource {
             jsArr.add(jsObj);
         }
         return jsArr.toJSONString();
+    }
+//    Dat show comment theo date 
+    @Path("/showDateOfComment")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showDateOfComment(){
+        CommentDAO dao = new CommentDAO();
+        List<CommentDTO> list = dao.showDateOfComment();
+        JSONArray jsArr = new JSONArray();
+        for (CommentDTO commentDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showDateOfComment", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/showCommentByDate")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showCommentByDate(
+            @QueryParam("commentDate") Date commentDate){
+        CommentDAO dao = new CommentDAO();
+        List<CommentDTO> list = dao.showCommentByDate(commentDate);
+        JSONArray jsArr = new JSONArray();
+        for (CommentDTO commentDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("commentContent", commentDTO.getCommentContent());
+            jsObj.put("email", commentDTO.getUser().getEmail());
+            if(commentDTO.getPost() != null){
+                jsObj.put("title", commentDTO.getPost().getTitle());
+            }
+            if(commentDTO.getProject() != null){
+                jsObj.put("projectName", commentDTO.getProject().getProjectName());
+            }
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showCommentByDate", jsArr);
+        return jsObj.toJSONString();
     }
 }

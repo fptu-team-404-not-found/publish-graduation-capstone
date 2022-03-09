@@ -6,13 +6,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 import team404.sensitiveword.SensitiveWordDAO;
+import team404.sharepost.SharePostDAO;
+import team404.sharepost.SharePostDTO;
 import team404.utils.DBHelpers;
 
 public class CommentDAO {
@@ -36,7 +41,7 @@ public class CommentDAO {
                 List<CommentDTO> list = new ArrayList<>();
                 while (rs.next()) {
                     int commentId = rs.getInt("CommentId");
-                    Timestamp commentDate = rs.getTimestamp("CommentDate");
+                    Date commentDate = rs.getDate("CommentDate");
                     String commentContent = rs.getNString("CommentContent");
                     String email = rs.getString("Email");
 
@@ -85,7 +90,7 @@ public class CommentDAO {
                 List<CommentDTO> list = new ArrayList<>();
                 while (rs.next()) {
                     int commentId = rs.getInt("CommentId");
-                    Timestamp commentDate = rs.getTimestamp("CommentDate");
+                    Date commentDate = rs.getDate("CommentDate");
                     String commentContent = rs.getNString("CommentContent");
                     String email = rs.getString("Email");
 
@@ -215,5 +220,109 @@ public class CommentDAO {
             }
         }
         return "";
+    }
+
+    public List<CommentDTO> showDateOfComment() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select c.CommentDate "
+                        + "From Comment c "
+                        + "Group by c.CommentDate ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<CommentDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    Date commentDate = rs.getDate("CommentDate");
+                    CommentDTO dto = new CommentDTO();
+                    dto.setCommentDate(commentDate);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NamingException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+    public List<CommentDTO> showCommentByDate(Date commentDate){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "Select c.CommentContent, acc.Email, c.PostId, c.ProjectId "
+                        + "From Comment c inner join Account acc "
+                        + "On c.Account = acc.Email "
+                        + "Where c.CommentDate = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setDate(1, commentDate);
+                rs = stm.executeQuery();
+                List<CommentDTO> list = new ArrayList<>();
+                
+                AccountDAO accountDao = new AccountDAO();
+                AccountDTO accountDto = new AccountDTO();
+                
+                SharePostDAO sharePostDao = new SharePostDAO();
+                SharePostDTO sharePostDto = new SharePostDTO();
+                
+                ProjectDAO projectDao = new ProjectDAO();
+                ProjectDTO projectDto = new ProjectDTO();
+                while(rs.next()){
+                    String commentContent = rs.getNString("CommentContent");
+                    accountDto = accountDao.getEmail(rs.getString("Email"));
+                    sharePostDto = sharePostDao.getSharePostDetail(rs.getInt("PostId"));
+                    projectDto = projectDao.getSingleProject(rs.getString("ProjectId"));
+                    CommentDTO dto = new CommentDTO();
+                    dto.setCommentContent(commentContent);
+                    dto.setUser(accountDto);
+                    dto.setPost(sharePostDto);
+                    dto.setProject(projectDto);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NamingException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 }

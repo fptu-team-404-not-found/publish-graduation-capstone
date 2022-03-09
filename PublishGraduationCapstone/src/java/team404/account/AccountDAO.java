@@ -62,7 +62,51 @@ public class AccountDAO {
 
         return false;
     }
+    public AccountDTO getEmail(String email) {
+        try {
+            //1. make connection to DB
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                //2. create SQL String
+                String sql = "Select Email "
+                        + "From Account "
+                        + "Where Email = ?";
+                //3. Create statement obj to load SQL string
+                //and set value to parameters
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                //4. execute query
+                rs = stm.executeQuery();
+                //5. process result
+                if (rs.next()) {
+                    String email2 = rs.getString("Email");
+                    AccountDTO dto = new AccountDTO();
+                    dto.setEmail(email2);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
+        return null;
+    }
     
     public boolean createNewAcccount(AccountDTO dto) {
 

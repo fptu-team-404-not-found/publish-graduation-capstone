@@ -1,6 +1,7 @@
 package team404.comment;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.project.ProjectDTO;
 import team404.sharepost.SharePostDTO;
@@ -10,7 +11,7 @@ import team404.account.AccountDTO;
 public class CommentDTO {
 
     private int commentId;
-    private Timestamp commentDate;
+    private Date commentDate;
     private String commentContent;
     private SharePostDTO post;
     private AccountDTO user;
@@ -25,7 +26,7 @@ public class CommentDTO {
         project = null;
     }
 
-    public CommentDTO(int commentId, Timestamp commentDate, String commentContent, SharePostDTO post, AccountDTO user, ProjectDTO project) {
+    public CommentDTO(int commentId, Date commentDate, String commentContent, SharePostDTO post, AccountDTO user, ProjectDTO project) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
@@ -48,19 +49,16 @@ public class CommentDTO {
         this.commentId = commentId;
     }
 
-    /**
-     * @return the commentDate
-     */
-    public Timestamp getCommentDate() {
+    public Date getCommentDate() {
         return commentDate;
     }
 
-    /**
-     * @param commentDate the commentDate to set
-     */
-    public void setCommentDate(Timestamp commentDate) {
+    public void setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
     }
+
+    
+    
 
     /**
      * @return the commentContent
@@ -122,4 +120,6 @@ public class CommentDTO {
     public String toString() {
         return "CommentDTO{" + "commentId=" + commentId + ", commentDate=" + commentDate + ", commentContent=" + commentContent + ", post=" + post + ", user=" + user + ", project=" + project + '}';
     }
+
+    
 }

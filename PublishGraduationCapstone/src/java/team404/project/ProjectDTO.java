@@ -2,6 +2,7 @@ package team404.project;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.semester.SemesterDTO;
 import team404.states.StatesDTO;
@@ -16,7 +17,7 @@ public class ProjectDTO implements Serializable {
     private String introductionContent;
     private String details;
     private String recap;
-    private Timestamp createDate;
+    private Date createDate;
     private String authorName;
     private int viewNumber;
     private String note;
@@ -39,7 +40,7 @@ public class ProjectDTO implements Serializable {
         semester = null;
     }
 
-    public ProjectDTO(String projectId, String projectName, String projectAva, String videoUrl, String introductionContent, String details, String recap, Timestamp createDate, String authorName, int viewNumber, String note, StatesDTO state, SemesterDTO semester) {
+    public ProjectDTO(String projectId, String projectName, String projectAva, String videoUrl, String introductionContent, String details, String recap, Date createDate, String authorName, int viewNumber, String note, StatesDTO state, SemesterDTO semester) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectAva = projectAva;
@@ -156,14 +157,14 @@ public class ProjectDTO implements Serializable {
     /**
      * @return the createDate
      */
-    public Timestamp getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
     /**
      * @param createDate the createDate to set
      */
-    public void setCreateDate(Timestamp createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -241,4 +242,6 @@ public class ProjectDTO implements Serializable {
     public String toString() {
         return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + '}';
     }
+
+    
 }

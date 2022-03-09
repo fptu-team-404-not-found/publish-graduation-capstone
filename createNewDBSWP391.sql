@@ -11,7 +11,7 @@ USE SWP391
 ------------------------------------------------------CREATE TABLE------------------------------------------------
 CREATE TABLE Comment(
 	CommentId INT IDENTITY(1,1),
-	CommentDate DATETIME DEFAULT GetDate() NOT NULL,
+	CommentDate date DEFAULT GetDate() NOT NULL,
 	CommentContent NText,
 	---------------
 	Account VARCHAR(50),
@@ -42,7 +42,7 @@ CREATE TABLE SharePost(
 	PostId INT IDENTITY(1,1),
 	Title NTEXT,
 	Details NTEXT,
-	CreateDate DATETIME DEFAULT GetDate() NOT NULL,
+	CreateDate date DEFAULT GetDate() NOT NULL,
 	Note NTEXT,
 	-------------
 	StudentId CHAR(8),
@@ -60,7 +60,7 @@ CREATE TABLE Project(
 	IntroductionContent NTEXT,
 	Details NTEXT,
 	Recap NTEXT,
-	CreateDate DATETIME DEFAULT GetDate() NOT NULL,
+	CreateDate date DEFAULT GetDate() NOT NULL,
 	ViewNumber INT,
 	AuthorName NVARCHAR(50),
 	Note NTEXT,
@@ -939,3 +939,20 @@ on st.StateId = sp.StateId
 inner join Supervisor su
 on su.SupervisorID = sp.SupervisorID
 Where p.ProjectId = 'SU20SE02'
+
+Select c.CommentDate
+From Comment c 
+Group by c.CommentDate
+
+Select c.CommentContent, acc.Email, c.PostId, c.ProjectId
+From Comment c inner join Account acc
+on c.Account = acc.Email
+Where c.CommentDate = '2022-03-09'
+
+
+SELECT @CurrentDate As CurrentDateTime
+From Comment c
+Declare @CurrentDate DateTime = c.CommentDate
+
+
+Select Convert(Date, @CurrentDate) As Aption1
