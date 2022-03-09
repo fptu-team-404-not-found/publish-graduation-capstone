@@ -222,6 +222,49 @@ public class CommentDAO {
         return "";
     }
 
+    public List<CommentDTO> countCommentInAdminMode() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select COUNT(CommentId) As Total, CommentDate "
+                        + "From Comment "
+                        + "Group by CommentDate ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<CommentDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    int total = rs.getInt(1);
+                    Date commentDate = rs.getDate("CommentDate");
+                    CommentDTO dto = new CommentDTO();
+                    dto.setTotal(total);
+                    dto.setCommentDate(commentDate);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
+        } catch (NamingException ex) {
+            Logger.getLogger(CommentDAO.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentDAO.class
+                        .getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
     public List<CommentDTO> showCommentInAdminMode() {
         try {
             con = DBHelpers.makeConnection();
