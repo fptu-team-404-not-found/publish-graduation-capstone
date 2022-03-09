@@ -40,7 +40,7 @@ public class ShareResource {
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentId", commentDTO.getCommentId());
-            jsObj.put("commentDate", commentDTO.getCommentDate().toLocaleString());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());
@@ -104,7 +104,7 @@ public class ShareResource {
         JSONObject jsObj = new JSONObject();
         jsObj.put("title", dto.getTitle());
         jsObj.put("details", dto.getDetails());
-        jsObj.put("createDate", dto.getCreateDate().toLocaleString());
+        jsObj.put("createDate", dto.getCreateDate().toString());
         if (dto.getStudent() != null) {
            jsObj.put("AuthorName", dto.getStudent().getMemberName());
         }

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -102,7 +103,7 @@ public class SharePostDAO implements Serializable {
                 {
                     String title = rs.getNString("Title");
                     String details = rs.getNString("Details");
-                    Timestamp createDate = rs.getTimestamp("CreateDate");
+                    Date createDate = rs.getDate("CreateDate");
                     teamMemberDto = teamMemberDao.getInforMember(rs.getString("StudentId"));
                     supervisorDto = supervisorDao.getInforSup(rs.getString("SupervisorID"));
                     projectDto = projectDao.getSingleProject(rs.getString("ProjectId"));
