@@ -67,12 +67,13 @@
             </div>
 
 
-            <div class="preview-supervisor-img-container">
-                <img id="preview-supervisor-img" src="./img.jpg" />
-                <label for="preview-supervisor-img-input">Upload Image</label>
-                <input accept="image/*" type="file" id="preview-supervisor-img-input" />
+            <input type="text" name="preview-supervisor-img-link" id="preview-supervisor-img-link"
+                placeholder="Place link here then enter to preview picture" onkeypress="getLinkImg()">
+            <br>
+            <div id="preview-supervisor-img-container">
+                <img id="preview-supervisor-img"
+                    src="" alt="">
             </div>
-
         </div>
         <br>
         <div id="admin-main-supervisor-create-btn-container">
@@ -90,6 +91,15 @@
                 image.src = src;
             }
         });
+
+        function getLinkImg() {
+            if (event.which == 13 || event.keyCode == 13) {
+                var getLinkImg = document.getElementById('preview-supervisor-img-link').value;
+                document.getElementById('preview-supervisor-img').src = getLinkImg;
+                return false;
+            }
+            return true;
+        };
     </script>
 </body>
 

@@ -137,6 +137,7 @@ body {
     resize: none;
     margin-top: 0.5em;
     margin-left: 0.5em;
+    border: 1px solid #F47124;
 }
 
 #admin-main-supervisor-create-new-name-text {
@@ -155,6 +156,7 @@ body {
     margin-top: 1.5em;
     padding: 0.5em;
     width: 24em;
+    border: 1px solid #F47124;
 }
 
 #admin-main-supervisor-create-new-name {
@@ -162,6 +164,7 @@ body {
     margin-top: 1.2em;
     width: 24em;
     margin-left: 3.5em;
+    border: 1px solid #F47124;
 }
 
 #admin-main-supervisor-create-btn-container {
@@ -197,37 +200,26 @@ body {
     display: none;
 }
 
-.preview-supervisor-img-container {
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    max-width: 350px;
-    margin: auto;
-    margin-bottom: -1em;
-}
-
 #preview-supervisor-img {
     width: 50%;
-    object-fit: cover;
     margin-bottom: 1em;
     border-radius: 50%;
 }
 
-label {
-    font-weight: 600;
-    cursor: pointer;
-    color: #fff;
-    border-radius: 8px;
+#preview-supervisor-img-link {
+    width: 85%;
     padding: 0.5em;
-    background-color: #F47124;
-    font-weight: 500;
-    font-size: 80%;
+    margin-top: 2em;
+    border-radius: 5px;
+    border: 1px solid #F47124;
+    margin-bottom: 1em;
+    margin-left: 7.5%;
 }
 
-
+#preview-supervisor-img-container {
+    width: 100%;
+    margin-left: 25%;
+}
 
 
 

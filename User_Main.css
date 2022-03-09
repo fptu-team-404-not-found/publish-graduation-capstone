@@ -1,0 +1,222 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+/*-----------------------------------day la menu--------------------------------------------------*/
+#menu {
+    background-color: #000000;
+    display: inline-block;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 8%;
+    z-index: 999;
+}
+
+#menu ul {
+    list-style-type: none;
+    margin-top: 0.8%;
+    text-align: left;
+    float: left;
+    width: 60%;
+}
+
+#menu li {
+    color: #f1f1f1;
+    display: inline-block;
+    width: 8%;
+    height: auto;
+    top: 0;
+    margin-right: 10%;
+    margin-left: 4%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#menu a {
+    text-decoration: none;
+    color: #F47124;
+    display: block;
+    letter-spacing: 0.06em;
+}
+
+#menu a:hover {
+    text-decoration: #ffffff solid underline;
+    text-underline-position: under;
+    text-decoration-thickness: 16%;
+    text-decoration-line: 10px;
+    color: #ffffff;
+}
+
+#background-img {
+    width: 120%;
+    height: auto;
+}
+
+.home-find-icon-normal {
+    color: #F47124;
+    float: right;
+    width: 4%;
+    margin-top: 1%;
+    font-size: 120%;
+}
+
+.home-find-icon-search {
+    color: #F47124;
+    position: absolute;
+    margin-left: 91%;
+    margin-top: 1.2%;
+}
+
+#home-search-container {
+    width: 27%;
+    margin-top: 0.4%;
+    margin-left: 67%; 
+    position: absolute;
+    padding: 0.5%;
+    border-radius: 2em;
+    display: none;
+}
+
+#home-search-text {
+    width: 100%;
+    padding: 2%;
+    border-radius: 2em;
+    font-size: 50%;
+    position: absolute;
+}
+/*-----------------------------------day la hết menu--------------------------------------------------*/
+
+#home-login {
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 0.8em;
+    font-weight: 600;
+    width: 7%;
+    float: right;
+    top: 7.9%;
+    right: 4%;
+    margin-right: -2.5%;
+    background-color: #000000;
+    padding: 0.5%;
+    text-align: center;
+    position: fixed;
+    font-size: 90%;
+    letter-spacing: 0.06em;
+    display: none;
+}
+
+#icon-show-login {
+    color: #F47124;
+    float: right;
+    width: 2.5%;
+    margin-right: 2%;
+    margin-top: 0.4em;
+}
+
+#user-main-picture-pop-up {
+    width: 100%;
+    border-radius: 50%;
+}
+/*----------------------------------------------đây là footer--------------------------------------*/
+#footer-home-left {
+    float: left;
+    width: 60%;
+}
+
+#footer-home-right {
+    float: right;
+    width: 35%;
+    text-align: center;
+    margin-right: -5%;
+}
+
+#footer-home {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 3% 5%;
+    overflow: auto;
+}
+
+#footer-header-text {
+    font-weight: 600;
+    color: #F47124;
+    margin-bottom: 2%;
+    font-size: 100%;
+    letter-spacing: 0.06em;
+}
+
+#footer-address-text {
+    font-weight: 50;
+    font-size: 65%;
+    margin-bottom: 2%;
+}
+
+#footer-phone-text {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 1%;
+}
+
+.footer-icon {
+    color: #ffffff;
+    background-color: #F47124;
+    padding: 0.5%;
+    border-radius: 50%;
+    font-size: 60%;
+}
+
+.footer-text {
+    font-size: 60%;
+    font-weight: 100;
+    letter-spacing: 0.1em;
+}
+
+#footer-home-contact {
+    color: #F47124;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    font-size: 90%;
+    margin-top: 3%;
+}
+
+#footer-icon-contact-container {
+    text-align: center;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+.footer-icon-contact {
+    background-color: #000000;
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+}
+
+.fa-copyright {
+    font-size: 50%;
+}
+
+#footer-copyright-text {
+    font-size: 50%;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+
+.footer-icon-right {
+    width: 100%;
+    border-radius: 16%;
+}
+/*----------------------------------------------đây là footer--------------------------------------*/
+.hidden { display: none; }
