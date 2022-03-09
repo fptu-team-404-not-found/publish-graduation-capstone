@@ -131,17 +131,62 @@ public class SupervisorDAO {
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<SupervisorDTO> list = new ArrayList<>();
-                
+
                 AccountDAO accountDao = new AccountDAO();
                 AccountDTO accountDto = new AccountDTO();
-                while(rs.next()){
+                while (rs.next()) {
                     String supervisorId = rs.getString("SupervisorID");
                     String supervisorName = rs.getString("SupervisorName");
                     boolean status = rs.getBoolean("Status");
                     accountDto = accountDao.getUserInforByEmail(rs.getString("Account"));
-                    
+
                     SupervisorDTO dto = new SupervisorDTO();
                     dto.setUser(accountDto);
+                    dto.setSupervisorId(supervisorId);
+                    dto.setSupervisorName(supervisorName);
+                    dto.setStatus(status);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<SupervisorDTO> searchSupervisor(String keyword) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select SupervisorID, SupervisorName, [Status] "
+                        + "From Supervisor "
+                        + "where SupervisorName Like ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, "%"+keyword+"%");
+                rs = stm.executeQuery();
+                List<SupervisorDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    String supervisorId = rs.getString("SupervisorID");
+                    String supervisorName = rs.getNString("SupervisorName");
+                    boolean status = rs.getBoolean("Status");
+                    SupervisorDTO dto = new SupervisorDTO();
                     dto.setSupervisorId(supervisorId);
                     dto.setSupervisorName(supervisorName);
                     dto.setStatus(status);

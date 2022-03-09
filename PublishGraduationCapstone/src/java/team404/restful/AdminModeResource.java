@@ -44,7 +44,7 @@ public class AdminModeResource {
             jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsObj.put("status", supervisorDTO.isStatus());
-            jsObj.put("email", supervisorDTO.getUser().getEmail());
+//            jsObj.put("email", supervisorDTO.getUser().getEmail());
             
             jsArr.add(jsObj);
         }
@@ -113,6 +113,25 @@ public class AdminModeResource {
         }
         JSONObject jsObj = new JSONObject();
         jsObj.put("searchAccountList", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/searchSupervisorList")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String searchSupervisorList(
+            @QueryParam("keyword") String keyword){
+        SupervisorDAO dao = new SupervisorDAO();
+        List<SupervisorDTO> list = dao.searchSupervisor(keyword);
+        JSONArray jsArr = new JSONArray();
+        for (SupervisorDTO supervisorDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
+            jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
+            jsObj.put("status", supervisorDTO.isStatus());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("searchSupervisorList", jsArr);
         return jsObj.toJSONString();
     }
 //    Dat show comment theo date 
