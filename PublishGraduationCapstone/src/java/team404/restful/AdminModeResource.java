@@ -98,36 +98,20 @@ public class AdminModeResource {
         return jsArr.toJSONString();
     }
 //    Dat show comment theo date 
-    @Path("/showDateOfComment")
+    @Path("/showCommentByDate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showDateOfComment(){
+    public String showCommentByDate(){
         CommentDAO dao = new CommentDAO();
-        List<CommentDTO> list = dao.showDateOfComment();
+        List<CommentDTO> list = dao.showCommentInAdminMode();
         JSONArray jsArr = new JSONArray();
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentDate", commentDTO.getCommentDate().toString());
-            jsArr.add(jsObj);
-        }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showDateOfComment", jsArr);
-        return jsObj.toJSONString();
-    }
-    @Path("/showCommentByDate")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String showCommentByDate(
-            @QueryParam("commentDate") Date commentDate){
-        CommentDAO dao = new CommentDAO();
-        List<CommentDTO> list = dao.showCommentByDate(commentDate);
-        JSONArray jsArr = new JSONArray();
-        for (CommentDTO commentDTO : list) {
-            JSONObject jsObj = new JSONObject();
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
             if(commentDTO.getPost() != null){
-                jsObj.put("title", commentDTO.getPost().getTitle());
+                jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
             if(commentDTO.getProject() != null){
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
