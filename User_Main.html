@@ -22,8 +22,10 @@
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
-        <div id="icon-show-login" onclick="showLogin()">
-            <img id="user-main-picture-pop-up" src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg" alt="">
+        <div id="icon-show-login" onclick="showInfo()">
+            <img id="user-main-picture-pop-up"
+                src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg"
+                alt="">
         </div>
         <div>
             <i class="fa-solid fa-magnifying-glass home-find-icon-normal" onclick="showSearch()"></i>
@@ -35,19 +37,84 @@
                 <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
             </span>
         </div>
-    </div>
-
-    <div>
-        <p>User detail</p>
-        <div>
-            <img src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg" alt="">
-            <div>
-                <h3>Nguyễn Lâm Thúy Phượng</h3>
-                <p><span>Mail: </span><span>phuongnltse150999@fpt.edu.vn</span></p>
-                <p><span>Alternative Mail: </span><span>pephuong2k1@gmail.com</span><span><i id="user-main-edit-mail" class="fa-solid fa-pen-to-square"></i></span></p>
-            </div>
+        <div id="user-main-small-control">
+            <p id="user-main-small-name">Nguyễn Lâm Thúy Phượng</p>
+            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
         </div>
     </div>
+    
+
+    <div id="user-main-container">
+        <p id="user-main-detail-title">User detail</p>
+        <div id="user-main-detail-info-container">
+            <div id="user-main-detail-image-container"><img id="user-main-detail-image"
+                    src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg"
+                    alt=""></div>
+            <div id="user-main-detail-name-mail-container">
+                <h4 id="user-main-detail-name-container">Nguyễn Lâm Thúy Phượng</h4>
+                <p id="user-main-detail-mail-container"><span>Mail: </span><span>phuongnltse150999@fpt.edu.vn</span></p>
+                <p id="user-main-detail-alternative-mail-container"><span>Alternative Mail:</span><span>
+                        pephuong2k1@gmail.com</span><span id="user-main-detail-alternative-mail"><i
+                            id="user-main-edit-mail" class="fa-solid fa-pen-to-square"></i></span></p>
+            </div>
+        </div>
+        <div id="user-main-bookmark-container">
+            <a href="#" class="user-main-bookmark">
+                <div class="user-main-bookmark-box active">
+                    <span><i class="fa-solid fa-bookmark"></i></span>
+                    <span>Bookmark</span>
+                </div>
+            </a>
+            <a href="#" class="user-main-sharing">
+                <div class="user-main-sharing-box">
+                    <span><i class="fa-solid fa-bookmark"></i></span>
+                    <span>Sharing Post</span>
+                </div>
+            </a>
+        </div>
+
+        <div id="upcomming-project-img">
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+       
+        </div>
+    </div>
+
 
     <div id="footer-home">
         <div id="footer-home-left">
@@ -82,8 +149,8 @@
         </div>
     </div>
     <script language="javascript">
-        function showLogin() {
-            var hidden = document.getElementById('home-login');
+        function showInfo() {
+            var hidden = document.getElementById('user-main-small-control');
             if (hidden.style.display === 'none')
                 hidden.style.display = 'block';
             else hidden.style.display = 'none';
