@@ -252,6 +252,11 @@ body {
     text-decoration: none;
 }
 
+.user-main-bookmark-box:hover {
+    border-bottom: 2px solid #F47124;
+    color: #F47124;
+}
+
 .user-main-bookmark-box {
     border-bottom: 2px solid #BABABA;
     padding: 0.5em;
@@ -385,6 +390,57 @@ body {
     color: #ffffff;
     left: 35%;
 }
+
+#user-main-sharing-post-text {
+    text-align: center;
+    padding: 2em;
+    color: #F47124;
+    letter-spacing: 0.08em;
+}
+
+/* đây là sharing post */
+#user-main-sharing-havepost-container {
+    display: flex;
+    padding: 1em;
+}
+
+#user-main-sharing-havepost-img {
+    width: 100%;
+    height: 34vh;
+    margin-left: 2em;
+}
+
+.user-main-sharing-havepost-left-img {
+    width: 30%;
+    margin-right: 4em;
+}
+
+.user-main-sharing-havepost-right {
+    width: 56%;
+}
+
+.user-main-sharing-havepost-title {
+    font-size: 100%;
+    line-height: 1.5em;
+    letter-spacing: 0.06em;
+    color: #F47124;
+}
+
+.user-main-sharing-havepost-sharing {
+    padding-top: 0.8em;
+    border-top: 3px solid #F47124;
+    width: 6em;
+    margin-top: 0.8em;
+    font-size: 80%;
+    letter-spacing: 0.08em;
+}
+
+.user-main-sharing-havepost-sharing:hover {
+    color: #F47124;
+    cursor: pointer;
+}
+
+
 
 /*----------------------------------------------đây là footer--------------------------------------*/
 #footer-home-left {

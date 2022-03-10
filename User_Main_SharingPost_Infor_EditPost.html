@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="User_Main_SharingPost_Infor_EditPost.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Project siu dink</title>
+</head>
+
+<body>
+    <div id="user-main-sharing-edit-post-container">
+        <div id="user-main-sharing-edit-post-title-container">
+            <label for="user-main-sharing-edit-post-title">Title</label>
+            <br>
+            <input type="text" name="user-main-sharing-edit-post-title" id="user-main-sharing-edit-post-title">
+        </div>
+        <div id="user-main-post-sharing-edit-post-editor-container">
+            <p id="user-main-post-sharing-edit-post-editor-text">Post Editor</p>
+            <form>
+                <textarea name="user-main-post-sharing-edit-post-editor"
+                    id="user-main-post-sharing-edit-post-editor"></textarea>
+            </form>
+        </div>
+
+        <div id="staff-edit-post-btn-container">
+            <input type="button" value="Preview" class="staff-edit-post-btn">
+            <input type="button" value="Submit" class="staff-edit-post-btn staff-edit-submit-btn">
+        </div>
+    </div>
+
+
+
+    <script>
+        CKEDITOR.replace('user-main-post-sharing-edit-post-editor', {
+            extraPlugins: 'justify',
+        });
+        CKEDITOR.on('instanceLoaded', function (e) {
+            e.editor.resize(1300, 720)
+        });
+    </script>
+</body>
+
+</html>

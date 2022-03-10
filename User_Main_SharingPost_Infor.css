@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+#user-main-sharing-update-delete-post-container {
+    width: 60%;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.sharing-btn {
+    padding: 0.3em 1.4em;
+    margin-bottom: 1em;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    border: none;
+    font-size: 80%;
+    margin-right: 1em;
+    color: #F47124;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border: 2px solid #FFFFFF;
+}
+
+.sharing-btn:hover {
+    border: 2px solid #F47124;
+    cursor: pointer;
+}
+
+.sharing-red-btn {
+    background-color: #FF0000;
+    color: #FFFFFF;
+    border: 2px solid #FF0000;
+}
+
+.sharing-red-btn:hover {
+    border: 2px solid #FF0000;
+    background-color: #FFFFFF;
+    color: #FF0000;
+}
+
+#user-main-sharing-update-delete-post-info {
+    background: #FFFFFF;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1em;
+}

@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+#user-main-sharing-edit-post-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+}
+
+#user-main-sharing-edit-post-title-container {
+    background-color: #FFFFFF;
+    padding: 1em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+label {
+    letter-spacing: 0.08em;
+    font-size: 110%;
+    color: #F47124;
+}
+
+#user-main-sharing-edit-post-title {
+    width: 40em;
+    padding: 0.8em;
+    margin: 1em 0em;
+    border: 1px solid #F47124;
+    border-radius: 5px;
+
+}
+
+#user-main-post-sharing-edit-post-editor-container {
+    background-color: #FFFFFF;
+    padding: 1em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 1em;
+}
+
+#user-main-post-sharing-edit-post-editor-text {
+    letter-spacing: 0.08em;
+    font-size: 140%;
+    color: #F47124;
+    margin-bottom: 0.6em;
+}
+
+.staff-edit-post-btn {
+    padding: 0.4em;
+    font-weight: 700;
+    font-size: 100%;
+    margin: 2em 0em;
+    width: 7em;
+    margin-right: 0.5em;
+    border-radius: 1em;
+    border: none;
+    background-color: #c1c1c1;
+    letter-spacing: 0.06em;
+}
+
+.staff-edit-submit-btn {
+    background-color: #F47124;
+}
+
+.staff-edit-post-btn:hover {
+    background-color: #FFFFFF;
+    color: #F47124;
+    border: 1px solid #F47124;
+}
