@@ -16,6 +16,7 @@ public class CommentDTO {
     private SharePostDTO post;
     private AccountDTO user;
     private ProjectDTO project;
+    private int total;
 
     public CommentDTO() {
         commentId = 0;
@@ -24,15 +25,17 @@ public class CommentDTO {
         post = null;
         user = null;
         project = null;
+        total = 0;
     }
 
-    public CommentDTO(int commentId, Date commentDate, String commentContent, SharePostDTO post, AccountDTO user, ProjectDTO project) {
+    public CommentDTO(int commentId, Date commentDate, String commentContent, SharePostDTO post, AccountDTO user, ProjectDTO project, int total) {
         this.commentId = commentId;
         this.commentDate = commentDate;
         this.commentContent = commentContent;
         this.post = post;
         this.user = user;
         this.project = project;
+        this.total = total;
     }
 
     /**
@@ -56,9 +59,6 @@ public class CommentDTO {
     public void setCommentDate(Date commentDate) {
         this.commentDate = commentDate;
     }
-
-    
-    
 
     /**
      * @return the commentContent
@@ -116,6 +116,14 @@ public class CommentDTO {
         this.project = project;
     }
 
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
     @Override
     public String toString() {
         return "CommentDTO{" + "commentId=" + commentId + ", commentDate=" + commentDate + ", commentContent=" + commentContent + ", post=" + post + ", user=" + user + ", project=" + project + '}';

@@ -1,23 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package team404.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import team404.account.AccountDAO;
-import team404.account.AccountDTO;
-import team404.utils.GoogleHelpers;
 import team404.utils.MyApplicationConstants;
 
-public class LoginServlet extends HttpServlet {
+/**
+ *
+ * @author thang
+ */
+@WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
+public class LogoutServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,51 +34,23 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-      response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        PrintWriter out = response.getWriter();
-
-        String code = request.getParameter("code");
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter(); 
+        
+        String url = MyApplicationConstants.LogoutFeatures.HOME_PAGE;
         
         try {
-            if (code == null || code.isEmpty()) {
-            } else {
-                HttpSession session = request.getSession();
-
-                GoogleHelpers googleHelper = new GoogleHelpers();
-                String accessToken = googleHelper.getToken(code);
-                String userJSON = googleHelper.getUserInfo(accessToken);
-                AccountDTO accountDTO = googleHelper.getUserFromJson(userJSON);
-
-                AccountDAO accountDAO = new AccountDAO();
-                String email = accountDTO.getEmail();
-                boolean idExisted = accountDAO.checkEmail(email);
-
-                if (!idExisted) {
-                    accountDAO.createNewAcccount(accountDTO);
-                }
-                Cookie cookie = new Cookie("token", accessToken);
-                cookie.setMaxAge(60*60);
-                response.addCookie(cookie);
-
-                int role = accountDAO.getRole(email);
-                if(role == 1){
-                    
-                    response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.HOME_PAGE);
-                }
-                if(role == 2){
-                    response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.SHARE_MODE_PAGE);
-                }
-        
-    
+            HttpSession session = request.getSession(false);
             
-               
+            if (session == null) {
+                return;
             }
-        } catch (IOException ex) {
-            log("LoginServlet_IO: " + ex.getMessage());
-        } finally {
             
+            Cookie cookies = new Cookie("token", "");
+            cookies.setMaxAge(0);
+            response.addCookie(cookies);
+        } finally {
+            response.sendRedirect(url);
             out.close();
         }
         

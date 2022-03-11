@@ -29,14 +29,19 @@ function onSignIn(googleUser) {
             var res = this.responseText;
             var jsonData = JSON.parse(res);
 
-            jsonData.information.forEach(counter => {
-                localStorage.setItem("email", counter.email);
-                localStorage.setItem("name", counter.name);
-                localStorage.setItem("picture", counter.picture);
-                localStorage.setItem("roleId", counter.roleId);
-                localStorage.setItem("token", counter.token);
-            });
-            if(this.responseText !== null){
+//            jsonData.information.forEach(counter => {
+//                localStorage.setItem("email", counter.email);
+//                localStorage.setItem("name", counter.name);
+//                localStorage.setItem("picture", counter.picture);
+//                localStorage.setItem("roleId", counter.roleId);
+//                localStorage.setItem("token", counter.token);
+//            });
+            localStorage.setItem("email", jsonData.email);
+            localStorage.setItem("name", jsonData.name);
+            localStorage.setItem("picture", jsonData.picture);
+            localStorage.setItem("roleId", jsonData.roleId);
+            localStorage.setItem("token", jsonData.token);
+            if (this.responseText !== null) {
                 location.replace('Search-BE.html');
             }
         }

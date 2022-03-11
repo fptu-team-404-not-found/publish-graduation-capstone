@@ -222,19 +222,21 @@ public class CommentDAO {
         return "";
     }
 
-    public List<CommentDTO> showDateOfComment() {
+    public List<CommentDTO> countCommentInAdminMode() {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select c.CommentDate "
-                        + "From Comment c "
-                        + "Group by c.CommentDate ";
+                String sql = "Select COUNT(CommentId) As Total, CommentDate "
+                        + "From Comment "
+                        + "Group by CommentDate ";
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<CommentDTO> list = new ArrayList<>();
                 while(rs.next()){
+                    int total = rs.getInt(1);
                     Date commentDate = rs.getDate("CommentDate");
                     CommentDTO dto = new CommentDTO();
+                    dto.setTotal(total);
                     dto.setCommentDate(commentDate);
                     list.add(dto);
                 }
@@ -249,9 +251,6 @@ public class CommentDAO {
                     .getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
                 if (stm != null) {
                     stm.close();
                 }
@@ -265,33 +264,34 @@ public class CommentDAO {
         }
         return null;
     }
-    public List<CommentDTO> showCommentByDate(Date commentDate){
-        try{
+
+    public List<CommentDTO> showCommentInAdminMode() {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null){
-                String sql = "Select c.CommentContent, acc.Email, c.PostId, c.ProjectId "
+            if (con != null) {
+                String sql = "Select c.CommentDate, c.CommentContent, acc.Email, c.PostId, c.ProjectId "
                         + "From Comment c inner join Account acc "
-                        + "On c.Account = acc.Email "
-                        + "Where c.CommentDate = ? ";
+                        + "on c.Account = acc.Email ";
                 stm = con.prepareStatement(sql);
-                stm.setDate(1, commentDate);
                 rs = stm.executeQuery();
                 List<CommentDTO> list = new ArrayList<>();
-                
+
                 AccountDAO accountDao = new AccountDAO();
                 AccountDTO accountDto = new AccountDTO();
-                
+
                 SharePostDAO sharePostDao = new SharePostDAO();
                 SharePostDTO sharePostDto = new SharePostDTO();
-                
+
                 ProjectDAO projectDao = new ProjectDAO();
                 ProjectDTO projectDto = new ProjectDTO();
-                while(rs.next()){
+                while (rs.next()) {
+                    Date commentDate = rs.getDate("CommentDate");
                     String commentContent = rs.getNString("CommentContent");
                     accountDto = accountDao.getEmail(rs.getString("Email"));
                     sharePostDto = sharePostDao.getSharePostDetail(rs.getInt("PostId"));
                     projectDto = projectDao.getSingleProject(rs.getString("ProjectId"));
                     CommentDTO dto = new CommentDTO();
+                    dto.setCommentDate(commentDate);
                     dto.setCommentContent(commentContent);
                     dto.setUser(accountDto);
                     dto.setPost(sharePostDto);

@@ -44,7 +44,7 @@ public class AdminModeResource {
             jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsObj.put("status", supervisorDTO.isStatus());
-            jsObj.put("email", supervisorDTO.getUser().getEmail());
+//            jsObj.put("email", supervisorDTO.getUser().getEmail());
             
             jsArr.add(jsObj);
         }
@@ -97,37 +97,58 @@ public class AdminModeResource {
         }
         return jsArr.toJSONString();
     }
-//    Dat show comment theo date 
-    @Path("/showDateOfComment")
+    @Path("/searchAccountList")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showDateOfComment(){
+    public String searchAccountList(
+            @QueryParam("keyword") String keyword){
+        AccountDAO dao = new AccountDAO();
+        List<AccountDTO> list = dao.searchAccountInAdmin(keyword);
+        JSONArray jsArr = new JSONArray();
+        for (AccountDTO accountDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("email", accountDTO.getEmail());
+            jsObj.put("role", accountDTO.getRole().getRoleName());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("searchAccountList", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/searchSupervisorList")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String searchSupervisorList(
+            @QueryParam("keyword") String keyword){
+        SupervisorDAO dao = new SupervisorDAO();
+        List<SupervisorDTO> list = dao.searchSupervisor(keyword);
+        JSONArray jsArr = new JSONArray();
+        for (SupervisorDTO supervisorDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
+            jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
+            jsObj.put("status", supervisorDTO.isStatus());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("searchSupervisorList", jsArr);
+        return jsObj.toJSONString();
+    }
+//    Dat show comment theo date 
+    @Path("/showCommentByDate")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showCommentByDate(){
         CommentDAO dao = new CommentDAO();
-        List<CommentDTO> list = dao.showDateOfComment();
+        List<CommentDTO> list = dao.showCommentInAdminMode();
         JSONArray jsArr = new JSONArray();
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("commentDate", commentDTO.getCommentDate().toString());
-            jsArr.add(jsObj);
-        }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showDateOfComment", jsArr);
-        return jsObj.toJSONString();
-    }
-    @Path("/showCommentByDate")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String showCommentByDate(
-            @QueryParam("commentDate") Date commentDate){
-        CommentDAO dao = new CommentDAO();
-        List<CommentDTO> list = dao.showCommentByDate(commentDate);
-        JSONArray jsArr = new JSONArray();
-        for (CommentDTO commentDTO : list) {
-            JSONObject jsObj = new JSONObject();
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
             if(commentDTO.getPost() != null){
-                jsObj.put("title", commentDTO.getPost().getTitle());
+                jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
             if(commentDTO.getProject() != null){
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
@@ -136,6 +157,23 @@ public class AdminModeResource {
         }
         JSONObject jsObj = new JSONObject();
         jsObj.put("showCommentByDate", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/countCommentInDate")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String countCommentInDate(){
+        CommentDAO dao = new CommentDAO();
+        List<CommentDTO> list = dao.countCommentInAdminMode();
+        JSONArray jsArr = new JSONArray();
+        for (CommentDTO commentDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("total", commentDTO.getTotal());
+            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("countCommentInDate", jsArr);
         return jsObj.toJSONString();
     }
 }

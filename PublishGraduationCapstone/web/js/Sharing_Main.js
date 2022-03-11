@@ -25,7 +25,7 @@ function showSharePostContent() {
     var apiOrginal = "/PublishGraduationCapstone/api/share/sharePostDetail?postId=";
     var api = '';
     if (sharePostId != "") {
-    api = apiOrginal + sharePostId;
+        api = apiOrginal + sharePostId;
     }
     var xhttp = new XMLHttpRequest();
     xhttp.open("GET", api);
@@ -33,7 +33,11 @@ function showSharePostContent() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            var jsonData = JSON.parse(res);
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
             //show share post title 
             document.getElementById("sharing-main-title").innerHTML = jsonData.sharePostDetail.title
             //show share post details
@@ -44,7 +48,7 @@ function showSharePostContent() {
             document.getElementById("sharing-main-poster").innerHTML = jsonData.sharePostDetail.AuthorName
             //show belong project 
             document.getElementById("sharing-main-right-container").innerHTML =
-            `
+                `
             <div class="project-sharing-belongs-container" onclick="projectRedirect(this)">
             <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
                 <p class="project-sharing-belongs-img-text">${jsonData.sharePostDetail.project.ProjectName}</p>
@@ -63,7 +67,7 @@ function showSharePostContent() {
         }
     };
 }
-showSharePostContent() ;
+showSharePostContent();
 
 function showOtherproject() {
     var xhttp = new XMLHttpRequest();
@@ -73,7 +77,11 @@ function showOtherproject() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            var jsonData = JSON.parse(res);
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
 
             const listProject = document.querySelector('#project-sharing-other-project-container');
             let projects = new Array();
@@ -109,17 +117,21 @@ function showOtherproject() {
 }
 showOtherproject();
 
-function showSharePostList(projectId){
+function showSharePostList(projectId) {
     var xhttp = new XMLHttpRequest();
     var apishowSharePost = "/PublishGraduationCapstone/api/share/showSharePostList?projectId=";
-    var apiSharePost = apishowSharePost+projectId;
-    console.log("project ID: "+projectId)
+    var apiSharePost = apishowSharePost + projectId;
+    console.log("project ID: " + projectId)
     xhttp.open("GET", apiSharePost);
     xhttp.send();
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            var jsonData = JSON.parse(res);
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
 
             const listProject = document.querySelector('#project-sharing-container-all');
 
@@ -132,9 +144,9 @@ function showSharePostList(projectId){
 
             for (var i = 0; i < arrayLenght; i++) {
                 var counter = jsonData.showSharePostList[i];
-                if(counter.postId != sharePostId){
+                if (counter.postId != sharePostId) {
                     var project =
-                    `
+                        `
                     <div class="project-sharing-experience-container" onclick="sharePostRedirect(this)">
                     <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html"style="text-decoration: none">
                     <div id="project-sharing-experience-img-container">
@@ -148,7 +160,7 @@ function showSharePostList(projectId){
                     </a>
                     </div>
                 `
-                projects.push(project);
+                    projects.push(project);
                 }
             };
             listProject.innerHTML = projects.join('');
@@ -188,7 +200,11 @@ function showComment() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            var jsonData = JSON.parse(res);
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
             const listProject = document.querySelector('#project-commented-container-all');
 
             let projects = new Array();
