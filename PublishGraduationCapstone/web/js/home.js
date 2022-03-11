@@ -32,8 +32,12 @@ function showOtherProject() {
 
 
             var res = this.responseText;
-
-            var jsonData = JSON.parse(res);
+            try{
+                var jsonData = JSON.parse(res);
+            }catch(e){
+                alert(e);
+            }
+            
             console.log(jsonData);
             const listProject = document.querySelector('#other-project-img');
             let projects = new Array();
@@ -77,7 +81,11 @@ function showHightLight() {
 
             var res = this.responseText;
 
-            var jsonData = JSON.parse(res);
+            try{
+                var jsonData = JSON.parse(res);
+            }catch(e){
+                alert(e);
+            }
 
             const listProject = document.querySelector('#hightlight-project-img');
 
@@ -134,9 +142,12 @@ function showUpcoming(callback) {
     xhttp.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            jsonData = JSON.parse(res);
-            console.log("upcoming nè: ")
-            console.log(jsonData);
+            try{
+                var jsonData = JSON.parse(res);
+            }catch(e){
+                alert(e);
+            }
+
             const listComingProject = document.querySelector('#upcomming-project-img');
             var arrayLenght = jsonData.getUpcomingProjects.length;
             if (arrayLenght > 8)
@@ -202,7 +213,6 @@ function showThisUpcoming(div) {
     while (thisProjectId != comingProjects[i].projectId) {
         i++;
     }
-    console.log(i);
 
     thisProjectDate = comingProjects[i].projectDate;
     thisProjectLocation = comingProjects[i].projectLocation;
@@ -226,5 +236,40 @@ function showThisUpcoming(div) {
         <img class="upcoming-img-big" src="${thisProjectImage}">
     `
     thisComingImage.innerHTML = bigImage;
+}
+
+
+function noname(){ 
+
+
+    
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/login/getLoginAccountInfo?accessToken=";
+
+    var cookies =  document.cookie;
+    console.log("cookies ne:"+cookies);
+    var ccs = cookies.slice(6, cookies.length).trim();
+    console.log("cookies ne 2:"+ccs);
+    var url = api + ccs;
+    xhttp.open("GET", url);
+    xhttp.send();
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                //using data here
+                var res = this.responseText;
+                var jsonData = JSON.parse(res);
+
+                localStorage.setItem("email", jsonData.email);
+                localStorage.setItem("name", jsonData.name);
+                localStorage.setItem("picture", jsonData.picture);
+                localStorage.setItem("roleId", jsonData.roleId);
+                console.log("Role:" + jsonData.roleId)
+                if ( jsonData.roleId == 2) {
+                    location.replace('http://localhost:8084/PublishGraduationCapstone/Project_Main.html');
+                }
+            }
+        };
+   
 }
 

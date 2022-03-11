@@ -146,14 +146,13 @@ body {
   margin-bottom: 2%;
   overflow: auto;
   margin: 1% 2%;
-  border: solid 4px #ffffff;
-  transition: border-width 0.25s ;
+  border: solid 3px #ffffff;
 }
 
 
 .other-img:hover { 
-  border: solid 4px #F47124;
-  transition: border-width 0.25s ;
+  border: solid 3px #F47124;
+  transition:ease-in-out 0.25s;
 }
 
 .other-project-img {

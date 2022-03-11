@@ -270,7 +270,7 @@ VALUES('phuonglhk@gmail.com', N'PhuongLVK',
 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 1)
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES('hoangNT@gmail.com', N'HoangNT', 
-'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=-Pfr0VuhNOQAX99qFt3&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9fy7cQQwi1VAjFXu7jQ95bIuQ2kp3kDAmI4VS0eY4bVg&oe=62260997', 1)
+'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=q44qqnBRN8AAX9pC9Ak&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT84riyGyTZx3Rd-mugwD_WgQTjvIzlkD1P2M3L5gnKI3g&oe=622FECD7', 1)
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES('vanTTN@gmail.com', N'VanTTN', 
 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04', 1)
@@ -327,7 +327,7 @@ N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 'khanhkt@gm
 ('LHKP', N'Lâm Hữu Khánh Phương', 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 
 NULL, NULL, 'phuonglhk@gmail.com'),
 
-('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=-Pfr0VuhNOQAX99qFt3&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9fy7cQQwi1VAjFXu7jQ95bIuQ2kp3kDAmI4VS0eY4bVg&oe=62260997', 
+('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=q44qqnBRN8AAX9pC9Ak&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT84riyGyTZx3Rd-mugwD_WgQTjvIzlkD1P2M3L5gnKI3g&oe=622FECD7', 
 N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 'hoangNT@gmail.com'),
 
 ('TTNV', N'Thân Thị Ngọc Vân', 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04',
@@ -815,6 +815,7 @@ VALUES (N'Hay ghê', 'meowmeow@gmail.com', 1, 'FA19SE06')
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'gà', 'chipchip@gmail.com', 1, 'FA19SE06')
 
+
 INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
 VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 3, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
@@ -917,7 +918,7 @@ END
 --EXECUTE SearchHome @SearchValue = N'Siu Đỉnh'
 --EXECUTE SearchHome @SearchValue = N'Đinh'
 --EXECUTE SearchHome @SearchValue = N'The Hoang'
-
+/*
 Select *
 From Project p join TeamMember tm
 on p.ProjectId = tm.ProjectId
@@ -956,3 +957,4 @@ Declare @CurrentDate DateTime = c.CommentDate
 
 
 Select Convert(Date, @CurrentDate) As Aption1
+*/
