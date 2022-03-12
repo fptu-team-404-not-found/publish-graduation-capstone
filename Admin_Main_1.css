@@ -128,6 +128,43 @@ body {
     justify-content: space-between;
 }
 
+
+#admin-main-account-list-add {
+    display: flex;
+}
+
+#admin-main-supervisor-add {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    font-size: 80%;
+    width: 10em;
+    display: inline-flex;
+    height: 2em;
+    margin-right: 1em;
+}
+
+#admin-main-supervisor-add:hover {
+    background-color: #f4702450;
+}
+
+.add-btn {
+    color: #F47124;
+    font-size: 1.4em;
+    padding-right: 0.2em;
+    margin-top: 0.2em;
+}
+
+#admin-main-supervisor-add-btn {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: #000000;
+    height: 2em;
+    line-height: 2.5em;
+}
+
 .admin-main-account-list-table-title {
     width: 10em;
     font-size: 80%;
