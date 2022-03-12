@@ -1,6 +1,6 @@
 function showLogin() {
     /*MainMainMain*/
-    var hidden = document.getElementById('home-login');
+    var hidden = document.getElementById('login-box');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
     else hidden.style.display = 'none';
@@ -15,7 +15,7 @@ function showSearch() {
 
 function showSearchPage() {
     var usernameInput = document.querySelector('#home-search-text').value;
-    console.log('lala: ' + usernameInput);   
+    console.log('lala: ' + usernameInput);
 
     sessionStorage.setItem("keyword", usernameInput);
 
@@ -27,17 +27,17 @@ function showOtherProject() {
     var api = "/PublishGraduationCapstone/api/project/showOtherProjects";
     xhttp.open("GET", api);
     xhttp.send();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
 
 
             var res = this.responseText;
-            try{
+            try {
                 var jsonData = JSON.parse(res);
-            }catch(e){
+            } catch (e) {
                 alert(e);
             }
-            
+
             console.log(jsonData);
             const listProject = document.querySelector('#other-project-img');
             let projects = new Array();
@@ -75,15 +75,15 @@ function showHightLight() {
     var api = "/PublishGraduationCapstone/api/project/getHighlightProjects";
     xhttp.open("GET", api);
     xhttp.send();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
 
 
             var res = this.responseText;
 
-            try{
+            try {
                 var jsonData = JSON.parse(res);
-            }catch(e){
+            } catch (e) {
                 alert(e);
             }
 
@@ -118,18 +118,18 @@ showHightLight();
 
 //search by enter
 var input = document.getElementById("home-search-text");
-input.addEventListener("keydown", function(e) {
+input.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {
         showSearchPage();
     }
-  });
+});
 
-  //redirect to project detail
-  function projectRedirect(div){
+//redirect to project detail
+function projectRedirect(div) {
     var projectId = div.querySelector('.upcoming-img-id').innerText;
     console.log(projectId);
     sessionStorage.setItem("projectId", projectId);
-  }
+}
 
 
 function showUpcoming(callback) {
@@ -139,12 +139,12 @@ function showUpcoming(callback) {
     let comingProjects = new Array();
     xhttp.open("GET", api);
     xhttp.send();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
-            try{
+            try {
                 var jsonData = JSON.parse(res);
-            }catch(e){
+            } catch (e) {
                 alert(e);
             }
 
@@ -200,7 +200,7 @@ function showUpcoming(callback) {
 
 var comingProjects;
 
-console.log(showUpcoming(function(jsonData) {
+console.log(showUpcoming(function (jsonData) {
     console.log("Show ne :" + jsonData);
     comingProjects = jsonData;
 }));
@@ -239,37 +239,87 @@ function showThisUpcoming(div) {
 }
 
 
-function noname(){ 
-
-
+function startup() {
+    if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
+        if (localStorage.getItem("roleId") == 3) {
+            location.replace('http://localhost:8084/PublishGraduationCapstone/Staff_EditPost.html')
+        }
+        if (localStorage.getItem("roleId") == 4) {
+            location.replace('http://localhost:8084/PublishGraduationCapstone/Admin_Main.html')
+        }
+        if (localStorage.getItem("roleId") == 1 || localStorage.getItem("roleId") == 2){
+            initLogin();
+        }
+    }
+    else{
+        var cookies = document.cookie;
+        if (cookies != '') {
+            var xhttp = new XMLHttpRequest();
+            var api = "/PublishGraduationCapstone/api/login/getLoginAccountInfo?accessToken=";
+            console.log("cookies ne 1:" + cookies);
+            var ccs = cookies.slice(6, cookies.length).trim();
+            console.log("cookies ne 2:" + ccs);
+            var url = api + ccs;
+            xhttp.open("GET", url);
+            xhttp.send();
     
-    var xhttp = new XMLHttpRequest();
-    var api = "/PublishGraduationCapstone/api/login/getLoginAccountInfo?accessToken=";
-
-    var cookies =  document.cookie;
-    console.log("cookies ne:"+cookies);
-    var ccs = cookies.slice(6, cookies.length).trim();
-    console.log("cookies ne 2:"+ccs);
-    var url = api + ccs;
-    xhttp.open("GET", url);
-    xhttp.send();
-
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                //using data here
-                var res = this.responseText;
-                var jsonData = JSON.parse(res);
-
-                localStorage.setItem("email", jsonData.email);
-                localStorage.setItem("name", jsonData.name);
-                localStorage.setItem("picture", jsonData.picture);
-                localStorage.setItem("roleId", jsonData.roleId);
-                console.log("Role:" + jsonData.roleId)
-                if ( jsonData.roleId == 2) {
-                    location.replace('http://localhost:8084/PublishGraduationCapstone/Project_Main.html');
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    //using data here
+                    var res = this.responseText;
+                    try {
+                        var jsonData = JSON.parse(res);
+                    } catch (e) {
+                        alert(e);
+                    }
+                    localStorage.setItem("email", jsonData.email);
+                    localStorage.setItem("name", jsonData.name);
+                    localStorage.setItem("picture", jsonData.picture);
+                    localStorage.setItem("roleId", jsonData.roleId);
+                    initLogin()
                 }
-            }
-        };
-   
+            };
+     }
+    }
+}
+     
+startup();
+
+function initLogin(){
+    var username = localStorage.getItem("name")
+    var picture = localStorage.getItem("picture")
+
+        document.getElementById("icon-show-login").innerHTML = 
+        `
+        <img src="${picture}" alt=""> 
+        `
+        document.getElementById("login-box").innerHTML = 
+        `
+        <div id="user-main-small-control">
+        <p id="user-main-small-name">${username}</p>
+        <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+        <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
+        <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+        </a>
+        </div>
+        `
 }
 
+function logout(){
+    localStorage.clear();
+    document.getElementById("icon-show-login").innerHTML = 
+    `
+    <i class="fa-solid fa-user"></i>
+    `
+    document.getElementById("login-box").innerHTML = 
+    `
+    <div id="home-login">
+    <a
+        style="text-decoration: none; color: #fff;" 
+        href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+        <div name="button" type="button">Login</div>
+    </a>
+    </div>
+
+    `
+}

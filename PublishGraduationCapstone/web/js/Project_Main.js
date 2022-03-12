@@ -1,9 +1,29 @@
-window.onload=function(){
-    console.log("cc"+ document.cookie)
+function login() {
+    if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
+        var username = localStorage.getItem("name")
+        var picture = localStorage.getItem("picture")
+    
+            document.getElementById("icon-show-login").innerHTML = 
+            `
+            <img src="${picture}" alt=""> 
+            `
+            document.getElementById("login-box").innerHTML = 
+            `
+            <div id="user-main-small-control">
+            <p id="user-main-small-name">${username}</p>
+            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+            </a>
+            </div>
+            `
+    }
 }
+login();
+
 
 function showLogin() {
-    var hidden = document.getElementById('home-login');
+    var hidden = document.getElementById('login-box');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
     else hidden.style.display = 'none';
@@ -46,9 +66,9 @@ function showProject() {
 
             try {
                 var jsonData = JSON.parse(res);
-              } catch (e) {
+            } catch (e) {
                 alert(e);
-              }
+            }
             //show title
             document.getElementById("project-title").innerHTML = jsonData.projectName
             //show intro
@@ -144,9 +164,9 @@ function showOtherproject() {
             var res = this.responseText;
             try {
                 var jsonData = JSON.parse(res);
-              } catch (e) {
+            } catch (e) {
                 alert(e);
-              }
+            }
             const listProject = document.querySelector('#project-sharing-other-project-container');
             let projects = new Array();
             var arrayLenght = jsonData.otherProject.length;
@@ -194,9 +214,9 @@ function showComment() {
             var res = this.responseText;
             try {
                 var jsonData = JSON.parse(res);
-              } catch (e) {
+            } catch (e) {
                 alert(e);
-              }
+            }
             const listProject = document.querySelector('#project-commented-container-all');
 
             let projects = new Array();
@@ -232,9 +252,9 @@ function showSharePostList() {
             var res = this.responseText;
             try {
                 var jsonData = JSON.parse(res);
-              } catch (e) {
+            } catch (e) {
                 alert(e);
-              }
+            }
 
             const listProject = document.querySelector('#project-sharing-container-all');
 
@@ -294,23 +314,21 @@ function sharePostRedirect(div) {
 
 }
 
-// function writeComment(){
-//     var xhttp = new XMLHttpRequest();
-//     var api = "/PublishGraduationCapstone/api/project/showOtherProjects";
-//     xhttp.open("GET", api);
-//     xhttp.send();
-//     xhttp.onreadystatechange = function () {
-//         if (this.readyState === 4 && this.status === 200) {
-//             var res = this.responseText;
-//             try {
-//                 var jsonData = JSON.parse(res);
-//               } catch (e) {
-//                 alert(e);
-//               }
-         
-
-
-//         }
-//     }
-// }
+function logout() {
+    localStorage.clear();
+    document.getElementById("icon-show-login").innerHTML = 
+    `
+    <i class="fa-solid fa-user"></i>
+    `
+    document.getElementById("login-box").innerHTML = 
+    `
+    <div id="home-login">
+    <a
+        style="text-decoration: none; color: #fff;" 
+        href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+        <div name="button" type="button">Login</div>
+    </a>
+    </div>
+    `
+}
 

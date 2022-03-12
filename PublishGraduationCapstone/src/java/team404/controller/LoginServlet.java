@@ -59,17 +59,15 @@ public class LoginServlet extends HttpServlet {
                 response.addCookie(cookie);
 
                 int role = accountDAO.getRole(email);
-                if(role == 1){
-                    
+                if(role == 1 || role == 2){
                     response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.HOME_PAGE);
                 }
-                if(role == 2){
-                    response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.SHARE_MODE_PAGE);
+                if(role == 3){
+                    response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.POST_MODE_PAGE);
                 }
-        
-    
-            
-               
+                if(role == 4){
+                    response.sendRedirect(MyApplicationConstants.GoogleLoginFeatures.ADMIN_MODE_PAGE);
+                }
             }
         } catch (IOException ex) {
             log("LoginServlet_IO: " + ex.getMessage());

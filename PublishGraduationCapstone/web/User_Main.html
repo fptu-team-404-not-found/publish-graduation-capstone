@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/User_Main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Project siu dink</title>
+</head>
+
+<body>
+    <div id="menu">
+        
+        <ul>
+            <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+            </li>
+            <li class="nav-home-1"><a href="#">Home</a></li>
+            <li class="nav-home-2"><a href="#">Semester</a></li>
+            <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
+        </ul>
+        <div id="icon-show-login" onclick="showInfo()">
+            <img id="user-main-picture-pop-up"
+                src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg"
+                alt="">
+        </div>
+        <div>
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" onclick="showSearch()"></i>
+        </div>
+        <div id="home-search-container">
+            <span>
+                <input type="text" name="home-search-text" id="home-search-text"
+                    placeholder="Student’s name, Project’s name, Lecturer’s name ">
+                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+            </span>
+        </div>
+        <div id="user-main-small-control">
+            <p id="user-main-small-name">Nguyễn Lâm Thúy Phượng</p>
+            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+        </div>
+    </div>
+    
+
+    <div id="user-main-container">
+        <p id="user-main-detail-title">User detail</p>
+        <div id="user-main-detail-info-container">
+            <div id="user-main-detail-image-container"><img id="user-main-detail-image"
+                    src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg"
+                    alt=""></div>
+            <div id="user-main-detail-name-mail-container">
+                <h4 id="user-main-detail-name-container">Nguyễn Lâm Thúy Phượng</h4>
+                <p id="user-main-detail-mail-container"><span>Mail: </span><span>phuongnltse150999@fpt.edu.vn</span></p>
+                <p id="user-main-detail-alternative-mail-container"><span>Alternative Mail:</span><span>
+                        pephuong2k1@gmail.com</span><span id="user-main-detail-alternative-mail"><i
+                            id="user-main-edit-mail" class="fa-solid fa-pen-to-square"></i></span></p>
+            </div>
+        </div>
+        <div id="user-main-bookmark-container">
+            <a href="#" class="user-main-bookmark">
+                <div class="user-main-bookmark-box active">
+                    <span><i class="fa-solid fa-bookmark"></i></span>
+                    <span>Bookmark</span>
+                </div>
+            </a>
+            <a href="User_Main_SharingPost_NoPost.html" class="user-main-sharing">
+                <div class="user-main-sharing-box">
+                    <span><i class="fa-solid fa-bookmark"></i></span>
+                    <span>Sharing Post</span>
+                </div>
+            </a>
+        </div>
+
+        <div id="upcomming-project-img">
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+            <div class="upcoming-img">
+                <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">PROJECT 1</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">Content:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Congue ut ultricies convallis sagittis, bibendum hac.</p>
+                    <p class="upcoming-img-more">More...</p>
+                </div>
+                <img class="hightlight-project-img-container" src="https://is4-ssl.mzstatic.com/image/thumb/Purple116/v4/4e/24/9f/4e249f56-4f88-aec3-cf5d-5922a74686e3/source/256x256bb.jpg">
+            </div>
+       
+        </div>
+    </div>
+
+
+    <div id="footer-home">
+        <div id="footer-home-left">
+            <h3 id="footer-header-text">FPT UNIVERSITY HCM</h3>
+            <p id="footer-address-text">Lô E2a-7, Đường D1, Khu Công nghệ cao, P.Long Thạnh Mỹ, Tp. Thủ Đức, TP.HCM.</p>
+            <div id="footer-phone-text">
+                <span class="footer-icon"><i class="fa-solid fa-phone"></i></span>
+                <span class="footer-text">(028) 7300 5588</span>
+            </div>
+            <div id="footer-mail">
+                <span class="footer-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span class="footer-text">daihoc.hcm@fpt.edu.vn</span>
+            </div>
+        </div>
+        <div id="footer-home-right">
+            <p id="footer-home-contact">CONTACT US</p>
+            <div id="footer-icon-contact-container">
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Facebook_logo_36x36.svg/2048px-Facebook_logo_36x36.svg.png">
+                </div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/768px-Instagram_logo_2016.svg.png">
+                </div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://i.pinimg.com/originals/60/6f/e3/606fe391d5a5c014d52d8694b6aa4efd.jpg"></div>
+                <div class="footer-icon-contact"><img class="footer-icon-right"
+                        src="https://brandlogos.net/wp-content/uploads/2020/03/YouTube-icon-SVG-512x512.png"></div>
+            </div>
+            <br />
+            <span><i class="fa-solid fa-copyright"></i></span>
+            <span id="footer-copyright-text">2022 by 404</span>
+        </div>
+    </div>
+
+    <script src="/js/User_Main.js"></script>
+</body>
+
+</html>

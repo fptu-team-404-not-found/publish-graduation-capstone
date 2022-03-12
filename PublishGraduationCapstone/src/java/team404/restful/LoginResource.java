@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package team404.account;
+package team404.restful;
 
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,12 +13,13 @@ import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PUT;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.json.simple.JSONObject;
+import team404.account.AccountDAO;
+import team404.account.AccountDTO;
 import team404.utils.GoogleHelpers;
 
 /**
@@ -38,7 +39,7 @@ public class LoginResource {
     public LoginResource() {
     }
 
-    @Path("/getLoginAccountInfo")
+  @Path("/getLoginAccountInfo")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getLoginAccountInfo(
@@ -59,7 +60,7 @@ public class LoginResource {
             jsObj.put("roleId", role);
             
             return jsObj.toJSONString();
-       } catch (IOException ex) {
+       } catch (IOException ex) { 
             Logger.getLogger(LoginResource.class.getName()).log(Level.SEVERE, null, ex);
         }
 
