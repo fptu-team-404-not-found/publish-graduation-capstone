@@ -185,44 +185,112 @@ body {
     color: #F47124;
     letter-spacing: 0.06em;
 }
+/* menu trái */
 
 #user-main-container {
-    background-color: #ffffff;
     width: 60%;
+    height: fit-content;
     margin: auto;
     margin-top: 4.5em;
     margin-bottom: 2em;
-    border: 3px solid rgba(244, 113, 36, 0.9);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#user-main-detail-info-container {
+#user-main-container-flex {
     display: flex;
-    flex-direction: row;
+}
+
+#user-main {
+    width: 25%;
+    margin-top: 3%;
+    padding-top: 1.5em;
     justify-content: center;
-    margin-top: 1em;
-    margin-bottom: 2em;
+    background-color: #FFFFFF;
 }
 
 #user-main-detail-image-container {
-    width: 10em;
+    width: 6em;
+    margin: auto;
 }
 
-#user-main-detail-image {
-    width: 100%;
-    border-radius: 50%;
+#user-main-detail-image-container {
+    width: 6em;
+    margin: auto;
 }
 
 #user-main-detail-name-mail-container {
-    margin-top: 3em;
-    margin-left: 2em;
+    margin-top: 0.5em;
+    text-align: center;
     line-height: 1.2em;
+    letter-spacing: 0.06em;
 }
 
 #user-main-detail-name-container {
     letter-spacing: 0.06em;
-    font-size: 120%;
     margin-bottom: 1em;
+    font-weight: 550;
+}
+
+#user-main-detail-line {
+    width: 14em;
+    margin: auto;
+    height: 0.1em;
+    background-color: #F47124;
+}
+
+.user-main-bookmark {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.user-main-sharing {
+    text-align: center;
+    padding: 1em;
+    width: 70%;
+    border: 1px solid rgba(244, 113, 36, 0.2);
+    text-decoration: none;
+}
+
+.user-main-bookmark-box {
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+    font-weight: 500;
+    color: #BABABA;
+    letter-spacing: 0.08em;
+    font-size: 100%;
+    border-bottom: 1px solid #BABABA;
+    transition: all 0.5s;
+}
+
+.user-main-bookmark-box:hover {
+    color: #F47124;
+    border-bottom: 2px solid #F47124;
+}
+
+.user-main-sharing-box {
+    border-bottom: 2px solid #BABABA;
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+    font-weight: 500;
+    color: #BABABA;
+    letter-spacing: 0.08em;
+    font-size: 110%;
+}
+
+.user-main-sharing-box:hover {
+    border-bottom: 2px solid #F47124;
+    color: #F47124;
+}
+
+/* -------------------------------------------- */
+
+
+#user-main-detail-image {
+    width: 100%;
+    border-radius: 50%;
 }
 
 #user-main-detail-mail-container {
@@ -239,62 +307,22 @@ body {
     color: #F47124;
 }
 
-#user-main-bookmark-container {
-    display: flex;
-}
-
-.user-main-bookmark {
-    text-align: center;
-    display: inline-block;
-    padding: 1em;
-    border: 1px solid rgba(244, 113, 36, 0.2);
-    width: 50%;
-    text-decoration: none;
-}
-
-.user-main-bookmark-box:hover {
-    border-bottom: 2px solid #F47124;
-    color: #F47124;
-}
-
-.user-main-bookmark-box {
-    border-bottom: 2px solid #BABABA;
-    padding: 0.5em;
-    width: 45%;
-    margin: auto;
-    font-weight: 500;
-    color: #BABABA;
-    letter-spacing: 0.08em;
-    font-size: 110%;
-}
-
-.user-main-sharing-box {
-    border-bottom: 2px solid #BABABA;
-    padding: 0.5em;
-    width: 60%;
-    margin: auto;
-    font-weight: 500;
-    color: #BABABA;
-    letter-spacing: 0.08em;
-    font-size: 110%;
-}
-
 .user-main-sharing-box:hover {
     border-bottom: 2px solid #F47124;
     color: #F47124;
 }
 
+#user-main-title {
+    padding: 0.5em 2.5em;
+    background-color: #F47124;
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    width: fit-content;
+}
+
 .active {
     border-bottom: 2px solid #F47124;
     color: #F47124;
-}
-
-.user-main-sharing {
-    text-align: center;
-    padding: 1em;
-    width: 50%;
-    border: 1px solid rgba(244, 113, 36, 0.2);
-    text-decoration: none;
 }
 
 #upcomming-project-img {
@@ -399,6 +427,12 @@ body {
 }
 
 /* đây là sharing post */
+#user-main-sharing-havepost-container-box {
+    background-color: #ffffff;
+    border: 3px solid rgba(244, 113, 36, 0.9);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 #user-main-sharing-havepost-container {
     display: flex;
     padding: 1em;

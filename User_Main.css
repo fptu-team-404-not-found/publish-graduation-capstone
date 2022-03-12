@@ -196,34 +196,11 @@ body {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-#user-main-detail-info-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 1em;
-    margin-bottom: 2em;
-}
-
-#user-main-detail-image-container {
-    width: 10em;
-}
-
 #user-main-detail-image {
     width: 100%;
     border-radius: 50%;
 }
 
-#user-main-detail-name-mail-container {
-    margin-top: 3em;
-    margin-left: 2em;
-    line-height: 1.2em;
-}
-
-#user-main-detail-name-container {
-    letter-spacing: 0.06em;
-    font-size: 120%;
-    margin-bottom: 1em;
-}
 
 #user-main-detail-mail-container {
     font-size: 70%;
@@ -239,18 +216,6 @@ body {
     color: #F47124;
 }
 
-#user-main-bookmark-container {
-    display: flex;
-}
-
-.user-main-bookmark {
-    text-align: center;
-    display: inline-block;
-    padding: 1em;
-    border: 1px solid rgba(244, 113, 36, 0.2);
-    width: 50%;
-    text-decoration: none;
-}
 
 .user-main-bookmark-box {
     border-bottom: 2px solid #BABABA;
@@ -274,16 +239,6 @@ body {
     font-size: 110%;
 }
 
-.user-main-sharing-box:hover {
-    border-bottom: 2px solid #F47124;
-    color: #F47124;
-}
-
-.active {
-    border-bottom: 2px solid #F47124;
-    color: #F47124;
-}
-
 .user-main-sharing {
     text-align: center;
     padding: 1em;
@@ -294,10 +249,15 @@ body {
 
 #upcomming-project-img {
     text-align: center;
-    width: 100%;
-    padding-top: 4%;
+    width: 60%;
     padding: 1em;
-    margin-top: 1em;
+    margin-top: 8%;
+    margin-left: 10%;
+    margin-bottom: 8%;
+    background: #FFFFFF;
+    border: 3px solid rgba(244, 113, 36, 0.9);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .upcomming-project {
@@ -477,3 +437,122 @@ body {
 }
 /*----------------------------------------------đây là footer--------------------------------------*/
 .hidden { display: none; }
+
+
+/* menu trai, moi sua */
+#user-main-container {
+    background-color: #ffffff;
+    width: 60%;
+    margin: auto;
+    margin-top: 4.5em;
+    margin-bottom: 2em;
+    border: 3px solid rgba(244, 113, 36, 0.9);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#user-main-container-flex {
+    display: flex;
+    position: relative;
+}
+
+#user-main {
+    width: 25%;
+    margin-top: 3%;
+    padding-top: 1.5em;
+    justify-content: center;
+    background-color: #FFFFFF;
+}
+
+#user-main-detail-image-container {
+    width: 6em;
+    margin: auto;
+}
+
+#user-main-detail-image-container {
+    width: 6em;
+    margin: auto;
+}
+
+#user-main-detail-name-mail-container {
+    margin-top: 0.5em;
+    text-align: center;
+    line-height: 1.2em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-detail-name-container {
+    letter-spacing: 0.06em;
+    margin-bottom: 1em;
+    font-weight: 550;
+}
+
+#user-main-detail-line {
+    width: 14em;
+    margin: auto;
+    height: 0.1em;
+    background-color: #F47124;
+}
+
+.user-main-bookmark {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+}
+
+.user-main-sharing {
+    text-align: center;
+    padding: 1em;
+    width: 70%;
+    border: 1px solid rgba(244, 113, 36, 0.2);
+    text-decoration: none;
+}
+
+.user-main-bookmark-box {
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+    font-weight: 500;
+    color: #BABABA;
+    letter-spacing: 0.08em;
+    font-size: 100%;
+    border-bottom: 1px solid #BABABA;
+    transition: all 0.5s;
+}
+
+.user-main-bookmark-box:hover {
+    color: #F47124;
+    border-bottom: 2px solid #F47124;
+}
+
+.user-main-sharing-box {
+    border-bottom: 2px solid #BABABA;
+    padding: 1em;
+    width: 70%;
+    margin: auto;
+    font-weight: 500;
+    color: #BABABA;
+    letter-spacing: 0.08em;
+    font-size: 110%;
+}
+
+.user-main-sharing-box:hover {
+    border-bottom: 2px solid #F47124;
+    color: #F47124;
+}
+
+.active {
+    border-bottom: 2px solid #F47124;
+    color: #F47124;
+}
+
+#user-main-text-bookmark {
+    position: absolute;
+    top: 3.1em;
+    left: 35%;
+    padding: 0.5em 3em;
+    background-color: #F47124;
+    border: 3px solid #F47124;
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+}
