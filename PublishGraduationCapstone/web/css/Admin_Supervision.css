@@ -63,6 +63,11 @@ body {
     border-radius: 1em;
 }
 
+#admin-main-menu-container a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 1em;
+}
+
 .admin-main-menu-list {
     text-decoration: none;
     color: #F47124;
@@ -89,6 +94,40 @@ body {
     margin-top: 2%;
 }
 
+/* Add supervisor */
+#admin-main-supervisor-add {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    font-size: 80%;
+    width: 10em;
+    display: inline-flex;
+    height: 2em;
+}
+
+#admin-main-supervisor-add:hover {
+    background-color: #f4702450;
+}
+
+.add-btn {
+    color: #F47124;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding-right: 0.2em;
+    margin-top: 0.2em;
+}
+
+#admin-main-supervisor-add-btn {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: #000000;
+    height: 2em;
+    line-height: 2.5em;
+}
+
+
 /* Account list right search */
 
 #admin-main-account-list-search-container { 
@@ -97,16 +136,17 @@ body {
     border-radius: 1em;
     color: #F47124;
     font-size: 80%;
-    width: 16em;
-    line-height: 2em;
-    height: 2em;
+    width: 12em;
+    line-height: 1.8em;
+    height: 1.8em;
+    display: inline-flex;
 }
 
 #admin-main-account-list-search {
     border: none;
     color: #F47124;
     padding: 2%;
-    width: 18em;
+    width: 12em;
 }
 
 #admin-main-account-list-search::placeholder {
@@ -157,21 +197,14 @@ body {
 }
 
 .admin-main-account-list-infor p {
-    width: 15em;
-    overflow: hidden;
+    width: 14em;
+    overflow: hidden;  
+    height: 1.5em;
 }
 
-#admin-main-account-list-infor-mail {
-    margin-left: -6em;
-}
-
-#admin-main-account-list-infor-select {
-    width: 12em;
-    padding: 0.4em;
-    margin-right: 3em;
-    border-radius: 0.5em;
-    color: #F47124;
-    border: 1px solid #c1c1c1;
+.admin-main-account-list-infor span {
+    width: 13em;
+    text-align: center;
 }
 
 .admin-main-account-list-page-number {

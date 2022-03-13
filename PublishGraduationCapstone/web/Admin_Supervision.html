@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Admin_Main.css">
+    <link rel="stylesheet" href="css/Admin_Supervision.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
 
     <!-- menu dọc trái -->
     <div id="admin-main-menu-container">
-        <a href="#" class="admin-main-menu-list active">
+        <a href="Admin_Main.html" class="admin-main-menu-list">
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-address-card"></i></p>
             <p class="admin-main-menu-list-text">Account list</p>
         </a>
@@ -34,7 +34,7 @@
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-list"></i></p>
             <p class="admin-main-menu-list-text">Post list</p>
         </a>
-        <a href="Admin_Supervision.html" class="admin-main-menu-list">
+        <a href="#" class="admin-main-menu-list active">
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-chalkboard-user"></i></p>
             <p class="admin-main-menu-list-text">Supervisor list</p>
         </a>
@@ -49,6 +49,11 @@
     </div>
 
     <div id="admin-main-account-list">
+        <div id="admin-main-supervisor-add">
+            <i class="fa-solid fa-circle-plus add-btn"></i>
+            <a href="Admin_Supervision_Create.html" id="admin-main-supervisor-add-btn">New Supervisor</a>
+        </div>
+
         <div id="admin-main-account-list-search-container">
             <span><i class="fa-solid fa-magnifying-glass"></i></span>
             <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
@@ -56,21 +61,19 @@
 
         <div id="admin-main-account-list-table">
             <p class="admin-main-account-list-table-title">ID</p>
-            <p class="admin-main-account-list-table-title">Account</p>
-            <p class="admin-main-account-list-table-title">Role</p>
+            <p class="admin-main-account-list-table-title">Name</p>
+            <p class="admin-main-account-list-table-title">Status</p>
         </div>
 
         <div id="admin-main-account-list-infors">
             <div class="admin-main-account-list-infor">
                 <p>01</p>
-                <p id="admin-main-account-list-infor-mail">phuongnltse150999@fpt.edu.vn</p>
-                <select id="admin-main-account-list-infor-select">
-                    <option value="1">User</option>
-                    <option value="2">Poster</option>
-                </select>
+                <p id="admin-main-account-list-infor-mail">Nguyễn Thế Hoàng</p>
+                <span><i class="fa-solid fa-eye"></i></span>
             </div>
         </div>
-        
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <div class="container ">
@@ -94,7 +97,7 @@
         </div>
     </div>
 
-    <script src="js/Admin_Main.js"></script>
+    <script src="js/Admin_Supervisor.js"></script>
 </body>
 
 </html>

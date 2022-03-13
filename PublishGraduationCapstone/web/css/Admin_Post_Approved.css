@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+/* nav */
+#admin-main-nav {
+    width: 100%;
+    background-color: #F47124;
+    height: 2em;
+    line-height: 2em;
+    display: flex;
+}
+
+#admin-main-nav-title {
+    letter-spacing: 0.08em;
+    padding-left: 2%;
+    font-size: 110%;
+    color: #FFFFFF;
+    width: 20%;
+}
+
+#admin-main-nav-login {
+    font-size: 70%;
+    color: #FFFFFF;
+    letter-spacing: 0.08em; 
+    width: 76%;
+    text-align: right;
+    margin-right: 0.5%;
+}
+
+#admin-main-nav-login-img-container {
+    width: 1.6em;
+    margin-top: 0.2em;
+}
+
+#admin-main-nav-login-img {
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid #EEEEEE;
+}
+
+/* menu dọc trái */
+#admin-main-menu-container {
+    margin: 2%;
+    display: inline-flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#admin-main-menu-container a.active{
+    background-color: #F47124;
+    color: #FFFFFF;
+    border-radius: 1em;
+}
+
+#admin-main-menu-container a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 1em;
+}
+
+.admin-main-menu-list {
+    text-decoration: none;
+    color: #F47124;
+    padding: 0.8em;
+    margin-bottom: 4%;
+    line-height: 1.5em;
+    width: 6em;
+    text-align: center;
+}
+
+.admin-main-menu-list-icon {
+    font-size: 120%;
+}
+
+.admin-main-menu-list-text {
+    font-size: 70%;
+}
+
+/* Post list right */
+
+#admin-main-account-list {
+    float: right;
+    width: 75%;
+    margin-top: 2%;
+}
+
+/* Post list right nav */
+
+#admin-main-account-list-nav-container {
+    width: 80%;
+    display: inline-block;
+}
+
+#admin-main-account-list-nav {
+    width: 24em;
+    display: inline-flex;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+#admin-main-account-list-nav a {
+    background-color: #FFFFFF;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 1em 1em 0 0;
+    margin-right: -0.6em;
+    border: 2px solid #F47124;
+    font-size: 80%;
+    color: #F47124;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+#admin-main-account-list-nav .active {
+    background-color: #F47124;
+    color: #FFFFFF;
+}
+
+/* Post list right nav post share */
+#admin-main-account-list-nav-select-ps {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    color: #F47124;
+    font-size: 70%;
+    width: 6em;
+    line-height: 1.6em;
+    height: 1.6em;
+    display: inline-flex;
+    margin-left: 8em;
+    font-size: 70%;
+    border: 1px solid #F47124;
+}
+
+/* Post list right search */
+
+#admin-main-account-list-search-container { 
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    color: #F47124;
+    font-size: 80%;
+    width: 7.5em;
+    line-height: 1.4em;
+    height: 1.4em;
+    display: inline-flex;
+}
+
+#admin-main-account-list-search {
+    border: none;
+    color: #F47124;
+    padding: 4%;
+    width: 5em;
+}
+
+#admin-main-account-list-search::placeholder {
+    color: #F47124;
+}
+
+#admin-main-account-list-search:focus {
+    outline: 0;
+}
+
+/* Post list table */
+#admin-main-account-list-table {
+    display: flex;
+    width: 80%;
+    background-color: #F47124;
+    margin-top: 1%;
+    padding: 0.6%;
+    border-radius: 1em;
+    justify-content: space-around;
+    font-size: 80%;
+    color: #FFFFFF;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding-right: 2em;
+}
+
+#admin-main-post-list-infor-container {
+    width: 80%;
+    margin-top: 0.5%;
+    font-size: 70%;
+    color: #F47124;
+    letter-spacing: 0.06em;
+}
+
+.admin-main-post-list-infor-id {
+    padding: 0.4em 1.2em;
+    background-color: #FFFFFF;
+    justify-content: center;
+    margin-left: 1em;
+    margin-bottom: 0.1em;
+    display: inline-flex;
+    width: 10em;
+    overflow: hidden;
+    height: 2em;
+}
+
+.admin-main-post-list-infor-topic {
+    padding: 0.4em 1.2em;
+    background-color: #FFFFFF;
+    margin-bottom: 0.1em;
+    margin-left: -0.2em;
+    display: inline-flex;
+    width: 21em;
+    overflow: hidden;
+    height: 2em;
+}
+
+.admin-main-post-list-infor-date {
+    padding: 0.4em 0.4em;
+    background-color: #FFFFFF;
+    margin-bottom: 0.1em;
+    margin-left: -0.2em;
+    display: inline-flex;
+    width: 7em;
+    overflow: hidden;
+    height: 2em;
+}
+
+.admin-main-post-list-infor-poster {
+    padding: 0.4em 0.4em;
+    background-color: #FFFFFF;
+    margin-bottom: 0.1em;
+    margin-left: -0.2em;
+    display: inline-flex;
+    justify-content: center;
+    width: 18em;
+    overflow: hidden;
+    height: 2em;
+}
+
+.admin-main-post-list-infor-approve i {
+    font-size: 120%;
+}
+
+.admin-main-post-list-infor-approve i:hover {
+    color: #3cf424;
+}
+
+/* Post list number */
+
+.admin-main-account-list-page-number {
+    margin-top: 2em;
+    width: 80%;
+    text-align: center;
+    font-size: 80%;
+}
+
+.admin-main-account-list-page-number a {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number a.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
+}
