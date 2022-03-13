@@ -1,5 +1,28 @@
+function login() {
+    if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
+        var username = localStorage.getItem("name")
+        var picture = localStorage.getItem("picture")
+    
+            document.getElementById("icon-show-login").innerHTML = 
+            `
+            <img src="${picture}" alt=""> 
+            `
+            document.getElementById("login-box").innerHTML = 
+            `
+            <div id="user-main-small-control">
+            <p id="user-main-small-name">${username}</p>
+            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+            </a>
+            </div>
+            `
+    }
+}
+login();
+
 function showLogin() {
-    var hidden = document.getElementById('home-login');
+    var hidden = document.getElementById('login-box');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
     else hidden.style.display = 'none';

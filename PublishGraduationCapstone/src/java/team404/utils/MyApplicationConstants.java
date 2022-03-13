@@ -12,7 +12,6 @@ public class MyApplicationConstants {
         public static final String GOOGLE_REFRESH_TOKEN = "refresh_token";
         public static final String GOOGLE_GRANT_TYPE = "authorization_code";
         public static final String HOME_PAGE = "";
-        public static final String SHARE_MODE_PAGE = "sharePage";
         public static final String POST_MODE_PAGE = "postPage";
         public static final String ADMIN_MODE_PAGE = "adminPage";
         

@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    
+
     <div id="menu">
         <ul>
             <li>
@@ -30,8 +30,9 @@
         <div id="icon-show-login" onclick="showLogin()">
             <i class="fa-solid fa-user"></i>
         </div>
-        <div class="SearchIcon" onclick="showSearch()">
+        <div id="SearchIcon" onclick="showSearch()">
             <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
+
         </div>
         <div id="home-search-container">
             <span>
@@ -53,11 +54,17 @@
         <div id="web-name">
             Welcome to FPTU’s Public Capstone Project Website
         </div>
-        <a
-            href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
-            <button id="home-login" name="button" type="button">Login</button></a>
+        <div id="login-box" style="display: none;">
+            <div id="home-login">
+                <a style="text-decoration: none; color: #fff;"
+                    href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+                    <div name="button" type="button">Login</div>
+                </a>
+            </div>
+        </div>
 
     </div>
+
     <div id="upcoming-container-home">
         <div id="upcoming-home">
             <div id="upcoming-content-big">

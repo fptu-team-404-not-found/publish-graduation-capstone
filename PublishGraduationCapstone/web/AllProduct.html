@@ -13,31 +13,44 @@
     <title>All Project | Publish Graduation Capstone</title>
 </head>
 <body>
+  
     <div id="menu">
         <ul>
             <li>
                 <a href="http://localhost:8084/PublishGraduationCapstone/">
                     <img id="background-img" src="./img/logo-fptu.png">
-                </a>   
+                </a>
             </li>
             <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
         <div id="icon-show-login" onclick="showLogin()">
-            <i  class="fa-solid fa-user" ></i>
+            <i class="fa-solid fa-user"></i>
         </div>
-        <div onclick="showSearch()">
-            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" ></i>
+        <div id="SearchIcon" onclick="showSearch()">
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
+
         </div>
         <div id="home-search-container">
             <span>
-                <input type="text" name="home-search-text" id="home-search-text" placeholder="Student’s name, Project’s name, Lecturer’s name ">
-                <i class="fa-solid fa-magnifying-glass home-find-icon-search" onclick="showSearchPage()"></i>
+                <input type="text" name="home-search-text" id="home-search-text"
+                    placeholder="Student’s name, Project’s name, Lecturer’s name ">
+                <div class="SearchIcon" onclick="showSearchPage()">
+                    <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                </div>
             </span>
         </div>
     </div>
-    <button id="home-login" name="button" type="button">Login</button>
+    
+    <div id="login-box" style="display: none;">
+        <div id="home-login">
+            <a style="text-decoration: none; color: #fff;"
+                href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+                <div name="button" type="button">Login</div>
+            </a>
+        </div>
+    </div>
 
 
     <div id="other-project-home">

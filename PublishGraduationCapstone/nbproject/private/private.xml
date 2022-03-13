@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/AdminModeResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/controller/LogoutServlet.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/search.html</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/Project_Main.html</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/ProjectResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/utils/GoogleHelpers.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/home.html</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/js/search.js</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/account/LoginResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/controller/LoginServlet.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/utils/MyApplicationConstants.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/WEB-INF/siteMaps.properties</file>
+            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/LoginResource.java</file>
             <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/META-INF/context.xml</file>
+            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/ProjectResource.java</file>
             <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/project/ProjectDAO.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/Sharing_Main.html</file>
+            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/web/js/search.js</file>
         </group>
     </open-files>
 </project-private>
