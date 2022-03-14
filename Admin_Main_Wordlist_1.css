@@ -130,28 +130,33 @@ body {
 #admin-main-wordlist_right_infor_title_list {
     display: inline-flex;
     width: 93%;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 0.4em 1em;
-    font-size: 90%;
+    font-size: 100%;
+    color: #FFFFFF;
     background-color: #F47124;
     margin-top: 2em;
+    padding-left: 6em;
+    padding-right: 12em;
     font-weight: 600;
     letter-spacing: 0.08em;
     border-radius: 1em;
+    margin-bottom: -0.1em;
 }
 
 #admin-main-wordlist_right_infor_content_list_container {
-    width: 89%;
-    border: 1px solid #F47124;
+    width: 100%;
     margin: auto;
     padding: 0.5em 0em;
-    border-radius: 0 0 0.5em 0.5em;
 }
 
 .admin-main-wordlist_right_infor_content_list {
     width: 100%;
     padding: 0.4em 1em;
     margin: auto;
+    margin-top: -0.15em;
+    border-radius: 0.1em;
+    justify-content: space-around;
 }
 
 
@@ -190,15 +195,22 @@ body {
 
 .admin-main-wordlist_right_infor_content_list_date {
     display: inline-table;
-    width: 40%;
+    width: 35%;
+    padding: 0.5em;
+    background-color: #EEEEEE;
+    margin-top: -2.5em;
 }
 
 .admin-main-wordlist_right_infor_content_list_comment {
     display: inline-table;
-    width: 50%;
+    width: 60%;
+    background-color: #EEEEEE;
+    padding: 0.5em;
     overflow: hidden;
     text-align: left;
+    margin-top: -2.5em;
     padding-left: 7em;
+    margin-left: -0.15em;
 }
 
 .admin-main-wordlist_right_infor_content_list_comment:hover {
