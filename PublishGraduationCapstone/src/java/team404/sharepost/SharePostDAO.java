@@ -85,7 +85,7 @@ public class SharePostDAO implements Serializable {
         try {
             con = DBHelpers.makeConnection();
             if(con != null){
-                String sql = "Select Title, Details, CreateDate, StudentId, SupervisorID, ProjectId "
+                String sql = "Select PostId, Title, Details, CreateDate, StudentId, SupervisorID, ProjectId "
                         + "From SharePost "
                         + "Where PostId = ? ";
                 stm = con.prepareStatement(sql);
@@ -101,6 +101,7 @@ public class SharePostDAO implements Serializable {
                 ProjectDTO projectDto = new ProjectDTO();
                 if(rs.next())
                 {
+                    int postId2 = rs.getInt("PostId");
                     String title = rs.getNString("Title");
                     String details = rs.getNString("Details");
                     Date createDate = rs.getDate("CreateDate");
@@ -109,6 +110,7 @@ public class SharePostDAO implements Serializable {
                     projectDto = projectDao.getSingleProject(rs.getString("ProjectId"));
                     
                     SharePostDTO dto = new SharePostDTO();
+                    dto.setPostId(postId2);
                     dto.setTitle(title);
                     dto.setDetails(details);
                     dto.setCreateDate(createDate);
