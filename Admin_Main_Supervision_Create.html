@@ -47,37 +47,43 @@
             <p class="admin-main-menu-list-text">Upcoming</p>
         </a>
     </div>
+    <div id="back-icon"><i class="fa-solid fa-circle-chevron-left" onclick="navigationBack()"></i></div>
+    <div id="admin-main-supervisor-create-new-container">
+        <div id="admin-main-supervisor-create-new">
+            <h2 id="admin-main-supervisor-create-new-title">NEW SUPERVISOR</h2>
+            <p id="admin-main-supervisor-create-new-line"></p>
+            <div id="admin-main-supervisor-create-new-name-container">
+                <span id="admin-main-supervisor-create-new-name-text">Name</span>
+                <span><input type="text" name="supervisor-name" id="admin-main-supervisor-create-new-name"
+                        placeholder="Eg. Nguyễn Thế Hoàng, Kiều Trọng Khánh"></span>
+                <br>
+                <span id="admin-main-supervisor-create-new-position-container">Position</span>
+                <span><input type="text" name="supervisor-mail" id="admin-main-supervisor-create-new-position"
+                        placeholder="Eg. Head of ,.."></span>
+                <br>
+                <div id="admin-main-supervisor-create-new-information-container">
+                    <span id="admin-main-supervisor-create-new-information">Information</span>
+                    <span><textarea id="admin-main-supervisor-infor"
+                            placeholder="Cày code không cày rank / Happy code - Happy money - Happy life"></textarea></span>
+                </div>
 
-    <div id="admin-main-supervisor-create-new">
-        <h2 id="admin-main-supervisor-create-new-title">NEW SUPERVISOR</h2>
-        <p id="admin-main-supervisor-create-new-line"></p>
-        <div id="admin-main-supervisor-create-new-name-container">
-            <span id="admin-main-supervisor-create-new-name-text">Name</span>
-            <span><input type="text" name="supervisor-name" id="admin-main-supervisor-create-new-name"
-                    placeholder="Eg. Nguyễn Thế Hoàng, Kiều Trọng Khánh"></span>
-            <br>
-            <span id="admin-main-supervisor-create-new-position-container">Position</span>
-            <span><input type="text" name="supervisor-mail" id="admin-main-supervisor-create-new-position"
-                    placeholder="Eg. Head of ,.."></span>
-            <br>
-            <div id="admin-main-supervisor-create-new-information-container">
-                <span id="admin-main-supervisor-create-new-information">Information</span>
-                <span><textarea id="admin-main-supervisor-infor"
-                        placeholder="Cày code không cày rank / Happy code - Happy money - Happy life"></textarea></span>
+
+                <input type="text" name="preview-supervisor-img-link" id="preview-supervisor-img-link"
+                    placeholder="Place link here then enter to preview picture" onkeypress="getLinkImg()">
+                <br>
+                <div id="preview-supervisor-img-container">
+                    <img id="preview-supervisor-img" src="" alt="">
+                </div>
             </div>
-
-
-            <input type="text" name="preview-supervisor-img-link" id="preview-supervisor-img-link"
-                placeholder="Place link here then enter to preview picture" onkeypress="getLinkImg()">
             <br>
-            <div id="preview-supervisor-img-container">
-                <img id="preview-supervisor-img"
-                    src="" alt="">
+            <div id="admin-main-supervisor-create-btn-container">
+                <input type="button" value="Add new supervisor" id="admin-main-supervisor-create-btn">
             </div>
         </div>
-        <br>
-        <div id="admin-main-supervisor-create-btn-container">
-            <input type="button" value="Add new supervisor" id="admin-main-supervisor-create-btn">
+        <div id="admin-main-supervisor-create-btn-container-excel-container">
+            <div id="admin-main-supervisor-create-btn-container-excel">
+                <input type="button" value="Add new supervisors by excel" id="admin-main-supervisor-create-btn-excel">
+            </div>
         </div>
     </div>
 
@@ -100,6 +106,10 @@
             }
             return true;
         };
+
+        function navigationBack() {
+            location.assign("Admin_Main_Supervision_1.html")
+        }
     </script>
 </body>
 

@@ -118,14 +118,48 @@ body {
 }
 
 /* Accoun list right table*/
+#admin-main-account-list-table-container {
+    width: 70%;
+    margin-top: 1em;
+}
+
 #admin-main-account-list-table {
-    display: flex;
-    width: 80%;
     background-color: #F47124;
-    margin-top: 2%;
-    padding: 0.6%;
+    font-size: 90%;
+    padding: 0.4em;
     border-radius: 1em;
-    justify-content: space-between;
+    width: 40em;
+    display: flex;
+    justify-content: space-around;
+    color: #FFFFFF;
+}
+
+#admin-main-account-list-table-title-account {
+    width: 28em;
+}
+
+.admin-main-account-list-infors {
+    width: 96%;
+    margin: auto;
+    margin-top: 0.2em;
+    padding: 0.4em;
+    border-radius: 0.1em;
+    justify-content: space-around;
+    font-size: 80%;
+    color: #F47124;
+    background-color: #FFFFFF;
+    display: table;
+}
+
+.admin-main-account-list-table-account {
+    width: 36em;
+    letter-spacing: 0.06em;
+    overflow: hidden;
+}
+
+.admin-main-account-list-table-user {
+    width: 5.5em;
+    text-align: center;
 }
 
 
@@ -171,14 +205,7 @@ body {
     margin-left: 2em;
 }
 
-#admin-main-account-list-infors {
-    width: 80%;
-    padding: 0.4em;
-    border-radius: 1em;
-    font-size: 80%;
-    vertical-align: middle;
-    color: #F47124;
-}
+
 
 .admin-main-account-list-infor {
     display: flex;

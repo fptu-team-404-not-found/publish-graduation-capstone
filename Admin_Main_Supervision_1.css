@@ -92,6 +92,7 @@ body {
     float: right;
     width: 75%;
     margin-top: 2%;
+    display: inline-table;
 }
 
 /* Add supervisor */
@@ -103,6 +104,7 @@ body {
     width: 10em;
     display: inline-flex;
     height: 2em;
+    margin-right: 1em;
 }
 
 #admin-main-supervisor-add:hover {
@@ -112,7 +114,6 @@ body {
 .add-btn {
     color: #F47124;
     font-size: 1.4em;
-    line-height: 1.4em;
     padding-right: 0.2em;
     margin-top: 0.2em;
 }
@@ -139,7 +140,7 @@ body {
     width: 12em;
     line-height: 1.8em;
     height: 1.8em;
-    display: inline-flex;
+    display: inline-table;
 }
 
 #admin-main-account-list-search {
@@ -231,6 +232,51 @@ body {
     border-radius: 50%;
 }
 
+/* table moi */
+#admin-main-account-list-table-container {
+    width: 70%;
+}
+
+#admin-main-account-list-table {
+    background-color: #F47124;
+    font-size: 90%;
+    padding: 0.4em;
+    border-radius: 1em;
+    width: 40em;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+    color: #FFFFFF;
+}
+
+.admin-main-account-list-infors {
+    width: 96%;
+    margin: auto;
+    margin-top: 0.2em;
+    padding: 0.4em;
+    border-radius: 0.1em;
+    justify-content: space-around;
+    font-size: 80%;
+    color: #F47124;
+    background-color: #FFFFFF;
+    display: table;
+}
+
+.admin-main-account-list-table-id {
+    width: 8em;
+}
+
+.admin-main-account-list-table-account {
+    width: 24em;
+    text-align: center;
+}
+
+.admin-main-account-list-table-user {
+    text-align: center;
+    display: block;
+    margin-left: 6em;
+}
 
 
 

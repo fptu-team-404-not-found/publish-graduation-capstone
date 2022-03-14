@@ -123,31 +123,38 @@ body {
     font-size: 80%;  
     padding-bottom: 2em;
     margin-bottom: 2em;
+    width: 70%;
+    border-radius: 0em 1em 1em 1em;
 }
 
 #admin-main-wordlist_right_infor_title_list {
     display: inline-flex;
     width: 93%;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0.4em 1em;
     font-size: 90%;
     background-color: #F47124;
     margin-top: 2em;
     font-weight: 600;
     letter-spacing: 0.08em;
+    border-radius: 1em;
+}
+
+#admin-main-wordlist_right_infor_content_list_container {
+    width: 89%;
+    border: 1px solid #F47124;
+    margin: auto;
+    padding: 0.5em 0em;
+    border-radius: 0 0 0.5em 0.5em;
 }
 
 .admin-main-wordlist_right_infor_content_list {
-    margin: 0 auto;
-    width: 90%;
-    display: inline-flex;
-    justify-content: space-between;
+    width: 100%;
+    padding: 0.4em 1em;
+    margin: auto;
 }
 
-.admin-main-wordlist_right_infor_content_list > p {
-    padding-left: 0.5em;
-    padding-right: 2em;
-}
+
 
 .admin-main-wordlist_right_infor_content_list_infor {
     display: inline-flex;
@@ -182,19 +189,21 @@ body {
 }
 
 .admin-main-wordlist_right_infor_content_list_date {
-    border-right: 1px solid #EEEEEE;
-    padding-top: 0.5em;
+    display: inline-table;
+    width: 40%;
 }
 
 .admin-main-wordlist_right_infor_content_list_comment {
-    border-right: 1px solid #EEEEEE;
-    border-bottom: 1px solid #EEEEEE;
-    padding-top: 0.5em;
-    display: inline-flex;
-    width: 20em;
-    text-align: left;
+    display: inline-table;
+    width: 50%;
     overflow: hidden;
-    font-size: 90%;
+    text-align: left;
+    padding-left: 7em;
+}
+
+.admin-main-wordlist_right_infor_content_list_comment:hover {
+    cursor: pointer;
+    color: #F47124;
 }
 
 .fa-comment-dots {
@@ -226,6 +235,107 @@ body {
     border-radius: 50%;
 }
 
+/* modal */
+.modal {
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 25px; /* Location of the box */
+    left: 0;
+    top: 0;
+    padding-left: 12em;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  .modal-container {
+    width: 80%;
+    position: relative;
+  }
+
+  /* The Close Button */
+
+.close {
+    color: #ffffff;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+#admin-main-wordlist_right_infor_title_list_modal {
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-around;
+    padding: 0.4em 1em;
+    font-size: 90%;
+    background-color: #F47124;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    border-radius: 1em;
+    margin: auto;
+}
+
+#admin-main-wordlist_right_infor_content_list_container_modal {
+    width: 96%;
+    border: 1px solid #F47124;
+    padding: 0.5em 0.5em;
+    border-radius: 0 0 0.5em 0.5em;
+    margin-left: 1em;
+    background-color: #FFFFFF;
+    font-size: 90%;
+}
+
+.admin-main-wordlist_right_infor_content_list_post_modal {
+    line-height: 1.5em;
+    display: inline-table;
+    width: 30%;
+    margin-right: 2em;
+    font-size: 90%;
+}
+
+.admin-main-wordlist_right_infor_content_list_modal {
+    padding: 0.6em 0.5em; 
+    font-size: 90%;
+    border-bottom: 1px solid #F47124;
+}
+
+.admin-main-wordlist_right_infor_content_list_modal:last-child {
+    padding: 0.6em 0.5em; 
+    font-size: 90%;
+    border: none;
+}
+
+.admin-main-wordlist_right_infor_content_list_comment_modal {
+    display: inline-table;
+    width: 30%;
+    margin-right: 3em;
+    font-size: 90%;
+    overflow: hidden;
+    height: 1em;
+    line-height: 1.5em;
+}
+
+.admin-main-wordlist_right_infor_content_list_comment_modal:hover {
+    color: #F47124;
+    cursor: pointer;
+}
+
+.admin-main-wordlist_right_infor_content_list_mail_modal {
+    display: inline-table;
+    width: 20%;
+    font-size: 90%;
+    overflow: hidden;
+}
 
 
 

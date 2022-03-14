@@ -89,14 +89,53 @@ body {
 /* Account list right */
 
 #admin-main-supervisor-create-new {
-    float: right;
-    width: 24em;
-    margin-right: 20em;
-    margin-top: 1.5em;
     background-color: #FFFFFF;
     text-align: center;
     padding: 1em;
-    border: 1px dashed #F47124;
+    border-right: 1px dashed #F47124;
+}
+
+#admin-main-supervisor-create-new-container {
+    display: inline-flex;
+    width: 60%;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 1px solid #F47124;
+}
+
+#admin-main-supervisor-create-btn-container-excel-container {
+    margin: auto;
+}
+
+#admin-main-supervisor-create-btn-excel {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1em;
+    border: 1px solid #F47124;
+    padding: 0.5em 1em;
+    border: 2px solid #F47124;
+    border-radius: 0.6em;
+    color: #F47124;
+    font-weight: 600;
+}
+
+#admin-main-supervisor-create-btn-excel:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+}
+
+#back-icon {
+    display: inline-flex;
+    width: 2em;
+    vertical-align: middle;
+    height: 9vh;
+    font-size: 130%;
+    color: #F47124;
+}
+
+.fa-circle-chevron-left:hover {
+    cursor: pointer;
+    color: rgb(156, 154, 154);
 }
 
 #admin-main-supervisor-create-new-title {
@@ -220,6 +259,8 @@ body {
     width: 100%;
     margin-left: 25%;
 }
+
+
 
 
 
