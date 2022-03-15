@@ -19,7 +19,7 @@
     <div id="admin-main-nav">
         <p id="admin-main-nav-title">ADMIN MODE</p>
         <p id="admin-main-nav-login">QUANNDD2</p>
-        <p id="admin-main-nav-login-img-container">
+        <p id="admin-main-nav-login-img-container" onclick="logOut()">
             <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
         </p>
     </div>
@@ -47,6 +47,12 @@
             <p class="admin-main-menu-list-text">Upcoming</p>
         </a>
     </div>
+
+    <div id="user-main-small-control">
+        <p id="user-main-small-name">Nguyễn Đào Đức Quân</p>
+        <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+    </div>
+
     <div id="back-icon"><i class="fa-solid fa-circle-chevron-left" onclick="navigationBack()"></i></div>
     <div id="admin-main-supervisor-create-new-container">
         <div id="admin-main-supervisor-create-new">
@@ -109,6 +115,14 @@
 
         function navigationBack() {
             location.assign("Admin_Main_Supervision_1.html")
+        };
+
+        function logOut() {
+            var logOut = document.getElementById('user-main-small-control');
+            if (logOut.style.display == 'none') {
+                logOut.style.display = 'block';
+            } else 
+                logOut.style.display = 'none';
         }
     </script>
 </body>

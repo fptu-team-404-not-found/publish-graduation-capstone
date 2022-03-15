@@ -349,6 +349,48 @@ body {
     overflow: hidden;
 }
 
+/* --------------------------------------- */
+#user-main-small-control {
+    display: none;
+    position: absolute;
+    top: 3.4em;
+    right: 1em;
+    font-size: 60%;
+    background-color: #ffffffbd;
+    color: #F47124;
+    text-align: center;
+    border-radius: 0 0 0.2em 0.2em;
+    font-size: 700;
+    border: 1px solid #FFFFFF;
+}
+
+.fa-right-from-bracket {
+    margin-right: 0.5em;
+}
+
+#user-main-small-name {
+    padding: 0.6em;
+    border-bottom: 1px solid #F47124;
+    letter-spacing: 0.06em;
+}
+#user-main-small-name:hover {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-logout {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-control > p:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* --------------------------------------- */
+
 
 
 
