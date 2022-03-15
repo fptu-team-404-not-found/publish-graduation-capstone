@@ -118,14 +118,85 @@ body {
 }
 
 /* Accoun list right table*/
+#admin-main-account-list-table-container {
+    width: 70%;
+    margin-top: 1em;
+}
+
 #admin-main-account-list-table {
-    display: flex;
-    width: 80%;
     background-color: #F47124;
-    margin-top: 2%;
-    padding: 0.6%;
+    font-size: 90%;
+    padding: 0.4em;
     border-radius: 1em;
-    justify-content: space-between;
+    width: 40em;
+    display: flex;
+    justify-content: space-around;
+    color: #FFFFFF;
+}
+
+#admin-main-account-list-table-title-account {
+    width: 28em;
+}
+
+.admin-main-account-list-infors {
+    width: 96%;
+    margin: auto;
+    margin-top: 0.2em;
+    padding: 0.4em;
+    border-radius: 0.1em;
+    justify-content: space-around;
+    font-size: 80%;
+    color: #F47124;
+    background-color: #FFFFFF;
+    display: table;
+}
+
+.admin-main-account-list-table-account {
+    width: 36em;
+    letter-spacing: 0.06em;
+    overflow: hidden;
+}
+
+.admin-main-account-list-table-user {
+    width: 5.5em;
+    text-align: center;
+}
+
+
+#admin-main-account-list-add {
+    display: flex;
+}
+
+#admin-main-supervisor-add {
+    background-color: #FFFFFF;
+    padding-left: 1%;
+    border-radius: 1em;
+    font-size: 80%;
+    width: 10em;
+    display: inline-flex;
+    height: 2em;
+    margin-right: 1em;
+}
+
+#admin-main-supervisor-add:hover {
+    background-color: #f4702450;
+}
+
+.add-btn {
+    color: #F47124;
+    font-size: 1.4em;
+    padding-right: 0.2em;
+    margin-top: 0.2em;
+}
+
+#admin-main-supervisor-add-btn {
+    font-size: 0.8em;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: #000000;
+    height: 2em;
+    line-height: 2.5em;
 }
 
 .admin-main-account-list-table-title {
@@ -134,14 +205,46 @@ body {
     margin-left: 2em;
 }
 
-#admin-main-account-list-infors {
-    width: 80%;
-    padding: 0.4em;
-    border-radius: 1em;
-    font-size: 80%;
-    vertical-align: middle;
+/* --------------------------------------- */
+#user-main-small-control {
+    display: none;
+    position: absolute;
+    right: 1em;
+    font-size: 60%;
+    background-color: #ffffffbd;
     color: #F47124;
+    text-align: center;
+    border-radius: 0 0 0.2em 0.2em;
+    font-size: 700;
+    border: 1px solid #FFFFFF;
 }
+
+.fa-right-from-bracket {
+    margin-right: 0.5em;
+}
+
+#user-main-small-name {
+    padding: 0.6em;
+    border-bottom: 1px solid #F47124;
+    letter-spacing: 0.06em;
+}
+#user-main-small-name:hover {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-logout {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-control > p:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* --------------------------------------- */
 
 .admin-main-account-list-infor {
     display: flex;
@@ -198,24 +301,20 @@ body {
     border-radius: 50%;
 }
 
-.container {
-    border: 1px solid rgba(0, 0, 0, .11);
-    ;
-    padding: 10px;
-    width: 500px
+.admin-main-account-list-page-number button {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
 }
 
-.controls-item {
-    display: inline-block;
+.admin-main-account-list-page-number button.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
 }
 
-.btn {
-    margin: 1px;
-	color:blue;
+.admin-main-account-list-page-number button:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
 }
-
-
-
-
-
-
+/*------------------------------------*/

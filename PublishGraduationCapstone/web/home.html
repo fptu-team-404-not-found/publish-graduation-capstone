@@ -16,7 +16,7 @@
 
 <body>
 
-    <div id="menu">
+    <div id="menu" onload="startup()">
         <ul>
             <li>
                 <a href="http://localhost:8084/PublishGraduationCapstone/">
@@ -27,7 +27,7 @@
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
-        <div id="icon-show-login" onclick="showLogin()">
+        <div id="icon-show-login" onclick="showLogin()" >
             <i class="fa-solid fa-user"></i>
         </div>
         <div id="SearchIcon" onclick="showSearch()">
@@ -58,7 +58,7 @@
             <div id="home-login">
                 <a style="text-decoration: none; color: #fff;"
                     href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
-                    <div name="button" type="button">Login</div>
+                    <div name="button" type="button" >Login</div>
                 </a>
             </div>
         </div>

@@ -155,10 +155,11 @@ takeUserData(function(table) {
     
         for (var i = 1 in myList) {
             //Keep in mind we are using "Template Litterals to create rows"
-            var row = `<tr>
-                      <td>${myList[i].email}</td>
-                      <td>${myList[i].role}</td>
-                      
+            var row = `
+                      <tr class="admin-main-account-list-infors">
+                        <td class="admin-main-account-list-table-account">${myList[i].email}</td>
+                        <td class="admin-main-account-list-table-user">${myList[i].role}</td>
+                      </tr>
                       `
             table.append(row)
         }
@@ -166,4 +167,3 @@ takeUserData(function(table) {
         pageButtons(data.pages)
     }
 });
-
