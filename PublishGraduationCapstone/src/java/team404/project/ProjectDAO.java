@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -444,5 +445,98 @@ public class ProjectDAO implements Serializable {
         jsObject.put("listUrlImage", jsArrImage);
 
         return jsObject.toJSONString();
+    }
+
+    public List<ProjectDTO> getAllPostWithApproving() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select p.ProjectId, p.ProjectName, p.CreateDate, p.AuthorName "
+                        + "From Project p inner join States s "
+                        + "on p.StateId = s.StateId "
+                        + "Where s.StateName = 'Approving' ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<ProjectDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    String projectId = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    Date createDate = rs.getDate("CreateDate");
+                    String authorName = rs.getNString("AuthorName");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setCreateDate(createDate);
+                    dto.setAuthorName(authorName);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+    public List<ProjectDTO> getAllPostWithApproved() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select p.ProjectId, p.ProjectName, p.CreateDate, p.AuthorName "
+                        + "From Project p inner join States s "
+                        + "on p.StateId = s.StateId "
+                        + "Where s.StateName = 'Approved' ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<ProjectDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    String projectId = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    Date createDate = rs.getDate("CreateDate");
+                    String authorName = rs.getNString("AuthorName");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setCreateDate(createDate);
+                    dto.setAuthorName(authorName);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
     }
 }
