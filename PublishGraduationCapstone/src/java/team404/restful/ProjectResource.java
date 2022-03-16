@@ -161,16 +161,18 @@ public class ProjectResource {
     
     //-- TIENHUYNHTN --// //OK
     @Path("/bookmark")
-    @GET
-    public String bookmark(
+    @POST
+    public void bookmark(
             @QueryParam("projectId") String projectId, 
             @QueryParam("email") String email) {
         FavoriteDAO favoriteDAO = new FavoriteDAO();
-        boolean status = favoriteDAO.bookmark(projectId, email);
-        
-        if (status)
-            return "Bookmark Success!";
-        return "Bookmark Fail!";
+        boolean isExistedBookmark = favoriteDAO.findBookmark(projectId, email);
+        boolean status = false;
+        if (isExistedBookmark) {
+            status = favoriteDAO.deleteBookmark(projectId, email);
+        } else {
+            status = favoriteDAO.bookmark(projectId, email);
+        }
     }
     
     //-- TIENHUYNHTN --// //OK
