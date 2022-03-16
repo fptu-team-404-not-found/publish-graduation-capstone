@@ -243,7 +243,7 @@ function startup() {
     console.log("email: " + localStorage.getItem("email"))
     if (localStorage.getItem("email") != null) {
         if (localStorage.getItem("roleId") == 3) {
-            location.replace('http://localhost:8084/PublishGraduationCapstone/Staff_EditPost.html')
+            location.replace('http://localhost:8084/PublishGraduationCapstone/Staff_Approved.html')
         }
         if (localStorage.getItem("roleId") == 4) {
             location.replace('http://localhost:8084/PublishGraduationCapstone/Admin_Main.html')
@@ -320,5 +320,4 @@ function logout() {
     </div>
 
     `
-    document.cookie = "token" +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }

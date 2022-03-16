@@ -40,12 +40,6 @@ public class LogoutServlet extends HttpServlet {
         String url = MyApplicationConstants.LogoutFeatures.HOME_PAGE;
         
         try {
-            HttpSession session = request.getSession(false);
-            
-            if (session == null) {
-                return;
-            }
-            
             Cookie cookies = new Cookie("token", "");
             cookies.setMaxAge(0);
             response.addCookie(cookies);
