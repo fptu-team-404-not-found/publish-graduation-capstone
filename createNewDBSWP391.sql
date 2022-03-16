@@ -958,3 +958,8 @@ Declare @CurrentDate DateTime = c.CommentDate
 
 Select Convert(Date, @CurrentDate) As Aption1
 */
+
+Select sp.PostId, sp.Title, sp.CreateDate, sp.StudentId, sp.SupervisorID
+From SharePost sp inner join States s
+on sp.StateId = s.StateId
+Where s.StateName = 'Approving'

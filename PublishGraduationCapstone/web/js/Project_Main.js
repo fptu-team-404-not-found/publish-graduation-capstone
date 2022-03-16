@@ -2,12 +2,12 @@ function login() {
     if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
         var username = localStorage.getItem("name")
         var picture = localStorage.getItem("picture")
-    
-            document.getElementById("icon-show-login").innerHTML = 
+
+        document.getElementById("icon-show-login").innerHTML =
             `
             <img src="${picture}" alt=""> 
             `
-            document.getElementById("login-box").innerHTML = 
+        document.getElementById("login-box").innerHTML =
             `
             <div id="user-main-small-control">
             <p id="user-main-small-name">${username}</p>
@@ -316,12 +316,12 @@ function sharePostRedirect(div) {
 
 function logout() {
     localStorage.clear();
-    document.getElementById("icon-show-login").innerHTML = 
-    `
+    document.getElementById("icon-show-login").innerHTML =
+        `
     <i class="fa-solid fa-user"></i>
     `
-    document.getElementById("login-box").innerHTML = 
-    `
+    document.getElementById("login-box").innerHTML =
+        `
     <div id="home-login">
     <a
         style="text-decoration: none; color: #fff;" 
@@ -331,4 +331,32 @@ function logout() {
     </div>
     `
 }
+
+function writeComment() {
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/project/commentOnProject";
+    var txtCommentBox = document.getElementById("project-comment-text").value;
+    var userMail = localStorage.getItem("email");
+    if(userMail == null){
+        alert("Please login before comment!")
+    }
+    var param = "projectId="+projectId;
+    console.log("param"+param)
+    console.log("box: "+ txtCommentBox + "mail: "+ userMail+"projectID: " + projectId)
+    xhttp.open("POST", api);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            try {
+               // var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
+
+
+        };
+
+    }
+};
 

@@ -19,7 +19,7 @@
     <div id="admin-main-nav">
         <p id="admin-main-nav-title">ADMIN MODE</p>
         <p id="admin-main-nav-login">QUANNDD2</p>
-        <p id="admin-main-nav-login-img-container">
+        <p id="admin-main-nav-login-img-container" onclick="logOut()">
             <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
         </p>
     </div>
@@ -48,6 +48,11 @@
         </a>
     </div>
 
+    <div id="user-main-small-control">
+        <p id="user-main-small-name">Nguyễn Đào Đức Quân</p>
+        <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+    </div>
+
     <div id="admin-main-wordlist_right_infor">
         <div id="admin-main-wordlist_right_infor_nav">
             <a href="#" class="active">Comment</a>
@@ -57,90 +62,35 @@
             <div id="admin-main-wordlist_right_infor_title_list">
                 <p class="admin-main-wordlist_right_infor_title">Date</p>
                 <p class="admin-main-wordlist_right_infor_title">Total</p>
-                <p class="admin-main-wordlist_right_infor_title">Post</p>
-                <p class="admin-main-wordlist_right_infor_title">Comment</p>
-                <p class="admin-main-wordlist_right_infor_title">Account</p>
-                <p></p>
             </div>
             <div id="admin-main-wordlist_right_infor_content_list_container">
                 <div class="admin-main-wordlist_right_infor_content_list">
                     <p class="admin-main-wordlist_right_infor_content_list_date">20/01/2022</p>
-                    <p class="admin-main-wordlist_right_infor_content_list_comment"><i class="fa-solid fa-comment-dots"></i>3 Comments</p>
-                    <div class="admin-main-wordlist_right_infor_content_list_infor_container">
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhận diện khuôn mặt
-                            </p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Quá xuất sắc!</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                phuongnltse150999@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhận diện tiếng kêu
-                                động vật</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Nhận diện được nhiều
-                                tiếng của nhiều động vật khác nhau, đồ án khá hay!</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                tienhltse151104@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhắc chạy deadline
-                            </p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Nếu công cụ này được
-                                bán mình sẽ là người mua đầu tiên và phát luôn cho những đứa bạn
-                                mình
-                                :)! :)</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                quannddse151008@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                    </div>
+                    <p class="admin-main-wordlist_right_infor_content_list_comment" onclick="openInfor()"><i class="fa-solid fa-comment-dots"
+                            id="admin-main-wordlist_right_infor_content_list_comment"></i>3
+                        Comments</p>
                 </div>
 
                 <div class="admin-main-wordlist_right_infor_content_list">
                     <p class="admin-main-wordlist_right_infor_content_list_date">19/01/2022</p>
-                    <p class="admin-main-wordlist_right_infor_content_list_comment"><i class="fa-solid fa-comment-dots"></i>2 Comments</p>
-                    <div class="admin-main-wordlist_right_infor_content_list_infor_container">
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhận diện khuôn mặt
-                            </p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Quá xuất sắc!</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                phuongnltse150999@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhận diện tiếng kêu
-                                động vật</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Nhận diện được nhiều
-                                tiếng của nhiều động vật khác nhau, đồ án khá hay!</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                tienhltse151104@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                    </div>
+                    <p class="admin-main-wordlist_right_infor_content_list_comment" onclick="openInfor()"><i
+                            class="fa-solid fa-comment-dots"></i>2 Comments</p>
                 </div>
 
                 <div class="admin-main-wordlist_right_infor_content_list">
                     <p class="admin-main-wordlist_right_infor_content_list_date">18/01/2022</p>
-                    <p class="admin-main-wordlist_right_infor_content_list_comment"><i class="fa-solid fa-comment-dots"></i>1 Comment</p>
-                    <div class="admin-main-wordlist_right_infor_content_list_infor_container">
-                        <div class="admin-main-wordlist_right_infor_content_list_infor">
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-topic">AI nhận diện khuôn mặt
-                            </p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-comment">Quá xuất sắc!</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-mail">
-                                phuongnltse150999@fpt.edu.vn</p>
-                            <p class="admin-main-wordlist_right_infor_content_list_infor-icon"><i
-                                    class="fa-solid fa-eye"></i></p>
-                        </div>
-                    </div>
+                    <p class="admin-main-wordlist_right_infor_content_list_comment" onclick="openInfor()"><i
+                            class="fa-solid fa-comment-dots"></i>1 Comment</p>
+                </div>
+                <div class="admin-main-wordlist_right_infor_content_list">
+                    <p class="admin-main-wordlist_right_infor_content_list_date">17/01/2022</p>
+                    <p class="admin-main-wordlist_right_infor_content_list_comment" onclick="openInfor()"><i
+                            class="fa-solid fa-comment-dots"></i>4 Comments</p>
+                </div>
+                <div class="admin-main-wordlist_right_infor_content_list">
+                    <p class="admin-main-wordlist_right_infor_content_list_date">16/01/2022</p>
+                    <p class="admin-main-wordlist_right_infor_content_list_comment" onclick="openInfor()"><i
+                            class="fa-solid fa-comment-dots"></i>8 Comments</p>
                 </div>
             </div>
             <div class="admin-main-account-list-page-number">
@@ -149,7 +99,111 @@
                 <a href="#">»</a>
             </div>
         </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-container">
+                <span class="close" onclick="exitInfo()">&times;</span>
+                <div id="admin-main-wordlist_right_infor_title_list_modal">
+                    <p class="admin-main-wordlist_right_infor_title">Post</p>
+                    <p class="admin-main-wordlist_right_infor_title">Comment</p>
+                    <p class="admin-main-wordlist_right_infor_title">Account</p>
+                </div>
+                <div id="admin-main-wordlist_right_infor_content_list_container_modal">
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat qua tan so am thanh</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao, có thể ứng dụng
+                            nhiều vào hực tế</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                    <div class="admin-main-wordlist_right_infor_content_list_modal">
+                        <p class="admin-main-wordlist_right_infor_content_list_post_modal">AI nhan dien tieng keu dong
+                            vat</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_comment_modal"><i
+                                class="fa-solid fa-comment-dots"></i>Rất hay, mang tính giáo dục cao</p>
+                        <p class="admin-main-wordlist_right_infor_content_list_mail_modal">phuongnltse150999@fpt.edu.vn
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        var modal = document.getElementById("myModal");
+        var span = document.getElementsByClassName("close")[0];
+        function openInfor() {
+            modal.style.display = "block";
+            span.style.display = "block";
+        }
+        function exitInfo() {
+            span.style.display = "none";
+            modal.style.display = "none";
+        }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        function logOut() {
+            var logOut = document.getElementById('user-main-small-control');
+            if (logOut.style.display == 'none') {
+                logOut.style.display = 'block';
+            } else 
+                logOut.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

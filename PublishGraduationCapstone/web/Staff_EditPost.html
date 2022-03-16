@@ -203,7 +203,8 @@
         function getLink() {
             if (event.which == 13 || event.keyCode == 13) {
                 var getLink = document.getElementById('staff-edit-post-intro-video').value;
-                document.getElementById('staff-edit-post-intro-video-onload-iframe').src = getLink;
+                var getEmbedLink = getLink.replace("watch?v=","embed/")
+                document.getElementById('staff-edit-post-intro-video-onload-iframe').src = getEmbedLink;
                 return false;
             }
             return true;

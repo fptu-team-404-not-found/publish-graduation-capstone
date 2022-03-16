@@ -3,19 +3,20 @@ function showLogin() {
     var hidden = document.getElementById('login-box');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
-    else hidden.style.display = 'none';
+    else
+        hidden.style.display = 'none';
 }
 
 function showSearch() {
     var hidden = document.getElementById('home-search-container');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
-    else hidden.style.display = 'none';
+    else
+        hidden.style.display = 'none';
 }
 
 function showSearchPage() {
     var usernameInput = document.querySelector('#home-search-text').value;
-    console.log('lala: ' + usernameInput);
 
     sessionStorage.setItem("keyword", usernameInput);
 
@@ -38,7 +39,6 @@ function showOtherProject() {
                 alert(e);
             }
 
-            console.log(jsonData);
             const listProject = document.querySelector('#other-project-img');
             let projects = new Array();
             var arrayLenght = jsonData.otherProject.length;
@@ -51,7 +51,7 @@ function showOtherProject() {
                 var counter = jsonData.otherProject[i];
 
                 var project =
-                    `
+                        `
             <span class="other-img" onclick=" projectRedirect(this)">
             <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
             <img class="other-project-img" src="${counter.projectAva}" > 
@@ -61,7 +61,8 @@ function showOtherProject() {
             </span>
             `
                 projects.push(project);
-            };
+            }
+            ;
             listProject.innerHTML = projects.join('');
 
 
@@ -127,7 +128,6 @@ input.addEventListener("keydown", function (e) {
 //redirect to project detail
 function projectRedirect(div) {
     var projectId = div.querySelector('.upcoming-img-id').innerText;
-    console.log(projectId);
     sessionStorage.setItem("projectId", projectId);
 }
 
@@ -159,7 +159,7 @@ function showUpcoming(callback) {
                 var counter = jsonData.getUpcomingProjects[i];
 
                 var project =
-                    `
+                        `
                         <div class="upcoming-img" onclick="showThisUpcoming(this)">
                             <div class="upcoming-img-container">
                                 <p class="upcoming-text-img">${counter.projectName}</p>
@@ -173,7 +173,8 @@ function showUpcoming(callback) {
                         </div>    
                     `
                 comingProjects.push(project);
-            };
+            }
+            ;
             listComingProject.innerHTML = comingProjects.join('');
 
             const firstComingProject = document.querySelector('#upcoming-content-big');
@@ -193,7 +194,8 @@ function showUpcoming(callback) {
             `
             firstComingImage.innerHTML = bigImage;
 
-            if (callback) callback(jsonData.getUpcomingProjects);
+            if (callback)
+                callback(jsonData.getUpcomingProjects);
         }
     };
 }
@@ -201,13 +203,11 @@ function showUpcoming(callback) {
 var comingProjects;
 
 console.log(showUpcoming(function (jsonData) {
-    console.log("Show ne :" + jsonData);
     comingProjects = jsonData;
 }));
 
 function showThisUpcoming(div) {
     var thisProjectId = div.querySelector('.upcoming-img-id').innerText;
-    console.log(thisProjectId);
 
     var i = 0;
     while (thisProjectId != comingProjects[i].projectId) {
@@ -240,29 +240,27 @@ function showThisUpcoming(div) {
 
 
 function startup() {
-    if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
+    console.log("email: " + localStorage.getItem("email"))
+    if (localStorage.getItem("email") != null) {
         if (localStorage.getItem("roleId") == 3) {
             location.replace('http://localhost:8084/PublishGraduationCapstone/Staff_EditPost.html')
         }
         if (localStorage.getItem("roleId") == 4) {
             location.replace('http://localhost:8084/PublishGraduationCapstone/Admin_Main.html')
         }
-        if (localStorage.getItem("roleId") == 1 || localStorage.getItem("roleId") == 2){
+        if (localStorage.getItem("roleId") == 1 || localStorage.getItem("roleId") == 2) {
             initLogin();
         }
-    }
-    else{
-        var cookies = document.cookie;
-        if (cookies != '') {
+    } else {
+        var match = document.cookie.match(new RegExp('(^| )' + "token" + '=([^;]+)'));
+        if (match) {
+            console.log("match: " + match[2]);
             var xhttp = new XMLHttpRequest();
             var api = "/PublishGraduationCapstone/api/login/getLoginAccountInfo?accessToken=";
-            console.log("cookies ne 1:" + cookies);
-            var ccs = cookies.slice(6, cookies.length).trim();
-            console.log("cookies ne 2:" + ccs);
-            var url = api + ccs;
+            var url = api + match[2];
             xhttp.open("GET", url);
             xhttp.send();
-    
+
             xhttp.onreadystatechange = function () {
                 if (this.readyState === 4 && this.status === 200) {
                     //using data here
@@ -278,23 +276,23 @@ function startup() {
                     localStorage.setItem("roleId", jsonData.roleId);
                     initLogin()
                 }
-            };
-     }
+                ;
+            }
+        } 
     }
 }
-     
 startup();
 
-function initLogin(){
+function initLogin() {
     var username = localStorage.getItem("name")
     var picture = localStorage.getItem("picture")
 
-        document.getElementById("icon-show-login").innerHTML = 
-        `
+    document.getElementById("icon-show-login").innerHTML =
+            `
         <img src="${picture}" alt=""> 
         `
-        document.getElementById("login-box").innerHTML = 
-        `
+    document.getElementById("login-box").innerHTML =
+            `
         <div id="user-main-small-control">
         <p id="user-main-small-name">${username}</p>
         <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
@@ -305,14 +303,14 @@ function initLogin(){
         `
 }
 
-function logout(){
+function logout() {
     localStorage.clear();
-    document.getElementById("icon-show-login").innerHTML = 
-    `
+    document.getElementById("icon-show-login").innerHTML =
+            `
     <i class="fa-solid fa-user"></i>
     `
-    document.getElementById("login-box").innerHTML = 
-    `
+    document.getElementById("login-box").innerHTML =
+            `
     <div id="home-login">
     <a
         style="text-decoration: none; color: #fff;" 
@@ -322,4 +320,5 @@ function logout(){
     </div>
 
     `
+    document.cookie = "token" +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }

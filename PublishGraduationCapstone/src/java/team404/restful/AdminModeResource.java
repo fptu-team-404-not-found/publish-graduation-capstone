@@ -17,6 +17,10 @@ import team404.account.AccountDAO;
 import team404.account.AccountDTO;
 import team404.comment.CommentDAO;
 import team404.comment.CommentDTO;
+import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
+import team404.sharepost.SharePostDAO;
+import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 
@@ -134,6 +138,93 @@ public class AdminModeResource {
         jsObj.put("searchSupervisorList", jsArr);
         return jsObj.toJSONString();
     }
+    // show post list with approving and approved
+    @Path("/showPostListWithApproving")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showPostListWithApproving(){
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.getAllPostWithApproving();
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("createDate", projectDTO.getCreateDate().toString());
+            jsObj.put("authorName", projectDTO.getAuthorName());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showPostListWithApproving", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/showPostListWithApproved")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showPostListWithApproved(){
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.getAllPostWithApproved();
+        JSONArray jsArr = new JSONArray();
+        for (ProjectDTO projectDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("createDate", projectDTO.getCreateDate().toString());
+            jsObj.put("authorName", projectDTO.getAuthorName());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showPostListWithApproved", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/showSharePostListWithApproving")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showSharePostListWithApproving(){
+        SharePostDAO dao = new SharePostDAO();
+        List<SharePostDTO> list = dao.showSharePostWithApproving();
+        JSONArray jsArr = new JSONArray();
+        for (SharePostDTO sharePostDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("postId", sharePostDTO.getPostId());
+            jsObj.put("title", sharePostDTO.getTitle());
+            jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
+            if(sharePostDTO.getStudent() != null){
+                jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
+            }
+            if(sharePostDTO.getSupervisor() != null){
+                jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
+            }
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showSharePostListWithApproving", jsArr);
+        return jsObj.toJSONString();
+    }
+    @Path("/showSharePostListWithApproved")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showSharePostListWithApproved(){
+        SharePostDAO dao = new SharePostDAO();
+        List<SharePostDTO> list = dao.showSharePostWithApproved();
+        JSONArray jsArr = new JSONArray();
+        for (SharePostDTO sharePostDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("postId", sharePostDTO.getPostId());
+            jsObj.put("title", sharePostDTO.getTitle());
+            jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
+            if(sharePostDTO.getStudent() != null){
+                jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
+            }
+            if(sharePostDTO.getSupervisor() != null){
+                jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
+            }
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showSharePostListWithApproved", jsArr);
+        return jsObj.toJSONString();
+    }
 //    Dat show comment theo date 
     @Path("/showCommentByDate")
     @GET
@@ -148,9 +239,11 @@ public class AdminModeResource {
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
             if(commentDTO.getPost() != null){
+                jsObj.put("sharePostId", commentDTO.getPost().getPostId());
                 jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
             if(commentDTO.getProject() != null){
+                jsObj.put("projectId", commentDTO.getProject().getProjectId());
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
             }
             jsArr.add(jsObj);
