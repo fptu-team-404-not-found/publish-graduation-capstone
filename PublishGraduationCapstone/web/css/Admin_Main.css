@@ -243,7 +243,11 @@ body {
     color: #FFFFFF;
     cursor: pointer;
 }
-
+#user-main-small-control > a p:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+    cursor: pointer;
+}
 /* --------------------------------------- */
 
 .admin-main-account-list-infor {

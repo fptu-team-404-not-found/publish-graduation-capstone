@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Staff_Approving.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div id="admin-main-nav" onclick=" ShowLogout()">
+        <p id="admin-main-nav-title">STAFF MODE</p>
+        <p id="admin-main-nav-login">TIENHLT</p>
+        <p id="admin-main-nav-login-img-container">
+            <img id="admin-main-nav-login-img" src="img/Tien-img.jpg" alt="">
+        </p>
+    </div>
+
+    <div id="user-main-small-control">
+        <p id="user-main-small-name">TIENHLT</p>
+        <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #F47124;"
+            onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+        </a>
+    </div>
+
+    <div id="staff-mode-approving">
+        <div id="staff-mode-approving-nav-container">
+            <div id="staff-mode-approving-nav">
+                <a href="#">APPROVING</a>
+                <a href="Staff_Approved.html" class="staff-active">APPROVED</a>
+            </div>
+            <a href="Staff_EditPost.html">
+                <div id="staff-mode-approving-new-container">
+                    <span><i class="fa-solid fa-circle-plus"></i></span>
+                    <span id="staff-mode-approving-new-post-word">New Post</span>
+                </div>
+            </a>
+            <div id="staff-mode-approving-content-container">
+                <div id="staff-mode-approving-content-title-container">
+                    <span id="staff-mode-approving-content-title">Title</span>
+                    <span id="staff-mode-approving-content-date">Date Submit</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+                <div class="staff-mode-approving-content-infor-container">
+                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
+                        Phượng</span>
+                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
+                </div>
+
+                <div class="admin-main-account-list-page-number">
+                    <a href="#">«</a>
+                    <a class="active" href="#">1</a>
+                    <a href="#">»</a>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            function ShowLogout() {
+                var logOut = document.getElementById('user-main-small-control');
+                if (logOut.style.display == 'none') {
+                    logOut.style.display = 'block';
+                } else
+                    logOut.style.display = 'none';
+            }
+
+            function logout() {
+                localStorage.clear();
+            }
+        </script>
+</body>
+
+</html>

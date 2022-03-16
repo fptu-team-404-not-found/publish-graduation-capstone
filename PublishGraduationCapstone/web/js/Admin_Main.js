@@ -1,5 +1,17 @@
-var userData = new Array;
 
+function ShowLogout() {
+    var logOut = document.getElementById('user-main-small-control');
+    if (logOut.style.display == 'none') {
+        logOut.style.display = 'block';
+    } else 
+        logOut.style.display = 'none';
+}
+
+function logout() {
+    localStorage.clear();
+}
+
+var userData = new Array;
 function takeUserData(callback) {
     var xhttp = new XMLHttpRequest();
     var api = "/PublishGraduationCapstone/api/admin/showAccountList";
