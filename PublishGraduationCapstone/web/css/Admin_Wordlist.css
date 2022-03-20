@@ -350,10 +350,10 @@ body {
 }
 
 /* --------------------------------------- */
+/* ------------------------------------------------------------------------*/
 #user-main-small-control {
     display: none;
     position: absolute;
-    top: 3.4em;
     right: 1em;
     font-size: 60%;
     background-color: #ffffffbd;
@@ -388,6 +388,13 @@ body {
     color: #FFFFFF;
     cursor: pointer;
 }
+#user-main-small-control > a p:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+/*------------------------------------------------------------------*/
+
 
 /* --------------------------------------- */
 

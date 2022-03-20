@@ -23,15 +23,14 @@
             <img id="admin-main-nav-login-img" src="img/Tien-img.jpg" alt="">
         </p>
     </div>
-
     <div id="user-main-small-control">
-        <p id="user-main-small-name">TIENHLT</p>
+        <p id="user-main-small-name">Huỳnh Lê Thủy Tiên</p>
         <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #F47124;"
             onclick="logout()">
             <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
         </a>
     </div>
-
+    <!-- navbar -->
     <div id="staff-mode-approving">
         <div id="staff-mode-approving-nav-container">
             <div id="staff-mode-approving-nav">
@@ -99,19 +98,7 @@
         </div>
 
 
-        <script>
-            function ShowLogout() {
-                var logOut = document.getElementById('user-main-small-control');
-                if (logOut.style.display == 'none') {
-                    logOut.style.display = 'block';
-                } else
-                    logOut.style.display = 'none';
-            }
-
-            function logout() {
-                localStorage.clear();
-            }
-        </script>
+      <script src="js/Staff_Approving.js"></script>
 </body>
 
 </html>

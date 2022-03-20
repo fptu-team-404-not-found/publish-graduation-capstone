@@ -275,8 +275,7 @@ function startup() {
                     localStorage.setItem("picture", jsonData.picture);
                     localStorage.setItem("roleId", jsonData.roleId);
                     initLogin()
-                }
-                ;
+                };
             }
         } 
     }

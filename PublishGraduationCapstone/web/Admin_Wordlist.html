@@ -16,12 +16,19 @@
 
 <body>
     <!-- navbar -->
-    <div id="admin-main-nav">
+    <div id="admin-main-nav" onclick=" ShowLogout()">
         <p id="admin-main-nav-title">ADMIN MODE</p>
         <p id="admin-main-nav-login">QUANNDD2</p>
-        <p id="admin-main-nav-login-img-container" onclick="logOut()">
+        <p id="admin-main-nav-login-img-container">
             <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
         </p>
+    </div>
+    <div id="user-main-small-control">
+        <p id="user-main-small-name">Nguyễn Đào Đức Quân</p>
+        <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #F47124;"
+            onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+        </a>
     </div>
 
     <!-- menu dọc trái -->
@@ -178,32 +185,7 @@
             </div>
         </div>
     </div>
-
-    <script>
-        var modal = document.getElementById("myModal");
-        var span = document.getElementsByClassName("close")[0];
-        function openInfor() {
-            modal.style.display = "block";
-            span.style.display = "block";
-        }
-        function exitInfo() {
-            span.style.display = "none";
-            modal.style.display = "none";
-        }
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        };
-
-        function logOut() {
-            var logOut = document.getElementById('user-main-small-control');
-            if (logOut.style.display == 'none') {
-                logOut.style.display = 'block';
-            } else 
-                logOut.style.display = 'none';
-        }
-    </script>
+<script src="js/Admin_Wordlist.js"></script>
 </body>
 
 </html>

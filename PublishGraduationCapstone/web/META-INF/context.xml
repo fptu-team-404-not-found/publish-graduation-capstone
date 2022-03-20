@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--Tien nè-->
-<Context path="/PublishGraduationCapstone">
+<!--<Context path="/PublishGraduationCapstone">
     <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
               name="JohnyEnglish" password="Thuytien" 
               type="javax.sql.DataSource" 
               url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=TIENHUYNHTN" 
               username="sa"/>
-</Context>
+</Context>-->
  
 <!--Đạt nè-->
 <!--<Context path="/PublishGraduationCapstone">
@@ -18,13 +18,13 @@
 </Context>-->
 
 <!--Thang ne-->
-<!--<Context path="/PublishGraduationCapstone">
+<Context path="/PublishGraduationCapstone">
   <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
             name="JohnyEnglish" password="1234567890" 
             type="javax.sql.DataSource" 
             url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=SQLTHANG" 
             username="sa"/>
-</Context>-->
+</Context>
 
 <!--Quan ne-->
 <!--<Context path="/PublishGraduationCapstone">

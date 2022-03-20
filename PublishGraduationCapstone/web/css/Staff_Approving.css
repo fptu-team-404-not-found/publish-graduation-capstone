@@ -187,8 +187,7 @@ body {
     border-radius: 50%;
 }
 
-/*---------------------------------------------------------*/
-
+/* ------------------------------------------------------------------------*/
 #user-main-small-control {
     display: none;
     position: absolute;
@@ -221,7 +220,7 @@ body {
     letter-spacing: 0.06em;
 }
 
-#user-main-small-control > a p:hover {
+#user-main-small-control > p:hover {
     background-color: #F47124;
     color: #FFFFFF;
     cursor: pointer;
@@ -231,4 +230,4 @@ body {
     color: #FFFFFF;
     cursor: pointer;
 }
-/*---------------------------------------------------------*/
+/*------------------------------------------------------------------*/
