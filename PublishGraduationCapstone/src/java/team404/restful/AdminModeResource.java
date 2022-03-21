@@ -226,6 +226,33 @@ public class AdminModeResource {
         return jsObj.toJSONString();
     }
 //    Dat show comment theo date 
+    @Path("/showCommentByDateWithParameter")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showCommentByDateWithParameter(
+            @QueryParam("commentDate") Date commentDate){
+        CommentDAO dao = new CommentDAO();
+        List<CommentDTO> list = dao.showCommentInAdminModeWithParameter(commentDate);
+        JSONArray jsArr = new JSONArray();
+        for (CommentDTO commentDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("commentDate", commentDTO.getCommentDate().toString());
+            jsObj.put("commentContent", commentDTO.getCommentContent());
+            jsObj.put("email", commentDTO.getUser().getEmail());
+            if(commentDTO.getPost() != null){
+                jsObj.put("sharePostId", commentDTO.getPost().getPostId());
+                jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
+            }
+            if(commentDTO.getProject() != null){
+                jsObj.put("projectId", commentDTO.getProject().getProjectId());
+                jsObj.put("projectName", commentDTO.getProject().getProjectName());
+            }
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("showCommentByDateWithParameter", jsArr);
+        return jsObj.toJSONString();
+    }
     @Path("/showCommentByDate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
