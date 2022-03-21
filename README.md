@@ -77,6 +77,10 @@
 -| ---- | -----------
 1| [Main Project Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/PublishGraduationCapstone) | -
 2| [Database Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/database) | -
+2.1| [Database Script](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/database/ScriptDatabase.sql) | -
+2.2| [Database StarUML Model File](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/database/SWP391.mdj) | -
+2.3| [Database ERD Diagram](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/imgs/database-ERD.png) | - 
+2.4| [Database Diagram](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/imgs/database-diagram.png)
 3| [UI Design](https://www.figma.com/file/8bXKMQcuvUHcne1PlG5mlE/Project-Siu-%C4%90%E1%BB%89n?node-id=151%3A368) | -
 4| [Library Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/lib) | -
 
