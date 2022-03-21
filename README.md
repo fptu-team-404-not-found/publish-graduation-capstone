@@ -9,7 +9,7 @@
 - [Functional requirements](#functional-requirements)
 - [Useful Resources](#useful-resources)
 - [Contributors](#contributors)
-- [Learn More](#learn-more)
+- [Reference](#reference)
 - [License & Copyright](#license--copyright)
 
 ## Description
@@ -17,6 +17,13 @@
 - This web works well on desktop, not for mobile
 
 ## Preview Screenshot
+
+<div align="center">
+  <img src="./imgs/home-1.png" alt="Home 1" width="45%"></img> &nbsp;&nbsp; <img src="./imgs/home-2.png" alt="Home 2" width="45%"></img>
+  <img src="./imgs/search.png" alt="Search Page" width="45%"></img> &nbsp;&nbsp; <img src="./imgs/admin-account-list.png" alt="Admin Account List" width="45%"></img>
+  <img src="./imgs/admin-post-list.png" alt="Admin Post List" width="45%"></img> &nbsp;&nbsp; <img src="./imgs/admin-supervisor-list.png" alt="Admin Supervisor List" width="45%"></img>
+  <img src="./imgs/admin-upcoming.png" alt="Admin Upcoming List" width="45%"></img> &nbsp;&nbsp; <img src="./imgs/admin-word-list.png" alt="Admin Word List" width="45%"></img>
+</div>
   
 ## Technology
 **1. Frontend**
@@ -68,21 +75,27 @@
 
 #| Name | Description
 -| ---- | -----------
-1| [web Folder]() | -----------
-2| [src Folder]() | -----------
-3| [Database File]() | -----
-4| [META-INF Folder]() | ---
-5| [WEB-INF Folder]() | ---
-6| [UI Design](https://www.figma.com/file/8bXKMQcuvUHcne1PlG5mlE/Project-Siu-%C4%90%E1%BB%89n?node-id=151%3A368) | ---
+1| [Main Project Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/PublishGraduationCapstone) | -
+2| [Database Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/database) | -
+2.1| [Database Script](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/database/ScriptDatabase.sql) | -
+2.2| [Database StarUML Model File](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/database/SWP391.mdj) | -
+2.3| [Database ERD Diagram](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/imgs/database-ERD.png) | - 
+2.4| [Database Diagram](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/imgs/database-diagram.png)
+3| [UI Design](https://www.figma.com/file/8bXKMQcuvUHcne1PlG5mlE/Project-Siu-%C4%90%E1%BB%89n?node-id=151%3A368) | -
+4| [Library Folder](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/tree/main/lib) | -
 
 ## Contributors
-- [Tran Ngoc Thang](https://github.com/thangtn2101) -  - Leader | Database Designer | Front-end Developer
-- [Nguyen Dao Duc Quan](https://github.com/dq-qiji) - SE151008 - UI Designer | Front-end Developer
-- [Nguyen Lam Thuy Phuong](https://github.com/nguyenlamthuyphuong25) - 	SE150999 - UI Designer | Front-end Developer
-- [Huynh Le Thuy Tien](https://github.com/tienhuynh-tn) - SE151104 - Back-end Developer | Database Designer
-- [Tran Thanh Dat](https://github.com/DatTranLK) -  - Back-end Developer
+- [Tran Ngoc Thang](https://github.com/thangtn2101) - SE151478 - **Leader | Database Designer | Front-end Developer**
+- [Nguyen Dao Duc Quan](https://github.com/dq-qiji) - SE151008 - **UI Designer | Front-end Developer**
+- [Nguyen Lam Thuy Phuong](https://github.com/nguyenlamthuyphuong25) - 	**SE150999 - UI Designer | Front-end Developer**
+- [Huynh Le Thuy Tien](https://github.com/tienhuynh-tn) - SE151104 - **Back-end Developer | Database Designer**
+- [Tran Thanh Dat](https://github.com/DatTranLK) - SE151444 - **Back-end Developer**
 
-## Learn More
+## Reference
+- [OpenID Connect](https://developers.google.com/identity/protocols/oauth2/openid-connect)
+- [Hướng dẫn thực hiện chức năng login vào ứng dụng bằng tài khoản facebook - Phạm Huy Hoàng](http://www.kieutrongkhanh.net/2016/08/huong-dan-thuc-hien-chuc-nang-login-vao.html)
+- [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+- [Giới thiệu về RESTful Web Services – công nghệ tạo web services đơn giản so với các dạng web services trước kia](http://www.kieutrongkhanh.net/2016/08/gioi-thieu-ve-restful-web-services-cong.html)
 
 ## License & Copyright
 &copy; 2022 fptu-team-404-not-found Licensed under the [GPL-3.0 LICENSE](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/LICENSE).
