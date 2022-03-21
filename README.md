@@ -31,12 +31,16 @@
   - XMLHttpRequest
 
 **2. Backend**
-  - Java
-  - RESTfulAPI
+  - Java Language
 
 **3. Database**
   - Microsoft SQL Server - a relational model database server produced by Microsoft
   - Full-Text Search - SQL Server
+
+**4. Other Technologies**
+- RESTful API
+- Oauth2
+- MVC2 Model
 
 **4. Tool**
   - Netbeans 8.2
