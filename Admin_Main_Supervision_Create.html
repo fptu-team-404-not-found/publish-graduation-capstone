@@ -55,37 +55,47 @@
 
     <div id="back-icon"><i class="fa-solid fa-circle-chevron-left" onclick="navigationBack()"></i></div>
     <div id="admin-main-supervisor-create-new-container">
-        <div id="admin-main-supervisor-create-new">
-            <h2 id="admin-main-supervisor-create-new-title">NEW SUPERVISOR</h2>
-            <p id="admin-main-supervisor-create-new-line"></p>
-            <div id="admin-main-supervisor-create-new-name-container">
-                <span id="admin-main-supervisor-create-new-name-text">Name</span>
-                <span><input type="text" name="supervisor-name" id="admin-main-supervisor-create-new-name"
-                        placeholder="Eg. Nguyễn Thế Hoàng, Kiều Trọng Khánh"></span>
-                <br>
-                <span id="admin-main-supervisor-create-new-position-container">Position</span>
-                <span><input type="text" name="supervisor-mail" id="admin-main-supervisor-create-new-position"
-                        placeholder="Eg. Head of ,.."></span>
-                <br>
-                <div id="admin-main-supervisor-create-new-information-container">
-                    <span id="admin-main-supervisor-create-new-information">Information</span>
-                    <span><textarea id="admin-main-supervisor-infor"
-                            placeholder="Cày code không cày rank / Happy code - Happy money - Happy life"></textarea></span>
+        <form action="CreateANewSupervisorProcess" method="POST">
+            <div id="admin-main-supervisor-create-new">
+                <h2 id="admin-main-supervisor-create-new-title">NEW SUPERVISOR</h2>
+                <p id="admin-main-supervisor-create-new-line"></p>
+                <div id="admin-main-supervisor-create-new-name-container">
+                    <span id="admin-main-supervisor-create-new-name-id">ID</span>
+                    <span><input type="text" name="supervisor-id" id="admin-main-supervisor-create-new-id"
+                            placeholder="Eg. KT" required></span>
+                    <br>
+                    <span id="admin-main-supervisor-create-new-name-text">Name</span>
+                    <span><input type="text" name="supervisor-name" id="admin-main-supervisor-create-new-name"
+                            placeholder="Eg. Nguyễn Thế Hoàng, Kiều Trọng Khánh" required></span>
+                    <br>
+                    <span id="admin-main-supervisor-create-new-name-mail">Mail</span>
+                    <span><input type="text" name="supervisor-mail" id="admin-main-supervisor-create-new-mail"
+                            placeholder="Eg. Hoangnt@gmail.com" required></span>
+                    <br>
+                    <span id="admin-main-supervisor-create-new-position-container">Position</span>
+                    <span><input type="text" name="supervisor-position" id="admin-main-supervisor-create-new-position" value=""
+                            placeholder="Eg. Head of ,.."></span>
+                    <br>
+                    <div id="admin-main-supervisor-create-new-information-container">
+                        <span id="admin-main-supervisor-create-new-information">Information</span>
+                        <span><textarea id="admin-main-supervisor-infor" name="supervisor-information"
+                                placeholder="Cày code không cày rank / Happy code - Happy money - Happy life" value=""></textarea></span>
+                    </div>
+
+                    <label for="preview-supervisor-img-link">Image</label>
+                    <input type="text" name="supervisor-image" id="preview-supervisor-img-link"
+                        placeholder="Place link here" onchange="getLinkImg()" required>
+                    <br>
+                    <div id="preview-supervisor-img-container">
+                        <img id="preview-supervisor-img" src="" alt="">
+                    </div>
                 </div>
-
-
-                <input type="text" name="preview-supervisor-img-link" id="preview-supervisor-img-link"
-                    placeholder="Place link here then enter to preview picture" onkeypress="getLinkImg()">
                 <br>
-                <div id="preview-supervisor-img-container">
-                    <img id="preview-supervisor-img" src="" alt="">
+                <div id="admin-main-supervisor-create-btn-container">
+                    <input type="submit" value="Add new supervisor" id="admin-main-supervisor-create-btn">
                 </div>
             </div>
-            <br>
-            <div id="admin-main-supervisor-create-btn-container">
-                <input type="button" value="Add new supervisor" id="admin-main-supervisor-create-btn">
-            </div>
-        </div>
+        </form>
         <div id="admin-main-supervisor-create-btn-container-excel-container">
             <div id="admin-main-supervisor-create-btn-container-excel">
                 <input type="button" value="Add new supervisors by excel" id="admin-main-supervisor-create-btn-excel">
@@ -105,12 +115,8 @@
         });
 
         function getLinkImg() {
-            if (event.which == 13 || event.keyCode == 13) {
-                var getLinkImg = document.getElementById('preview-supervisor-img-link').value;
-                document.getElementById('preview-supervisor-img').src = getLinkImg;
-                return false;
-            }
-            return true;
+            var getLinkImg = document.getElementById('preview-supervisor-img-link').value;
+            document.getElementById('preview-supervisor-img').src = getLinkImg;
         };
 
         function navigationBack() {
@@ -121,7 +127,7 @@
             var logOut = document.getElementById('user-main-small-control');
             if (logOut.style.display == 'none') {
                 logOut.style.display = 'block';
-            } else 
+            } else
                 logOut.style.display = 'none';
         }
     </script>
