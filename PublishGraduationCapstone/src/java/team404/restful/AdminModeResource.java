@@ -266,11 +266,11 @@ public class AdminModeResource {
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
             if(commentDTO.getPost() != null){
-                jsObj.put("sharePostId", commentDTO.getPost().getPostId());
+                jsObj.put("Id", commentDTO.getPost().getPostId());
                 jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
             if(commentDTO.getProject() != null){
-                jsObj.put("projectId", commentDTO.getProject().getProjectId());
+                jsObj.put("Id", commentDTO.getProject().getProjectId());
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
             }
             jsArr.add(jsObj);

@@ -39,4 +39,79 @@ window.onclick = function (event) {
         modal.style.display = "none";
     }
 };
+/*-------------------------------------------------------------*/
+function showComment(){
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/admin/countCommentInDate";
+    xhttp.open("GET", api);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
 
+            const listComment = document.querySelector('#admin-main-wordlist_right_infor_content_list_container');
+
+            let comments = new Array();
+
+            jsonData.countCommentInDate.forEach(counter => {
+                var comment = `
+                <div class="admin-main-wordlist_right_infor_content_list" onclick="showCommentByDate(this)">
+                <p class="admin-main-wordlist_right_infor_content_list_date">${counter.commentDate}</p>
+                <p class="admin-main-wordlist_right_infor_content_list_comment" ><i class="fa-solid fa-comment-dots"
+                        id="admin-main-wordlist_right_infor_content_list_comment"></i>${counter.total}
+                    Comments
+                </p>
+                </div>
+                `
+                comments.push(comment);
+            });
+            listComment.innerHTML = comments.join('');
+        }
+    };
+}
+showComment();
+
+function showCommentByDate(p){
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/admin/showCommentByDateWithParameter?commentDate=";
+    var day = p.querySelector('.admin-main-wordlist_right_infor_content_list_date').innerText;
+    console.log(day + "this is the day")
+    var apiUrl = api + day;
+    xhttp.open("GET", apiUrl);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
+            document.querySelector('#admin-main-wordlist_right_infor_content_list_container_modal').innerHTML = " ";
+            const CommentModal = document.querySelector('#admin-main-wordlist_right_infor_content_list_container_modal');
+            
+            let comments = new Array();
+
+            jsonData.showCommentByDateWithParameter.forEach(counter => {
+                var comment = `
+                <div class="admin-main-wordlist_right_infor_content_list_modal">
+                <p class="admin-main-wordlist_right_infor_content_list_post_modal">${counter.projectName}</p>
+                <p class="admin-main-wordlist_right_infor_content_list_comment_modal" ><i
+                        class="fa-solid fa-comment-dots"></i>${counter.commentContent}
+                        <div class="upcoming-img-id" style="display: none">${counter.Id}</div>
+                </p>
+                <p class="admin-main-wordlist_right_infor_content_list_mail_modal">${counter.email}</p>
+                </div>
+                `
+                comments.push(comment);
+            });
+            CommentModal.innerHTML = comments.join('');
+        }
+    };
+    openInfor();
+}

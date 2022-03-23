@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: sans-serif;
+    font-size: 140%;
+    width: 100%;
+    height: auto;
+    background-color: #EEEEEE;
+}
+
+/* nav */
+#admin-main-nav {
+    width: 100%;
+    background-color: #F47124;
+    height: 2em;
+    line-height: 2em;
+    display: flex;
+}
+
+#admin-main-nav-title {
+    letter-spacing: 0.08em;
+    padding-left: 2%;
+    font-size: 110%;
+    color: #FFFFFF;
+    width: 20%;
+}
+
+#admin-main-nav-login {
+    font-size: 70%;
+    color: #FFFFFF;
+    letter-spacing: 0.08em; 
+    width: 76%;
+    text-align: right;
+    margin-right: 0.5%;
+}
+
+#admin-main-nav-login-img-container {
+    width: 1.6em;
+    margin-top: 0.2em;
+}
+
+#admin-main-nav-login-img {
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid #EEEEEE;
+}
+
+/* menu dọc trái */
+#admin-main-menu-container {
+    margin: 2%;
+    display: inline-flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+#admin-main-menu-container a.active{
+    background-color: #F47124;
+    color: #FFFFFF;
+    border-radius: 1em;
+}
+
+#admin-main-menu-container a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 1em;
+}
+
+.admin-main-menu-list {
+    text-decoration: none;
+    color: #F47124;
+    padding: 0.8em;
+    margin-bottom: 4%;
+    line-height: 1.5em;
+    width: 6em;
+    text-align: center;
+}
+
+.admin-main-menu-list-icon {
+    font-size: 120%;
+}
+
+.admin-main-menu-list-text {
+    font-size: 70%;
+}
+
+/* Account list right */
+
+#admin-main-supervisor-create-new {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1em;
+    border-right: 1px dashed #F47124;
+}
+
+#admin-main-supervisor-create-new-container {
+    display: inline-flex;
+    width: 60%;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 1px solid #F47124;
+}
+
+#admin-main-supervisor-create-btn-container-excel-container {
+    margin: auto;
+}
+
+#admin-main-supervisor-create-btn-excel {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 1em;
+    border: 1px solid #F47124;
+    padding: 0.5em 1em;
+    border: 2px solid #F47124;
+    border-radius: 0.6em;
+    color: #F47124;
+    font-weight: 600;
+}
+
+#admin-main-supervisor-create-btn-excel:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+}
+
+#back-icon {
+    display: inline-flex;
+    width: 2em;
+    vertical-align: middle;
+    height: 9vh;
+    font-size: 130%;
+    color: #F47124;
+}
+
+.fa-circle-chevron-left:hover {
+    cursor: pointer;
+    color: rgb(156, 154, 154);
+}
+
+#admin-main-supervisor-create-new-title {
+    font-size: 110%;
+    margin-bottom: 0.5em;
+    color: #F47124;
+}
+
+#admin-main-supervisor-create-new-line {
+    width: 12em;
+    height: 0.1em;
+    background-color: #F47124;
+    margin: 0 auto;
+    margin-bottom: 0.5em;
+}
+
+#admin-main-supervisor-create-new-name-container {
+    font-size: 80%;
+    width: 100%;
+    text-align: left;
+}
+
+#admin-main-supervisor-create-new-information-container {
+    width: 100%;
+    display: inline-flex;
+    margin-top: 1em;
+}
+
+#admin-main-supervisor-create-new-information {
+    color: #F47124;
+    margin-top: 1.5em;
+}
+
+#admin-main-supervisor-infor {
+    height: 4em;
+    padding: 0.5em;
+    width: 24em;
+    resize: none;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    border: 1px solid #F47124;
+}
+
+#admin-main-supervisor-create-new-name-text {
+    color: #F47124;
+    margin-top: 1em;
+    font-size: 92%;
+}
+
+#admin-main-supervisor-create-new-position-container {
+    color: #F47124;
+    margin-right: 1.5em;
+
+}
+
+#admin-main-supervisor-create-new-position {
+    margin-top: 1.5em;
+    padding: 0.5em;
+    width: 24em;
+    border: 1px solid #F47124;
+}
+
+#admin-main-supervisor-create-new-name {
+    padding: 0.5em;
+    margin-top: 1.2em;
+    width: 24em;
+    margin-left: 3.5em;
+    border: 1px solid #F47124;
+}
+
+#admin-main-supervisor-create-btn-container {
+    width: 100%;
+    border-top: 1px solid #F47124;
+    padding-top: 1em;
+}
+
+#admin-main-supervisor-create-btn {
+    padding: 0.5em 1em;
+    background-color: #FFFFFF;
+    border: 2px solid #F47124;
+    border-radius: 0.6em;
+    color: #F47124;
+    font-weight: 600;
+}
+
+#admin-main-supervisor-create-btn:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+}
+
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: rgb(255, 240, 222);
+}
+
+#preview-supervisor-img-input {
+    display: none;
+}
+
+#preview-supervisor-img {
+    width: 50%;
+    margin-bottom: 1em;
+    border-radius: 50%;
+}
+
+#preview-supervisor-img-link {
+    width: 85%;
+    padding: 0.5em;
+    margin-top: 2em;
+    border-radius: 5px;
+    border: 1px solid #F47124;
+    margin-bottom: 1em;
+    margin-left: 7.5%;
+}
+
+#preview-supervisor-img-container {
+    width: 100%;
+    margin-left: 25%;
+}
+
+/* --------------------------------------- */
+#user-main-small-control {
+    display: none;
+    position: absolute;
+    top: 3.4em;
+    right: 1em;
+    font-size: 60%;
+    background-color: #ffffffbd;
+    color: #F47124;
+    text-align: center;
+    border-radius: 0 0 0.2em 0.2em;
+    font-size: 700;
+    border: 1px solid #FFFFFF;
+}
+
+.fa-right-from-bracket {
+    margin-right: 0.5em;
+}
+
+#user-main-small-name {
+    padding: 0.6em;
+    border-bottom: 1px solid #F47124;
+    letter-spacing: 0.06em;
+}
+#user-main-small-name:hover {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-logout {
+    padding: 0.6em;
+    letter-spacing: 0.06em;
+}
+
+#user-main-small-control > p:hover {
+    background-color: #F47124;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* --------------------------------------- */
+
+
+
+
+
+
+
+
