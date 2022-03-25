@@ -963,3 +963,20 @@ Select sp.PostId, sp.Title, sp.CreateDate, sp.StudentId, sp.SupervisorID
 From SharePost sp inner join States s
 on sp.StateId = s.StateId
 Where s.StateName = 'Approving'
+
+select tm.StudentId, tm.MemberName, p.ProjectId, p.ProjectName, p.ProjectAva
+From TeamMember tm inner join Project p
+on tm.ProjectId = p.ProjectId
+Where tm.MemberName LIKE N'%a%'
+
+Select su.SupervisorID, su.SupervisorName, p.ProjectId, p.ProjectName, p.ProjectAva
+from Supervisor su inner join Project_Supervisor ps
+on su.SupervisorID = ps.SupervisorID
+inner join Project p
+on p.ProjectId = ps.ProjectId
+Where su.SupervisorName LIKE N'%a%'
+
+Select p.ProjectId, p.ProjectName, p.ProjectAva
+From Project p
+Where p.ProjectName LIKE N'%a%'
+

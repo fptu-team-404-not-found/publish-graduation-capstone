@@ -458,7 +458,7 @@ public class ProjectDAO implements Serializable {
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<ProjectDTO> list = new ArrayList<>();
-                while(rs.next()){
+                while (rs.next()) {
                     String projectId = rs.getString("ProjectId");
                     String projectName = rs.getNString("ProjectName");
                     Date createDate = rs.getDate("CreateDate");
@@ -493,6 +493,7 @@ public class ProjectDAO implements Serializable {
         }
         return null;
     }
+
     public List<ProjectDTO> getAllPostWithApproved() {
         try {
             con = DBHelpers.makeConnection();
@@ -504,7 +505,7 @@ public class ProjectDAO implements Serializable {
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<ProjectDTO> list = new ArrayList<>();
-                while(rs.next()){
+                while (rs.next()) {
                     String projectId = rs.getString("ProjectId");
                     String projectName = rs.getNString("ProjectName");
                     Date createDate = rs.getDate("CreateDate");
@@ -514,6 +515,51 @@ public class ProjectDAO implements Serializable {
                     dto.setProjectName(projectName);
                     dto.setCreateDate(createDate);
                     dto.setAuthorName(authorName);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<ProjectDTO> searchInFilter(String keyword) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select p.ProjectId, p.ProjectName, p.ProjectAva "
+                        + "From Project p "
+                        + "Where p.ProjectName LIKE ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, "%"+keyword+"%");
+                rs = stm.executeQuery();
+                List<ProjectDTO> list = new ArrayList<>();
+                while(rs.next()){
+                    String projectId = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    String projectAva = rs.getString("ProjectAva");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
                     list.add(dto);
                 }
                 return list;

@@ -1,5 +1,6 @@
 package team404.restful;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +17,10 @@ import team404.comment.CommentDTO;
 import team404.favorite.FavoriteDAO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.supervisor.SupervisorDAO;
+import team404.supervisor.SupervisorDTO;
+import team404.teammember.TeamMemberDAO;
+import team404.teammember.TeamMemberDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
@@ -37,19 +42,19 @@ public class ProjectResource {
         JSONArray jsArr = new JSONArray();
         List<UpcomingProjectDTO> list = dao.getUpcomingProjectList();
         for (UpcomingProjectDTO upcomingProjectDTO : list) {
-           JSONObject jsObj = new JSONObject();
+            JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", upcomingProjectDTO.getUpcomingProjectId());
             jsObj.put("projectName", upcomingProjectDTO.getProjectName());
             jsObj.put("projectLocation", upcomingProjectDTO.getLocation());
             jsObj.put("projectDate", upcomingProjectDTO.getDate());
             jsObj.put("projectDescription", upcomingProjectDTO.getDescription());
             jsObj.put("projectImage", upcomingProjectDTO.getImage());
-            jsArr.add(jsObj); 
+            jsArr.add(jsObj);
         }
-        
+
         JSONObject jsObj = new JSONObject();
         jsObj.put("getUpcomingProjects", jsArr);
-        
+
         String result = jsObj.toJSONString();
         return result;
     }
@@ -74,7 +79,7 @@ public class ProjectResource {
         String result = jsObj.toJSONString();
         return result;
     }
-    
+
     //-- TIENHUYNHTN --// //OK
     @Path("/showOtherProjects")
     @GET
@@ -122,9 +127,9 @@ public class ProjectResource {
         String result = jsObj.toJSONString();
         return result;
     }
-    
+
     //-- TIENHUYNHTN --// //OK
-    @Path("/showProjectDetails") 
+    @Path("/showProjectDetails")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String showProjectDetails(
@@ -132,16 +137,16 @@ public class ProjectResource {
         ProjectDAO dao = new ProjectDAO();
         return dao.showProjectDetails(projectId);
     }
-    
+
     //-- TIENHUYNHTN --// //OK
-    @Path("/showCommentsOfProject") 
+    @Path("/showCommentsOfProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getCommentsOfProject(
             @QueryParam("projectId") String projectId) {
         CommentDAO dao = new CommentDAO();
         List<CommentDTO> list = dao.getCommentsOfProject(projectId);
-        
+
         JSONArray jsArr = new JSONArray();
         for (CommentDTO commentDTO : list) {
             JSONObject jsObj = new JSONObject();
@@ -150,20 +155,20 @@ public class ProjectResource {
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("userAva", commentDTO.getUser().getPicture());
             jsObj.put("userName", commentDTO.getUser().getName());
-            
+
             jsArr.add(jsObj);
         }
-        
+
         JSONObject jsObj = new JSONObject();
         jsObj.put("commentsOfProject", jsArr);
         return jsObj.toJSONString();
     }
-    
+
     //-- TIENHUYNHTN --// //OK
     @Path("/bookmark")
     @POST
     public void bookmark(
-            @QueryParam("projectId") String projectId, 
+            @QueryParam("projectId") String projectId,
             @QueryParam("email") String email) {
         FavoriteDAO favoriteDAO = new FavoriteDAO();
         boolean isExistedBookmark = favoriteDAO.findBookmark(projectId, email);
@@ -174,18 +179,98 @@ public class ProjectResource {
             status = favoriteDAO.bookmark(projectId, email);
         }
     }
-    
+
     //-- TIENHUYNHTN --// //OK
     @Path("/commentOnProject")
     @POST
     public String commentOnProject(
-            @QueryParam("projectId") String projectId, 
-            @QueryParam("email") String email, 
+            @QueryParam("projectId") String projectId,
+            @QueryParam("email") String email,
             @QueryParam("commentContent") String commentContent) {
         CommentDAO commentDAO = new CommentDAO();
         String result = commentDAO.commentOnProject(projectId, email, commentContent);
-        
+
         return result;
     }
-    
+    /*
+    @Path("/showFilterInSearch")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showFilterInSearch(
+            @QueryParam("keyword") String keyword) {
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> listProject = dao.searchInFilter(keyword);
+        JSONArray jsArr = new JSONArray();
+        JSONObject jsObjM = new JSONObject();
+        for (ProjectDTO projectDTO : listProject) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("projectId", projectDTO.getProjectId());
+            jsObj.put("projectName", projectDTO.getProjectName());
+            jsObj.put("projectAva", projectDTO.getProjectAva());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        
+        TeamMemberDAO teamDao = new TeamMemberDAO();
+        List<TeamMemberDTO> listTeam = teamDao.searchInFilter(keyword);
+        JSONArray jsArr2 = new JSONArray();
+        for (TeamMemberDTO teamMemberDTO : listTeam) {
+            JSONObject jsObjTeam = new JSONObject();
+            jsObjTeam.put("memberId", teamMemberDTO.getMemberId());
+            jsObjTeam.put("memberName", teamMemberDTO.getMemberName());
+            jsObjTeam.put("projectId", teamMemberDTO.getProject().getProjectId());
+            jsObjTeam.put("projectName", teamMemberDTO.getProject().getProjectName());
+            jsObjTeam.put("projectAva", teamMemberDTO.getProject().getProjectAva());
+            jsArr2.add(jsObjTeam);
+        }
+        
+        SupervisorDAO superDao = new SupervisorDAO();
+        List<SupervisorDTO> listSup = superDao.searchInFilter(keyword);
+        JSONArray jsArr3 = new JSONArray();
+        for (SupervisorDTO supervisorDTO : listSup) {
+            JSONObject jsObjSup = new JSONObject();
+            jsObjSup.put("supervisorId", supervisorDTO.getSupervisorId());
+            jsObjSup.put("supervisorName", supervisorDTO.getSupervisorName());
+            jsObjSup.put("projectId", supervisorDTO.getProject().getProjectId());
+            jsObjSup.put("projectName", supervisorDTO.getProject().getProjectName());
+            jsObjSup.put("projectAva", supervisorDTO.getProject().getProjectAva());
+            jsArr3.add(jsObjSup);
+        }
+        List jsArrM = new ArrayList();
+        List arrayM = new ArrayList();
+        if(jsArr.size() > jsArr2.size() && jsArr.size() > jsArr3.size() && jsArr3.size() > jsArr2.size()){
+            jsArrM.add(jsArr);
+            jsArrM.add(jsArr3);
+            jsArrM.add(jsArr2);
+            for (ProjectDTO projectDTO : listProject) {
+                boolean bien = true;
+                for (Object object : jsArrM) {
+                    if(projectDTO.getProjectId().equals(object.toString())){
+                        bien = false;
+                    }
+                }
+                if (bien) {
+                    
+                }
+            }
+            
+            for (Object object : jsArr2) {
+                for (Object objectMain : jsArrM) {
+                    if (objectMain.)
+                        object.
+                }
+            }
+            for (Object object : jsArr3) {
+                for (Object objectMain : jsArrM) {
+                    if (objectMain.)
+                        object.
+                }
+            }
+            
+            
+        }
+        jsObjM.put("showFilterInSearch", jsArrM);
+        return jsObjM.toJSONString();
+    }
+*/
 }
