@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.project.ProjectDAO;
 import team404.account.AccountDTO;
+import team404.project.ProjectDTO;
 import team404.utils.DBHelpers;
 
 public class TeamMemberDAO {
@@ -77,26 +78,24 @@ public class TeamMemberDAO {
 
         return null;
     }
-    public TeamMemberDTO getInforMember (String studentId)
-    {
-        try{
+
+    public TeamMemberDTO getInforMember(String studentId) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null)
-            {
+            if (con != null) {
                 String sql = "Select * "
                         + "From TeamMember "
                         + "Where StudentId = ? ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, studentId);
                 rs = stm.executeQuery();
-                if(rs.next())
-                {
+                if (rs.next()) {
                     String studentId2 = rs.getString("StudentId");
                     String memberName = rs.getNString("MemberName");
                     String memberAvatar = rs.getString("MemberAvatar");
                     String phone = rs.getString("Phone");
                     String backupEmail = rs.getNString("BackupEmail");
-                    
+
                     TeamMemberDTO dto = new TeamMemberDTO();
                     dto.setMemberId(studentId2);
                     dto.setMemberName(memberName);
@@ -105,6 +104,55 @@ public class TeamMemberDAO {
                     dto.setBackupEmail(backupEmail);
                     return dto;
                 }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<TeamMemberDTO> searchInFilter(String keyword) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "select tm.StudentId, tm.MemberName, p.ProjectId, p.ProjectName, p.ProjectAva "
+                        + "From TeamMember tm inner join Project p "
+                        + "on tm.ProjectId = p.ProjectId "
+                        + "Where tm.MemberName LIKE ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, "%"+keyword+"%");
+                rs = stm.executeQuery();
+                List<TeamMemberDTO> list = new ArrayList<>();
+                ProjectDAO projectDao = new ProjectDAO();
+                ProjectDTO projectDto = new ProjectDTO();
+                while(rs.next()){
+                    String studentId = rs.getString("StudentId");
+                    String memberName = rs.getNString("MemberName");
+                    String projectId = rs.getString("ProjectId");
+                    projectDto = projectDao.getSingleProject(projectId);
+                    TeamMemberDTO dto = new TeamMemberDTO();
+                    dto.setMemberId(studentId);
+                    dto.setMemberName(memberName);
+                    dto.setProject(projectDto);
+                    list.add(dto);
+                }
+                return list;
             }
         } catch (SQLException ex) {
             Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);

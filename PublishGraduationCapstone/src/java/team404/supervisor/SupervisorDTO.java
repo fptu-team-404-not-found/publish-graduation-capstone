@@ -2,6 +2,7 @@ package team404.supervisor;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import team404.account.AccountDTO;
+import team404.project.ProjectDTO;
 
 @XmlRootElement(name = "supervisor")
 public class SupervisorDTO {
@@ -13,6 +14,7 @@ public class SupervisorDTO {
     private String postion;
     private boolean status;
     private AccountDTO user;
+    private ProjectDTO project;
 
     public SupervisorDTO() {
         supervisorId = "";
@@ -22,9 +24,10 @@ public class SupervisorDTO {
         postion = "";
         status = false;
         user = null;
+        project = null;
     }
 
-    public SupervisorDTO(String supervisorId, String supervisorName, String supervisorImage, String information, String postion, boolean status, AccountDTO user) {
+    public SupervisorDTO(String supervisorId, String supervisorName, String supervisorImage, String information, String postion, boolean status, AccountDTO user, ProjectDTO project) {
         this.supervisorId = supervisorId;
         this.supervisorName = supervisorName;
         this.supervisorImage = supervisorImage;
@@ -32,6 +35,7 @@ public class SupervisorDTO {
         this.postion = postion;
         this.status = status;
         this.user = user;
+        this.project = project;
     }
     
     /**
@@ -120,8 +124,18 @@ public class SupervisorDTO {
         this.user = user;
     }
 
+    public ProjectDTO getProject() {
+        return project;
+    }
+
+    public void setProject(ProjectDTO project) {
+        this.project = project;
+    }
+
     @Override
     public String toString() {
-        return "SupervisorDTO{" + "supervisorId=" + supervisorId + ", supervisorName=" + supervisorName + ", supervisorImage=" + supervisorImage + ", information=" + information + ", postion=" + postion + ", status=" + status + ", user=" + user + '}';
+        return "SupervisorDTO{" + "supervisorId=" + supervisorId + ", supervisorName=" + supervisorName + ", supervisorImage=" + supervisorImage + ", information=" + information + ", postion=" + postion + ", status=" + status + ", user=" + user + ", project=" + project + '}';
     }
+    
+    
 }

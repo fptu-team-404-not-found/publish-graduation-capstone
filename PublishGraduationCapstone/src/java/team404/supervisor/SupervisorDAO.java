@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
 import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 import team404.utils.DBHelpers;
 
 public class SupervisorDAO {
@@ -179,10 +180,10 @@ public class SupervisorDAO {
                         + "From Supervisor "
                         + "where SupervisorName Like ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, "%"+keyword+"%");
+                stm.setString(1, "%" + keyword + "%");
                 rs = stm.executeQuery();
                 List<SupervisorDTO> list = new ArrayList<>();
-                while(rs.next()){
+                while (rs.next()) {
                     String supervisorId = rs.getString("SupervisorID");
                     String supervisorName = rs.getNString("SupervisorName");
                     boolean status = rs.getBoolean("Status");
@@ -190,6 +191,57 @@ public class SupervisorDAO {
                     dto.setSupervisorId(supervisorId);
                     dto.setSupervisorName(supervisorName);
                     dto.setStatus(status);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<SupervisorDTO> searchInFilter(String keyword) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select su.SupervisorID, su.SupervisorName, p.ProjectId, p.ProjectName, p.ProjectAva "
+                        + "from Supervisor su inner join Project_Supervisor ps "
+                        + "on su.SupervisorID = ps.SupervisorID "
+                        + "inner join Project p "
+                        + "on p.ProjectId = ps.ProjectId "
+                        + "Where su.SupervisorName LIKE ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, "%"+keyword+"%");
+                rs = stm.executeQuery();
+                List<SupervisorDTO> list = new ArrayList<>();
+                ProjectDAO projectDao = new ProjectDAO();
+                ProjectDTO projectDto = new ProjectDTO();
+                while(rs.next()){
+                    String supervisorId = rs.getString("SupervisorID");
+                    String supervisorName = rs.getNString("SupervisorName");
+                    String projectId = rs.getString("ProjectId");
+                    projectDto = projectDao.getSingleProject(projectId);
+                    SupervisorDTO dto = new SupervisorDTO();
+                    dto.setSupervisorId(supervisorId);
+                    dto.setSupervisorName(supervisorName);
+                    dto.setProject(projectDto);
                     list.add(dto);
                 }
                 return list;
