@@ -149,6 +149,34 @@ public class AccountDAO {
         return false;
     }
 
+    public void createNewAccountAdminMode(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Insert into Account(Email, RoleId) "
+                        + "Values(?, 1) ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     public AccountDTO getUserNamePictureByEmail(String email) {
         try {
             con = DBHelpers.makeConnection();
@@ -411,12 +439,12 @@ public class AccountDAO {
                         + "From Account "
                         + "Where Email Like ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, "%"+keyword+"%");
+                stm.setString(1, "%" + keyword + "%");
                 rs = stm.executeQuery();
                 List<AccountDTO> list = new ArrayList<>();
                 RolesDAO rolesDao = new RolesDAO();
                 RolesDTO rolesDto = new RolesDTO();
-                while(rs.next()){
+                while (rs.next()) {
                     String email = rs.getString("Email");
                     rolesDto = rolesDao.getRoles(rs.getInt("RoleId"));
                     AccountDTO accountDTO = new AccountDTO();
@@ -447,5 +475,34 @@ public class AccountDAO {
             }
         }
         return null;
+    }
+
+    public void updateRoleInAdminMode(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Update Account "
+                        + "Set RoleId = 2 "
+                        + "Where Email = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

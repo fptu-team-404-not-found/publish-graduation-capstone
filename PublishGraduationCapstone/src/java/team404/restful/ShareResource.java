@@ -1,6 +1,8 @@
 package team404.restful;
 
+import com.google.gson.Gson;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
@@ -9,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.comment.CommentDAO;
@@ -122,5 +125,17 @@ public class ShareResource {
         JSONObject jsObjM = new JSONObject();
         jsObjM.put("sharePostDetail", jsObj);
         return jsObjM.toJSONString();
+    }
+    @Path("/addSharePost")
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public Response addSharePost(String sharePost){
+        Gson gson = new Gson();
+        SharePostDTO dto = gson.fromJson(sharePost, SharePostDTO.class);
+        SharePostDAO dao = new SharePostDAO();
+        boolean result = dao.addSharePost(dto);
+        if(result == false)
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        return Response.status(Response.Status.CREATED).build();
     }
 }
