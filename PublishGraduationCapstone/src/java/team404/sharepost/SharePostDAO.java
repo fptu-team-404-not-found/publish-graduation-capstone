@@ -249,4 +249,40 @@ public class SharePostDAO implements Serializable {
         }
         return null;
     }
+    public boolean addSharePost(SharePostDTO sharePost){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId) "
+                        + "Values(?,?,?,?,?,1,?) ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, sharePost.getTitle());
+                stm.setNString(2, sharePost.getDetails());
+                stm.setNString(3, sharePost.getNote());
+                stm.setString(4, sharePost.getStudent().getMemberId());
+                stm.setString(5, sharePost.getSupervisor().getSupervisorId());
+                stm.setString(6, sharePost.getProject().getProjectId());
+                int affectedRow = stm.executeUpdate();
+                if(affectedRow > 0){
+                    return true;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SharePostDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SharePostDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SharePostDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
 }

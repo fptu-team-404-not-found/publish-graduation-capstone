@@ -2,19 +2,16 @@ package team404.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.List;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.sharepost.SharePostDAO;
+import team404.sharepost.SharePostDTO;
 import team404.utils.GoogleHelpers;
 import team404.utils.MyApplicationConstants;
 
@@ -39,7 +36,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         
         try {
-            
+
             if (code == null || code.isEmpty()) {
             } else {
                 HttpSession session = request.getSession();
