@@ -14,27 +14,37 @@ public class TeamMemberDTO {
     private String backupEmail;
     private AccountDTO user;
     private ProjectDTO project;
+    private String email;
 
     public TeamMemberDTO() {
         memberId = "";
         memberName = "";
         memberAvatar = "";
         phone = "";
+        email = "";
         backupEmail = "";
         user = null;
         project = null;
     }
 
-    public TeamMemberDTO(String memberId, String memberName, String memberAvatar, String phone, String backupEmail, AccountDTO user, ProjectDTO project) {
+    public TeamMemberDTO(String memberId, String memberName, String memberAvatar, String phone, String email, String backupEmail, AccountDTO user, ProjectDTO project) {
         this.memberId = memberId;
         this.memberName = memberName;
         this.memberAvatar = memberAvatar;
         this.phone = phone;
         this.backupEmail = backupEmail;
+        this.email = email;
         this.user = user;
         this.project = project;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
     /**
      * @return the memberId
      */
@@ -135,6 +145,6 @@ public class TeamMemberDTO {
 
     @Override
     public String toString() {
-        return "TeamMemberDTO{" + "memberId=" + memberId + ", memberName=" + memberName + ", memberAvatar=" + memberAvatar + ", phone=" + phone + ", backupEmail=" + backupEmail + ", user=" + user + ", project=" + project + '}';
+        return "TeamMemberDTO{" + "memberId=" + memberId + ", memberName=" + memberName + ", memberAvatar=" + memberAvatar + ", phone=" + phone + ", email=" + email + ", backupEmail=" + backupEmail + ", user=" + user + ", project=" + project + '}';
     }
 }

@@ -1,11 +1,17 @@
 package team404.restful;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -23,6 +29,8 @@ import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
+import team404.teammember.TeamMemberDTO;
+import team404.teammember.TeamMemberList;
 
 @Path("admin")
 public class AdminModeResource {
@@ -34,6 +42,19 @@ public class AdminModeResource {
      * Creates a new instance of AdminModeResource
      */
     public AdminModeResource() {
+    }
+    
+    @Path("/saveAccountList")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveAccountList(String object) {
+        Gson g = new Gson();
+        Type listType = new TypeToken<ArrayList<TeamMemberDTO>>(){}.getType();
+        ArrayList<TeamMemberDTO> list = new Gson().fromJson(object , listType);
+        
+        for (TeamMemberDTO teamMemberDTO : list) {
+            System.out.println(teamMemberDTO.toString());
+        }
     }
     
     @Path("/showSupervisorList") 
