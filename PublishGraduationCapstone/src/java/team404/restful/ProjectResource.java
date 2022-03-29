@@ -1,7 +1,8 @@
 package team404.restful;
 
-import java.util.ArrayList;
+import com.sun.jersey.multipart.FormDataParam;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
@@ -17,10 +18,6 @@ import team404.comment.CommentDTO;
 import team404.favorite.FavoriteDAO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
-import team404.supervisor.SupervisorDAO;
-import team404.supervisor.SupervisorDTO;
-import team404.teammember.TeamMemberDAO;
-import team404.teammember.TeamMemberDTO;
 import team404.upcomingproject.UpcomingProjectDAO;
 import team404.upcomingproject.UpcomingProjectDTO;
 
@@ -166,9 +163,9 @@ public class ProjectResource {
 
     //-- TIENHUYNHTN --// //OK
     @Path("/bookmark")
-    @POST
+    @GET
     public void bookmark(
-            @QueryParam("projectId") String projectId,
+            @QueryParam("projectId") String projectId, 
             @QueryParam("email") String email) {
         FavoriteDAO favoriteDAO = new FavoriteDAO();
         boolean isExistedBookmark = favoriteDAO.findBookmark(projectId, email);
@@ -183,11 +180,13 @@ public class ProjectResource {
     //-- TIENHUYNHTN --// //OK
     @Path("/commentOnProject")
     @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     public String commentOnProject(
-            @QueryParam("projectId") String projectId,
-            @QueryParam("email") String email,
-            @QueryParam("commentContent") String commentContent) {
+            @FormDataParam("projectId") String projectId,
+            @FormDataParam("email") String email,
+            @FormDataParam("commentContent") String commentContent) {
         CommentDAO commentDAO = new CommentDAO();
+        System.out.println("projectID: " + projectId);
         String result = commentDAO.commentOnProject(projectId, email, commentContent);
 
         return result;

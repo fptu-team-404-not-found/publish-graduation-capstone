@@ -51,9 +51,16 @@ public class AdminModeResource {
         Gson g = new Gson();
         Type listType = new TypeToken<ArrayList<TeamMemberDTO>>(){}.getType();
         ArrayList<TeamMemberDTO> list = new Gson().fromJson(object , listType);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
         
         for (TeamMemberDTO teamMemberDTO : list) {
-            System.out.println(teamMemberDTO.toString());
+            accountDto = accountDao.getEmail(teamMemberDTO.getEmail());
+            if(accountDto != null){
+                accountDao.updateRoleInAdminMode(teamMemberDTO.getEmail());
+            }else{
+                accountDao.createNewAccountAdminMode(teamMemberDTO.getEmail());
+            }
         }
     }
     

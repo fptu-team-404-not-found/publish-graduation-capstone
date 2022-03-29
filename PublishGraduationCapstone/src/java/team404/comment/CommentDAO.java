@@ -138,6 +138,8 @@ public class CommentDAO {
 
     public String commentOnProject(String projectId, String email, String commentContent) {
         try {
+            System.out.println("projectID---: " + projectId);
+            
             String bannedWord = containBannedWords(commentContent);
             if (!"".equals(bannedWord)) {
                 return bannedWord;

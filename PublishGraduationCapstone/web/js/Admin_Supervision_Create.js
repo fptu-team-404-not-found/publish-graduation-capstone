@@ -43,3 +43,8 @@ function getLinkImg() {
     }
     return true;
 };
+
+function addSupervision() {
+    var name = document.querySelector('#admin-main-supervisor-create-new-name').value;
+    console.log(name);
+}

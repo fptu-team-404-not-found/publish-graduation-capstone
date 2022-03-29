@@ -90,7 +90,7 @@ takeUserData(function(table) {
             $('#table-body').empty()
             var subTable = new Array;
             for (var i = 0; i < userData.length; i++) {
-                if (userData[i].supervisorId.indexOf(searchInputText) !== -1) {
+                if (userData[i].supervisorName.indexOf(searchInputText) !== -1) {
                     var obj2 = {
                         'supervisorId': userData[i].supervisorId,
                         'supervisorName': userData[i].supervisorName,
@@ -181,11 +181,11 @@ takeUserData(function(table) {
     
         for (var i = 1 in myList) {
             //Keep in mind we are using "Template Litterals to create rows"
-            var row = `<tr>
-                      <td>${myList[i].supervisorId}</td>
-                      <td>${myList[i].supervisorName}</td>
-                      <td>${myList[i].status}</td>
-
+            var row = `<tr class="admin-main-account-list-infors">
+                      <td class="admin-main-account-list-table-id">${myList[i].supervisorId}</td>
+                      <td class="admin-main-account-list-table-account">${myList[i].supervisorName}</td>
+                      <td class="admin-main-account-list-table-user">${myList[i].status}</td>
+                        <tr>
                       `
             table.append(row)
         }
