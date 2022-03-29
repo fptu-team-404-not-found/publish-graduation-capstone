@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <meta name="google-signin-scope" content="openid profile email">
-        <meta name="google-signin-client_id" content="905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <title>Home Page</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/Project_Main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" href="./img/team-logo.png">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+
+    <title>Back-end | Publish Graduation Capstone</title>
+</head>
+
+<body>
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
         <button type="button" class="btn btn-danger" onclick="signOut();">Sign Out</button>
-        <script src="./js/Home-Script-BE.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </body>
+        <script src="./js/Home-Script-BE.js"></script> -->
+
+        <!-- action="/PublishGraduationCapstone/api/project/commentOnProject"  -->
+    <!--Comment-->
+    <div id="project-comment-title">COMMENT</div>
+    <form method="POST" name="commentForm" id="commentForm">
+        <div class="project-comment-box">
+            <div id="project-comment-img"><img id="project-comment-img-1" src="img/Quan-img.jpg" alt=""></div>
+            <input type="hidden" name="email" value="" />
+            <input type="hidden" name="projectId" value="" />
+            <div id="project-comment-text-btn">
+                <textarea type="text" name="commentContent" id="project-comment-text"
+                    placeholder="Leave your comment here..."></textarea>
+                <div id="project-comment-btn-container" onclick="writeComment()">
+                    <input type="button" value="Send" id="project-comment-btn">
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/Home-Script-BE.js"></script>
+</body>
+
 </html>

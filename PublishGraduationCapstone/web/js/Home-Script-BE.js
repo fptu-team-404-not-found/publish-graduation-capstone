@@ -1,58 +1,33 @@
-console.log('Team 404');
+function writeComment() {
+    document.forms['commentForm']['email'].value = "bebo@gmail.com"; //local storage email
+    document.forms['commentForm']['projectId'].value = "SU20SE02"; //var projectId = sessionStorage.getItem('projectId');
 
-function onSignIn(googleUser) {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-//    console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-//    console.log('Full Name: ' + profile.getName());
-//    console.log('Given Name: ' + profile.getGivenName());
-//    console.log('Family Name: ' + profile.getFamilyName());
-//    console.log("Image URL: " + profile.getImageUrl());
-//    console.log("Email: " + profile.getEmail());
+    var txtCommentBox = document.getElementById("project-comment-text").value;
+    console.log('commentContent: ' + txtCommentBox);
 
-
-    // The ID token you need to pass to your backend:
-    var access_token = googleUser.getAuthResponse().access_token;
-
-    var url = '/PublishGraduationCapstone/LoginServlet?token=';
-    url = url + access_token;
-
+    // document.getElementById('commentForm').submit();
+    /*
+    var userMail = localStorage.getItem("email"); 
+    if(userMail == null){
+        alert("Please login before comment!")
+    }
+    */
+    var form = document.getElementById("commentForm");
+    var formData = new FormData(form);
+    var api = "/PublishGraduationCapstone/api/project/commentOnProject";
     var xhttp = new XMLHttpRequest();
-
-    xhttp.open("GET", url);
-    xhttp.send();
-
+    xhttp.open("POST", api);
+//    xhttp.setRequestHeader("Content-Type", "multipart/form-data");
+    xhttp.send(formData);
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
-            //using data here
-
             var res = this.responseText;
-            var jsonData = JSON.parse(res);
-
-//            jsonData.information.forEach(counter => {
-//                localStorage.setItem("email", counter.email);
-//                localStorage.setItem("name", counter.name);
-//                localStorage.setItem("picture", counter.picture);
-//                localStorage.setItem("roleId", counter.roleId);
-//                localStorage.setItem("token", counter.token);
-//            });
-            localStorage.setItem("email", jsonData.email);
-            localStorage.setItem("name", jsonData.name);
-            localStorage.setItem("picture", jsonData.picture);
-            localStorage.setItem("roleId", jsonData.roleId);
-            localStorage.setItem("token", jsonData.token);
-            if (this.responseText !== null) {
-                location.replace('Search-BE.html');
+            console.log("rs: " + res);
+            try {
+                
+            } catch (e) {
+                alert(e);
             }
-        }
-    };
-}
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        alert("You have been signed out successfully");
-        localStorage.clear();
-        $(".g-signin2").css("display", "block");
-        $(".data").css("display", "none");
-    });
-}
+        };
+    }
+};
