@@ -10,8 +10,12 @@ function login() {
         document.getElementById("login-box").innerHTML =
             `
             <div id="user-main-small-control">
+            <a href="User_Profile.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-name">${username}</p>
+            </a>
+            <a href="User_Main.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            </a>
             <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
             <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
             </a>
@@ -20,7 +24,6 @@ function login() {
     }
 }
 login();
-
 
 function showLogin() {
     var hidden = document.getElementById('login-box');
@@ -240,6 +243,10 @@ function showComment() {
 }
 showComment();
 
+
+var slideIndex = 1;
+
+
 function showSharePostList() {
     var xhttp = new XMLHttpRequest();
     var apishowSharePost = "/PublishGraduationCapstone/api/share/showSharePostList?projectId=";
@@ -269,27 +276,48 @@ function showSharePostList() {
                 var counter = jsonData.showSharePostList[i];
                 var project =
                     `
-                    <div class="project-sharing-experience-container" onclick="sharePostRedirect(this)">
-                    <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none">
+                    <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none; color: black;" >
+                    <div class="project-sharing-experience-container  animate__animated animate__zoomIn" onclick="sharePostRedirect(this)"  >
                         <div id="project-sharing-experience-img-container">
-                        <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
+                            <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
                         </div>
                         <div id="project-sharing-experience-text-container">
-                        <p>${counter.title}</p>
-                        <p class="project-sharing-experience-text-viewmore">View more...</p>
+                            <h3>Nguyễn Thế Hoàng</h3>
+                            <p class="project-sharing-experience-text-share">${counter.title}</p>
+                            <p class="project-sharing-experience-text-viewmore">View more...</p>
                         </div>
                         <p class="share-id" style="display: none">${counter.postId}</p>
-                    </a>
                     </div>
-                    
+                    </a>
                 `
                 projects.push(project);
             };
             listProject.innerHTML = projects.join('');
+            showDivs(slideIndex);
         }
     };
+    
 }
 showSharePostList();
+
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+  }
+  
+  function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("project-sharing-experience-container");
+    
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length} ;
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";
+  }
+  
+  
 
 //redirect to project 
 function projectRedirect(div) {
@@ -359,4 +387,5 @@ function writeComment() {
 
     }
 };
+
 
