@@ -10,8 +10,12 @@ function login() {
             document.getElementById("login-box").innerHTML = 
             `
             <div id="user-main-small-control">
+            <a href="User_Profile.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-name">${username}</p>
+            </a>
+            <a href="User_Main.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            </a>
             <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
             <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
             </a>

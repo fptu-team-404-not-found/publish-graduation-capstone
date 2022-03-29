@@ -1,4 +1,3 @@
-
 function ShowLogout() {
     var logOut = document.getElementById('user-main-small-control');
     if (logOut.style.display == 'none') {

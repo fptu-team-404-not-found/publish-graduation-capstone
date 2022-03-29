@@ -84,9 +84,11 @@ public class ShareResource {
             jsObj.put("title", sharePostDTO.getTitle());
             if (sharePostDTO.getStudent() != null) {
                  jsObj.put("Avatar", sharePostDTO.getStudent().getMemberAvatar());
+                 jsObj.put("authorName", sharePostDTO.getStudent().getMemberName());
             }
             if (sharePostDTO.getSupervisor() != null) {
                 jsObj.put("Avatar", sharePostDTO.getSupervisor().getSupervisorImage());
+                jsObj.put("authorName", sharePostDTO.getSupervisor().getSupervisorName());
             }
 
             jsArr.add(jsObj);
