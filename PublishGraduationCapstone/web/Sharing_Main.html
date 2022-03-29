@@ -121,23 +121,25 @@
             </div>
 
             <div id="project-comment-title">COMMENT</div>
-            <div id="project-comment">
-                <div class="project-comment-container">
-                    <div class="project-comment-box">
-                        <div id="project-comment-img"><img id="project-comment-img-1" src="img/Quan-img.jpg" alt="">
-                        </div>
-                        <div id="project-comment-text-btn">
-                            <textarea type="text" name="" id="project-comment-text"
-                                placeholder="Leave your comment here..."></textarea>
-                            <div id="project-comment-btn-container">
-                                <input type="button" value="Send" id="project-comment-btn">
-                            </div>
+            <form method="POST" name="commentForm" id="commentForm">
+                <div id="project-comment-box">
+                    <div id="project-comment-img"><img id="project-comment-img-1" src="img/Quan-img.jpg" alt=""></div>
+                    <input type="hidden" name="email" value="" />
+                    <input type="hidden" name="shareId" value="" />
+                    <div id="project-comment-text-btn">
+                        <textarea type="text" name="commentContent" id="project-comment-text"
+                            placeholder="Leave your comment here..."></textarea>
+                        <div id="project-comment-btn-container" onclick="writeComment()">
+                            <input type="button" value="Send" id="project-comment-btn">
                         </div>
                     </div>
-
+                </div>
+            </form>
+            <div id="project-comment">
+                <div class="project-comment-container">
                     <p id="project-comment-count">2 comments</p>
                     <div id="project-commented-container-all">
-                        <div id="project-commented-container">
+                        <div class="project-commented-container">
                             <span id="project-commented-img"><img id="project-commented-img-1" src="img/Tien-img.jpg"
                                     alt=""></span>
                             <span id="project-commented-text">Thủy Tiên</span>
@@ -146,7 +148,7 @@
                             <p id="project-commented-leave-text">Đồ án hay và nhân văn quá!</p>
                         </div>
 
-                        <div id="project-commented-container">
+                        <div class="project-commented-container">
                             <span id="project-commented-img">
                                 <img id="project-commented-img-1" src="img/Phuong-img.jpg" alt=""></span>
                             <span id="project-commented-text">Thúy Phượng</span>
@@ -170,7 +172,7 @@
                             <img id="project-sharing-experience-img" src="img/thay-Hoang-img.jpg" alt="">
                         </div>
                         <div id="project-sharing-experience-text-container">
-                            <h3 >Nguyễn Thế Hoàng</h3>
+                            <h3>Nguyễn Thế Hoàng</h3>
                             <p class="project-sharing-experience-text-share">Nhìn phần mềm dưới góc nhìn 1 giáo viên
                                 mầmnon</p>
                             <p class="project-sharing-experience-text-viewmore">View more...</p>
@@ -301,7 +303,7 @@
             <span id="footer-copyright-text">2022 by 404</span>
         </div>
     </div>
-
+    
     <script src="./js/Sharing_Main.js"></script>
     </body>
 

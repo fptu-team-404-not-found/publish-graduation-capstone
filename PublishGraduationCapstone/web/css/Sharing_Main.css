@@ -207,8 +207,8 @@ body {
     height: fit-content;
 }
 
-.project-comment-box {
-    width: 100%;
+#project-comment-box {
+    width: 96%;
 }
 
 #project-comment-img {
@@ -275,7 +275,7 @@ body {
     margin-left: 9%;
 }
 
-#project-commented-container {
+.project-commented-container {
     overflow: auto;
     margin-top: -2%;
 }

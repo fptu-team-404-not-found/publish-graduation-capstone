@@ -282,24 +282,26 @@
                 </div>
 
                 <div id="project-comment-title">COMMENT</div>
+                <form method="POST" name="commentForm" id="commentForm">
+                    <div id="project-comment-box">
+                        <div id="project-comment-img"><img id="project-comment-img-1" src="img/Quan-img.jpg" alt=""></div>
+                        <input type="hidden" name="email" value="" />
+                        <input type="hidden" name="projectId" value="" />
+                        <div id="project-comment-text-btn">
+                            <textarea type="text" name="commentContent" id="project-comment-text"
+                                placeholder="Leave your comment here..."></textarea>
+                            <div id="project-comment-btn-container" onclick="writeComment()">
+                                <input type="button" value="Send" id="project-comment-btn">
+                            </div>
+                        </div>
+                    </div>
+                </form>
 
                 <div id="project-comment">
                     <div class="project-comment-container">
-                        <div class="project-comment-box">
-                            <div id="project-comment-img"><img id="project-comment-img-1" src="img/Quan-img.jpg" alt="">
-                            </div>
-                            <div id="project-comment-text-btn">
-                                <textarea type="text" name="" id="project-comment-text"
-                                    placeholder="Leave your comment here..."></textarea>
-                                <div id="project-comment-btn-container" onclick="writeComment()">
-                                    <input type="button" value="Send" id="project-comment-btn">
-                                </div>
-                            </div>
-                        </div>
-
                         <p id="project-comment-count"> comments</p>
                         <div id="project-commented-container-all">
-                            <div id="project-commented-container">
+                            <div class="project-commented-container">
                                 <span id="project-commented-img">
                                     <img id="project-commented-img-1" src="img/Tien-img.jpg" alt=""></span>
                                 <span id="project-commented-text">Thủy Tiên</span>
@@ -308,7 +310,7 @@
                                 <p id="project-commented-leave-text">Đồ án hay và nhân văn quá!</p>
                             </div>
 
-                            <div id="project-commented-container">
+                            <div class="project-commented-container">
                                 <span id="project-commented-img">
                                     <img id="project-commented-img-1" src="img/Phuong-img.jpg" alt="">
                                 </span>
@@ -324,12 +326,12 @@
         </div>
 
         <div id="project-sharing-container">
-            <i class="fa-solid fa-angle-left"  onclick="plusDivs(-1)"></i>
-            <i class="fa-solid fa-angle-right"  onclick="plusDivs(+1)"></i>
+            <i class="fa-solid fa-angle-left" onclick="plusDivs(-1)"></i>
+            <i class="fa-solid fa-angle-right" onclick="plusDivs(+1)"></i>
             <div id="project-sharing-experience">
                 <p id="project-sharing-experience-title"><i class="fa-solid fa-share-nodes"></i>Sharing</p>
                 <div id="project-sharing-container-all">
-                    
+
 
                 </div>
             </div>
@@ -420,9 +422,13 @@
                 <a href="#project-introduction" class="project-main-menu-list"><i
                         class="fa-solid fa-arrow-turn-up"></i></a>
             </div>
-            <div class="project-main-menu-container bookmark">
-                <a href="#" class="project-main-menu-list"><i class="fa-solid fa-bookmark"></i></a>
+            <form method="POST" name="bookmarkForm" id="bookmarkForm">
+            <div class="project-main-menu-container " id="bookmark" onclick="bookmark()">
+                <a href="" class="project-main-menu-list" ><i  id="iconBookmark" class="fa-solid fa-bookmark"></i></a>
+                <input type="hidden" name="email" value="" />
+                <input type="hidden" name="projectId" value="" />
             </div>
+            </form>
             <div class="project-main-menu-container comment">
                 <a href="#project-comment-title" class="project-main-menu-list"><i
                         class="fa-solid fa-comment-dots"></i></a>
@@ -456,7 +462,6 @@
             <span id="footer-copyright-text">2022 by 404</span>
         </div>
     </div>
-
     <script src="./js/Project_Main.js"></script>
 </body>
 

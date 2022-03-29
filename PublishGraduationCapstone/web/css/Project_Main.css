@@ -452,7 +452,7 @@ body {
     padding: 0.8em;
 }
 
-.bookmark {
+#bookmark {
     background: rgba(36, 44, 244, 0.27);
 }
 
@@ -494,7 +494,7 @@ body {
     height: fit-content;
 }
 
-.project-comment-box {
+#project-comment-box {
     width: 100%;
 }
 
@@ -512,6 +512,7 @@ body {
     float: right;
     position: relative;
 }
+
 
 #project-comment-text {
     margin-top: 1%;
@@ -564,7 +565,7 @@ body {
     margin-left: 9%;
 }
 
-#project-commented-container {
+.project-commented-container {
     overflow: auto;
     margin-top: -2%;
 }

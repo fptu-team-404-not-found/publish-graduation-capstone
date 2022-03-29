@@ -21,6 +21,13 @@ function login() {
             </a>
             </div>
             `
+            document.getElementById("project-comment-img").innerHTML =
+        `
+            <img id="project-comment-img-1" src="${picture}" alt="">
+        `
+    }
+    else{
+        document.getElementById("project-comment-img").style.display = "none"
     }
 }
 login();
@@ -161,19 +168,21 @@ function showSharePostList(projectId) {
                 if (counter.postId != sharePostId) {
                     var project =
                         `
-                        <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none; color : black;">
+                        
                         <div class="project-sharing-experience-container  animate__animated animate__zoomIn" onclick="sharePostRedirect(this)"  >
+                        <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none; color : black;">
                             <div id="project-sharing-experience-img-container">
                                 <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
                             </div>
                             <div id="project-sharing-experience-text-container">
-                                <h3>Nguyễn Thế Hoàng</h3>
+                                <h3>${counter.authorName}</h3>
                                 <p class="project-sharing-experience-text-share">${counter.title}</p>
                                 <p class="project-sharing-experience-text-viewmore">View more...</p>
                             </div>
                             <p class="share-id" style="display: none">${counter.postId}</p>
-                        </div>
                         </a>
+                        </div>
+                        
                 `
                     projects.push(project);
                 }
@@ -183,12 +192,9 @@ function showSharePostList(projectId) {
         }
     };
 }
-
-
 function plusDivs(n) {
     showDivs(slideIndex += n);
   }
-  
   function showDivs(n) {
     var i;
     var x = document.getElementsByClassName("project-sharing-experience-container");
@@ -244,7 +250,7 @@ function showComment() {
             for (var i = jsonData.commentsOfShare.length - 1; i >= 0; i--) {
                 var counter = jsonData.commentsOfShare[i];
                 var project = `
-                    <div id="project-commented-container">
+                    <div class="project-commented-container">
                         <span id="project-commented-img"><img id="project-commented-img-1" src="${counter.userAva}"
                                 alt="ava img"></span>
                         <span id="project-commented-text">${counter.userName}</span>
@@ -256,6 +262,7 @@ function showComment() {
                 projects.push(project);
             }
             listProject.innerHTML = projects.join('');
+            countComment();
         }
     };
 }
@@ -277,4 +284,68 @@ function logout() {
     </a>
     </div>
     `
-  }
+}
+
+function countComment(){
+    var cmtcount = document.getElementsByClassName("project-commented-container")
+    if(cmtcount.length == 0){
+        document.getElementById("project-comment-count").innerHTML = "There is no comment hớ nì"
+    }else{
+        if(cmtcount.length == 1){
+            document.getElementById("project-comment-count").innerHTML = cmtcount.length + " comment"
+        }else{
+            document.getElementById("project-comment-count").innerHTML = cmtcount.length + " comments"
+        }    
+    }
+}
+
+function writeComment() {
+    var userMail = localStorage.getItem("email");
+    if(userMail == null || userMail == ''){
+        alert("Please login before comment!");
+    }
+    else {
+        document.forms['commentForm']['email'].value = userMail; 
+        document.forms['commentForm']['shareId'].value = sharePostId;
+        console.log("sharePostId: " + sharePostId)
+        console.log("userMail: " + userMail)
+    
+        var txtCommentBox = document.getElementById("project-comment-text").value;
+        console.log('commentContent: ' + txtCommentBox);
+    
+        var form = document.getElementById("commentForm");
+        var formData = new FormData(form);
+        var api = "/PublishGraduationCapstone/api/share/commentOnShare";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", api);
+        xhttp.send(formData);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var res = this.responseText;
+                console.log("rs: " + res);
+                try {
+                    if(res == '')
+                    {
+                        document.getElementById("project-comment-text").value = ''
+                        showComment();
+                    }
+                    else{
+                        document.getElementById("project-comment-text").value = ''
+                        alert("This word: "+res+" has been banned!!!");
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            };
+        };
+    }
+};
+
+//show comment by enter
+var inputBox = document.getElementById("project-comment-text");
+inputBox.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        writeComment();
+    }
+});
+
