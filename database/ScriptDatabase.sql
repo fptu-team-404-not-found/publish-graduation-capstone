@@ -318,6 +318,13 @@ VALUES( 'tien@gmail.com', N'Huỳnh Lê Thủy Tiên',
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES('dat@gmail.com', N'Trần Thành Đạt', 
 'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/72557491_1132682380269336_870149971758809088_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=Hwfal_V5z8gAX_W19F4&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT9XtwONf7tLhwG-8wk-eIVp9uMldEnSWGYiS-3Qh8UKxw&oe=624BBB33', 2)
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('phuongnltse150999@fpt.edu.vn', N'Nguyễn Lâm Thúy Phượng', 
+'https://lh3.googleusercontent.com/a-/AOh14Gj9UqqEmGy4qetk8NNBlr-l-EuhDmMUMmA9nhbI4A=s96-c', 4)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES('nguyenlamthuyphuong25@gmail.com', N'Thúy Phượng Nguyễn Lâm', 
+'https://lh3.googleusercontent.com/a-/AOh14Gjj0GkGfeKuRDpY6IthUyo4-sY93CgGgFJaDetMBg=s96-c', 3)
 
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, Account ) 
 VALUES

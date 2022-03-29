@@ -25,10 +25,10 @@
             username="sa"/>
 </Context>-->
 <!--Quan ne-->
-<!--<Context path="/PublishGraduationCapstone">
+<Context path="/PublishGraduationCapstone">
   <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
-            name="JohnyEnglish" password="Quan3741717" 
+            name="JohnyEnglish" password="1234567890" 
             type="javax.sql.DataSource" 
             url="jdbc:sqlserver://localhost:1433;databaseName=SWP391;instanceName=MSI\\QUANNDD" 
             username="sa"/>
-</Context>-->
+</Context>

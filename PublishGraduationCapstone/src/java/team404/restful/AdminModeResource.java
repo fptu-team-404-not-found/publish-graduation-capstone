@@ -31,6 +31,8 @@ import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDTO;
 import team404.teammember.TeamMemberList;
+import team404.upcomingproject.UpcomingProjectDAO;
+import team404.upcomingproject.UpcomingProjectDTO;
 
 @Path("admin")
 public class AdminModeResource {
