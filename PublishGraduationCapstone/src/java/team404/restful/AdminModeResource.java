@@ -79,12 +79,17 @@ public class AdminModeResource {
     public void saveUpcomingList(String object) {
         Type listType = new TypeToken<ArrayList<UpcomingProjectDTO>>(){}.getType();
         ArrayList<UpcomingProjectDTO> list = new Gson().fromJson(object , listType);
+        UpcomingProjectDAO upcomingDao = new UpcomingProjectDAO();
+        UpcomingProjectDTO upcomingDto = new UpcomingProjectDTO();
         for (UpcomingProjectDTO upcomingProjectDTO : list) {
             System.out.println("in nha: ");
             System.out.println(upcomingProjectDTO);
+            upcomingDto = upcomingDao.checkUpcoming(upcomingProjectDTO.getUpcomingProjectId());
+            if(upcomingDto == null){
+                upcomingDao.insertUpcomingProject(upcomingProjectDTO);
+            }
+            
         }
-        //list la danh sach UpcomingList da lay ve.
-        //code day ne Dat
     }
     
     @Path("/deleteUpcoming")
