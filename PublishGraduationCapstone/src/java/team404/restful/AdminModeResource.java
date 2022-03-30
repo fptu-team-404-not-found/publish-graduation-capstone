@@ -29,6 +29,7 @@ import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
+import team404.teammember.TeamMemberDAO;
 import team404.teammember.TeamMemberDTO;
 import team404.teammember.TeamMemberList;
 import team404.upcomingproject.UpcomingProjectDAO;
@@ -109,12 +110,20 @@ public class AdminModeResource {
         AccountDAO accountDao = new AccountDAO();
         AccountDTO accountDto = new AccountDTO();
         
+        TeamMemberDAO teamDao = new TeamMemberDAO();
+        TeamMemberDTO teamDto = new TeamMemberDTO();
         for (TeamMemberDTO teamMemberDTO : list) {
+            System.out.println(teamMemberDTO.toString());
             accountDto = accountDao.getEmail(teamMemberDTO.getEmail());
+//            System.out.println("email: "+teamMemberDTO.getEmail());
             if(accountDto != null){
+                teamDto = teamDao.getInforMemberWithEmail(teamMemberDTO.getEmail());
+                if(teamDto == null){
+                    teamDao.insertMember(teamMemberDTO.getMemberId(), teamMemberDTO.getMemberName(), teamMemberDTO.getMemberAvatar(), teamMemberDTO.getPhone(), teamMemberDTO.getEmail());
+                }
                 accountDao.updateRoleInAdminMode(teamMemberDTO.getEmail());
             }else{
-                accountDao.createNewAccountAdminMode(teamMemberDTO.getEmail());
+                accountDao.createNewAccountAdminMode(teamMemberDTO.getEmail(),teamMemberDTO.getMemberId(),teamMemberDTO.getMemberName(),teamMemberDTO.getMemberAvatar(),teamMemberDTO.getPhone());
             }
         }
     }

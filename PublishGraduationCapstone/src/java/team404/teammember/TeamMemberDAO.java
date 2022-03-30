@@ -126,7 +126,84 @@ public class TeamMemberDAO {
         }
         return null;
     }
+    public TeamMemberDTO getInforMemberWithEmail(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select * "
+                        + "From TeamMember "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String studentId2 = rs.getString("StudentId");
+                    String memberName = rs.getNString("MemberName");
+                    String memberAvatar = rs.getString("MemberAvatar");
+                    String phone = rs.getString("Phone");
+                    String backupEmail = rs.getNString("BackupEmail");
 
+                    TeamMemberDTO dto = new TeamMemberDTO();
+                    dto.setMemberId(studentId2);
+                    dto.setMemberName(memberName);
+                    dto.setMemberAvatar(memberAvatar);
+                    dto.setPhone(phone);
+                    dto.setBackupEmail(backupEmail);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+    public void insertMember(String studentId, String memberName, String memberAvatar, String phone, String account){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "Insert Into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account) "
+                        + "Values(?, ?, ?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, studentId);
+                stm.setNString(2, memberName);
+                stm.setString(3, memberAvatar);
+                stm.setString(4, phone);
+                stm.setString(5, account);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     public List<TeamMemberDTO> searchInFilter(String keyword) {
         try {
             con = DBHelpers.makeConnection();
