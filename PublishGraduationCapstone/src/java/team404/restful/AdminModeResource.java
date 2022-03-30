@@ -46,56 +46,87 @@ public class AdminModeResource {
      */
     public AdminModeResource() {
     }
-    
+
     @Path("/saveSupervisor")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveSupervisor(String object) {
         Gson gson = new Gson();
         SupervisorDTO supervisor = gson.fromJson(object, SupervisorDTO.class);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
+
+        SupervisorDAO supDao = new SupervisorDAO();
+        SupervisorDTO supDto = new SupervisorDTO();
+
         System.out.println("in thu: ");
         System.out.println(supervisor);
-        //supervisor la con Supervisor da lay ve.
-        //code day ne Dat
+
+        accountDto = accountDao.getEmail(supervisor.getEmail());
+        if (accountDto != null) {
+            supDto = supDao.getInforSupWithMail(supervisor.getEmail());
+            if (supDto == null) {
+                supDao.insertSupervisor(supervisor.getEmail(), supervisor);
+            }
+            accountDao.updateRoleInAdminMode(supervisor.getEmail());
+        } else {
+            accountDao.createSupervisorAccountInAdminMode(supervisor.getEmail(), supervisor);
+        }
+
     }
-    
+
     @Path("/saveSupervisorsList")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveSupervisorsList(String object) {
-        Type listType = new TypeToken<ArrayList<SupervisorDTO>>(){}.getType();
-        ArrayList<SupervisorDTO> list = new Gson().fromJson(object , listType);
+        Type listType = new TypeToken<ArrayList<SupervisorDTO>>() {
+        }.getType();
+        ArrayList<SupervisorDTO> list = new Gson().fromJson(object, listType);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
+
+        SupervisorDAO supDao = new SupervisorDAO();
+        SupervisorDTO supDto = new SupervisorDTO();
         for (SupervisorDTO supervisorDTO : list) {
             System.out.println("in ne: ");
             System.out.println(supervisorDTO);
+            accountDto = accountDao.getEmail(supervisorDTO.getEmail());
+            if (accountDto != null) {
+                supDto = supDao.getInforSupWithMail(supervisorDTO.getEmail());
+                if (supDto == null) {
+                    supDao.insertSupervisor(supervisorDTO.getEmail(), supervisorDTO);
+                }
+                accountDao.updateRoleInAdminMode(supervisorDTO.getEmail());
+            } else {
+                accountDao.createSupervisorAccountInAdminMode(supervisorDTO.getEmail(), supervisorDTO);
+            }
         }
-        //list la danh sach Supervisors da lay ve.
-        //code day ne Dat
     }
-    
+
     @Path("/saveUpcomingList")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveUpcomingList(String object) {
-        Type listType = new TypeToken<ArrayList<UpcomingProjectDTO>>(){}.getType();
-        ArrayList<UpcomingProjectDTO> list = new Gson().fromJson(object , listType);
+        Type listType = new TypeToken<ArrayList<UpcomingProjectDTO>>() {
+        }.getType();
+        ArrayList<UpcomingProjectDTO> list = new Gson().fromJson(object, listType);
         UpcomingProjectDAO upcomingDao = new UpcomingProjectDAO();
         UpcomingProjectDTO upcomingDto = new UpcomingProjectDTO();
         for (UpcomingProjectDTO upcomingProjectDTO : list) {
             System.out.println("in nha: ");
             System.out.println(upcomingProjectDTO);
             upcomingDto = upcomingDao.checkUpcoming(upcomingProjectDTO.getUpcomingProjectId());
-            if(upcomingDto == null){
+            if (upcomingDto == null) {
                 upcomingDao.insertUpcomingProject(upcomingProjectDTO);
             }
-            
+
         }
     }
-    
+
     @Path("/deleteUpcoming")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deleteUpcoming(String object) { 
+    public void deleteUpcoming(String object) {
         Gson gson = new Gson();
         UpcomingProjectDTO upcoming = gson.fromJson(object, UpcomingProjectDTO.class);
         System.out.println("in thu: ");
@@ -103,57 +134,58 @@ public class AdminModeResource {
         //upcoming la con Upcoming da lay ve. Can xoa no trong database
         //code day ne Dat
     }
-    
-    
+
     @Path("/saveAccountList")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void saveAccountList(String object) {
         Gson g = new Gson();
-        Type listType = new TypeToken<ArrayList<TeamMemberDTO>>(){}.getType();
-        ArrayList<TeamMemberDTO> list = new Gson().fromJson(object , listType);
+        Type listType = new TypeToken<ArrayList<TeamMemberDTO>>() {
+        }.getType();
+        ArrayList<TeamMemberDTO> list = new Gson().fromJson(object, listType);
         AccountDAO accountDao = new AccountDAO();
         AccountDTO accountDto = new AccountDTO();
-        
+
         TeamMemberDAO teamDao = new TeamMemberDAO();
         TeamMemberDTO teamDto = new TeamMemberDTO();
         for (TeamMemberDTO teamMemberDTO : list) {
             System.out.println(teamMemberDTO.toString());
             accountDto = accountDao.getEmail(teamMemberDTO.getEmail());
 //            System.out.println("email: "+teamMemberDTO.getEmail());
-            if(accountDto != null){
+            if (accountDto != null) {
                 teamDto = teamDao.getInforMemberWithEmail(teamMemberDTO.getEmail());
-                if(teamDto == null){
-                    teamDao.insertMember(teamMemberDTO.getMemberId(), teamMemberDTO.getMemberName(), teamMemberDTO.getMemberAvatar(), teamMemberDTO.getPhone(), teamMemberDTO.getEmail());
+                if (teamDto == null) {
+                    teamDao.insertMember(teamMemberDTO.getEmail(), teamMemberDTO);
                 }
                 accountDao.updateRoleInAdminMode(teamMemberDTO.getEmail());
-            }else{
-                accountDao.createNewAccountAdminMode(teamMemberDTO.getEmail(),teamMemberDTO.getMemberId(),teamMemberDTO.getMemberName(),teamMemberDTO.getMemberAvatar(),teamMemberDTO.getPhone());
+            } else {
+                accountDao.createNewAccountAdminMode(teamMemberDTO.getEmail(), teamMemberDTO);
             }
         }
     }
-    
-    @Path("/showSupervisorList") 
+
+    @Path("/showSupervisorList")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showSupervisorList(){
+    public String showSupervisorList() {
         SupervisorDAO dao = new SupervisorDAO();
         List<SupervisorDTO> list = dao.getAllSupervisors();
         JSONArray jsArr = new JSONArray();
-        for (SupervisorDTO supervisorDTO :  list) {
+        for (SupervisorDTO supervisorDTO : list) {
             JSONObject jsObj = new JSONObject();
             jsObj.put("supervisorId", supervisorDTO.getSupervisorId());
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsObj.put("status", supervisorDTO.isStatus());
 //            jsObj.put("email", supervisorDTO.getUser().getEmail());
-            
+
             jsArr.add(jsObj);
         }
         JSONObject jsObj = new JSONObject();
         jsObj.put("showSupervisorList", jsArr);
         return jsObj.toJSONString();
     }
-    @Path("/showRoleForAccount") 
+
+    @Path("/showRoleForAccount")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String showRoleForAccount() {
@@ -171,9 +203,8 @@ public class AdminModeResource {
         String result = jsObj.toJSONString();
         return result;
     }
-    
-    
-    @Path("/updateRoleForAccount") 
+
+    @Path("/updateRoleForAccount")
     @GET
     public void updateRoleForAccount(
             @QueryParam("email") String email,
@@ -181,7 +212,7 @@ public class AdminModeResource {
         AccountDAO dao = new AccountDAO();
         dao.updateRole(email, RoleId);
     }
-    
+
     //-- TIENHUYNHTN --// //OK
     @Path("/showAccountList")
     @GET
@@ -198,11 +229,12 @@ public class AdminModeResource {
         }
         return jsArr.toJSONString();
     }
+
     @Path("/searchAccountList")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String searchAccountList(
-            @QueryParam("keyword") String keyword){
+            @QueryParam("keyword") String keyword) {
         AccountDAO dao = new AccountDAO();
         List<AccountDTO> list = dao.searchAccountInAdmin(keyword);
         JSONArray jsArr = new JSONArray();
@@ -216,11 +248,12 @@ public class AdminModeResource {
         jsObj.put("searchAccountList", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/searchSupervisorList")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String searchSupervisorList(
-            @QueryParam("keyword") String keyword){
+            @QueryParam("keyword") String keyword) {
         SupervisorDAO dao = new SupervisorDAO();
         List<SupervisorDTO> list = dao.searchSupervisor(keyword);
         JSONArray jsArr = new JSONArray();
@@ -235,11 +268,12 @@ public class AdminModeResource {
         jsObj.put("searchSupervisorList", jsArr);
         return jsObj.toJSONString();
     }
+
     // show post list with approving and approved
     @Path("/showPostListWithApproving")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showPostListWithApproving(){
+    public String showPostListWithApproving() {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getAllPostWithApproving();
         JSONArray jsArr = new JSONArray();
@@ -255,10 +289,11 @@ public class AdminModeResource {
         jsObj.put("showPostListWithApproving", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/showPostListWithApproved")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showPostListWithApproved(){
+    public String showPostListWithApproved() {
         ProjectDAO dao = new ProjectDAO();
         List<ProjectDTO> list = dao.getAllPostWithApproved();
         JSONArray jsArr = new JSONArray();
@@ -274,10 +309,11 @@ public class AdminModeResource {
         jsObj.put("showPostListWithApproved", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/showSharePostListWithApproving")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showSharePostListWithApproving(){
+    public String showSharePostListWithApproving() {
         SharePostDAO dao = new SharePostDAO();
         List<SharePostDTO> list = dao.showSharePostWithApproving();
         JSONArray jsArr = new JSONArray();
@@ -286,10 +322,10 @@ public class AdminModeResource {
             jsObj.put("postId", sharePostDTO.getPostId());
             jsObj.put("title", sharePostDTO.getTitle());
             jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
-            if(sharePostDTO.getStudent() != null){
+            if (sharePostDTO.getStudent() != null) {
                 jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
             }
-            if(sharePostDTO.getSupervisor() != null){
+            if (sharePostDTO.getSupervisor() != null) {
                 jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
             }
             jsArr.add(jsObj);
@@ -298,10 +334,11 @@ public class AdminModeResource {
         jsObj.put("showSharePostListWithApproving", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/showSharePostListWithApproved")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showSharePostListWithApproved(){
+    public String showSharePostListWithApproved() {
         SharePostDAO dao = new SharePostDAO();
         List<SharePostDTO> list = dao.showSharePostWithApproved();
         JSONArray jsArr = new JSONArray();
@@ -310,10 +347,10 @@ public class AdminModeResource {
             jsObj.put("postId", sharePostDTO.getPostId());
             jsObj.put("title", sharePostDTO.getTitle());
             jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
-            if(sharePostDTO.getStudent() != null){
+            if (sharePostDTO.getStudent() != null) {
                 jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
             }
-            if(sharePostDTO.getSupervisor() != null){
+            if (sharePostDTO.getSupervisor() != null) {
                 jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
             }
             jsArr.add(jsObj);
@@ -323,11 +360,12 @@ public class AdminModeResource {
         return jsObj.toJSONString();
     }
 //    Dat show comment theo date 
+
     @Path("/showCommentByDateWithParameter")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String showCommentByDateWithParameter(
-            @QueryParam("commentDate") Date commentDate){
+            @QueryParam("commentDate") Date commentDate) {
         CommentDAO dao = new CommentDAO();
         List<CommentDTO> list = dao.showCommentInAdminModeWithParameter(commentDate);
         JSONArray jsArr = new JSONArray();
@@ -336,11 +374,11 @@ public class AdminModeResource {
             jsObj.put("commentDate", commentDTO.getCommentDate().toString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
-            if(commentDTO.getPost() != null){
+            if (commentDTO.getPost() != null) {
                 jsObj.put("sharePostId", commentDTO.getPost().getPostId());
                 jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
-            if(commentDTO.getProject() != null){
+            if (commentDTO.getProject() != null) {
                 jsObj.put("projectId", commentDTO.getProject().getProjectId());
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
             }
@@ -350,10 +388,11 @@ public class AdminModeResource {
         jsObj.put("showCommentByDateWithParameter", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/showCommentByDate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String showCommentByDate(){
+    public String showCommentByDate() {
         CommentDAO dao = new CommentDAO();
         List<CommentDTO> list = dao.showCommentInAdminMode();
         JSONArray jsArr = new JSONArray();
@@ -362,11 +401,11 @@ public class AdminModeResource {
             jsObj.put("commentDate", commentDTO.getCommentDate().toString());
             jsObj.put("commentContent", commentDTO.getCommentContent());
             jsObj.put("email", commentDTO.getUser().getEmail());
-            if(commentDTO.getPost() != null){
+            if (commentDTO.getPost() != null) {
                 jsObj.put("Id", commentDTO.getPost().getPostId());
                 jsObj.put("sharePostTitle", commentDTO.getPost().getTitle());
             }
-            if(commentDTO.getProject() != null){
+            if (commentDTO.getProject() != null) {
                 jsObj.put("Id", commentDTO.getProject().getProjectId());
                 jsObj.put("projectName", commentDTO.getProject().getProjectName());
             }
@@ -376,10 +415,11 @@ public class AdminModeResource {
         jsObj.put("showCommentByDate", jsArr);
         return jsObj.toJSONString();
     }
+
     @Path("/countCommentInDate")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public String countCommentInDate(){
+    public String countCommentInDate() {
         CommentDAO dao = new CommentDAO();
         List<CommentDTO> list = dao.countCommentInAdminMode();
         JSONArray jsArr = new JSONArray();

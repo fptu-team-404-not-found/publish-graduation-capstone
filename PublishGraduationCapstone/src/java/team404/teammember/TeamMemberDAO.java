@@ -173,18 +173,18 @@ public class TeamMemberDAO {
         }
         return null;
     }
-    public void insertMember(String studentId, String memberName, String memberAvatar, String phone, String account){
+    public void insertMember(String email, TeamMemberDTO teamMemberDTO){
         try{
             con = DBHelpers.makeConnection();
             if(con != null){
                 String sql = "Insert Into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account) "
                         + "Values(?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, studentId);
-                stm.setNString(2, memberName);
-                stm.setString(3, memberAvatar);
-                stm.setString(4, phone);
-                stm.setString(5, account);
+                stm.setString(1, teamMemberDTO.getMemberId());
+                stm.setNString(2, teamMemberDTO.getMemberName());
+                stm.setString(3, teamMemberDTO.getMemberAvatar());
+                stm.setString(4, teamMemberDTO.getPhone());
+                stm.setString(5, email);
                 stm.executeUpdate();
             }
         } catch (SQLException ex) {

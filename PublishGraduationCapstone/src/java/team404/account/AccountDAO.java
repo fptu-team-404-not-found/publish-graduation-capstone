@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
+import team404.supervisor.SupervisorDTO;
+import team404.teammember.TeamMemberDTO;
 import team404.utils.DBHelpers;
 
 public class AccountDAO {
@@ -149,7 +151,7 @@ public class AccountDAO {
         return false;
     }
 
-    public void createNewAccountAdminMode(String email, String memberId, String memberName, String memberAvatar, String phone) {
+    public void createNewAccountAdminMode(String email, TeamMemberDTO teamMemberDTO) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
@@ -159,12 +161,50 @@ public class AccountDAO {
                         + "values(?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, email);
-                stm.setString(2, memberId);
-                stm.setNString(3, memberName);
-                stm.setString(4, memberAvatar);
-                stm.setString(5, phone);
+                stm.setString(2, teamMemberDTO.getMemberId());
+                stm.setNString(3, teamMemberDTO.getMemberName());
+                stm.setString(4, teamMemberDTO.getMemberAvatar());
+                stm.setString(5, teamMemberDTO.getPhone());
                 stm.setString(6, email);
                 stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void createSupervisorAccountInAdminMode(String email, SupervisorDTO supervisorDTO) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Insert into Account(Email, RoleId) "
+                        + "Values(?, 1) "
+                        + "INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account) "
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                stm.setString(2, supervisorDTO.getSupervisorId());
+                stm.setNString(3, supervisorDTO.getSupervisorName());
+                stm.setString(4, supervisorDTO.getSupervisorImage());
+                stm.setNString(5, supervisorDTO.getInformation());
+                stm.setString(6, supervisorDTO.getPostion());
+                stm.setBoolean(7, supervisorDTO.isStatus());
+                stm.setString(8, email);
+                stm.executeUpdate();
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
