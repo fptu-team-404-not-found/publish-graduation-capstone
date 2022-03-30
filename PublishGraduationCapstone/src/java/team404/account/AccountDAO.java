@@ -149,14 +149,21 @@ public class AccountDAO {
         return false;
     }
 
-    public void createNewAccountAdminMode(String email) {
+    public void createNewAccountAdminMode(String email, String memberId, String memberName, String memberAvatar, String phone) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Insert into Account(Email, RoleId) "
-                        + "Values(?, 1) ";
+                        + "Values(?, 1) "
+                        + "Insert into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account) "
+                        + "values(?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, email);
+                stm.setString(2, memberId);
+                stm.setNString(3, memberName);
+                stm.setString(4, memberAvatar);
+                stm.setString(5, phone);
+                stm.setString(6, email);
                 stm.executeUpdate();
             }
         } catch (SQLException ex) {
