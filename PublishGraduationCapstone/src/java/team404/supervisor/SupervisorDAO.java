@@ -122,6 +122,53 @@ public class SupervisorDAO {
         return null;
     }
 
+    public SupervisorDTO getInforSupWithMail(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select SupervisorID, SupervisorName, SupervisorImage, Information, Position "
+                        + "From Supervisor "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String supervisorId2 = rs.getString("SupervisorID");
+                    String supervisorName = rs.getNString("SupervisorName");
+                    String supervisorImage = rs.getString("SupervisorImage");
+                    String information = rs.getNString("Information");
+                    String position = rs.getString("Position");
+                    SupervisorDTO dto = new SupervisorDTO();
+                    dto.setSupervisorId(supervisorId2);
+                    dto.setSupervisorName(supervisorName);
+                    dto.setSupervisorImage(supervisorImage);
+                    dto.setInformation(information);
+                    dto.setPostion(position);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
     public List<SupervisorDTO> getAllSupervisors() {
         try {
             con = DBHelpers.makeConnection();
@@ -228,12 +275,12 @@ public class SupervisorDAO {
                         + "on p.ProjectId = ps.ProjectId "
                         + "Where su.SupervisorName LIKE ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, "%"+keyword+"%");
+                stm.setString(1, "%" + keyword + "%");
                 rs = stm.executeQuery();
                 List<SupervisorDTO> list = new ArrayList<>();
                 ProjectDAO projectDao = new ProjectDAO();
                 ProjectDTO projectDto = new ProjectDTO();
-                while(rs.next()){
+                while (rs.next()) {
                     String supervisorId = rs.getString("SupervisorID");
                     String supervisorName = rs.getNString("SupervisorName");
                     String projectId = rs.getString("ProjectId");
@@ -266,5 +313,42 @@ public class SupervisorDAO {
             }
         }
         return null;
+    }
+    public void insertSupervisor(String email, SupervisorDTO supervisorDTO){
+        try{
+            con = DBHelpers.makeConnection();
+            if(con != null){
+                String sql = "INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account) "
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm = con.prepareStatement(sql);
+                stm.setString(1, supervisorDTO.getSupervisorId());
+                stm.setNString(2, supervisorDTO.getSupervisorName());
+                stm.setString(3, supervisorDTO.getSupervisorImage());
+                stm.setNString(4, supervisorDTO.getInformation());
+                stm.setString(5, supervisorDTO.getPostion());
+                stm.setBoolean(6, supervisorDTO.isStatus());
+                stm.setString(7, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
