@@ -52,8 +52,12 @@ public class LoginServlet extends HttpServlet {
                 AccountDAO accountDAO = new AccountDAO();
                 String email = accountDTO.getEmail();
                 boolean idExisted = accountDAO.checkEmail(email);
-
-                if (!idExisted) {
+                String nameExisted = accountDAO.checkName(email);
+                String picExisted = accountDAO.checkPic(email);
+                if(idExisted && nameExisted == null && picExisted == null){
+                    accountDAO.updateNameAndPic(email, accountDTO.getName(), accountDTO.getPicture());
+                }
+                else if (!idExisted) {
                     accountDAO.createNewAcccount(accountDTO);
                 }
                 Cookie cookie = new Cookie("token", accessToken);
