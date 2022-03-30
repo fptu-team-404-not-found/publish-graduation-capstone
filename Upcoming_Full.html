@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Upcoming_Full.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Project siu dink</title>
+</head>
+<body>
+    <div id="menu">
+        <ul>
+            <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+            </li>
+            <li class="nav-home-1"><a href="#">Home</a></li>
+            <li class="nav-home-2"><a href="#">Semester</a></li>
+            <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
+        </ul>
+        <div id="icon-show-login" onclick="showLogin()">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div>
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" onclick="showSearch()"></i>
+        </div>
+        <div id="home-search-container">
+            <span>
+                <input type="text" name="home-search-text" id="home-search-text"
+                    placeholder="Student’s name, Project’s name, Lecturer’s name ">
+                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+            </span>
+        </div>
+
+    </div>
+    <div id="web-name-container">
+        <button id="home-login" name="button" type="button">Login</button>
+    </div>
+    <div id="upcoming-return-home-icon">
+        <span><a href="home.html"><i class="fa-solid fa-house"></i></a></span>
+        <span><i class="fa-solid fa-chevron-right"></i></span>
+        <span>Coming Project Defense Session</span>
+    </div>
+    <div id="table-container">
+        <table id="upcoming-table-container">
+            <tr class="table-header">
+                <th>Date</th>
+                <th>Place</th>
+                <th>Topic</th>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+            <tr class="table-header">
+                <td>Thứ sáu, 13/5, 14:30</td>
+                <td>Hội trường A</td>
+                <td>Phần mềm quản lí hệ thống cửa hàng quần áo</td>
+            </tr>
+        </table>
+    </div>
+
+    <script language="javascript">
+        function showLogin() {
+            var hidden = document.getElementById('home-login');
+            if (hidden.style.display === 'none')
+                hidden.style.display = 'block';
+            else hidden.style.display = 'none';
+        }
+
+        function showSearch() {
+            var hidden = document.getElementById('home-search-container');
+            if (hidden.style.display === 'none')
+                hidden.style.display = 'block';
+            else hidden.style.display = 'none';
+        }
+
+    </script>
+</body>
