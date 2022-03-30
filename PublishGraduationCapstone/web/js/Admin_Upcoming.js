@@ -236,7 +236,10 @@ takeUserData(function (table) {
                             <td class="admin-main-account-list-table-info">${myList[i].projectLocation}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDate}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDescription}</td>
-                            <td><button id="delete-button" value="Delete"><i class="fa-solid fa-trash-can"></i></button></td>
+                            <form>
+                            var fake = JSON.stringify(${myList[i]});
+                            <td><button id="delete-button" value="Delete" onclick="deleteUpcoming(fake)"><i class="fa-solid fa-trash-can"></i></button></td>
+                            </form>
                         </tr>
                       `
             table.append(row)
@@ -245,3 +248,13 @@ takeUserData(function (table) {
         pageButtons(data.pages)
     }
 });
+
+
+function deleteUpcoming(object) {
+    var xhr = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/admin/deleteUpcoming";
+    xhr.open("POST", api);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    console.log("nanana : " + object);
+    xhr.send(object);
+}

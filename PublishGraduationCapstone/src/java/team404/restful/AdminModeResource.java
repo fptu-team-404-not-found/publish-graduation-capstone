@@ -46,6 +46,59 @@ public class AdminModeResource {
     public AdminModeResource() {
     }
     
+    @Path("/saveSupervisor")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveSupervisor(String object) {
+        Gson gson = new Gson();
+        SupervisorDTO supervisor = gson.fromJson(object, SupervisorDTO.class);
+        System.out.println("in thu: ");
+        System.out.println(supervisor);
+        //supervisor la con Supervisor da lay ve.
+        //code day ne Dat
+    }
+    
+    @Path("/saveSupervisorsList")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveSupervisorsList(String object) {
+        Type listType = new TypeToken<ArrayList<SupervisorDTO>>(){}.getType();
+        ArrayList<SupervisorDTO> list = new Gson().fromJson(object , listType);
+        for (SupervisorDTO supervisorDTO : list) {
+            System.out.println("in ne: ");
+            System.out.println(supervisorDTO);
+        }
+        //list la danh sach Supervisors da lay ve.
+        //code day ne Dat
+    }
+    
+    @Path("/saveUpcomingList")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveUpcomingList(String object) {
+        Type listType = new TypeToken<ArrayList<UpcomingProjectDTO>>(){}.getType();
+        ArrayList<UpcomingProjectDTO> list = new Gson().fromJson(object , listType);
+        for (UpcomingProjectDTO upcomingProjectDTO : list) {
+            System.out.println("in nha: ");
+            System.out.println(upcomingProjectDTO);
+        }
+        //list la danh sach UpcomingList da lay ve.
+        //code day ne Dat
+    }
+    
+    @Path("/deleteUpcoming")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void deleteUpcoming(String object) { 
+        Gson gson = new Gson();
+        UpcomingProjectDTO upcoming = gson.fromJson(object, UpcomingProjectDTO.class);
+        System.out.println("in thu: ");
+        System.out.println(upcoming);
+        //upcoming la con Upcoming da lay ve. Can xoa no trong database
+        //code day ne Dat
+    }
+    
+    
     @Path("/saveAccountList")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
