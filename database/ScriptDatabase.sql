@@ -988,7 +988,5 @@ From Project p
 Where p.ProjectName LIKE N'%a%'
 */
 
-Insert into Account(Email, RoleId)
-Values(?, 1)
-Insert into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account)
-values(?, ?, ?, ?, ?)
+
+
