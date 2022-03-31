@@ -187,7 +187,6 @@ public class ProjectResource {
             @FormDataParam("email") String email,
             @FormDataParam("commentContent") String commentContent) {
         CommentDAO commentDAO = new CommentDAO();
-        System.out.println("projectID: " + projectId);
         String result = commentDAO.commentOnProject(projectId, email, commentContent);
 
         return result;

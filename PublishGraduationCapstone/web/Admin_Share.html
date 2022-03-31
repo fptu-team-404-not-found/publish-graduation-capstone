@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Admin_Wordlist_Word.css">
+    <link rel="stylesheet" href="css/Admin_Post.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-address-card"></i></p>
             <p class="admin-main-menu-list-text">Account list</p>
         </a>
-        <a href="Admin_Post.html" class="admin-main-menu-list">
+        <a href="#" class="admin-main-menu-list active">
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-list"></i></p>
             <p class="admin-main-menu-list-text">Post list</p>
         </a>
@@ -45,7 +45,7 @@
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-chalkboard-user"></i></p>
             <p class="admin-main-menu-list-text">Supervisor list</p>
         </a>
-        <a href="#" class="admin-main-menu-list active">
+        <a href="Admin_Wordlist.html" class="admin-main-menu-list">
             <p class="admin-main-menu-list-icon"><i class="fa-solid fa-comments"></i></p>
             <p class="admin-main-menu-list-text">Word list</p>
         </a>
@@ -55,43 +55,52 @@
         </a>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-    <div id="admin-main-wordlist_right_infor">
-        <div id="admin-main-wordlist_right_infor_nav">
-            <a href="Admin_Wordlist.html">Comment</a>
-            <a href="#" class="active">Word</a>
-        </div>
-        <div id="admin-main-wordlist_right_infor_title_container">
-            <div id="admin-main-account-list-add">
-                <div id="admin-main-supervisor-add">
-                    <i class="fa-solid fa-circle-plus add-btn"></i>
-                    <a href="Admin_Wordlist_Word_Add.html" id="admin-main-supervisor-add-btn">New Word</a>
-                </div>
-                <div id="admin-main-account-list-search-container">
-                    <span><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
-                </div>
+    <div id="admin-main-account-list">
+        <div id="admin-main-account-list-nav-container">
+            <div id="admin-main-account-list-nav">
+                <a href="#" class="active">APPROVING</a>
+                <a href="Admin_Post_Approved.html" >APPROVED</a>
             </div>
-                <table class="table table-dark" id="admin-main-account-list-table-container">
-                    <tr id="admin-main-account-list-table">
-                        <th id="admin-main-account-list-table-title-id">ID</th>
-                        <th id="admin-main-account-list-table-title-post-ban">Banned</th>
+
+            <select id="admin-main-account-list-nav-select-ps">
+                <option value="Post">Post</option>
+                <option value="Semester">Share</option>
+             </select>
+
+            <div id="admin-main-account-list-search-container">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
+            </div>
+        </div>
+
+        <div class="container ">
+            <!-- Table structure here -->
+            <table class="table table-dark" id="admin-main-account-list-table-container">
+                <tr id="admin-main-account-list-table">
+                    <th id="admin-main-account-list-table-title-id">ID</th>
+                    <th id="admin-main-account-list-table-title-post-title">Post Title</th>
+                    <th id="admin-main-account-list-table-title-date">Date</th>
+                    <th id="admin-main-account-list-table-title-poster">Poster</th>
+                    <th id="admin-main-account-list-table-title-approve">Approve</th>
+                </tr>
+                <tbody id="table-body">
+                    <tr class="admin-main-account-list-infors">
+                        <td class="admin-main-account-list-table-id">001</td>
+                        <td class="admin-main-account-list-table-post-title">AI nhận diện trễ deadline</td>
+                        <td class="admin-main-account-list-table-date">05/01/2022</td>
+                        <td class="admin-main-account-list-table-poster">KHANHKT</td>
+                        <td class="admin-main-account-list-table-approve"><i class="fa-solid fa-circle-check"></i></td>
                     </tr>
-                    <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
 
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="container">
-                <div class="admin-main-account-list-page-number">
-                    <div id="pagination-wrapper"></div>
-                </div>
+        <div class="container">
+            <div class="admin-main-account-list-page-number">
+                <div id="pagination-wrapper"></div>
             </div>
         </div>
-        <script src="js/Admin_Wordlist_Word.js"></script>
+    </div>
+    
+    <script src="js/Admin_Post.js"></script>
 </body>
-
-</html>

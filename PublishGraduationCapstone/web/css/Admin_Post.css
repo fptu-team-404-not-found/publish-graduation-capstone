@@ -171,19 +171,34 @@ body {
     outline: 0;
 }
 
+#admin-main-account-list-table-container {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 0.4em;
+    text-align: left;
+}
+
 /* Post list table */
 #admin-main-account-list-table {
-    display: flex;
-    width: 80%;
     background-color: #F47124;
     margin-top: 1%;
     padding: 0.6%;
     border-radius: 1em;
-    justify-content: space-around;
     font-size: 80%;
     color: #FFFFFF;
     font-weight: 700;
     letter-spacing: 0.06em;
+}
+
+.admin-main-account-list-infors {
+    font-size: 80%;
+    background-color: #ffffffb7;
+    color: #F47124;
+    border-bottom: 1px solid rgba(221, 221, 221, 0.459);
+}
+
+.admin-main-account-list-table-id {
+    padding: 0.4em;
 }
 
 #admin-main-post-list-infor-container {
@@ -192,6 +207,26 @@ body {
     font-size: 70%;
     color: #F47124;
     letter-spacing: 0.06em;
+}
+
+#admin-main-account-list-table-title-id {
+    padding: 0.4em;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+#admin-main-account-list-table-title-approve {
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.admin-main-account-list-table-approve {
+    color: #f4702456;
+}
+
+.admin-main-account-list-table-approve:hover {
+    color: #F47124;
+    cursor: pointer;
 }
 
 .admin-main-post-list-infor-id {
@@ -329,5 +364,22 @@ body {
     background-color: #F47124;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.admin-main-account-list-page-number button {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number button.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number button:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
 }
 /*------------------------------------------------------------------*/

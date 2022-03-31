@@ -25,6 +25,7 @@ import team404.comment.CommentDAO;
 import team404.comment.CommentDTO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.sensitiveword.SensitiveWordDTO;
 import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
@@ -46,6 +47,22 @@ public class AdminModeResource {
      */
     public AdminModeResource() {
     }
+    
+    @Path("/saveSensitiveWords")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveSensitiveWords(String object) {
+        Type listType = new TypeToken<ArrayList<SensitiveWordDTO>>() {
+        }.getType();
+        ArrayList<SensitiveWordDTO> list = new Gson().fromJson(object, listType);
+        
+        for (SensitiveWordDTO sensitiveWordDTO : list) {
+            System.out.println(sensitiveWordDTO);
+        }
+        
+        //code day nha Dat
+    }        
+            
 
     @Path("/saveSupervisor")
     @POST
@@ -128,7 +145,7 @@ public class AdminModeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteUpcoming(String object) {
         Gson gson = new Gson();
-        UpcomingProjectDTO upcoming = gson.fromJson(object, UpcomingProjectDTO.class);
+        String upcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(upcoming);
         //upcoming la con Upcoming da lay ve. Can xoa no trong database
@@ -285,9 +302,7 @@ public class AdminModeResource {
             jsObj.put("authorName", projectDTO.getAuthorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showPostListWithApproving", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showPostListWithApproved")
@@ -305,9 +320,7 @@ public class AdminModeResource {
             jsObj.put("authorName", projectDTO.getAuthorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showPostListWithApproved", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showSharePostListWithApproving")
@@ -319,20 +332,18 @@ public class AdminModeResource {
         JSONArray jsArr = new JSONArray();
         for (SharePostDTO sharePostDTO : list) {
             JSONObject jsObj = new JSONObject();
-            jsObj.put("postId", sharePostDTO.getPostId());
-            jsObj.put("title", sharePostDTO.getTitle());
+            jsObj.put("sharingId", sharePostDTO.getPostId());
+            jsObj.put("sharingName", sharePostDTO.getTitle());
             jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
             if (sharePostDTO.getStudent() != null) {
-                jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
+                jsObj.put("authorName", sharePostDTO.getStudent().getMemberName());
             }
             if (sharePostDTO.getSupervisor() != null) {
-                jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
+                jsObj.put("authorName", sharePostDTO.getSupervisor().getSupervisorName());
             }
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showSharePostListWithApproving", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showSharePostListWithApproved")

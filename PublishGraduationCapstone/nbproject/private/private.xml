@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/AdminModeResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/UserResource.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/teammember/TeamMemberDAO.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/teammember/TeamMemberDTO.java</file>
-            <file>file:/C:/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/ShareResource.java</file>
+            <file>file:/C:/Project/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/restful/AdminModeResource.java</file>
+            <file>file:/C:/Project/publish-graduation-capstone/PublishGraduationCapstone/src/java/team404/upcomingproject/UpcomingProjectDTO.java</file>
         </group>
     </open-files>
 </project-private>
