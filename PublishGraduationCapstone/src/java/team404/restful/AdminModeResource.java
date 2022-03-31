@@ -25,6 +25,7 @@ import team404.comment.CommentDAO;
 import team404.comment.CommentDTO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.sensitiveword.SensitiveWordDAO;
 import team404.sensitiveword.SensitiveWordDTO;
 import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
@@ -55,9 +56,15 @@ public class AdminModeResource {
         Type listType = new TypeToken<ArrayList<SensitiveWordDTO>>() {
         }.getType();
         ArrayList<SensitiveWordDTO> list = new Gson().fromJson(object, listType);
+        SensitiveWordDAO senDao = new SensitiveWordDAO();
+        SensitiveWordDTO senDto = new SensitiveWordDTO();
         
         for (SensitiveWordDTO sensitiveWordDTO : list) {
             System.out.println(sensitiveWordDTO);
+            senDto = senDao.checkExist(sensitiveWordDTO.getBannedWord());
+            if(senDto == null){
+                senDao.insertSensitiveWord(sensitiveWordDTO.getBannedWord());
+            }
         }
         
         //code day nha Dat
