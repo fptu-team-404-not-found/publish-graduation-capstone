@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.naming.NamingException;
+import team404.project.ProjectDTO;
 import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
 import team404.supervisor.SupervisorDTO;
@@ -659,5 +660,5 @@ public class AccountDAO {
     }
 
     
-    
+
 }

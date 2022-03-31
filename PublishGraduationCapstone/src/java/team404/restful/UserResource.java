@@ -7,6 +7,7 @@ package team404.restful;
 
 import com.google.gson.Gson;
 import com.sun.jersey.multipart.FormDataParam;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
@@ -23,6 +24,7 @@ import org.json.simple.JSONObject;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
 import team404.favorite.FavoriteDAO;
+import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
@@ -67,18 +69,19 @@ public class UserResource {
             @QueryParam("email") String email) {
         TeamMemberDAO teamDao = new TeamMemberDAO();
         TeamMemberDTO teamDto = teamDao.checkTeamMember(email);
-        if(teamDto != null){
+        if (teamDto != null) {
             return "Yes";
-        }else{
+        } else {
             return "No";
         }
-        
+
     }
+
     @Path("/showFavoriteProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String showFavoriteProject(
-            @QueryParam("email") String email){
+            @QueryParam("email") String email) {
         FavoriteDAO fDao = new FavoriteDAO();
         List<ProjectDTO> list = fDao.getProjectFavorite(email);
         JSONArray jsArr = new JSONArray();
@@ -94,5 +97,43 @@ public class UserResource {
         jsObj.put("showFavoriteProject", jsArr);
         String result = jsObj.toJSONString();
         return result;
+    }
+
+    @Path("/showSharingPost")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String showSharingPost(
+            @QueryParam("email") String email) {
+        ProjectDAO dao = new ProjectDAO();
+        List<ProjectDTO> list = dao.getProjectFromTeamByAccount(email);
+        List<ProjectDTO> list2 = dao.getProjectFromSupervisorByAccount(email);
+        JSONArray jsArr = new JSONArray();
+        TeamMemberDAO teamDao = new TeamMemberDAO();
+        TeamMemberDTO teamDto = teamDao.getInforMemberWithEmail(email);
+        if (teamDto != null) {
+            for (ProjectDTO projectDTO : list) {
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("projectId", projectDTO.getProjectId());
+                jsObj.put("projectName", projectDTO.getProjectName());
+                jsObj.put("projectAva", projectDTO.getProjectAva());
+                jsArr.add(jsObj);
+            }
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("showSharingPost", jsArr);
+            String result = jsObj.toJSONString();
+            return result;
+        }else{
+            for (ProjectDTO projectDTO : list2) {
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("projectId", projectDTO.getProjectId());
+                jsObj.put("projectName", projectDTO.getProjectName());
+                jsObj.put("projectAva", projectDTO.getProjectAva());
+                jsArr.add(jsObj);
+            }
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("showSharingPost", jsArr);
+            String result = jsObj.toJSONString();
+            return result;
+        }
     }
 }
