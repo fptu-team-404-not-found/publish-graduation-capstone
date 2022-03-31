@@ -130,6 +130,43 @@ body {
     color: #FFFFFF;
 }
 
+table {
+    width: 90%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-top: 1em;
+    
+}
+
+.staff-edit-post-teamname {
+    padding: 0.4em 1em;
+    font-size: 120%;
+}
+
+.staff-edit-post-teamname:first-child {
+    border-top-left-radius: 0.5em;
+
+}
+
+
+.staff-edit-post-teamname:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+td {
+    border: 1px solid rgba(221, 221, 221, 0.555);
+}
+
+.staff-edit-post-teamname-content {
+    width: 100%;
+    border: none;
+    padding: 0.4em;
+}
+
+.staff-edit-post-teamname-content:disabled {
+    background-color: rgba(221, 221, 221, 0.726);
+}
+
 #staff-edit-post-teamname-id {
     width: 12%;
     display: inline-block;
@@ -331,6 +368,7 @@ label {
     background-color: #FFFFFF;
     color: #F47124;
     border: 1px solid #F47124;
+    cursor: pointer;
 }
 
 
