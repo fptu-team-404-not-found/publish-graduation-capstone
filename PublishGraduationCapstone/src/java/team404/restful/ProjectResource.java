@@ -158,19 +158,24 @@ public class ProjectResource {
     }
 
     //-- TIENHUYNHTN --// //OK
-    @Path("/bookmark")
+   @Path("/bookmark")
     @GET
-    public void bookmark(
+    @Produces(MediaType.APPLICATION_JSON)
+    public String bookmark(
             @QueryParam("projectId") String projectId, 
             @QueryParam("email") String email) {
         FavoriteDAO favoriteDAO = new FavoriteDAO();
         boolean isExistedBookmark = favoriteDAO.findBookmark(projectId, email);
-        boolean status = false;
+        boolean status;
+        String message;
         if (isExistedBookmark) {
             status = favoriteDAO.deleteBookmark(projectId, email);
+            message = "Removed form favorite";
         } else {
             status = favoriteDAO.bookmark(projectId, email);
+            message = "Added to favorite";
         }
+        return message;
     }
 
     //-- TIENHUYNHTN --// //OK
@@ -182,7 +187,6 @@ public class ProjectResource {
             @FormDataParam("email") String email,
             @FormDataParam("commentContent") String commentContent) {
         CommentDAO commentDAO = new CommentDAO();
-        System.out.println("projectID: " + projectId);
         String result = commentDAO.commentOnProject(projectId, email, commentContent);
 
         return result;

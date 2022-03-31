@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- navbar -->
     <div id="admin-main-nav" onclick=" ShowLogout()">
         <p id="admin-main-nav-title">STAFF MODE</p>
@@ -37,68 +39,35 @@
                 <a href="#">APPROVING</a>
                 <a href="Staff_Approved.html" class="staff-active">APPROVED</a>
             </div>
-            <a href="Staff_EditPost.html">
-                <div id="staff-mode-approving-new-container">
-                    <span><i class="fa-solid fa-circle-plus"></i></span>
-                    <span id="staff-mode-approving-new-post-word">New Post</span>
-                </div>
-            </a>
+            <div id="staff-mode-approving-new-container">
+                <span><i class="fa-solid fa-circle-plus"></i></span>
+                <span id="staff-mode-approving-new-post-word"><a href="Staff_EditPost.html">New Post</a></span>
+            </div>
+            <div style="display: none;" id="admin-main-account-list-search-container">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
+            </div>
             <div id="staff-mode-approving-content-container">
-                <div id="staff-mode-approving-content-title-container">
-                    <span id="staff-mode-approving-content-title">Title</span>
-                    <span id="staff-mode-approving-content-date">Date Submit</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
-                <div class="staff-mode-approving-content-infor-container">
-                    <span class="staff-mode-approving-content-infor-title">Phần mềm quản lí trường mầm non Tiên
-                        Phượng</span>
-                    <span class="staff-mode-approving-content-infor-date">23/01/2022</span>
-                </div>
+                <table>
+                    <tr id="staff-mode-approving-content-title-container">
+                        <th class="staff-mode-approving-content">Title</th>
+                        <th class="staff-mode-approving-content">Date Public</th>
+                    </tr>
+                    <tbody id="table-body">
 
-                <div class="admin-main-account-list-page-number">
-                    <a href="#">«</a>
-                    <a class="active" href="#">1</a>
-                    <a href="#">»</a>
+                    </tbody>
+                </table>
+
+                <div class="container">
+                    <div class="admin-main-account-list-page-number">
+                        <div id="pagination-wrapper"></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-
-      <script src="js/Staff_Approving.js"></script>
+    <script src="js/Staff_Approving.js"></script>
 </body>
 
 </html>
