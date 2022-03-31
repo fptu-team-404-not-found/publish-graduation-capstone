@@ -132,7 +132,7 @@ public class ShareResource {
     }
     @Path("/addSharePost")
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response addSharePost(String sharePost){
         Gson gson = new Gson();
         SharePostDTO dto = gson.fromJson(sharePost, SharePostDTO.class);
