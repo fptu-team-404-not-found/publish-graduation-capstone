@@ -41,11 +41,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         
         try {
-            ProjectDAO dao = new ProjectDAO();
-            List<ProjectDTO> list = dao.getProjectFromTeamByAccount("hoangNT@gmail.com");
-            for (ProjectDTO projectDTO : list) {
-                System.out.println(list);
-            }
+
             if (code == null || code.isEmpty()) {
             } else {
                 HttpSession session = request.getSession();
