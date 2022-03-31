@@ -14,34 +14,43 @@
 </head>
 
 <body>
-    <div id="menu">
+    <div id="menu" onload="startup()">
         <ul>
-            <li><img id="background-img" src="https://haitrieu.com/wp-content/uploads/2021/10/Logo-Dai-hoc-FPT.png">
+            <li>
+                <a href="http://localhost:8084/PublishGraduationCapstone/">
+                    <img id="background-img" src="./img/logo-fptu.png">
+                </a>
             </li>
-            <li class="nav-home-1"><a href="#">Home</a></li>
+            <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
             <li class="nav-home-2"><a href="#">Semester</a></li>
             <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
         </ul>
-        <div id="icon-show-login" onclick="showInfo()">
-            <img id="user-main-picture-pop-up"
-                src="https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg"
-                alt="">
+        <div id="icon-show-login" onclick="showLogin()">
+            <i class="fa-solid fa-user"></i>
         </div>
-        <div>
-            <i class="fa-solid fa-magnifying-glass home-find-icon-normal" onclick="showSearch()"></i>
+        <div id="SearchIcon" onclick="showSearch()">
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
+
         </div>
         <div id="home-search-container">
             <span>
                 <input type="text" name="home-search-text" id="home-search-text"
                     placeholder="Student’s name, Project’s name, Lecturer’s name ">
-                <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                <div class="SearchIcon" onclick="showSearchPage()">
+                    <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                </div>
             </span>
         </div>
-        <div id="user-main-small-control">
-            <p id="user-main-small-name">Nguyễn Lâm Thúy Phượng</p>
-            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark
-            </p>
-            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+    </div>
+
+    <div id="web-name-container">
+        <div id="login-box" style="display: none;">
+            <div id="home-login">
+                <a style="text-decoration: none; color: #fff;"
+                    href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+                    <div name="button" type="button">Login</div>
+                </a>
+            </div>
         </div>
     </div>
 
@@ -82,7 +91,7 @@
         <div id="user-main-container">
             <p id="user-main-profile-text">My Profile</p>
             <div id="user-main-container-box">
-                <h3>Nguyễn Lâm Thúy Phượng</h3>
+                <h3 id="user-name">Nguyễn Lâm Thúy Phượng</h3>
                 <div id="user-profile-container">
                     <span class="user-profile-mail-title">Mail</span>
                     <span class="user-profile-mail">phuongnltse150999@fpt.edu.vn</span>
@@ -129,22 +138,8 @@
             <span id="footer-copyright-text">2022 by 404</span>
         </div>
     </div>
-    <script language="javascript">
-        function showInfo() {
-            var hidden = document.getElementById('user-main-small-control');
-            if (hidden.style.display === 'none')
-                hidden.style.display = 'block';
-            else hidden.style.display = 'none';
-        }
-
-        function showSearch() {
-            var hidden = document.getElementById('home-search-container');
-            if (hidden.style.display === 'none')
-                hidden.style.display = 'block';
-            else hidden.style.display = 'none';
-        }
-
-    </script>
+   
+    
 </body>
 
 </html>

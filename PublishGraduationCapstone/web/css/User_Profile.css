@@ -145,6 +145,7 @@ body {
     letter-spacing: 0.12em;
     border-radius: 0.2em;
     display: none;
+    z-index: 999;
 }
 
 #user-main-small-name {

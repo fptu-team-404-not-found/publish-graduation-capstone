@@ -11,6 +11,7 @@ function logout() {
 
 }
 
+
 function initLogin() {
     var username = localStorage.getItem("name")
     var picture = localStorage.getItem("picture")
