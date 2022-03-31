@@ -1,6 +1,7 @@
 package team404.restful;
 
 import com.google.gson.Gson;
+import com.sun.jersey.multipart.FormDataParam;
 import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -59,10 +60,11 @@ public class ShareResource {
     //-- TIENHUYNHTN --// //OK
     @Path("/commentOnShare")
     @POST
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     public String commentOnProject(
-            @QueryParam("shareId") String shareId, 
-            @QueryParam("email") String email, 
-            @QueryParam("commentContent") String commentContent) {
+            @FormDataParam("shareId") String shareId, 
+            @FormDataParam("email") String email, 
+            @FormDataParam("commentContent") String commentContent) {
         CommentDAO commentDAO = new CommentDAO();
         String result = commentDAO.commentOnShare(shareId, email, commentContent);
         
