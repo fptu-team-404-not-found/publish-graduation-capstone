@@ -844,7 +844,41 @@ INSERT INTO Sensitive_word(banned_word)
 VALUES
 	('dume'), ('quan que'), ('duma')
 --------------------------------------
+Update Project 
+Set IntroductionContent = N'A police robot told a woman to go away after she tried to report a violent brawl breaking out nearby – then trundled off while singing a song. Cogo Guebara rushed over to the motorized police officer and pushed its emergency alert button on seeing the brawl break out in Salt Lake Park, Los Angeles, last month. But instead of offering assistance, the egg-shaped robot, whose official name is HP RoboCop, barked at Guebara to ‘Step out of the way’. To add insult to injury, the high-tech device then rolled away while humming an ‘intergalactic tune’, pausing periodically to say ‘Please keep the park clean.’',
+Details = N'<p><img alt="" src="https://metro.co.uk/wp-content/uploads/2019/10/comp-1570212652.png?quality=90&amp;strip=all&amp;zoom=1&amp;resize=644%2C362" style="float:right; height:337px; margin-left:10px; margin-right:10px; width:600px" /></p>
 
+<p style="text-align: justify;"><big>&lsquo;It just kept ringing and ringing, and I kept pushing and pushing.&rsquo; The concerned bystander thought the five-foot tall robot might have needed to see her face before it began to work, so she crouched down in front of its camera.Department cops finally arrived 15 minutes later, after the row had ended. It left one woman with a bad head wound which saw her stretchered into an ambulance and taken to hospital for emergency treatment. Local Police Chief Cosme Lozano says the robots, which cost between $60,000 and $70,000 a year to lease, are still in a trial phase and that their alert buttons have not yet been activated. He said that law enforcement have not yet started advertising the robots crime-fighting activities. Any help requests are currently sent to a company called Knightscope, which creates and leases the robots. Lozano added that once the robot completes its trial, calls made using its alert button will be sent straight to dispatch. Other versions of the same model have previously hit the headlines after one fell into a fountain in Washington DC. And a third HP RoboCop struck a child while patrolling a mall in California&rsquo;s Silicon Valley.</big></p>
+', 
+Recap = N'<p><img alt="" src="https://pbs.twimg.com/media/D9ZVtE0UEAAee8i?format=jpg&amp;name=900x900" style="float:left; height:400px; margin-left:10px; margin-right:10px; width:300px" /></p>
+
+<p style="text-align: justify;"><big>Knightscope&rsquo;s marketing materials and media&nbsp;<a href="https://www.houstonchronicle.com/business/technology/article/Security-robot-intrigues-River-Oaks-District-11946955.php">r</a>eporting&nbsp;suggest the technology can effectively recognize &ldquo;suspicious&rdquo; packages, vehicles, and people.&nbsp;</big></p>
+
+<p style="text-align: justify;"><big>But when a robot is scanning a crowd for someone or something suspicious, what is it actually looking for? It&rsquo;s unclear what the company means. The decision to characterize certain actions and attributes as &ldquo;suspicious&rdquo; has to be made by someone. If robots are designed to think people wearing hoods are suspicious, they may target youth of color. If robots are programmed to zero in on people moving quickly, they may harass a jogger, or a pedestrian on a rainy day.</big></p>
+
+<p style="text-align: justify;"><big>A robot&rsquo;s machine learning and so-called suspicious behavior detection will lead to racial profiling and other unfounded harrassement. This begs the question: Who gets reprimanded if a robot improperly harrasses an innocent person, or calls the police on them? Does the robot? The people who train or maintain the robot? When state violence is unleashed on a person because a robot falsely flagged them as suspicious, &ldquo;changing the programming&rdquo; of the robot and then sending it back onto the street will be little solace for a victim hoping that it won&rsquo;t happen again. And when programming errors cause harm, who will review changes to make sure they can address the real problem?&quot;</big></p>
+
+<p style="text-align: justify;"><big>The next time you&rsquo;re at a protest and are relieved to see a robot rather than a baton-wielding officer, know that that robot may be using the IP address of your phone to identify your participation. This makes protesters vulnerable to reprisal from police and thus chills future exercise of constitutional rights.</big></p>
+
+<p style="text-align: justify;"><big>&quot;When a device emitting a Wi-Fi signal passes within a nearly 500 foot radius of a robot,&rdquo; the company explains on its blog, &ldquo;actionable intelligence is captured from that device including information such as: where, when, distance between the robot and device, the duration the device was in the area and how many other times it was detected on site recently.&quot;</big></p>
+', 
+VideoUrl = 'https://www.youtube.com/embed/gIHXLVr44Nw'
+Where ProjectId = 'SU19SE05'
+
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', '0793808822', 'eva@gmail.com', 'SU19SE05')
+INSERT INTO Project_Supervisor
+Values('SU19SE05','NTH')
+INSERT INTO Project_Supervisor
+Values('SU19SE05','TTNV')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('http://images6.fanpop.com/image/photos/37700000/Cyber-the-Police-Robot-robots-37755446-800-1032.jpg','SU19SE05')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('https://www.inceptivemind.com/wp-content/uploads/2019/08/police-robots-traffic-china.jpg','SU19SE05')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('https://www.eff.org/files/banner_library/knightscope_banner_0.jpg','SU19SE05')
 
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
