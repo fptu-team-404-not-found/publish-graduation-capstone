@@ -100,10 +100,10 @@ function showCommentByDate(p){
             jsonData.showCommentByDateWithParameter.forEach(counter => {
                 var comment = `
                 <div class="admin-main-wordlist_right_infor_content_list_modal">
+                <div class="upcoming-img-id" style="display: none">${counter.Id}</div>
                 <p class="admin-main-wordlist_right_infor_content_list_post_modal">${counter.projectName}</p>
                 <p class="admin-main-wordlist_right_infor_content_list_comment_modal" ><i
                         class="fa-solid fa-comment-dots"></i>${counter.commentContent}
-                        <div class="upcoming-img-id" style="display: none">${counter.Id}</div>
                 </p>
                 <p class="admin-main-wordlist_right_infor_content_list_mail_modal">${counter.email}</p>
                 </div>
