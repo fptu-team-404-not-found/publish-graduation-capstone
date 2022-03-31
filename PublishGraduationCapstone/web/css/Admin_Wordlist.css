@@ -310,7 +310,7 @@ body {
 .admin-main-wordlist_right_infor_content_list_post_modal {
     line-height: 1.5em;
     display: inline-table;
-    width: 30%;
+    width: 20%;
     margin-right: 2em;
     font-size: 90%;
 }
@@ -319,6 +319,7 @@ body {
     padding: 0.6em 0.5em; 
     font-size: 90%;
     border-bottom: 1px solid #F47124;
+    width: 100%;
 }
 
 .admin-main-wordlist_right_infor_content_list_modal:last-child {
@@ -330,7 +331,7 @@ body {
 .admin-main-wordlist_right_infor_content_list_comment_modal {
     display: inline-table;
     width: 30%;
-    margin-right: 3em;
+    margin-right: 2em;
     font-size: 90%;
     overflow: hidden;
     height: 1em;
@@ -344,9 +345,20 @@ body {
 
 .admin-main-wordlist_right_infor_content_list_mail_modal {
     display: inline-table;
-    width: 20%;
+    width: 30%;
     font-size: 90%;
     overflow: hidden;
+}
+
+.admin-main-wordlist_right_infor_content_list_delete {
+    width: 5%;
+    display: inline-block;
+    margin-left: 2em;
+}
+
+.admin-main-wordlist_right_infor_content_list_delete:hover {
+    color: #F47124;
+    cursor: pointer;
 }
 
 /* --------------------------------------- */
