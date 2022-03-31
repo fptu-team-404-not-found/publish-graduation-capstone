@@ -125,6 +125,8 @@ public class AdminModeResource {
                 accountDao.createSupervisorAccountInAdminMode(supervisorDTO.getEmail(), supervisorDTO);
             }
         }
+        
+        //Neu supervisor ton tai, status thay doi thi ta thay doi luon
     }
 
     @Path("/saveUpcomingList")
@@ -152,12 +154,43 @@ public class AdminModeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteUpcoming(String object) {
         Gson gson = new Gson();
-        String upcoming = gson.fromJson(object, String.class);
+        String idUpcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
-        System.out.println(upcoming);
+        System.out.println(idUpcoming);
         //upcoming la con Upcoming da lay ve. Can xoa no trong database
         //code day ne Dat
     }
+    
+    @Path("/approveProject")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void approveProject(String object) {
+        Gson gson = new Gson();
+        String idProject = gson.fromJson(object, String.class);
+        System.out.println("in thu: ");
+        System.out.println(idProject);
+        //upcoming la con Upcoming da lay ve. Can xoa no trong database
+        //code day ne Dat
+    }
+    
+    
+    @Path("/changeAccountList")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void changeAccountList(String object) {
+        Gson g = new Gson();
+        Type listType = new TypeToken<ArrayList<AccountDTO>>() {
+        }.getType();
+        ArrayList<AccountDTO> list = new Gson().fromJson(object, listType);
+        for (AccountDTO accountDTO : list) {
+            System.out.println(accountDTO);
+        }
+        //list la danh sach Account can them/sua.
+        //Neu chua ton tai mail: Them moi Account(Them mail voi role).
+        //Neu ton tai mail: Check role xem co khac khong, co thi doi role.
+    }
+    
+    
 
     @Path("/saveAccountList")
     @POST

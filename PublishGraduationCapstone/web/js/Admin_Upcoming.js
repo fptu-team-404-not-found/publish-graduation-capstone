@@ -237,7 +237,12 @@ takeUserData(function (table) {
                             <td class="admin-main-account-list-table-info">${myList[i].projectLocation}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDate}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDescription}</td>
-                            <td><button id="delete-button" value="Delete" onclick="deleteUpcoming(${fake})"><i class="fa-solid fa-trash-can"></i></button></td>
+                            <td>
+                                <button id="delete-button" value="${myList[i].projectId}" onclick="deleteUpcoming(this.value)">
+                                <i class="fa-solid fa-trash-can">
+                                </i>
+                                </button>
+                            </td>
                         </tr>
                       `
             table.append(row)
@@ -253,6 +258,8 @@ function deleteUpcoming(object) {
     var api = "/PublishGraduationCapstone/api/admin/deleteUpcoming";
     xhr.open("POST", api);
     xhr.setRequestHeader("Content-Type", "application/json");
-    console.log("nanana : " + object);
-    xhr.send(object);
+    let text = "Confirm to delete this Upcoming";
+    if (confirm(text) == true) {
+        xhr.send(object);
+    }
 }
