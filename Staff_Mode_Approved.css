@@ -137,6 +137,47 @@ body {
     margin: auto;
     padding: 0.2em;
 }
+/* new table */
+
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.staff-mode-approving-content {
+    padding: 0.4em 1em;
+    text-align: left;
+}
+
+.staff-mode-approving-content:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+.staff-mode-approving-content:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+.staff-mode-approving-content-infor {
+    font-size: 80%;
+    border: 1px solid rgba(221, 221, 221, 0.637);
+    padding: 0.4em;
+}
+
+.approve-btn {
+    padding: 0.5em 1em;
+    border: none;
+    margin-left: 1em;
+    border-radius: 0.4em;
+    background-color: #f4702449;
+    letter-spacing: 0.06em;
+}
+
+.approve-btn:hover {
+    background-color: #f47024;
+    color: #FFFFFF;
+    cursor: pointer;
+}
 
 .staff-mode-approving-content-infor-title {
     text-align: center;

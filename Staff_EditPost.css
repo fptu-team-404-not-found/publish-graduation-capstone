@@ -54,6 +54,41 @@ body {
     margin-left: 1em;
     border: 1px solid #F47124;
 }
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+.staff-edit-post-teamname {
+    padding: 0.4em 1em;
+    font-size: 110%;
+}
+
+.staff-edit-post-teamname:first-child {
+    border-top-left-radius: 0.5em;
+
+}
+
+
+.staff-edit-post-teamname:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+td {
+    border: 1px solid rgba(221, 221, 221, 0.555);
+}
+
+.staff-edit-post-teamname-content {
+    width: 100%;
+    border: none;
+    padding: 0.4em;
+}
+
+.staff-edit-post-teamname-content:disabled {
+    background-color: rgba(221, 221, 221, 0.726);
+}
 
 #staff-edit-post-id {
     border: 1px solid #F47124;
