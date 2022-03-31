@@ -1,10 +1,45 @@
+function login() {
+    if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
+        var username = localStorage.getItem("name")
+        var picture = localStorage.getItem("picture")
+        var role = localStorage.getItem("roleId")
+        if(role != 2){
+            
+        }
+            document.getElementById("icon-show-login").innerHTML = 
+            `
+            <img src="${picture}" alt=""> 
+            `
+            document.getElementById("login-box").innerHTML = 
+            `
+            <div id="user-main-small-control">
+            <a href="User_Profile.html" style="text-decoration: none;  color: #fff;">
+            <p id="user-main-small-name">${username}</p>
+            </a>
+            <a href="User_Main.html" style="text-decoration: none;  color: #fff;">
+            <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            </a>
+            <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+            </a>
+            </div>
+            `
+            document.getElementById("user-main-detail-image-container").innerHTML =
+            `
+            <img id="user-main-detail-image" src="${picture}" alt="">
+            `
+            document.getElementById("user-name").innerHTML = username
+        
+    }
+}
+login();
 
- function showInfo() {
-    var hidden = document.getElementById('user-main-small-control');
+function showLogin() {
+    var hidden = document.getElementById('login-box');
     if (hidden.style.display === 'none')
         hidden.style.display = 'block';
     else hidden.style.display = 'none';
-}
+  }
 
 function showSearch() {
     var hidden = document.getElementById('home-search-container');
@@ -13,35 +48,35 @@ function showSearch() {
     else hidden.style.display = 'none';
 }
 
-function login() {
-    if (localStorage.getItem("email") == null || localStorage.getItem("email") == '') {
-        var xhttp = new XMLHttpRequest();
-        var api = "/PublishGraduationCapstone/api/login/getLoginAccountInfo?accessToken=";
-
-        var cookies = document.cookie;
-        console.log("cookies ne:" + cookies);
-        var ccs = cookies.slice(6, cookies.length).trim();
-        console.log("cookies ne 2:" + ccs);
-        var url = api + ccs;
-        xhttp.open("GET", url);
-        xhttp.send();
-
-        xhttp.onreadystatechange = function () {
-            if (this.readyState === 4 && this.status === 200) {
-                //using data here
-                var res = this.responseText;
-                try {
-                    var jsonData = JSON.parse(res);
-                } catch (e) {
-                    alert(e);
-                }
-                localStorage.setItem("email", jsonData.email);
-                localStorage.setItem("name", jsonData.name);
-                localStorage.setItem("picture", jsonData.picture);
-                localStorage.setItem("roleId", jsonData.roleId);
-            }
-        };
-    }
-
+function showSearchPage() {
+    var usernameInput = document.querySelector('#home-search-text').value;
+    sessionStorage.setItem("keyword", usernameInput);
+    location.replace("http://localhost:8084/PublishGraduationCapstone/search.html");
 }
-login();
+
+//show search page by enter
+var input = document.getElementById("home-search-text");
+input.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        showSearchPage();
+    }
+});
+
+function logout() {
+    localStorage.clear();
+    document.getElementById("icon-show-login").innerHTML =
+            `
+    <i class="fa-solid fa-user"></i>
+    `
+    document.getElementById("login-box").innerHTML =
+            `
+    <div id="home-login">
+    <a
+        style="text-decoration: none; color: #fff;" 
+        href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+        <div name="button" type="button">Login</div>
+    </a>
+    </div>
+
+    `
+}
