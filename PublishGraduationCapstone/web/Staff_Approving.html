@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!-- navbar -->
     <div id="admin-main-nav" onclick=" ShowLogout()">
         <p id="admin-main-nav-title">STAFF MODE</p>
@@ -35,11 +37,15 @@
         <div id="staff-mode-approving-nav-container">
             <div id="staff-mode-approving-nav">
                 <a href="#">APPROVING</a>
-                <a href="Staff_Mode_Approved.html" class="staff-active">APPROVED</a>
+                <a href="Staff_Approved.html" class="staff-active">APPROVED</a>
             </div>
             <div id="staff-mode-approving-new-container">
                 <span><i class="fa-solid fa-circle-plus"></i></span>
-                <span id="staff-mode-approving-new-post-word">New Post</span>
+                <span id="staff-mode-approving-new-post-word"><a href="Staff_EditPost.html">New Post</a></span>
+            </div>
+            <div style="display: none;" id="admin-main-account-list-search-container">
+                <span><i class="fa-solid fa-magnifying-glass"></i></span>
+                <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
             </div>
             <div id="staff-mode-approving-content-container">
                 <table>
@@ -47,46 +53,15 @@
                         <th class="staff-mode-approving-content">Title</th>
                         <th class="staff-mode-approving-content">Date Public</th>
                     </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
+                    <tbody id="table-body">
 
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td class="staff-mode-approving-content-infor">Phần mềm quản lí trường mầm non Tiên Phượng</td>
-                        <td class="staff-mode-approving-content-infor">23/01/2022</td>
-                    </tr>
+                    </tbody>
                 </table>
 
-                <div class="admin-main-account-list-page-number">
-                    <a href="#">«</a>
-                    <a class="active" href="#">1</a>
-                    <a href="#">»</a>
+                <div class="container">
+                    <div class="admin-main-account-list-page-number">
+                        <div id="pagination-wrapper"></div>
+                    </div>
                 </div>
             </div>
         </div>

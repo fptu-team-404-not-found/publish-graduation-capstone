@@ -69,11 +69,13 @@ function takeUserData(callback) {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var res = this.responseText;
+            console.log(res);
             var jsonData = JSON.parse(res);
             for (var i = 0; i < jsonData.length; i++) {
                 var obj = {
-                    'name': jsonData[i].projectName,
-                    'date': jsonData[i].projectDate
+                    'projectId': jsonData[i].projectId,
+                    'projectName': jsonData[i].projectName,
+                    'projectDate': jsonData[i].projectDate
                 };
                 table.push(obj);
             };
@@ -90,8 +92,8 @@ function isEmpty(str) {
 takeUserData(function (table) {
     for (var i = 0; i < table.length; i++) {
         var obj = {
-            'name': jsonData[i].projectName,
-            'date': jsonData[i].projectDate
+            'projectName': table[i].projectName,
+            'projectDate': table[i].projectDate
         };
         userData.push(obj);
     };
@@ -127,8 +129,8 @@ takeUserData(function (table) {
             for (var i = 0; i < userData.length; i++) {
                 if (userData[i].email.indexOf(searchInputText) !== -1) {
                     var obj2 = {
-                        'name': jsonData[i].projectName,
-                        'date': jsonData[i].projectDate
+                        'projectName': userData[i].projectName,
+                        'projectDate': userData[i].projectDate
                     };
                     subTable.push(obj2);
                 }
@@ -217,9 +219,9 @@ takeUserData(function (table) {
         for (var i = 1 in myList) {
             //Keep in mind we are using "Template Litterals to create rows"
             var row = `
-                      <tr class="staff-approving-project-list-infors">
-                        <td class="staff-approving-project-list-table-title">${myList[i].name}</td>
-                        <td class="staff-approving-project-list-table-date">${myList[i].date}</td>
+                      <tr>
+                        <td class="staff-mode-approving-content-infor">${myList[i].projectName}</td>
+                        <td class="staff-mode-approving-content-infor">${myList[i].projectDate}</td>
                       </tr>
                       `
             table.append(row)

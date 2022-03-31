@@ -82,7 +82,7 @@ public class StaffModeResource {
     }
     
     //-- TIENHUYNHTN --// --OK
-    @Path("loadApprovingProject")
+    @Path("/loadApprovingProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String loadApprovingProject() {
@@ -93,16 +93,14 @@ public class StaffModeResource {
             JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", projectDTO.getProjectId());
             jsObj.put("projectName", projectDTO.getProjectName());
-            jsObj.put("projectDate", projectDTO.getCreateDate());
+            jsObj.put("projectDate", projectDTO.getCreateDate().toString());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("listProjectApproving", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
     
     //-- TIENHUYNHTN --// --OK
-    @Path("loadApprovedProject")
+    @Path("/loadApprovedProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String loadApprovedProject() {
@@ -113,11 +111,9 @@ public class StaffModeResource {
             JSONObject jsObj = new JSONObject();
             jsObj.put("projectId", projectDTO.getProjectId());
             jsObj.put("projectName", projectDTO.getProjectName());
-            jsObj.put("projectDate", projectDTO.getCreateDate());
+            jsObj.put("projectDate", projectDTO.getCreateDate().toString());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("listProjectApproved", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 }

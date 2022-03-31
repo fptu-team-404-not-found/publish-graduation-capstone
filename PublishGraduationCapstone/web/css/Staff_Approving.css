@@ -122,6 +122,10 @@ body {
     font-weight: 600;
 }
 
+#staff-mode-approving-new-post-word a {
+    text-decoration: none;
+}
+
 #staff-mode-approving-content-container {
     background-color: #FFFFFF;
     padding: 1em 0em;
@@ -256,5 +260,22 @@ table {
     background-color: #F47124;
     color: #FFFFFF;
     cursor: pointer;
+}
+
+.admin-main-account-list-page-number button {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number button.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number button:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
 }
 /*------------------------------------------------------------------*/
