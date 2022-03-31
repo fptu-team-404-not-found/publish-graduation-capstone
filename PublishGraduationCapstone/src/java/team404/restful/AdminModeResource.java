@@ -91,7 +91,7 @@ public class AdminModeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteUpcoming(String object) { 
         Gson gson = new Gson();
-        UpcomingProjectDTO upcoming = gson.fromJson(object, UpcomingProjectDTO.class);
+        String upcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(upcoming);
         //upcoming la con Upcoming da lay ve. Can xoa no trong database

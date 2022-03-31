@@ -230,16 +230,14 @@ takeUserData(function (table) {
 
         for (var i = 1 in myList) {
             //Keep in mind we are using "Template Litterals to create rows"
+            var fake = JSON.stringify(myList[i].projectId);
             var row = `
                         <tr class="admin-main-account-list-table-info-container">
                             <td class="admin-main-account-list-table-info">${myList[i].projectName}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectLocation}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDate}</td>
                             <td class="admin-main-account-list-table-info">${myList[i].projectDescription}</td>
-                            <form>
-                            var fake = JSON.stringify(${myList[i]});
-                            <td><button id="delete-button" value="Delete" onclick="deleteUpcoming(fake)"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </form>
+                            <td><button id="delete-button" value="Delete" onclick="deleteUpcoming(${fake})"><i class="fa-solid fa-trash-can"></i></button></td>
                         </tr>
                       `
             table.append(row)
