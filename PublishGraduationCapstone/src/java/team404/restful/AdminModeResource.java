@@ -67,7 +67,6 @@ public class AdminModeResource {
             }
         }
         
-        //code day nha Dat
     }        
             
 
