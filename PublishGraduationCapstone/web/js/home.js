@@ -108,7 +108,6 @@ function showHightLight() {
                 </div>
 
                 `
-
                 projects.push(project);
             });
             listProject.innerHTML = projects.join('');
@@ -132,11 +131,9 @@ function projectRedirect(div) {
 }
 
 
-function showUpcoming(callback) {
+function showUpcoming() {
     var xhttp = new XMLHttpRequest();
     var api = "/PublishGraduationCapstone/api/project/getUpcomingProjects";
-    var jsonData = "";
-    let comingProjects = new Array();
     xhttp.open("GET", api);
     xhttp.send();
     xhttp.onreadystatechange = function () {
@@ -147,96 +144,34 @@ function showUpcoming(callback) {
             } catch (e) {
                 alert(e);
             }
+            const listUpcoming = document.querySelector('#right-upcoming-project-all');
+            let comingProjects = new Array();
 
-            const listComingProject = document.querySelector('#upcomming-project-img');
-            var arrayLenght = jsonData.getUpcomingProjects.length;
-            if (arrayLenght > 8)
-                arrayLenght = 8;
+            var arrayLenght = jsonData.length;
+            if (arrayLenght > 5)
+                arrayLenght = 5;
             else
-                arrayLenght = jsonData.getUpcomingProjects.length;
+                arrayLenght = jsonData.length;
 
             for (var i = 0; i < arrayLenght; i++) {
-                var counter = jsonData.getUpcomingProjects[i];
+                var counter = jsonData[i];
 
-                var project =
-                        `
-                        <div class="upcoming-img" onclick="showThisUpcoming(this)">
-                            <div class="upcoming-img-container">
-                                <p class="upcoming-text-img">${counter.projectName}</p>
-                                <p class="upcoming-img-line"></p>
-                                <p class="upcoming-img-team">TEAM NAME ???</p>
-                                <p class="upcoming-img-content">${counter.projectDescription}</p>
-                                <p class="upcoming-img-more">More...</p>
-                                <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
-                            </div>
-                            <img class="hightlight-project-img-container" src="${counter.projectImage}">
-                        </div>    
-                    `
+                var project = `
+                <div class="right-upcoming-project">
+                <p class="right-upcoming-project-date">${counter.projectDate}</p>
+                <span class="right-upcoming-project-place-icon"><i class="fa-solid fa-location-dot"></i></span>
+                <span class="right-upcoming-project-place">${counter.projectLocation}</span>
+                <p class="right-upcoming-project-topic">${counter.projectName}</p>
+                </div>
+                `
+
                 comingProjects.push(project);
-            }
-            ;
-            listComingProject.innerHTML = comingProjects.join('');
-
-            const firstComingProject = document.querySelector('#upcoming-content-big');
-            var bigProject = `
-            <p id="upcoming-comingUp">Coming Project Defense Session</p>
-            <p id="upcoming-line"></p>
-            <p id="upcoming-day">${jsonData.getUpcomingProjects[0].projectDate}</p>
-            <p id="upcoming-place">${jsonData.getUpcomingProjects[0].projectLocation}</p>
-            <p id="upcoming-name">${jsonData.getUpcomingProjects[0].projectName}</p>
-            <p id="upcoming-intro">${jsonData.getUpcomingProjects[0].projectDescription}</p>
-            `
-            firstComingProject.innerHTML = bigProject;
-
-            const firstComingImage = document.querySelector('#upcoming-img-big');
-            var bigImage = `
-                <img class="upcoming-img-big" src="${jsonData.getUpcomingProjects[0].projectImage}">
-            `
-            firstComingImage.innerHTML = bigImage;
-
-            if (callback)
-                callback(jsonData.getUpcomingProjects);
+            };
+            listUpcoming.innerHTML = comingProjects.join('');
         }
     };
 }
-
-var comingProjects;
-
-console.log(showUpcoming(function (jsonData) {
-    comingProjects = jsonData;
-}));
-
-function showThisUpcoming(div) {
-    var thisProjectId = div.querySelector('.upcoming-img-id').innerText;
-
-    var i = 0;
-    while (thisProjectId != comingProjects[i].projectId) {
-        i++;
-    }
-
-    thisProjectDate = comingProjects[i].projectDate;
-    thisProjectLocation = comingProjects[i].projectLocation;
-    thisProjectName = comingProjects[i].projectName;
-    thisProjectDescription = comingProjects[i].projectDescription;
-    thisProjectImage = comingProjects[i].projectImage;
-
-    const thisComingProject = document.querySelector('#upcoming-content-big');
-    var bigProject = `
-    <p id="upcoming-comingUp">Coming Project Defense Session</p>
-    <p id="upcoming-line"></p>
-    <p id="upcoming-day">${thisProjectDate}</p>
-    <p id="upcoming-place">${thisProjectLocation}</p>
-    <p id="upcoming-name">${thisProjectName}</p>
-    <p id="upcoming-intro">${thisProjectDescription}</p>
-    `
-    thisComingProject.innerHTML = bigProject;
-
-    const thisComingImage = document.querySelector('#upcoming-img-big');
-    var bigImage = `
-        <img class="upcoming-img-big" src="${thisProjectImage}">
-    `
-    thisComingImage.innerHTML = bigImage;
-}
+showUpcoming();
 
 
 function startup() {

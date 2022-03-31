@@ -158,7 +158,7 @@ public class ProjectResource {
     }
 
     //-- TIENHUYNHTN --// //OK
-    @Path("/bookmark")
+   @Path("/bookmark")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String bookmark(
