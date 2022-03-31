@@ -120,7 +120,7 @@ body {
 #admin-main-account-list-add {
     display: flex;
     margin-left: 11.5em;
-    margin-top: 2em;
+    margin-top: 1.5em;
 }
 
 #admin-main-supervisor-add {
@@ -247,6 +247,40 @@ body {
     background-color: #ddd;
     border-radius: 50%;
 }
+
+#admin-main-account-list-table-container {
+    width: 60%;
+    margin: auto;
+    margin-top: 0.6em;
+    border-collapse: collapse;
+}
+
+#admin-main-account-list-table {
+    background-color: #F47124;
+    color: #FFFFFF;
+}
+
+#admin-main-account-list-table-title-id {
+    padding: 0.4em;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+#admin-main-account-list-table-title-post-ban {
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.admin-main-account-list-infors {
+    background-color: #eeeeee67;
+    color: #F47124;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.admin-main-account-list-table-id {
+    padding: 0.4em;
+}
+
 /* ------------------------------------------------------------------------*/
 #user-main-small-control {
     display: none;
@@ -290,8 +324,24 @@ body {
     color: #FFFFFF;
     cursor: pointer;
 }
-/*------------------------------------------------------------------*/
 
+.admin-main-account-list-page-number button {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number button.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number button:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
+}
+/*------------------------------------------------------------------*/
 
 
 
