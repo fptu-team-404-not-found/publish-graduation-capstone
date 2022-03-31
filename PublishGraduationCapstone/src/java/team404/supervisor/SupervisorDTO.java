@@ -15,6 +15,7 @@ public class SupervisorDTO {
     private boolean status;
     private AccountDTO user;
     private ProjectDTO project;
+    private String email;
 
     public SupervisorDTO() {
         supervisorId = "";
@@ -37,6 +38,16 @@ public class SupervisorDTO {
         this.user = user;
         this.project = project;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+    
     
     /**
      * @return the supervisorId
@@ -134,8 +145,6 @@ public class SupervisorDTO {
 
     @Override
     public String toString() {
-        return "SupervisorDTO{" + "supervisorId=" + supervisorId + ", supervisorName=" + supervisorName + ", supervisorImage=" + supervisorImage + ", information=" + information + ", postion=" + postion + ", status=" + status + ", user=" + user + ", project=" + project + '}';
+        return "SupervisorDTO{" + "supervisorId=" + supervisorId + ", supervisorName=" + supervisorName + ", supervisorImage=" + supervisorImage + ", information=" + information + ", postion=" + postion + ", status=" + status + ", user=" + user + ", project=" + project + ", email=" + email + '}';
     }
-    
-    
 }

@@ -49,11 +49,7 @@ public class ProjectResource {
             jsArr.add(jsObj);
         }
 
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("getUpcomingProjects", jsArr);
-
-        String result = jsObj.toJSONString();
-        return result;
+        return jsArr.toJSONString();
     }
 
     @Path("/getHighlightProjects")

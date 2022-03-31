@@ -10,17 +10,27 @@ function login() {
         document.getElementById("login-box").innerHTML =
             `
             <div id="user-main-small-control">
+            <a href="User_Profile.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-name">${username}</p>
+            </a>
+            <a href="User_Main.html" style="text-decoration: none;  color: #fff;">
             <p id="user-main-small-bookmark"><i class="fa-solid fa-bookmark user-main-small-bookmark-icon"></i>Bookmark</p>
+            </a>
             <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #fff;" onclick="logout()">
             <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
             </a>
             </div>
             `
+        document.getElementById("project-comment-img").innerHTML =
+        `
+            <img id="project-comment-img-1" src="${picture}" alt="">
+        `
+    }
+    else{
+        document.getElementById("project-comment-img").style.display = "none"
     }
 }
 login();
-
 
 function showLogin() {
     var hidden = document.getElementById('login-box');
@@ -223,7 +233,7 @@ function showComment() {
             for (var i = jsonData.commentsOfProject.length - 1; i >= 0; i--) {
                 var counter = jsonData.commentsOfProject[i];
                 var project = `
-                    <div id="project-commented-container">
+                    <div class="project-commented-container">
                         <span id="project-commented-img"><img id="project-commented-img-1" src="${counter.userAva}"
                                 alt="ava img"></span>
                         <span id="project-commented-text">${counter.userName}</span>
@@ -235,10 +245,15 @@ function showComment() {
                 projects.push(project);
             }
             listProject.innerHTML = projects.join('');
+            countComment();
         }
     };
 }
 showComment();
+
+
+var slideIndex = 1;
+
 
 function showSharePostList() {
     var xhttp = new XMLHttpRequest();
@@ -269,27 +284,48 @@ function showSharePostList() {
                 var counter = jsonData.showSharePostList[i];
                 var project =
                     `
-                    <div class="project-sharing-experience-container" onclick="sharePostRedirect(this)">
-                    <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none">
+                    <div class="project-sharing-experience-container  animate__animated animate__zoomIn" onclick="sharePostRedirect(this)"  >
+                    <a href="http://localhost:8084/PublishGraduationCapstone/Sharing_Main.html" style="text-decoration: none; color: black;" >
                         <div id="project-sharing-experience-img-container">
-                        <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
+                            <img id="project-sharing-experience-img" src="${counter.Avatar}" alt="">
                         </div>
                         <div id="project-sharing-experience-text-container">
-                        <p>${counter.title}</p>
-                        <p class="project-sharing-experience-text-viewmore">View more...</p>
+                            <h3>${counter.authorName}</h3>
+                            <p class="project-sharing-experience-text-share">${counter.title}</p>
+                            <p class="project-sharing-experience-text-viewmore">View more...</p>
                         </div>
                         <p class="share-id" style="display: none">${counter.postId}</p>
                     </a>
                     </div>
-                    
                 `
                 projects.push(project);
             };
             listProject.innerHTML = projects.join('');
+            showDivs(slideIndex);
         }
     };
+
 }
 showSharePostList();
+
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("project-sharing-experience-container");
+
+    if (n > x.length) { slideIndex = 1 }
+    if (n < 1) { slideIndex = x.length };
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex - 1].style.display = "block";
+}
+
+
 
 //redirect to project 
 function projectRedirect(div) {
@@ -333,30 +369,110 @@ function logout() {
 }
 
 function writeComment() {
-    var xhttp = new XMLHttpRequest();
-    var api = "/PublishGraduationCapstone/api/project/commentOnProject";
-    var txtCommentBox = document.getElementById("project-comment-text").value;
     var userMail = localStorage.getItem("email");
-    if(userMail == null){
-        alert("Please login before comment!")
+    if(userMail == null || userMail == ''){
+        alert("Please login before comment!");
     }
-    var param = "projectId="+projectId;
-    console.log("param"+param)
-    console.log("box: "+ txtCommentBox + "mail: "+ userMail+"projectID: " + projectId)
-    xhttp.open("POST", api);
-    xhttp.send();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            var res = this.responseText;
-            try {
-               // var jsonData = JSON.parse(res);
-            } catch (e) {
-                alert(e);
-            }
-
-
+    else {
+        document.forms['commentForm']['email'].value = userMail; 
+        document.forms['commentForm']['projectId'].value = projectId;
+    
+        var txtCommentBox = document.getElementById("project-comment-text").value;
+        console.log('commentContent: ' + txtCommentBox);
+    
+        var form = document.getElementById("commentForm");
+        var formData = new FormData(form);
+        var api = "/PublishGraduationCapstone/api/project/commentOnProject";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", api);
+        xhttp.send(formData);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var res = this.responseText;
+                console.log("rs: " + res);
+                try {
+                    if(res == '')
+                    {
+                        document.getElementById("project-comment-text").value = ''
+                        showComment();
+                    }
+                    else{
+                        document.getElementById("project-comment-text").value = ''
+                        alert("This word: "+res+" has been banned!!!");
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            };
         };
-
     }
 };
+
+function countComment() {
+    var cmtcount = document.getElementsByClassName("project-commented-container")
+    if (cmtcount.length == 0) {
+        document.getElementById("project-comment-count").innerHTML = "There is no comment hớ nì"
+    } else {
+        if (cmtcount.length == 1) {
+            document.getElementById("project-comment-count").innerHTML = cmtcount.length + " comment"
+        } else {
+            document.getElementById("project-comment-count").innerHTML = cmtcount.length + " comments"
+        }
+    }
+
+}
+//show comment by enter
+var inputBox = document.getElementById("project-comment-text");
+inputBox.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+        writeComment();
+    }
+});
+
+
+function bookmark() {
+    var userMail = localStorage.getItem("email");
+    if(userMail == null || userMail == ''){
+        alert("Please login before bookmark this project!");
+    }
+    else {
+        document.forms['bookmarkForm']['email'].value = userMail; 
+        document.forms['bookmarkForm']['projectId'].value = projectId;
+    
+        var form = document.getElementById("bookmarkForm");
+        var formData = new FormData(form);
+        var api = "/PublishGraduationCapstone/api/project/bookmark";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("POST", api);
+        xhttp.send(formData);
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var res = this.responseText;
+                console.log("rs: " + res);
+                try {
+                    if(res == "Added to favorite")
+                    {
+                        localStorage.setItem("bookmark", "on");
+                        checkbookmark();
+                    }
+                    else{
+                        localStorage.setItem("bookmark", '');
+                        checkbookmark();
+                    }
+                } catch (e) {
+                    alert(e);
+                }
+            };
+        };
+    }
+};
+
+function checkbookmark(){
+    var flag = localStorage.getItem("bookmark");
+    if (flag != null || flag != ''){
+        document.getElementById("bookmark").style.opacity = "1";
+        document.getElementById("bookmark").style.backgroundColor = "rgb(205,238,238)";
+        document.getElementById("iconBookmark").style.color = "red";
+    }
+}
 

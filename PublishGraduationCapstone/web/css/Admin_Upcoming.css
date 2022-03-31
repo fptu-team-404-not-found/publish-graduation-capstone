@@ -174,27 +174,76 @@ body {
 }
 
 /* Post list table */
+table {
+    width: 90%;
+    margin-top: 0.8em;
+    border-collapse: collapse;
+    text-align: left;
+}
 #admin-main-account-list-table {
-    display: flex;
-    width: 80%;
     background-color: #F47124;
-    margin-top: 1%;
-    padding: 0.6%;
-    border-radius: 1em;
+    padding: 0.6em;
     font-size: 80%;
     color: #FFFFFF;
     font-weight: 700;
     letter-spacing: 0.06em;
-    justify-content: space-evenly;
+}
+
+#delete-button {
+    margin-left: 0.8em;
+    margin-right: -0.5em;
+    border: none;
+    padding: 0.4em;
+    font-size: 100%;
+    color: rgba(236, 53, 53, 0.603);
+}
+
+#delete-button:hover {
+    color: rgb(236, 53, 53);
+    cursor: pointer;
 }
 
 #admin-main-post-list-infor-container {
-    width: 80%;
+    width: 85%;
     margin-top: 0.5%;
     font-size: 70%;
     color: #F47124;
     letter-spacing: 0.06em;
 }
+
+.admin-main-account-list-table-info {
+    padding: 0.5em;
+    border-right: 1px solid #ddd;
+    background-color: #ffffff8f;
+    font-size: 90%;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-main-account-list-table-info:last-child {
+    border: none;
+}
+
+.admin-main-account-list-table-title {
+    padding: 0.5em;
+}
+
+.admin-main-account-list-table-title:first-child {
+    padding: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+.admin-main-account-list-table-title:last-child {
+    padding: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+}
+
+.admin-main-account-list-table-info-container {
+    font-size: 80%;
+    margin-top: 1em;
+}
+
 
 .admin-main-post-list-infor-id {
     padding: 0.4em 1.2em;
@@ -361,3 +410,20 @@ body {
     cursor: pointer;
 }
 /*------------------------------------------------------------------*/
+
+.admin-main-account-list-page-number button {
+    color: black;
+    padding: 12px 18px;
+    text-decoration: none;
+}
+
+.admin-main-account-list-page-number button.active {
+    background-color: #F47124;
+    color: white;
+    border-radius: 50%;
+}
+
+.admin-main-account-list-page-number button:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 50%;
+}

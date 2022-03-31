@@ -1,4 +1,3 @@
-
 function ShowLogout() {
     var logOut = document.getElementById('user-main-small-control');
     if (logOut.style.display == 'none') {
@@ -87,7 +86,6 @@ function isEmpty(str) {
     return (!str || 0 === str.length);
 }
 
-console.log("lala" + userData);
 
 takeUserData(function (table) {
     for (var i = 0; i < table.length; i++) {
@@ -97,7 +95,8 @@ takeUserData(function (table) {
         };
         userData.push(obj);
     };
-    console.log("lala" + userData);
+    console.log("lala 1");
+    console.log(userData);
 
     var state = {
         'querySet': userData,
@@ -106,7 +105,6 @@ takeUserData(function (table) {
         'rows': 10,
         'window': 5,
     }
-    console.log("lala" + userData);
 
     var searchInput = document.querySelector('#admin-main-account-list-search');
     console.log('search input: ' + searchInput);

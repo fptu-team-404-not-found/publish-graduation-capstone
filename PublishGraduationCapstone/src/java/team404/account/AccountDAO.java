@@ -11,6 +11,8 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.roles.RolesDAO;
 import team404.roles.RolesDTO;
+import team404.supervisor.SupervisorDTO;
+import team404.teammember.TeamMemberDTO;
 import team404.utils.DBHelpers;
 
 public class AccountDAO {
@@ -60,6 +62,111 @@ public class AccountDAO {
         }
 
         return false;
+    }
+
+    public String checkName(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select [Name] "
+                        + "From Account "
+                        + "Where Email = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String name = rs.getNString("Name");
+                    return name;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public String checkPic(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select [Picture] "
+                        + "From Account "
+                        + "Where Email = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String pic = rs.getString("Picture");
+                    return pic;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public void updateNameAndPic(String email, String name, String picture) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "UPDATE Account "
+                        + "SET [Name] = ?, [Picture] = ? "
+                        + "WHERE Email = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, name);
+                stm.setString(2, picture);
+                stm.setString(3, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     public AccountDTO getEmail(String email) {
@@ -149,15 +256,60 @@ public class AccountDAO {
         return false;
     }
 
-    public void createNewAccountAdminMode(String email) {
+    public void createNewAccountAdminMode(String email, TeamMemberDTO teamMemberDTO) {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Insert into Account(Email, RoleId) "
-                        + "Values(?, 1) ";
+                        + "Values(?, 1) "
+                        + "Insert into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account) "
+                        + "values(?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
                 stm.setString(1, email);
+                stm.setString(2, teamMemberDTO.getMemberId());
+                stm.setNString(3, teamMemberDTO.getMemberName());
+                stm.setString(4, teamMemberDTO.getMemberAvatar());
+                stm.setString(5, teamMemberDTO.getPhone());
+                stm.setString(6, email);
                 stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public void createSupervisorAccountInAdminMode(String email, SupervisorDTO supervisorDTO) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Insert into Account(Email, RoleId) "
+                        + "Values(?, 1) "
+                        + "INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account) "
+                        + "VALUES(?, ?, ?, ?, ?, ?, ?) ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                stm.setString(2, supervisorDTO.getSupervisorId());
+                stm.setNString(3, supervisorDTO.getSupervisorName());
+                stm.setString(4, supervisorDTO.getSupervisorImage());
+                stm.setNString(5, supervisorDTO.getInformation());
+                stm.setString(6, supervisorDTO.getPostion());
+                stm.setBoolean(7, supervisorDTO.isStatus());
+                stm.setString(8, email);
+                stm.executeUpdate();
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
