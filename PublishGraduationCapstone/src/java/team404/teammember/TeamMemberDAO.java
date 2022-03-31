@@ -315,6 +315,22 @@ public class TeamMemberDAO {
             Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                if(rs != null){
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
 
     
     //-- TIENHUYNHTN --//
