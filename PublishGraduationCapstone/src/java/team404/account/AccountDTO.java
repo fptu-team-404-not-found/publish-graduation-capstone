@@ -11,6 +11,7 @@ public class AccountDTO implements Serializable {
     private String name;
     private String picture;
     private RolesDTO role;
+    private String roleString;
 
     public AccountDTO() {
         email = "";
@@ -24,6 +25,14 @@ public class AccountDTO implements Serializable {
         this.name = name;
         this.picture = picture;
         this.role = role;
+    }
+
+    public String getRoleString() {
+        return roleString;
+    }
+
+    public void setRoleString(String roleString) {
+        this.roleString = roleString;
     }
 
     /**
@@ -84,7 +93,7 @@ public class AccountDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "AccountDTO{" + "email=" + email + ", name=" + name + ", picture=" + picture + ", role=" + role + '}';
+        return "AccountDTO{" + "email=" + email + ", name=" + name + ", picture=" + picture + ", role=" + role + ", roleString=" + roleString + '}';
     }
     
     
