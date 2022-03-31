@@ -99,6 +99,7 @@ body {
     color: #FFFFFF;
     background-color: #F47124;
     font-weight: 500;
+    cursor: pointer;
 }
 
 #staff-mode-approving-new-post-word {
@@ -136,6 +137,47 @@ body {
     width: 96%;
     margin: auto;
     padding: 0.2em;
+}
+/* new table */
+
+table {
+    width: 90%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.staff-mode-approving-content {
+    padding: 0.4em 1em;
+    text-align: left;
+}
+
+.staff-mode-approving-content:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+.staff-mode-approving-content:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+.staff-mode-approving-content-infor {
+    font-size: 80%;
+    border: 1px solid rgba(221, 221, 221, 0.637);
+    padding: 0.4em;
+}
+
+.approve-btn {
+    padding: 0.5em 1em;
+    border: none;
+    margin-left: 1em;
+    border-radius: 0.4em;
+    background-color: #f4702449;
+    letter-spacing: 0.06em;
+}
+
+.approve-btn:hover {
+    background-color: #f47024;
+    color: #FFFFFF;
+    cursor: pointer;
 }
 
 .staff-mode-approving-content-infor-title {
@@ -214,48 +256,3 @@ body {
     background-color: #ddd;
     border-radius: 50%;
 }
-
-/* ------------------------------------------------------------------------*/
-#user-main-small-control {
-    display: none;
-    position: absolute;
-    right: 1em;
-    font-size: 60%;
-    background-color: #ffffffbd;
-    color: #F47124;
-    text-align: center;
-    border-radius: 0 0 0.2em 0.2em;
-    font-size: 700;
-    border: 1px solid #FFFFFF;
-}
-
-.fa-right-from-bracket {
-    margin-right: 0.5em;
-}
-
-#user-main-small-name {
-    padding: 0.6em;
-    border-bottom: 1px solid #F47124;
-    letter-spacing: 0.06em;
-}
-#user-main-small-name:hover {
-    padding: 0.6em;
-    letter-spacing: 0.06em;
-}
-
-#user-main-small-logout {
-    padding: 0.6em;
-    letter-spacing: 0.06em;
-}
-
-#user-main-small-control > p:hover {
-    background-color: #F47124;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-#user-main-small-control > a p:hover {
-    background-color: #F47124;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-/*------------------------------------------------------------------*/
