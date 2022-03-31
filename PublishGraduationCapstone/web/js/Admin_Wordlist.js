@@ -106,6 +106,7 @@ function showCommentByDate(p){
                         class="fa-solid fa-comment-dots"></i>${counter.commentContent}
                 </p>
                 <p class="admin-main-wordlist_right_infor_content_list_mail_modal">${counter.email}</p>
+                <p class="admin-main-wordlist_right_infor_content_list_delete"><i class="fa-solid fa-trash-can"></i></p>
                 </div>
                 `
                 comments.push(comment);
