@@ -313,8 +313,17 @@ INSERT INTO Account( Email, Name, Picture, RoleId)
 VALUES('phuong@gmail.com', N'Nguyễn Lâm Thúy Phượng', 
 'https://scontent.fsgn5-13.fna.fbcdn.net/v/t39.30808-6/272992556_1618574551809609_4963409416272511926_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=0Lz-nM-TtGsAX-E_n4o&_nc_ht=scontent.fsgn5-13.fna&oh=00_AT-4EoXx-86iVmy94EKl36cAOrrcF4VECNDM3LUIUTEFUg&oe=6229D080', 2)
 INSERT INTO Account(Email, Name, Picture, RoleId) 
-VALUES( 'tien@gmail.com', N'Huỳnh Lê Thủy Tiên', 
-'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/264331665_3189718317924473_4855449393009392948_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=174925&_nc_ohc=_7BpD7mr-O4AX9YUpvi&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT_gISL8D5240CqBM7pZiMGJDY5Q7yc03IJ1JurVoDL2SA&oe=62299508', 2)
+VALUES('huynhlethuytien2001@gmail.com', N'Tiên Huỳnh Lê Thủy', 
+'https://lh3.googleusercontent.com/a/AATXAJxOz2xq_cqUCQa0aMhJ0ufyQ52b8-m3N6OtCQc-=s96-c', 1)
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('huynhtien29102001@gmail.com', N'Tiên Huỳnh Lê Thủy', 
+'https://lh3.googleusercontent.com/a-/AOh14GivSG6qVUDb-vgJFXiv1eelRKFNp2lWG6e4V4hT1Q=s96-c', 2)
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('tienhltse151104@fpt.edu.vn', N'Huỳnh Lê Thủy Tiên', 
+'https://lh3.googleusercontent.com/a-/AOh14GjXB27s5UmIkWOXv51Ltl0FUNb1pZGd3sp6_y0jeg=s96-c', 3)
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('tien.huynhlt.tn@gmail.com', N'Tiên Huỳnh', 
+'https://lh3.googleusercontent.com/a-/AOh14GioGvie0EocF6tbw7urOiQ9gFk8k-VaO1q889iG=s96-c', 4)
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES('dat@gmail.com', N'Trần Thành Đạt', 
 'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/72557491_1132682380269336_870149971758809088_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=174925&_nc_ohc=Hwfal_V5z8gAX_W19F4&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT9XtwONf7tLhwG-8wk-eIVp9uMldEnSWGYiS-3Qh8UKxw&oe=624BBB33', 2)
@@ -809,20 +818,10 @@ INSERT INTO Comment(CommentContent, Account , PostId, ProjectId)
 VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', 'bebo@gmail.com', NULL, 'SU20SE02')
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Nhóm rất xuất sắc', 'bebo@gmail.com', NULL, 'SU20SE02')
-
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều từ đồ án này', 'meowmeow@gmail.com', NULL, 'SU78SE14')
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Nhóm rất xuất sắc, đáng khen', 'vanTTN@gmail.com', NULL, 'SU78SE14')
-
-INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
-VALUES (N'Siêu đỉnh', 'meowmeow@gmail.com', 1, 'FA19SE06')
-INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
-VALUES (N'Hay ghê', 'meowmeow@gmail.com', 1, 'FA19SE06')
-INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
-VALUES (N'gà', 'chipchip@gmail.com', 1, 'FA19SE06')
-
-
 INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
 VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 3, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 

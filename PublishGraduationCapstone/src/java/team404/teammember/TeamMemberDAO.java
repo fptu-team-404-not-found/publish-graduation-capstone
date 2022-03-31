@@ -95,13 +95,18 @@ public class TeamMemberDAO {
                     String memberAvatar = rs.getString("MemberAvatar");
                     String phone = rs.getString("Phone");
                     String backupEmail = rs.getNString("BackupEmail");
+                    String email = rs.getString("Account");
 
                     TeamMemberDTO dto = new TeamMemberDTO();
+                    AccountDTO accountDTO = new AccountDTO();
+                    accountDTO.setEmail(email);
+                    
                     dto.setMemberId(studentId2);
                     dto.setMemberName(memberName);
                     dto.setMemberAvatar(memberAvatar);
                     dto.setPhone(phone);
                     dto.setBackupEmail(backupEmail);
+                    dto.setUser(accountDTO);
                     return dto;
                 }
             }
@@ -250,6 +255,48 @@ public class TeamMemberDAO {
                 Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        return null;
+    }
+    
+    //-- TIENHUYNHTN --//
+    public List<String> getStudentId() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select StudentId "
+                        + "From TeamMember ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<String> list = new ArrayList<>();
+
+                while (rs.next()) {
+                    String studentId = rs.getString("StudentId");
+
+                    list.add(studentId);
+                }
+
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
         return null;
     }
 }
