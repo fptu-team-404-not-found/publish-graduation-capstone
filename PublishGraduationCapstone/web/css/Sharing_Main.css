@@ -144,8 +144,29 @@ body {
 
 #sharing-main-infor {
     background-color: #FFFFFF;
-    padding: 1% 2%;
+    padding: 1% 1%;
     border-bottom: 1px solid #C4C4C4;
+}
+
+.sharing-main-home {
+    color: #ddd;
+    margin-right: 1em;
+}
+
+.sharing-main-home:hover {
+    color: #F47124;
+}
+
+.fa-angles-right {
+    font-size: 60%;
+    margin-right: 1em;
+    color: rgb(153, 152, 152);
+}
+
+.sharing-main-project-title {
+    font-size: 80%;
+    letter-spacing: 0.08em;
+    color: rgb(153, 152, 152);
 }
 
 #sharing-main-title {
@@ -666,7 +687,7 @@ body {
 }
 /*--------------------------------------------------------------------------*/
 #sharing-main-infor-container-box {
-    padding-top: 1em;
+    padding-top: 0.5em;
     border-radius: 1em;
     margin: auto;
     width: 96%;
@@ -768,24 +789,20 @@ body {
     margin-left: 1em;
 }
 .project-sharing-other-viewmore {
-    background-color: #C4C4C4;
-    width: 92%;
     margin-left: 4%;
     padding: 2%;
-    text-align: center;
+    text-align: right;
     letter-spacing: 0.08em;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: #616060;
-    font-size: 90%;
+    font-size: 80%;
     border-radius: 1em;
     margin-top: 2%;
-    margin-bottom: 4%;
     opacity: 70%;
 }
  
 .project-sharing-other-viewmore:hover {
-    background-color: #F47124;
-    color: #FFFFFF;
+    color: #F47124;
     opacity: 90%;
 }
 /*--------------------------------------------------------------------------*/
@@ -844,5 +861,9 @@ body {
 
 #icon-show-login img:hover{
     border: solid 2px #ffffff
+}
+
+.fa-arrow-right {
+    font-size: 80%;
 }
 
