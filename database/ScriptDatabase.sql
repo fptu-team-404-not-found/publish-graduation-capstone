@@ -1240,3 +1240,7 @@ Select p.ProjectId, p.ProjectName, p.ProjectAva
 From TeamMember tm inner join Project p 
 on tm.ProjectId = p.ProjectId
 Where tm.Account = 'phuong@gmail.com'
+
+select * 
+from Project
+where ProjectId = 'SU78SE14'
