@@ -16,12 +16,19 @@
 
 <body>
     <!-- navbar -->
-    <div id="admin-main-nav">
+    <div id="admin-main-nav" onclick=" ShowLogout()">
         <p id="admin-main-nav-title">ADMIN MODE</p>
         <p id="admin-main-nav-login">QUANNDD2</p>
-        <p id="admin-main-nav-login-img-container" onclick="logOut()">
+        <p id="admin-main-nav-login-img-container">
             <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
         </p>
+    </div>
+    <div id="user-main-small-control">
+        <p id="user-main-small-name">Nguyễn Đào Đức Quân</p>
+        <a href="/PublishGraduationCapstone/LogoutProcess" style="text-decoration: none;  color: #F47124;"
+            onclick="logout()">
+            <p id="user-main-small-logout"><i class="fa-solid fa-right-from-bracket"></i>Log Out</p>
+        </a>
     </div>
 
     <!-- menu dọc trái -->

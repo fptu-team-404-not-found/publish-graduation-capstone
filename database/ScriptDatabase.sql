@@ -350,11 +350,20 @@ VALUES
 
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES
+('huytmse150802@fpt.edu.vn', NULL, '', 2),
+('minhldgse150911@fpt.edu.vn', NULL, '', 2),
+('trungtdhse151132@fpt.edu.vn', NULL, '', 2),
+('linhdase151281@fpt.edu.vn', NULL, '', 2),
+('baoncse151278@fpt.edu.vn', NULL, '', 2)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES
 ('lehuynhduc@gmail.com', NULL, '', 2),
 ('vohuuloc@gmail.com', NULL, '', 2),
-('nguyenduchuy@gmail.com', NULL, '', 2),
-('nguyendoanquang@gmail.com', NULL, '', 2),
-('dangtrannam@gmail.com', NULL, '', 2)
+('ndoanquang@gmail.com', NULL, '', 2),
+('dangtrannam@gmail.com', NULL, '', 2),
+('nguyenduchuy@gmail.com', NULL, '', 2)
+
 
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account ) 
 VALUES
@@ -437,22 +446,54 @@ Null,
 2,
 6)
 
----Project 1
+
 INSERT INTO Project
-(ProjectId, ProjectName, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId, SemesterId) 
+(ProjectId, ProjectName,VideoUrl,IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId,SemesterId) 
 values
-(
-'SP19SE04',
-'Project Siu Chats',
-N'Đây là một project mang đến chất lượng về mặt thiết kế lẫn nội dung và performance',
-null,
-null,
-140, 
-'Ngoc Thang',
-Null,
-'https://vti-solutions-assets.s3.ap-southeast-1.amazonaws.com/wp-content/uploads/2021/10/08095533/Human-Intelligence-Can-Fix-AI-Shortcomings-1.jpg',
+('SP20002',
+'Babysitter in Demand',
+'https://www.youtube.com/embed/Ebdn6RMP9W8',
+
+'The application is developed based on the idea of ​​needing a babysitter at a specific time and can be repeated in a cycle. The key to this application is towards ensuring trust for parents to be able to hire a reliable, qualified nanny to care for their children seasonally for a minimum of 1 hour to a maximum. a few hours due to busy work, they have to attend events or parties. The application also conducted a survey with about 100 parents in Ho Chi Minh City. HCM to provide orientation for the application. The application requires both parents and caregivers to register at the center and be authenticated to enter the system.',
+
+'<p style="text-align:left; width: 100%; margin:auto; text-indent: 30px;">On the application, the exchange between
+        parents and nannies must go through an authentication mechanism to ensure reliability. The application provides
+        a nanny suggestion mechanism based on the relationship of the members of the system in the form of a connection
+        – circle. The system recommends a process only for parents to find nannies by time and through trust to send
+        invitations.</p>
+    <p style="width:50%; text-align:center; margin: auto"><img alt=""
+            src="https://media.credencys.com/wp-content/uploads/2019/05/on-demand-baby-sitter-app.jpg"
+            style="width:50%" /></p>
+    <p style="text-align:center; font-style: italic; width: 80%; margin:auto">Babysitter in Demand App</p>
+    <p style="text-align:left; width: 100%; margin:auto; text-indent: 30px;">Once both parties accept the transaction
+        will be recorded. The system keeps tracking until the actual execution takes place. When the time comes for
+        care, the nanny comes to the house with a specific address and is authenticated by the parents through the
+        information on the application along with scanning the code generated on the nanny application to be able to
+        trust the child to nanny. When the care period is completed, the process must be similar.</p>
+    <p style="text-align:left; width: 100%; margin:auto; text-indent: 30px;">The application performs the following functions: Manage nannies and parents along with the number of children
+        they have; Implement tracking process of finding nannies from start to finish; Recommend to parents reliable
+        nannies based on circle; Ensure all transactions are recorded and determine where the execution is progressing,
+        etc. Building processes based on actual needs, applying web services technology, front-end processing
+        frameworks. The application uses a mechanism so that the system can run automatically with tasks to handle
+        without user interaction. Applications built on the foundation of Web applications, RESTful Services, ...
+        Building processes based on actual needs, applying web services technology, front-end processing frameworks. The
+        application uses a mechanism so that the system can run automatically with tasks to handle without user
+        interaction. Applications built on the foundation of Web applications, RESTful Services, ... Building processes
+        based on actual needs, applying web services technology, front-end processing frameworks. The application uses a
+        mechanism so that the system can run automatically with tasks to handle without user interaction. Applications
+        built on the foundation of Web applications, RESTful Services, ...</p>
+',
+'<p style="float:left"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/miTShqyWE64" title="YouTube video player" width="485"></iframe></p>
+<p style="float:right; width: 44%; text-indent: 20px">In the future, the team plans to jump ahead with the idea of an application. The system will help too much for many busy family!</p>
+'
+,
+99, 
+'Thuy Tien',
+Null, 
+'https://m.media-amazon.com/images/I/51QcdQu5DDL.jpg',
 2,
-1)
+5)
+
 ---Project 2
 INSERT INTO Project
 (ProjectId, ProjectName, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId,SemesterId) 
@@ -554,7 +595,7 @@ null,
 17,
 'Allison',
 null,
-'https://daihoc.fpt.edu.vn/media/2020/02/event.jpg',
+'http://vir.com.vn/stores/news_dataimages/vananh/112020/20/16/fpt-techday-2020-officially-kicked-off.jpg',
 1,
 8)
 INSERT INTO Project
@@ -686,7 +727,7 @@ Null,
 10, 
 'Josh',
 Null, 
-'https://scontent.fsgn8-2.fna.fbcdn.net/v/t1.6435-9/66086960_324180855138412_4642165623210639360_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OQpz3qUDCUcAX_lCxfX&tn=vVav3Ax8uG2OLcGR&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT8rThBFT9ghmQD17F0jBcD7pXYr9WKWVKBkDXtleb2qhg&oe=623429C3',
+'https://assets.vogue.in/photos/5d2843c4e2f0130008fa5cdb/master/pass/robot.jpg',
 1,
 5)
 --pj17
@@ -713,24 +754,8 @@ N'Trái với quan điểm chung của số đông, Lorem Ipsum không phải ch
 <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing&nbsp;</p>
 ', 
 
-'<table align="center" border="0" cellpadding="1" cellspacing="1" style="height:500px; width:900px">
-	<tbody>
-		<tr>
-			<td>
-			<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/fSoooaWkYAo" title="YouTube video player" width="485"></iframe></p>
-			</td>
-			<td>&nbsp;</td>
-			<td>&nbsp;</td>
-			<td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don&#39;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&#39;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.The generated Lorem Ipsum is therefore always free from repetition,</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+'<p style="float:left"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/fSoooaWkYAo" title="YouTube video player" width="485"></iframe></p>
+<p style="float:right; width: 44%; text-indent: 20px">In the future, the team plans to jump ahead with the idea of an application. The system will help too much for many busy family!</p>
 ',
 100, 
 'Thang',
@@ -742,8 +767,7 @@ Null,
 
 
 INSERT INTO Project_Supervisor(ProjectId, SupervisorID) 
-VALUES('SP19SE04', 'NTH'),
-('SP19SE04', 'TTNV'),
+VALUES
 ('SP21SE10', 'TTNV'),
 ('SU21SE11', 'LVT'),
 ('FA21SE12', 'LHKP'),
@@ -758,12 +782,11 @@ VALUES('SP19SE04', 'NTH'),
 ('SU21SE11', 'VTP'),
 ('SU20SE02', 'KTK'),
 ('SU78SE14', 'NTH'),
-('SU78SE14', 'KTK')
-
-INSERT INTO Project_Supervisor(ProjectId, SupervisorID) 
-VALUES ('SP20001', 'NTH'),
-('SP20001', 'KTK')
-
+('SU78SE14', 'KTK'),
+('SP20001', 'NTH'),
+('SP20001', 'KTK'),
+('SP20002', 'NTH'),
+('SP20002', 'KTK')
 
 -- tới đây rồi 
 INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
@@ -789,10 +812,15 @@ VALUES
 
 ('SE921131', N'Trần Thành Đạt',
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
-'0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com')
+'0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com'),
+
+('SE921132', N'Huỳnh Lê Thủy Tiên',
+'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/259473877_3177840482445590_4096319024506889240_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_ohc=SRAcztyIBu0AX9LWTrF&tn=7cDtuPt63gqAvA51&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-OfLzQ0uB-XRu-SX8wA7U_jJiynTyZlWGi2on4e6tVbA&oe=624C1D58', 
+'0123456789', 'huynhlethuytien2001@gmail.com', 'SU78SE14', 'huynhlethuytien2001@gmail.com')
 
 Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
 values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
+
 
 Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
 values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', '0793808822', 'eva@gmail.com', 'SU19SE05')
@@ -800,7 +828,7 @@ values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b
 INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
 VALUES
 ('DE150243', N'Trần Thị Dịu Hương',
-'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/277550539_1697213743952762_4499989737933364114_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=wC_SeyJjddMAX_IY30H&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT9wufkgycNGEGw-HYfjdZETFrh22lFpJvw2ypxTcaXzsA&oe=624B73F4', 
 '0123456789', NULL, NULL, 'huongttdde150243@fpt.edu.vn'),
 ('SE130137', N'Đặng Thanh Hải',
 'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
@@ -815,6 +843,26 @@ VALUES
 'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
 '0123456789', NULL, NULL, 'khaipnse140528@fpt.edu.vn')
 
+
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
+VALUES
+('SE150802', N'Trần Minh Huy',
+'https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-1/120488705_352274049252875_7105066291976295737_n.jpg?stp=dst-jpg_s320x320&_nc_cat=111&ccb=1-5&_nc_sid=7206a8&_nc_ohc=nrilOIYeP1QAX-nSlVe&_nc_ht=scontent-hkg4-2.xx&oh=00_AT-9B0iQeJ-I-X87w9SxfzKYbRtwSOqgEZdUGfkJoQFJnA&oe=626C40EE', 
+'0123456789', NULL, 'SP20002', 'huytmse150802@fpt.edu.vn'),
+('SE150911', N'Lê Đặng Gia Minh',
+'https://scontent-hkg4-1.xx.fbcdn.net/v/t1.6435-9/87167575_2613428952280149_4369594478776811520_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=cdbe9c&_nc_ohc=SQlqZq5KoM8AX99K-fC&_nc_ht=scontent-hkg4-1.xx&oh=00_AT8-TfFJdAdtgp5QB5FmZozN3riDYSA7tI3wR1JyyBsD7Q&oe=626B05A7', 
+'0123456789', NULL, 'SP20002', 'minhldgse150911@fpt.edu.vn'),
+('SE151132', N'Trần	Duy Hiếu Trung',
+'https://scontent.fsgn13-1.fna.fbcdn.net/v/t39.30808-6/273027458_4907048136019528_5618949838980754756_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=UEbA3XFN7rYAX92KAnx&tn=7cDtuPt63gqAvA51&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-Dsrq9OoejJJ2M-ewV8fuB3HjVFuDQ6NE_m-ZOBCAGUQ&oe=624B9F6F', 
+'0123456789', NULL, 'SP20002', 'trungtdhse151132@fpt.edu.vn'),
+('SE151281', N'Đỗ Anh Linh',
+'https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/61146098_2484603355131238_5798437159358693376_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=BcRbXqJUbPIAX8daYuR&_nc_ht=scontent-hkg4-2.xx&oh=00_AT9opwB2W7tVGmi9Dr6wgt3bIReaXmUdyzOfTo6KKT8Qtw&oe=626D815F', 
+'0123456789', NULL, 'SP20002', 'linhdase151281@fpt.edu.vn'),
+('SE151278', N'Ngô Chí Bảo',
+'https://scontent-hkg4-2.xx.fbcdn.net/v/t1.6435-9/145723589_2585834691714249_237896798135018423_n.jpg?_nc_cat=111&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=vehvkdsa8gAAX9J6E1y&_nc_ht=scontent-hkg4-2.xx&oh=00_AT81VRCYC59X5BCCvHyFzZDC_MRro2AVxM3__wxQDUzVgw&oe=626E327D', 
+'0123456789', NULL, 'SP20002', 'baoncse151278@fpt.edu.vn')
+
+
 INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
 VALUES
 ('SE123456', N'Lê Huỳnh Đức',
@@ -827,7 +875,7 @@ VALUES
 
 ('SE789456', N'Nguyễn Doãn Quang',
 'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
-'0123456789', NULL, 'SP20001', 'nguyendoanquang@gmail.com'),
+'0123456789', NULL, 'SP20001', 'ndoanquang@gmail.com'),
 
 ('SE456789', N'Đặng Trần Nam',
 'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
@@ -846,6 +894,9 @@ VALUES('https://cdn.pixabay.com/photo/2022/02/14/20/09/bird-7013754_960_720.jpg'
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://hcmuni.fpt.edu.vn/Data/Sites/1/media/2019-capstion-project/3.png', 'SP20001')
+
+INSERT INTO ProjectImage(ImageUrl, ProjectId) 
+VALUES('https://media.credencys.com/wp-content/uploads/2019/05/on-demand-baby-sitter-application.jpg', 'SP20002')
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2019/07/14/16/27/pen-4337521_960_720.jpg', 'SU78SE14')
@@ -941,6 +992,116 @@ Null,
 'SP20001')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Vượt qua những bất đồng quan điểm',
+N'<p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin-bottom:1em;">1. Create a safe environment for debate</p>
+    <img style="float: left; padding: 0 1em;" src="https://cafefcdn.com/zoom/260_162/2017/2-1511677129891-0-3-300-585-crop-1511677490758-1511828254239.jpg" alt="">
+    <p style="text-indent: 20px;">
+        According to a report from Survey Monkey, 58% of women and 68% of men say they can voice their opinions without
+        consequences. This means that there is much more that can be improved.
+        There is, of course, the right time and place to raise a dissenting opinion. You should not tell a founder her
+        idea is useless during an investor meeting.
+        Instead, consider carefully where these discussions take place. For example, schedule serious talks, set time
+        limits and talk topics to avoid conflict becoming unmanageable. Feedback should be positive and free of personal
+        feelings and should not be offensive to others. Remember that people accept criticism and debate when it is
+        fact-based and supported by evidence.
+        Although you may think that a peaceful workplace is good, the opposite is true. As Harvard Business Review
+        writer Liane Davey once said, “If you think it is right not to point out what is wrong in order to keep the peace
+        in the company the right thing to do, you are lying to yourself.”
+        “Teams need conflict to work effectively. Conflict allows employees to recognize and face difficult situations,
+        to see problems from different perspectives, and to ensure that solutions are always optimal.” Conflict is not
+        pleasant, but innovations and inventions often originate here.
+    </p>
+    <p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin: 1em 0;">2. Ready to change your mind</p>
+    <img style="width: 50%; float: right; padding: 0 1em;" src="http://static.ybox.vn/2018/1/16/27fcdefe-fa9c-11e7-8e93-56c566ee3692.jpg" alt="">
+    <p style="text-indent: 20px;">
+        Creating a positive debate environment only works if everyone is willing to change their mind.
+        This is not easy. Therefore, Dr. Jim Stone has set out 5 steps for you to have an open debate with people.
+        The first two steps are to acknowledge that we all have our own thoughts, but that we are all human with
+        different lives. We see people with a different mindset as enemies, and we fall into hostility toward them.
+        Instead, think about the things we have in common, instead of our differences. Step two is an enhancement of
+        step one, and allows you to see the problem from someone else point of view.
+        Next, make sure everyone feels safe arguing. If you want the other person to speak for themselves, you have to
+        make them feel safe doing so. One of the best things you can do is say right from the start that it is okay to
+        change your mind.
+        The fourth step is to acknowledge the experience of the other person so that they feel that you understand them,
+        that is, do not question the intentions of the other person when they express their thoughts. But there are also
+        a few cases where this is necessary when you present your thoughts to refute what they say.
+        The fifth and final step is to never forget the purpose of the conversation. If you feel you have to speak your
+        mind, make sure people understand you are doing it for the good of the company.
+    </p>
+    <p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin: 1em 0;">3. Be honest in your thoughts</p>
+    <p style="text-indent: 20px;">
+        As the head of the Startup, I may believe I am right – but unless I build consensus within the company, my
+        beliefs are in vain.
+        You must always seek the truth, no matter how your beliefs contradict that truth. In business, this means that
+        your decisions must be based on facts, not on the person presenting that opinion.
+        Great companies have a culture of innovation, fueled by collaboration and the ability to change. The best
+        companies and employees have a curiosity to continually learn and grow – as well as a desire to find better and
+        more productive ways to do things.
+    </p>
+',
+Null, 
+'SE150911', 
+Null,
+2,
+'SP20002')
+
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Sự trưởng thành lớn lên theo Project',
+N'<p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin-bottom:1em;">1. Create a safe environment for debate</p>
+    <img style="float: left; padding: 0 1em;" src="https://cafefcdn.com/zoom/260_162/2017/2-1511677129891-0-3-300-585-crop-1511677490758-1511828254239.jpg" alt="">
+    <p style="text-indent: 20px;">
+        According to a report from Survey Monkey, 58% of women and 68% of men say they can voice their opinions without
+        consequences. This means that there is much more that can be improved.
+        There is, of course, the right time and place to raise a dissenting opinion. You should not tell a founder her
+        idea is useless during an investor meeting.
+        Instead, consider carefully where these discussions take place. For example, schedule serious talks, set time
+        limits and talk topics to avoid conflict becoming unmanageable. Feedback should be positive and free of personal
+        feelings and should not be offensive to others. Remember that people accept criticism and debate when it is
+        fact-based and supported by evidence.
+        Although you may think that a peaceful workplace is good, the opposite is true. As Harvard Business Review
+        writer Liane Davey once said, “If you think it is right not to point out what is wrong in order to keep the peace
+        in the company the right thing to do, you are lying to yourself.”
+        “Teams need conflict to work effectively. Conflict allows employees to recognize and face difficult situations,
+        to see problems from different perspectives, and to ensure that solutions are always optimal.” Conflict is not
+        pleasant, but innovations and inventions often originate here.
+    </p>
+    <p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin: 1em 0;">2. Ready to change your mind</p>
+    <img style="width: 50%; float: right; padding: 0 1em;" src="http://static.ybox.vn/2018/1/16/27fcdefe-fa9c-11e7-8e93-56c566ee3692.jpg" alt="">
+    <p style="text-indent: 20px;">
+        Creating a positive debate environment only works if everyone is willing to change their mind.
+        This is not easy. Therefore, Dr. Jim Stone has set out 5 steps for you to have an open debate with people.
+        The first two steps are to acknowledge that we all have our own thoughts, but that we are all human with
+        different lives. We see people with a different mindset as enemies, and we fall into hostility toward them.
+        Instead, think about the things we have in common, instead of our differences. Step two is an enhancement of
+        step one, and allows you to see the problem from someone else point of view.
+        Next, make sure everyone feels safe arguing. If you want the other person to speak for themselves, you have to
+        make them feel safe doing so. One of the best things you can do is say right from the start that it is okay to
+        change your mind.
+        The fourth step is to acknowledge the experience of the other person so that they feel that you understand them,
+        that is, do not question the intentions of the other person when they express their thoughts. But there are also
+        a few cases where this is necessary when you present your thoughts to refute what they say.
+        The fifth and final step is to never forget the purpose of the conversation. If you feel you have to speak your
+        mind, make sure people understand you are doing it for the good of the company.
+    </p>
+    <p style="font-size: 120%; font-weight: 600; letter-spacing: 0.04em; margin: 1em 0;">3. Be honest in your thoughts</p>
+    <p style="text-indent: 20px;">
+        As the head of the Startup, I may believe I am right – but unless I build consensus within the company, my
+        beliefs are in vain.
+        You must always seek the truth, no matter how your beliefs contradict that truth. In business, this means that
+        your decisions must be based on facts, not on the person presenting that opinion.
+        Great companies have a culture of innovation, fueled by collaboration and the ability to change. The best
+        companies and employees have a curiosity to continually learn and grow – as well as a desire to find better and
+        more productive ways to do things.
+    </p>
+',
+Null, 
+'SE151132', 
+Null,
+2,
+'SP20002')
+
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Đóng bỉm...',
 N'<p><img alt="" src="https://uni.fpt.edu.vn/Data/Sites/1/News/6335/125891036_3636408889731179_7555913294350460710_o.jpg" style="float:left; height:269px; margin:10px; width:400px" /></p>
 <p style="text-indent: 20px; line-height:2;">Bạch thầy, ai rồi cũng sẽ say mê một cái gì đó. Và khi say mê thì người ta sẽ quên cả giờ giấc, đất trời, ăn uống...
@@ -964,6 +1125,56 @@ null,
 'NTH',
 2,
 'SU78SE14')
+
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Succesful - Money',
+N'<p><img alt="" src="https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/272908202_3227262997503338_854943145488623253_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=WY1x0P27cqwAX8YNzKV&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT8mD73ML-oZDg-IgUxUmFzbIn3eOY-VCWHmX92wFOtuqw&oe=624C3B84" style="float:left; height:auto; margin:10px; width:400px" /></p>
+<p style="text-indent: 20px; line-height:2;">Bạch thầy, ai rồi cũng sẽ say mê một cái gì đó. Và khi say mê thì người ta sẽ quên cả giờ giấc, đất trời, ăn uống...
+Con đã từng thấy thầy say mê như thế. Nhưng con lăn tăn là làm sao thầy có thể say mê code đến mức cả gần 5 tiếng đồng hồ mà không ngồi dậy nghỉ ngơi. Con còn nghe đồn thầy đã từng code trong thời gian dài hơn nữa kìa?"
+"Ơ kìa, chính chú nói rằng đã say mê thứ này thì có thể quên thứ khác. 
+Anh quên nghỉ ngơi thì cũng là hợp lẽ thôi mà."
+"Ý con là thậm chí thầy không cần đi vệ sinh luôn á?"
+"Ơ kìa, hồi bé mày đã ngủ ngon cả đêm mà vẫn không làm ướt nệm của má đấy thôi? 
+Đóng bỉm viết code thì có gì sai?
+Vì mục tiêu của mình là chiến không dừng lại để đến đích; thì khó khăn nào chả san bằng, hỉ..."
+"Thầy làm con hoang mang quá, có thật vậy không thầy?"
+"Ta gọi đó là bí thuật, con có thể thử mà, để đi đến tận cùng..."
+* PS: 4h30p code SÁNG CHỦ NHẬT thông trưa không đi tè & ăn trưa đã lên sóng YouTube nha pà kon. 
+Vừa live xong cách đây ít phút...
+Yêu cả nhà 3000 ❤ </p>
+<p style="width:100%; text-align:center; margin-top: 1em; font-size: 150%; font-weight: 600; letter-spacing: 0.08em;">HAPPY CODE - HAPPY MONEY - HAPPY LIFE</p>
+</p>
+',
+NULL, 
+'SE921132', 
+null,
+2,
+'SU78SE14')
+
+INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
+VALUES(N'Đóng bỉm...',
+N'<p><img alt="" src="https://uni.fpt.edu.vn/Data/Sites/1/News/6335/125891036_3636408889731179_7555913294350460710_o.jpg" style="float:left; height:269px; margin:10px; width:400px" /></p>
+<p style="text-indent: 20px; line-height:2;">Bạch thầy, ai rồi cũng sẽ say mê một cái gì đó. Và khi say mê thì người ta sẽ quên cả giờ giấc, đất trời, ăn uống...
+Con đã từng thấy thầy say mê như thế. Nhưng con lăn tăn là làm sao thầy có thể say mê code đến mức cả gần 5 tiếng đồng hồ mà không ngồi dậy nghỉ ngơi. Con còn nghe đồn thầy đã từng code trong thời gian dài hơn nữa kìa?"
+"Ơ kìa, chính chú nói rằng đã say mê thứ này thì có thể quên thứ khác. 
+Anh quên nghỉ ngơi thì cũng là hợp lẽ thôi mà."
+"Ý con là thậm chí thầy không cần đi vệ sinh luôn á?"
+"Ơ kìa, hồi bé mày đã ngủ ngon cả đêm mà vẫn không làm ướt nệm của má đấy thôi? 
+Đóng bỉm viết code thì có gì sai?
+Vì mục tiêu của mình là chiến không dừng lại để đến đích; thì khó khăn nào chả san bằng, hỉ..."
+"Thầy làm con hoang mang quá, có thật vậy không thầy?"
+"Ta gọi đó là bí thuật, con có thể thử mà, để đi đến tận cùng..."
+* PS: 4h30p code SÁNG CHỦ NHẬT thông trưa không đi tè & ăn trưa đã lên sóng YouTube nha pà kon. 
+Vừa live xong cách đây ít phút...
+Yêu cả nhà 3000 ❤ </p>
+<p style="width:100%; text-align:center; margin-top: 1em; font-size: 150%; font-weight: 600; letter-spacing: 0.08em;">HAPPY CODE - HAPPY MONEY - HAPPY LIFE</p>
+</p>
+',
+NULL, 
+null, 
+'NTH',
+2,
+'SP20002')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Đóng bỉm...',
@@ -1015,6 +1226,11 @@ INSERT INTO Comment(CommentContent, Account , PostId, ProjectId)
 VALUES (N'gớt nước mắt mấy fen ơi', 'thang@gmail.com', 4, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Tuyệt hảo quá', 'chipchip@gmail.com', 4, null)
+
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'gớt nước mắt mấy fen ơi', 'thang@gmail.com', null, 'SP20002')
+INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
+VALUES (N'Tuyệt hảo quá', 'chipchip@gmail.com', null, 'SP20002')
 
 INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('SP23SE01', 'Timekeeping management by face recognition in LUG company', N'HỘI TRƯỜNG A', '12h30 - 15/12/2021', N'Có rất nhiều biến thể của Lorem Ipsum mà bạn có thể tìm thấy, nhưng đa số được biến đổi bằng cách thêm các yếu tố hài hước, các từ ngẫu nhiên có khi không có vẻ gì là có ý nghĩa.', 'https://cdn.pixabay.com/photo/2015/11/09/14/43/laptop-1035345_960_720.jpg')
@@ -1240,7 +1456,3 @@ Select p.ProjectId, p.ProjectName, p.ProjectAva
 From TeamMember tm inner join Project p 
 on tm.ProjectId = p.ProjectId
 Where tm.Account = 'phuong@gmail.com'
-
-select * 
-from Project
-where ProjectId = 'SU78SE14'

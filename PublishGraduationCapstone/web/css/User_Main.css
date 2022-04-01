@@ -317,7 +317,8 @@ body {
     color: #ffffff;
     left: 4%;
     letter-spacing: 0.06em;
-    font-size: 80%;
+    font-size: 70%;
+    text-align: left;
 }
 
 .upcoming-img-line {
@@ -331,11 +332,13 @@ body {
 
 .upcoming-img-content {
     position: absolute;
-    bottom: 20%;
+    bottom: 16%;
     font-size: 42%;
     color: #ffffff;
     left: 4%;
     letter-spacing: 0.06em;
+    height: 50px;
+    overflow: hidden;
     text-align: left;
 }
 
