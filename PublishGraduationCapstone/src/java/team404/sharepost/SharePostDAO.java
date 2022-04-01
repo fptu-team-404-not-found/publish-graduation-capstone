@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.states.StatesDAO;
+import team404.states.StatesDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDAO;
@@ -31,7 +33,7 @@ public class SharePostDAO implements Serializable {
         try {
             con = DBHelpers.makeConnection();
             if (con != null) {
-                String sql = "Select PostId, Title, StudentId, SupervisorID "
+                String sql = "Select PostId, Title, StudentId, SupervisorID, StateId, ProjectId "
                         + "From SharePost "
                         + "Where ProjectId = ? ";
                 stm = con.prepareStatement(sql);
@@ -43,10 +45,20 @@ public class SharePostDAO implements Serializable {
 
                 SupervisorDAO supervisorDao = new SupervisorDAO();
                 SupervisorDTO supervisorDto = new SupervisorDTO();
-
+                
+                StatesDAO statesDAO = new StatesDAO();
+                StatesDTO state = new StatesDTO();
+                
+                ProjectDAO projectDAO = new ProjectDAO();
+                ProjectDTO project = new ProjectDTO();
+                
+                
                 while (rs.next()) {
                     int postId = rs.getInt("PostId");
                     String title = rs.getNString("Title");
+                    state = statesDAO.getInforState(rs.getInt("StateId"));
+                    project = projectDAO.getSingleProject(rs.getString("ProjectId"));
+                    
                     teamMemberDto = teamMemberDao.getInforMember(rs.getString("StudentId"));
                     supervisorDto = supervisorDao.getInforSup(rs.getString("SupervisorID"));
 
@@ -55,6 +67,8 @@ public class SharePostDAO implements Serializable {
                     dto.setTitle(title);
                     dto.setStudent(teamMemberDto);
                     dto.setSupervisor(supervisorDto);
+                    dto.setState(state);
+                    dto.setProject(project);
                     list.add(dto);
                 }
                 return list;

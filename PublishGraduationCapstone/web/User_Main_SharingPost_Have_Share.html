@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/User_Main_SharingPost.css">
+    <link rel="stylesheet" href="css/User_Main_SharingPost_Have_Share.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <div id="login-box" style="display: none;">
+    <div id="login-box" style="display: none;" >
         <div id="home-login">
             <a style="text-decoration: none; color: #fff;"
                 href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
@@ -86,24 +86,32 @@
             </div>
         </div>
 
-
         <div id="user-main-container">
-            <p id="user-main-title">Sharing Post</p>
-            <div id="user-main-sharing-havepost-container-box">
-                <div id="user-main-sharing-havepost-container">
-                    <div class="user-main-sharing-havepost-left-img">
-                        <img id="user-main-sharing-havepost-img" src="img/thay-Hoang-img.jpg" alt="">
-                    </div>
-                    <div class="user-main-sharing-havepost-right">
-                        <h3 class="user-main-sharing-havepost-title">BỘ NÃO QUẢN LÍ TRƯỜNG MẦM NON TIÊN PHƯỢNG</h3>
+            <div class="user-main-sharing-nav">
+                <a href="User_Main_SharingPost.html" style="text-decoration: none;">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+                </a>
+                <a href="User_Main_SharingPost.html" style="text-decoration: none;">
+                <p class="user-main-sharing-title-post">BỘ NÃO QUẢN LÍ TRƯỜNG MẦM NON TIÊN PHƯỢNG</p>
+                </a>
+                <div class="user-main-sharing-new-post">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <div id="new-post-button">
+                        <a href="User_Main_SharingPost_EditPost.html" style="text-decoration: none; color: #000;">
+                            <p class="user-main-sharing-new-post-text">New Post</p>
+                        </a>
                     </div>
                 </div>
+            </div>
+            <div id="user-main-sharing-havepost-container-all">
                 <div id="user-main-sharing-havepost-container">
                     <div class="user-main-sharing-havepost-left-img">
-                        <img id="user-main-sharing-havepost-img" src="img/thay-Hoang-img.jpg" alt="">
+                        <img id="user-main-sharing-havepost-img"
+                            src="https://toigingiuvedep.vn/wp-content/uploads/2021/08/nhung-background-book-background-sach-dep-day-an-tuong.jpg"
+                            alt="">
                     </div>
                     <div class="user-main-sharing-havepost-right">
-                        <h3 class="user-main-sharing-havepost-title">BỘ NÃO QUẢN LÍ TRƯỜNG MẦM NON TIÊN PHƯỢNG</h3>
+                        <h3 class="user-main-sharing-havepost-title">CÁCH ĐỂ THÍCH NGHI VỚI TRẢ BÀI ĐẦU GIỜ</h3>
                     </div>
                 </div>
             </div>
@@ -114,8 +122,7 @@
     <div id="footer-home">
         <div id="footer-home-left">
             <h3 id="footer-header-text">FPT UNIVERSITY HCM</h3>
-            <p id="footer-address-text">Lô E2a-7, Đường D1, Khu Công nghệ cao, P.Long Thạnh Mỹ, Tp. Thủ Đức, TP.HCM.
-            </p>
+            <p id="footer-address-text">Lô E2a-7, Đường D1, Khu Công nghệ cao, P.Long Thạnh Mỹ, Tp. Thủ Đức, TP.HCM.</p>
             <div id="footer-phone-text">
                 <span class="footer-icon"><i class="fa-solid fa-phone"></i></span>
                 <span class="footer-text">(028) 7300 5588</span>
@@ -144,7 +151,7 @@
             <span id="footer-copyright-text">2022 by 404</span>
         </div>
     </div>
-    <script src="js/User_Main_SharingPost.js"></script>
+<script src="js/User_Main_SharingPost_Have_Share.js"></script>
 </body>
 
 </html>

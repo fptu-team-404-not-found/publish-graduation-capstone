@@ -84,6 +84,8 @@ public class ShareResource {
             JSONObject jsObj = new JSONObject();
             jsObj.put("postId", sharePostDTO.getPostId());
             jsObj.put("title", sharePostDTO.getTitle());
+            jsObj.put("status", sharePostDTO.getState().getStateName());
+            jsObj.put("projectTitle", sharePostDTO.getProject().getProjectName());
             if (sharePostDTO.getStudent() != null) {
                  jsObj.put("Avatar", sharePostDTO.getStudent().getMemberAvatar());
                  jsObj.put("authorName", sharePostDTO.getStudent().getMemberName());
