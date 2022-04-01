@@ -751,6 +751,19 @@ public class ProjectDAO implements Serializable {
                     }
                     con.commit();
                     if (affectedRows == list.size()) {
+                        con.setAutoCommit(false);
+                        String sqlMember = "Update TeamMember "
+                                + "Set ProjectId = ? "
+                                + "Where StudentId = ? ";
+                        stm = con.prepareStatement(sqlMember);
+                        
+                        List<TeamMemberDTO> listTeam = project.getListMembers();
+                        for (TeamMemberDTO teamMemberDTO : listTeam) {
+                            stm.setString(1, project.getProjectId());
+                            stm.setString(2, teamMemberDTO.getMemberId());
+                            affectedRows += stm.executeUpdate();
+                        }
+                        con.commit();
                         return true;
                     } else {
                         return false;
