@@ -167,11 +167,21 @@ public class UserResource {
         }
     }
 
-//    @Path("/getAlternativeEmail")
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String getAlternativeEmail(
-//            @QueryParam("email") String email) {
-//
-//    }
+    @Path("/getAlternativeEmail")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAlternativeEmail(
+            @QueryParam("email") String email) {
+        TeamMemberDAO teamDao = new TeamMemberDAO();
+        TeamMemberDTO teamDto = teamDao.getBackupEmail(email);
+        JSONArray jsArr = new JSONArray();
+        if(teamDto != null){
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("BackupEmail", teamDto.getBackupEmail());
+            jsArr.add(jsObj);
+        }
+        JSONObject jsObj = new JSONObject();
+        jsObj.put("getAlternativeEmail", jsArr);
+        return jsObj.toJSONString();
+    }
 }
