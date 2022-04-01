@@ -317,11 +317,11 @@ INSERT INTO Account(Email, Name, Picture, RoleId)
 VALUES('huynhlethuytien2001@gmail.com', N'Tiên Huỳnh Lê Thủy', 
 'https://lh3.googleusercontent.com/a/AATXAJxOz2xq_cqUCQa0aMhJ0ufyQ52b8-m3N6OtCQc-=s96-c', 1)
 INSERT INTO Account(Email, Name, Picture, RoleId) 
-VALUES('huynhtien29102001@gmail.com', N'Tiên Huỳnh Lê Thủy', 
-'https://lh3.googleusercontent.com/a-/AOh14GivSG6qVUDb-vgJFXiv1eelRKFNp2lWG6e4V4hT1Q=s96-c', 2)
-INSERT INTO Account(Email, Name, Picture, RoleId) 
 VALUES('tienhltse151104@fpt.edu.vn', N'Huỳnh Lê Thủy Tiên', 
-'https://lh3.googleusercontent.com/a-/AOh14GjXB27s5UmIkWOXv51Ltl0FUNb1pZGd3sp6_y0jeg=s96-c', 3)
+'https://lh3.googleusercontent.com/a-/AOh14GjXB27s5UmIkWOXv51Ltl0FUNb1pZGd3sp6_y0jeg=s96-c', 2)
+INSERT INTO Account(Email, Name, Picture, RoleId) 
+VALUES('huynhtien29102001@gmail.com', N'Tiên Huỳnh Lê Thủy', 
+'https://lh3.googleusercontent.com/a-/AOh14GivSG6qVUDb-vgJFXiv1eelRKFNp2lWG6e4V4hT1Q=s96-c', 3)
 INSERT INTO Account(Email, Name, Picture, RoleId) 
 VALUES('tien.huynhlt.tn@gmail.com', N'Tiên Huỳnh', 
 'https://lh3.googleusercontent.com/a-/AOh14GioGvie0EocF6tbw7urOiQ9gFk8k-VaO1q889iG=s96-c', 4)
