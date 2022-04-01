@@ -161,8 +161,8 @@ public class AdminModeResource {
         String idUpcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(idUpcoming);
-        //upcoming la con Upcoming da lay ve. Can xoa no trong database
-        //code day ne Dat
+        UpcomingProjectDAO upcomingDao = new UpcomingProjectDAO();
+        upcomingDao.deleteUpcomingInAdmin(idUpcoming);
     }
     
     @Path("/approveProject")
@@ -173,8 +173,8 @@ public class AdminModeResource {
         String idProject = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(idProject);
-        //upcoming la con Upcoming da lay ve. Can xoa no trong database
-        //code day ne Dat
+        ProjectDAO projectDao = new ProjectDAO();
+        projectDao.updateState(idProject);
     }
     
     
