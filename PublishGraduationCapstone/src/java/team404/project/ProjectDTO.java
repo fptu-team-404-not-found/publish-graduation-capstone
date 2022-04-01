@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import team404.projectimage.ProjectImageDTO;
 import team404.semester.SemesterDTO;
 import team404.states.StatesDTO;
+import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDTO;
 
 @XmlRootElement(name = "project")
@@ -27,6 +28,7 @@ public class ProjectDTO implements Serializable {
     private SemesterDTO semester;
     private List<ProjectImageDTO> listImages;
     private List<TeamMemberDTO> listMembers;
+    private List<SupervisorDTO> listSupers;
 
     public ProjectDTO() {
         projectId = "";
@@ -258,10 +260,16 @@ public class ProjectDTO implements Serializable {
         this.listMembers = listMembers;
     }
 
+    public List<SupervisorDTO> getListSupers() {
+        return listSupers;
+    }
+
+    public void setListSupers(List<SupervisorDTO> listSupers) {
+        this.listSupers = listSupers;
+    }
+
     @Override
     public String toString() {
-        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + ", listImages=" + listImages + ", listMembers=" + listMembers + '}';
+        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + ", listImages=" + listImages + ", listMembers=" + listMembers + ", listSupers=" + listSupers + '}';
     }
-    
-    
 }

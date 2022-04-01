@@ -1,7 +1,3 @@
-function getOptionValue(sel) {
-    console.log('value: ' + sel.options[sel.selectedIndex].value);
-}
-
 function changeMemberOptionValue(sel) {
     var studentId = sel.options[sel.selectedIndex].value;
     var xhttp = new XMLHttpRequest();
@@ -20,50 +16,52 @@ function changeMemberOptionValue(sel) {
         }
     };
 }
-//var semesterArray = new Array;
-//function takeSemesterData(callback) {
-//    var xhttp = new XMLHttpRequest();
-//    var api = "/PublishGraduationCapstone/api/staff/loadSemester";
-//    xhttp.open("GET", api);
-//    xhttp.send();
-//    var arraySemesterData = new Array;
-//    xhttp.onreadystatechange = function () {
-//        if (this.readyState === 4 && this.status === 200) {
-//            var res = this.responseText;
-//            var jsonData = JSON.parse(res);
-//            for (var i = 0; i < jsonData.length; i++) {
-//                var obj = {
-//                    'semesterId': jsonData[i].semesterId,
-//                    'semesterName': jsonData[i].semesterName
-//                };
-//                arraySemesterData.push(obj);
-//            };
-//            if (callback) callback(arraySemesterData);
-//        }
-//    };
-//}
-//var selectItem = document.querySelectorAll('#staff-edit-post-semester')
-//
-//takeSemesterData(function (arraySemesterData) {
-//    for (let j = 0; j < selectItem.length; j++) {
-//        semesterArray = new Array;
-//        for (var k = 0; k < arraySemesterData.length; k++) {
-//            var obj = {
-//                'semesterId': arraySemesterData[k].semesterId,
-//                'semesterName': arraySemesterData[k].semesterName
-//            };
-//            semesterArray.push(obj);
-//        };
-//    
-//        for (var i = 0; i < semesterArray.length; i++) {
-//            var newOption = document.createElement('option');
-//            var optionText = document.createTextNode(semesterArray[i].semesterName);
-//            newOption.appendChild(optionText);
-//            newOption.setAttribute('value', semesterArray[i].semesterName);
-//            selectItem[j].appendChild(newOption);
-//        }
-//    }
-//})
+
+var semesterArray = new Array;
+function takeSemesterData(callback) {
+   var xhttp = new XMLHttpRequest();
+   var api = "/PublishGraduationCapstone/api/staff/loadSemester";
+   xhttp.open("GET", api);
+   xhttp.send();
+   var arraySemesterData = new Array;
+   xhttp.onreadystatechange = function () {
+       if (this.readyState === 4 && this.status === 200) {
+           var res = this.responseText;
+           var jsonData = JSON.parse(res);
+           for (var i = 0; i < jsonData.length; i++) {
+               var obj = {
+                   'semesterId': jsonData[i].semesterId,
+                   'semesterName': jsonData[i].semesterName
+               };
+               arraySemesterData.push(obj);
+           };
+           if (callback) callback(arraySemesterData);
+       }
+   };
+}
+
+var selectItemss = document.querySelectorAll('#staff-edit-post-semester')
+
+takeSemesterData(function (arraySemesterData) {
+   for (let j = 0; j < selectItemss.length; j++) {
+       semesterArray = new Array;
+       for (var k = 0; k < arraySemesterData.length; k++) {
+           var obj = {
+               'semesterId': arraySemesterData[k].semesterId,
+               'semesterName': arraySemesterData[k].semesterName
+           };
+           semesterArray.push(obj);
+       };
+   
+       for (var i = 0; i < semesterArray.length; i++) {
+           var newOption = document.createElement('option');
+           var optionText = document.createTextNode(semesterArray[i].semesterName);
+           newOption.appendChild(optionText);
+           newOption.setAttribute('value', semesterArray[i].semesterId);
+           selectItemss[j].appendChild(newOption);
+       }
+   }
+})
 
 var supervisorArray = new Array;
 function takeSupervisorData(callback) {
@@ -105,7 +103,7 @@ takeSupervisorData(function (arraySupervisorData) {
             var newOption = document.createElement('option');
             var optionText = document.createTextNode(supervisorArray[i].supervisorName);
             newOption.appendChild(optionText);
-            newOption.setAttribute('value', supervisorArray[i].supervisorName);
+            newOption.setAttribute('value', supervisorArray[i].supervisorId);
             selectItem[j].appendChild(newOption);
         }
     }
@@ -165,12 +163,17 @@ function sendProject() {
         'projectAva': document.querySelector('#staff-edit-post-ava').value,
         'videoUrl': document.querySelector('#staff-edit-post-intro-video').value,
         'introductionContent': document.querySelector('#staff-edit-post-intro-word').value,
-        'details': "",
-        'recap': "",
-        'authorName': "",
+        'details': CKEDITOR.instances.detail.getData(),
+        'recap': CKEDITOR.instances.recap.getData(),
+        'authorName': localStorage.getItem("name"),
         'semester': {
-            'semesterName': document.querySelector('#staff-edit-post').value
+            'semesterId': document.querySelector('#staff-edit-post-semester').value
         },
+        'listSupers':
+        [
+            {'supervisorId': document.querySelector('#super-1').value},
+            {'supervisorId': document.querySelector('#super-2').value},
+        ],
         'listMembers':
         [
             {'memberId': document.querySelector('#id1').value},

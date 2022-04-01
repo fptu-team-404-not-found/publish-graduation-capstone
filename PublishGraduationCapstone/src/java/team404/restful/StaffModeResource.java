@@ -128,16 +128,19 @@ public class StaffModeResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
 //    public void insertProject(String project){
-    public Response insertProject(String project){
+    public String insertProject(String project){
         Gson gson = new Gson();
         ProjectDTO dto = gson.fromJson(project, ProjectDTO.class);
         System.out.println("dto nene: " + dto);
         ProjectDAO dao = new ProjectDAO();
         boolean result = dao.insertProject(dto);
-        if(result == false)
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-        return Response.status(Response.Status.CREATED).build();
+        if (result) {
+            return "Success!";
+        } else {
+            return "Fail!";
+        }
     }
+    
     @Path("/loadSemester")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

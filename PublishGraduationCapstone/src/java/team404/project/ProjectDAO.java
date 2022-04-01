@@ -756,15 +756,35 @@ public class ProjectDAO implements Serializable {
                                 + "Set ProjectId = ? "
                                 + "Where StudentId = ? ";
                         stm = con.prepareStatement(sqlMember);
-                        
+                        int affectedRowss = 0;
                         List<TeamMemberDTO> listTeam = project.getListMembers();
                         for (TeamMemberDTO teamMemberDTO : listTeam) {
                             stm.setString(1, project.getProjectId());
                             stm.setString(2, teamMemberDTO.getMemberId());
-                            affectedRows += stm.executeUpdate();
+                            affectedRowss += stm.executeUpdate();
                         }
                         con.commit();
-                        return true;
+                        if (affectedRowss == listTeam.size()) {
+                            con.setAutoCommit(false);
+                            String sqlSuper = "insert into Project_Supervisor(ProjectId, SupervisorID) "
+                                    + "values (?, ?) ";
+                            stm = con.prepareStatement(sqlSuper);
+                            List<SupervisorDTO> listSuper = project.getListSupers();
+                            int affectedRowsss = 0;
+                            for (SupervisorDTO supervisorDTO : listSuper) {
+                                stm.setString(1, project.getProjectId());
+                                stm.setString(2, supervisorDTO.getSupervisorId());
+                                affectedRowsss += stm.executeUpdate();
+                            }
+                            con.commit();
+                            if (affectedRowsss == listSuper.size()) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        } else {
+                            return false;
+                        }
                     } else {
                         return false;
                     }
