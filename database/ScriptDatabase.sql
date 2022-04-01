@@ -1,5 +1,5 @@
 USE master
-GO 
+GO
 
 IF EXISTS (SELECT * FROM sys.databases WHERE name='SWP391')
 DROP DATABASE SWP391
@@ -340,36 +340,52 @@ INSERT INTO Account( Email, Name, Picture, RoleId)
 VALUES( 'lamthuyloan0303@gmail.com', N'Lâm Thúy Loan', 
 'https://lh3.googleusercontent.com/a/AATXAJz5NVtaYbmz_bsgWJGab3QR41REuCWivrKFLO25=s96-c', 2)
 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES
+('huongttdde150243@fpt.edu.vn', NULL, '', 2),
+('haidtse130137@fpt.edu.vn', NULL, '', 2),
+('khanhncse130527@fpt.edu.vn', NULL, '', 2),
+('cuongncse140042@fpt.edu.vn', NULL, '', 2),
+('khaipnse140528@fpt.edu.vn', NULL, '', 2)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES
+('lehuynhduc@gmail.com', NULL, '', 2),
+('vohuuloc@gmail.com', NULL, '', 2),
+('nguyenduchuy@gmail.com', NULL, '', 2),
+('nguyendoanquang@gmail.com', NULL, '', 2),
+('dangtrannam@gmail.com', NULL, '', 2)
+
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account ) 
 VALUES
 ('KTK', N'Kiều Trọng Khánh', 'https://scontent.fsgn13-1.fna.fbcdn.net/v/t31.18172-8/13662207_272322603140453_8701666325899781861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=abc084&_nc_ohc=jElVkoSIFrAAX8pXBUI&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-vYxg2D5mbOT8dz3tRF3AEc4LiOyaeBEWwgbSGg4W1DA&oe=62480A7A',
-N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 1,'khanhkt@gmail.com'),
+N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 1, 'khanhkt@gmail.com'),
 
 ('LHKP', N'Lâm Hữu Khánh Phương', 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 
-NULL, NULL, 1,'phuonglhk@gmail.com'),
+NULL, NULL, 1, 'phuonglhk@gmail.com'),
 
-('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=q44qqnBRN8AAX9pC9Ak&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT84riyGyTZx3Rd-mugwD_WgQTjvIzlkD1P2M3L5gnKI3g&oe=622FECD7', 
-N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 1,'hoangNT@gmail.com'),
+('NTH', N'Nguyễn Thế Hoàng', 'https://uni.fpt.edu.vn/Data/Sites/1/media/ng%C6%B0%E1%BB%9Di-truy%E1%BB%81n-l%E1%BB%ADa/gi%C3%A1o-l%C3%A0ng-nguy%E1%BB%85n-th%E1%BA%BF-ho%C3%A0ng/123835423_107646594490275_3866158663278802293_o.jpg', 
+N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 1, 'hoangNT@gmail.com'),
 
 ('TTNV', N'Thân Thị Ngọc Vân', 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04',
-'', N'Lecturer at FPT University HCM', 1,'vanTTN@gmail.com'),
+'', N'Lecturer at FPT University HCM', 1, 'vanTTN@gmail.com'),
 
 ('NTT', N'Nguyễn Trọng Tài', 'https://lh3.googleusercontent.com/a-/AOh14GiG-AjMkw2LfRrqtjyBJGssiIA1x6mLuJCxqYYDCA=s64-c',
-NULL, N'Lecturer at FPT University HCM', 1,'taiNT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'taiNT@gmail.com'),
 
 ('VTP', N'Vũ Thanh Phong', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 1,'phongVT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'phongVT@gmail.com'),
 
 ('LVT', N'Lê Vũ Trường', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 0,'truongLV@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 0, 'truongLV@gmail.com'),
 
 ('TVS', N'Thân Văn Sử', 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/151858679_267986801521509_9002274583163747363_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=5mSrCnjhnV4AX9Vq73T&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT8LBvIekLLFPfeUtnD7TUQIyjA2VlXZF2_rRF2MvgNTVQ&oe=624B385F', 
-N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 1,'suTV@gmail.com'),
+N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 1, 'suTV@gmail.com'),
 
 ('TTMN', N'Trương Thị Mỹ Ngọc', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 1,'ngocTTM@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'ngocTTM@gmail.com'),
 ('DNTH', N'Đoàn Nguyễn Thành Hòa', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 1,'hoaDNT@gmail.com')
+NULL, N'Lecturer at FPT University HCM', 1, 'hoaDNT@gmail.com')
 
 INSERT INTO States(StateName) VALUES('Approving')
 INSERT INTO States(StateName) VALUES('Approved')
@@ -385,6 +401,42 @@ INSERT INTO Semester(SemesterName) VALUES('2021-Spring')
 INSERT INTO Semester(SemesterName) VALUES('2021-Summer')
 INSERT INTO Semester(SemesterName) VALUES('2021-Fall')
 INSERT INTO Semester(SemesterName) VALUES('2022-Spring')
+
+
+---Project hoan chinh
+INSERT INTO Project
+(ProjectId, ProjectName,VideoUrl,IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId,SemesterId) 
+values
+('SP20001',
+'Community COVID Market Application',
+'https://www.youtube.com/embed/miTShqyWE64',
+
+'The application was developed based on the requirements of District Doan District 1 - City. Ho Chi Minh City to serve the people of District 1 and small businesses in the traditional markets in the district during the time of social distancing as well as in the future. In this project, the implementation focuses onthe construction of a system that allows small traders to authorize the district union of district 1 to collect orders from people in district 1 placed and deliver goods according to the orders placed in the situation of social distancing or in the situation that the small traders of the traditional market are not convenient in using information technology in their operations. This project is oriented to maintain the traditional market and the small traders in the market with the ability to use information technology can receive and process orders directly through the application. The project facilitates people to buy and order online without needing to manage an account through phone number verification when transacting...',
+
+'<h1 style="text-align: center;">Why to do this capstone project?</h1>
+<p style="width:100%; text-align:center"><img alt="" src="https://hcmuni.fpt.edu.vn/Data/Sites/1/media/2021-huynh-anh/covid-market/screenshot_15.jpg" style="width:50%" /></p>
+<p style="text-align:center; font-style: italic; width: 80%; margin:auto">The website is full of necessary goods for people during the epidemic season. Delivery time depends on the items people order.</p>
+
+<p>FPT University faculty and students collaborated with District 1 (District 1, Ho Chi Minh City) to launch a Covid-19 season market shopping page for residents of District 1, solving the congestion of goods going to the market for the season.</p>
+
+<p style="width:100%; text-align:center"><img alt="" src="https://hcmuni.fpt.edu.vn/Data/Sites/1/media/2021-huynh-anh/covid-market/team-covid.jpg" style="width:50%" /></p>
+
+<p style="text-align:center; font-style: italic; width: 80%; margin:auto">The project implementation team includes Mr. Kieu Trong Khanh (project consultant) - Lecturer majoring in Software Engineering; and a group of software engineering students from FPT University: Le Huynh Duc (K12 - Team Leader), Vo Huu Loc (K13), Nguyen Duc Huy (K12), Nguyen Doan Quang (K13), Dang Tran Nam (K15). )</p>
+
+<p style="text-indent:20px">Mr. Kieu Trong Khanh was the first to approach the project from District 1, then gathered FPT University students to implement. However, at first, you were still quite afraid because the implementation time was too short, and it was during the final exam. But after consulting each other and agreeing that this is a very urgent job for the people, you quickly accepted the project and tried to implement it on schedule.
+<p style="text-indent:20px">During the implementation, the group also encountered a few difficulties because District 1 side changed its requirements continuously to adapt to the epidemic situation. Overcoming all obstacles, the project was finally completed and officially put into use after 3 weeks. Accompanying the project is the extremely important role of lecturer Kieu Trong Khanh, the teacher who made the connection. , generate ideas and directly mentor the student group on the right technologies for the project.<p>
+<p style="text-indent:20px">After the project was put into operation, the group received many positive feedbacks from District 1 as well as an offer to cooperate for a long time. People are also very excited about this project.</p>
+',
+'<p style="float:left"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/miTShqyWE64" title="YouTube video player" width="485"></iframe></p>
+<p style="float:right; width: 44%; text-indent: 20px">In the future, the team plans to jump ahead with the idea of ​​an application called Community Covid Market Application . The system will collect the most accurate F0 data in district 1 and classify it by color representing severity. When accessing the application, people can know the status of their area to be proactive about health care. In addition, the system will help people to order consumer goods from many different places such as supermarkets, convenience stores and many stores associated with the system...</p>
+',
+100, 
+'Thuy Phuong',
+Null, 
+'https://thumbs.dreamstime.com/b/ordering-food-home-using-mobile-application-pandemic-covid-woman-surfing-online-restaurant-ordering-food-home-198721277.jpg',
+2,
+6)
+
 ---Project 1
 INSERT INTO Project
 (ProjectId, ProjectName, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId, SemesterId) 
@@ -708,6 +760,10 @@ VALUES('SP19SE04', 'NTH'),
 ('SU78SE14', 'NTH'),
 ('SU78SE14', 'KTK')
 
+INSERT INTO Project_Supervisor(ProjectId, SupervisorID) 
+VALUES ('SP20001', 'NTH'),
+('SP20001', 'KTK')
+
 
 -- tới đây rồi 
 INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
@@ -731,13 +787,55 @@ VALUES
 'https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-9/117801229_1236226840044384_5312147700656844303_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=zNOOMXb-B4QAX-AUcGu&_nc_ht=scontent.fsgn5-8.fna&oh=00_AT_yrSl9IAmu7Hn5yEbIwyd8JIuuPowS_JgA8c5oO9AKRQ&oe=624BD9C2', 
 '0123456789', 'phuong@gmail.edu.com', 'SU78SE14', 'phuong@gmail.com'),
 
-('SE821131', N'Huỳnh Lê Thủy Tiên',
-'https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/272908202_3227262997503338_854943145488623253_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=wLSlLWzfnckAX84IoQp&_nc_ht=scontent.fsgn5-9.fna&oh=00_AT9aXr4lr3kZ7H067xvCyVpnMbY_2yBE9Ebr8uyNIHSiaQ&oe=622A9D44', 
-'0123456789', 'tien@gmail.edu.com', 'SU78SE14', 'tien@gmail.com'),
-
 ('SE921131', N'Trần Thành Đạt',
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
 '0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com')
+
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
+
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', '0793808822', 'eva@gmail.com', 'SU19SE05')
+
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
+VALUES
+('DE150243', N'Trần Thị Dịu Hương',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'huongttdde150243@fpt.edu.vn'),
+('SE130137', N'Đặng Thanh Hải',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'haidtse130137@fpt.edu.vn'),
+('SE130527', N'Nguyễn Công Khánh',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'khanhncse130527@fpt.edu.vn'),
+('SE140042', N'Nguyễn Chí Cường',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'cuongncse140042@fpt.edu.vn'),
+('SE140528', N'Phạm Ngọc Khải',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'khaipnse140528@fpt.edu.vn')
+
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
+VALUES
+('SE123456', N'Lê Huỳnh Đức',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'lehuynhduc@gmail.com'),
+
+('SE130007', N'Võ Hữu Lộc',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'vohuuloc@gmail.com'),
+
+('SE789456', N'Nguyễn Doãn Quang',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'nguyendoanquang@gmail.com'),
+
+('SE456789', N'Đặng Trần Nam',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'dangtrannam@gmail.com'),
+
+('SE123457', N'Nguyễn Đức Huy',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'nguyenduchuy@gmail.com')
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2017/06/05/07/58/butterfly-2373175_960_720.png', 'SU20SE02')
@@ -757,10 +855,10 @@ INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, Pr
 VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả',
 N'Đây là bài sharing của Rolls-Royce',
 NULL, 
-'SE111111', 
+'SE121212', 
 null,
 2,
-'SU20SE02')
+'SU19SE05')
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Hãy luôn luôn tìm hiểu thứ mới. Với châm ngôn code không chạy hãy đốt nhang cầu ông bà.', N'Đây là bài sharing của Kiều Trọng Khánh', NULL, Null, 'KTK', 2, 'SU20SE02')
 
@@ -779,10 +877,10 @@ N'<p><img alt="" src="https://cdn.pixabay.com/photo/2016/08/07/21/58/lion-157719
 <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing&nbsp;</p>
 ',
 NULL, 
-'SE151478', 
+'SE121212', 
 null,
 2,
-'SU78SE14')
+'SU19SE05')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Đóng bỉm...',
@@ -828,9 +926,9 @@ VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều t�
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Nhóm rất xuất sắc, đáng khen', 'vanTTN@gmail.com', NULL, 'SU78SE14')
 INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
-VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 3, null)
+VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 2, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
-VALUES (N'Thật cảm Động', 'chipchip@gmail.com', 3, null)
+VALUES (N'Thật cảm Động', 'chipchip@gmail.com', 2, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'gớt nước mắt mấy fen ơi', 'thang@gmail.com', 4, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
@@ -844,6 +942,39 @@ INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description]
 VALUES('SP23SE03', 'Smoking People Detection', N'HỘI TRƯỜNG B', '9h30 - 16/12/2021', N'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.', 'https://cdn.pixabay.com/photo/2018/04/13/20/31/city-3317493_960_720.jpg')
 INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
 VALUES('SP23SE04', 'Influencer Marketing Platform', N'HỘI TRƯỜNG A', '7h00 - 18/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE05', 'GSO inventory system', N'HỘI TRƯỜNG B', '7h00 - 19/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE06', 'A web-based classified ads app', N'HỘI TRƯỜNG A', '7h00 - 20/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE07', 'SMS notifications as a way to report crimes', N'HỘI TRƯỜNG B', '7h00 - 21/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE08', 'Online grading system', N'HỘI TRƯỜNG A', '7h00 - 22/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE09', 'Java tutorials for Android', N'HỘI TRƯỜNG A', '7h00 - 23/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE10', 'Artificial Intelligence and its effects on modern life', N'HỘI TRƯỜNG A', '7h00 - 24/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE11', 'The problems of virtual reality', N'HỘI TRƯỜNG B', '7h00 - 25/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE12', 'Educative mobile apps', N'HỘI TRƯỜNG A', '7h00 - 26/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE13', 'The internet and its future', N'HỘI TRƯỜNG A', '7h00 - 27/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE14', 'Decision support system for student information management', N'HỘI TRƯỜNG A', '7h00 - 28/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE15', 'The effect of intelligent cars on our transport system', N'HỘI TRƯỜNG A', '7h00 - 29/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE16', 'Learning apps for kids', N'HỘI TRƯỜNG B', '7h00 - 30/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE17', 'Intelligent homes', N'HỘI TRƯỜNG A', '9h00 - 30/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE18', 'The apps for booking airline tickets', N'HỘI TRƯỜNG A', '11h00 - 30/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE19', 'Discrete math gaming apps', N'HỘI TRƯỜNG B', '7h00 - 31/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+INSERT INTO UpcomingProject([Id], ProjectName, [Location], [Date], [Description], [Image]) 
+VALUES('SP23SE20', 'Mobile apps for financial forecasts', N'HỘI TRƯỜNG B', '9h00 - 31/12/2021', N'Chúng ta vẫn biết rằng, làm việc với một đoạn văn bản dễ đọc và rõ nghĩa dễ gây rối trí và cản trở việc tập trung vào yếu tố trình bày văn bản. ', 'https://cdn.pixabay.com/photo/2016/02/24/08/41/motherboard-1219352_960_720.jpg')
+
 
 INSERT INTO Sensitive_word(banned_word)
 VALUES
@@ -870,10 +1001,7 @@ Recap = N'<p><img alt="" src="https://pbs.twimg.com/media/D9ZVtE0UEAAee8i?format
 VideoUrl = 'https://www.youtube.com/embed/gIHXLVr44Nw'
 Where ProjectId = 'SU19SE05'
 
-Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
-values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
-Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
-values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', '0793808822', 'eva@gmail.com', 'SU19SE05')
+
 INSERT INTO Project_Supervisor
 Values('SU19SE05','NTH')
 INSERT INTO Project_Supervisor
@@ -1026,4 +1154,7 @@ From Project p
 Where p.ProjectName LIKE N'%a%'
 */
 
-
+Select p.ProjectId, p.ProjectName, p.ProjectAva
+From TeamMember tm inner join Project p 
+on tm.ProjectId = p.ProjectId
+Where tm.Account = 'phuong@gmail.com'
