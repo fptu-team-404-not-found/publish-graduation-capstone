@@ -18,6 +18,8 @@ import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
 import team404.projectimage.ProjectImageDTO;
+import team404.semester.SemesterDAO;
+import team404.semester.SemesterDTO;
 import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
@@ -125,15 +127,30 @@ public class StaffModeResource {
     @Path("/insertProject")
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void insertProject(String project){
-//    public Response insertProject(String project){
+//    public void insertProject(String project){
+    public Response insertProject(String project){
         Gson gson = new Gson();
         ProjectDTO dto = gson.fromJson(project, ProjectDTO.class);
         System.out.println("dto nene: " + dto);
-//        ProjectDAO dao = new ProjectDAO();
-//        boolean result = dao.insertProject(dto);
-//        if(result == false)
-//            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-//        return Response.status(Response.Status.CREATED).build();
+        ProjectDAO dao = new ProjectDAO();
+        boolean result = dao.insertProject(dto);
+        if(result == false)
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+        return Response.status(Response.Status.CREATED).build();
+    }
+    @Path("/loadSemester")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String loadSemester(){
+        SemesterDAO semesterDao = new SemesterDAO();
+        List<SemesterDTO> list = semesterDao.loadSemester();
+        JSONArray jsArr = new JSONArray();
+        for (SemesterDTO semesterDTO : list) {
+            JSONObject jsObj = new JSONObject();
+            jsObj.put("semesterId", semesterDTO.getSemesterId());
+            jsObj.put("semesterName", semesterDTO.getSemesterName());
+            jsArr.add(jsObj);
+        }
+        return jsArr.toJSONString();
     }
 }

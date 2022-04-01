@@ -20,6 +20,50 @@ function changeMemberOptionValue(sel) {
         }
     };
 }
+//var semesterArray = new Array;
+//function takeSemesterData(callback) {
+//    var xhttp = new XMLHttpRequest();
+//    var api = "/PublishGraduationCapstone/api/staff/loadSemester";
+//    xhttp.open("GET", api);
+//    xhttp.send();
+//    var arraySemesterData = new Array;
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState === 4 && this.status === 200) {
+//            var res = this.responseText;
+//            var jsonData = JSON.parse(res);
+//            for (var i = 0; i < jsonData.length; i++) {
+//                var obj = {
+//                    'semesterId': jsonData[i].semesterId,
+//                    'semesterName': jsonData[i].semesterName
+//                };
+//                arraySemesterData.push(obj);
+//            };
+//            if (callback) callback(arraySemesterData);
+//        }
+//    };
+//}
+//var selectItem = document.querySelectorAll('#staff-edit-post-semester')
+//
+//takeSemesterData(function (arraySemesterData) {
+//    for (let j = 0; j < selectItem.length; j++) {
+//        semesterArray = new Array;
+//        for (var k = 0; k < arraySemesterData.length; k++) {
+//            var obj = {
+//                'semesterId': arraySemesterData[k].semesterId,
+//                'semesterName': arraySemesterData[k].semesterName
+//            };
+//            semesterArray.push(obj);
+//        };
+//    
+//        for (var i = 0; i < semesterArray.length; i++) {
+//            var newOption = document.createElement('option');
+//            var optionText = document.createTextNode(semesterArray[i].semesterName);
+//            newOption.appendChild(optionText);
+//            newOption.setAttribute('value', semesterArray[i].semesterName);
+//            selectItem[j].appendChild(newOption);
+//        }
+//    }
+//})
 
 var supervisorArray = new Array;
 function takeSupervisorData(callback) {
