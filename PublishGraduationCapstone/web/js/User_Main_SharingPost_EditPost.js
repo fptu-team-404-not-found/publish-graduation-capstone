@@ -1,4 +1,4 @@
-CKEDITOR.replace('user-main-post-sharing-edit-post-editor', {
+CKEDITOR.replace('editor', {
     extraPlugins: 'justify',
 });
 CKEDITOR.on('instanceLoaded', function (e) {
@@ -18,11 +18,11 @@ var projectIdUser = sessionStorage.getItem('projectIdUser');
 function createSharePost(){
     var xhttp = new XMLHttpRequest();
     var api = "/PublishGraduationCapstone/api/share/addSharePost";
-    xhttp.setRequestHeader("Content-Type", "application/json")
     xhttp.open("POST", api);
+    xhttp.setRequestHeader("Content-Type", "application/json")
     var title = document.getElementById("user-main-sharing-edit-post-title").value;
-    var details = document.getElementById("user-main-post-sharing-edit-post-editor").value;
-    
+    var details = CKEDITOR.instances.editor.getData();
+    console.log("details: " + details)
     var object = 
     {"title": title,
     "details": details ,
@@ -40,6 +40,20 @@ function createSharePost(){
     jsonData = JSON.stringify(object);
 
     xhttp.send(jsonData);
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 201) {
+            var res = this.responseText;
+            console.log("rs: " + res);
+            try {
+                if(1 == 1)
+                {
+                    alert(res);
+                }
+            } catch (e) {
+                alert(e);
+            }
+        };
+    };
 
 
 }
