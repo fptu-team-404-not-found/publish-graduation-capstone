@@ -195,7 +195,11 @@ takeUserData(function (table) {
                         <td class="admin-main-account-list-table-post-title">${myList[i].projectName}</td>
                         <td class="admin-main-account-list-table-date">${myList[i].createDate}</td>
                         <td class="admin-main-account-list-table-poster">${myList[i].authorName}</td>
-                        <td class="admin-main-account-list-table-approve"><i class="fa-solid fa-circle-check"></i></td>
+                        <td class="admin-main-account-list-table-approve">
+                        <button type="button" class="button_by_Quan" value="${myList[i].projectId}" onclick="approveProject(this.value)">
+                        Approve
+                        </button>
+                        </td>
                       </tr>
                       `
             table.append(row)
@@ -204,3 +208,15 @@ takeUserData(function (table) {
         pageButtons(data.pages)
     }
 });
+
+
+function approveProject(object) {
+    var xhr = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/admin/approveProject";
+    xhr.open("POST", api);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    let text = "Confirm to approve this project";
+    if (confirm(text) == true) {
+        xhr.send(object);
+    }
+}

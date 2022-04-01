@@ -15,6 +15,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.account.AccountDAO;
 import team404.account.AccountDTO;
+import team404.project.ProjectDAO;
+import team404.project.ProjectDTO;
 import team404.utils.GoogleHelpers;
 import team404.utils.MyApplicationConstants;
 
@@ -39,7 +41,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         
         try {
-            
+
             if (code == null || code.isEmpty()) {
             } else {
                 HttpSession session = request.getSession();

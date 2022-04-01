@@ -382,4 +382,15 @@ body {
     background-color: #ddd;
     border-radius: 50%;
 }
+
+.button_by_Quan {
+    background-color: #F47124; /* màu của Quản trị mạng ^^ */
+    border: none;
+    color: white;
+    padding: 3px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+  }
 /*------------------------------------------------------------------*/
