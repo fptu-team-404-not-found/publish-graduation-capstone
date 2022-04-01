@@ -1239,8 +1239,4 @@ Where p.ProjectName LIKE N'%a%'
 Select p.ProjectId, p.ProjectName, p.ProjectAva
 From TeamMember tm inner join Project p 
 on tm.ProjectId = p.ProjectId
-<<<<<<< HEAD
 Where tm.Account = 'phuong@gmail.com'
-=======
-Where tm.Account = 'phuong@gmail.com'
->>>>>>> 59462ea6668acdb7224871b025c97f978e46306c
