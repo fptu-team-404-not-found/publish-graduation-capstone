@@ -186,12 +186,22 @@ public class AdminModeResource {
         Type listType = new TypeToken<ArrayList<AccountDTO>>() {
         }.getType();
         ArrayList<AccountDTO> list = new Gson().fromJson(object, listType);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
         for (AccountDTO accountDTO : list) {
             System.out.println(accountDTO);
+            accountDto = accountDao.getEmail(accountDTO.getEmail());
+            if(accountDto == null){
+                int inDB = accountDao.checkRole(accountDTO.getEmail());
+                int inClient = accountDTO.getRole().getRoleId();
+                if(inDB != inClient){
+                    accountDao.updateRole(accountDTO.getEmail(), inClient);
+                }
+            }else{
+                accountDao.createNewAcccount(accountDTO);
+            }
         }
-        //list la danh sach Account can them/sua.
-        //Neu chua ton tai mail: Them moi Account(Them mail voi role).
-        //Neu ton tai mail: Check role xem co khac khong, co thi doi role.
+        
     }
     
     
