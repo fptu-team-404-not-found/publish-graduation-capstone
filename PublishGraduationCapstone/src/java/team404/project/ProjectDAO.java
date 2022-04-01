@@ -657,7 +657,7 @@ public class ProjectDAO implements Serializable {
                     list.add(dto);
                 }
                 return list;
-                
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -679,5 +679,37 @@ public class ProjectDAO implements Serializable {
             }
         }
         return null;
+    }
+
+    public void updateState(String projectId) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Update Project "
+                        + "Set StateId = 2 "
+                        + "Where ProjectId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
