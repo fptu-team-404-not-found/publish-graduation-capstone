@@ -112,3 +112,41 @@ takeStudentIdData(function (arrayData) {
     }
 
 })
+
+
+function sendProject() {
+    var object = {
+        'projectId': document.querySelector('#staff-edit-post-id').value,
+        'projectName': document.querySelector('#staff-edit-post-title').value,
+        'projectAva': document.querySelector('#staff-edit-post-ava').value,
+        'videoUrl': document.querySelector('#staff-edit-post-intro-video').value,
+        'introductionContent': document.querySelector('#staff-edit-post-intro-word').value,
+        'details': "",
+        'recap': "",
+        'authorName': "",
+        'semester': {
+            'semesterName': document.querySelector('#staff-edit-post').value
+        },
+        'listMembers':
+        [
+            {'memberId': document.querySelector('#id1').value},
+            {'memberId': document.querySelector('#id2').value},
+            {'memberId': document.querySelector('#id3').value},
+            {'memberId': document.querySelector('#id4').value},
+            {'memberId': document.querySelector('#id5').value}
+        ],
+        'listImages':
+        [
+            {'imageUrl': document.querySelector('#staff-edit-post-intro-img-link-1').value},
+            {'imageUrl': document.querySelector('#staff-edit-post-intro-img-link-2').value},
+            {'imageUrl': document.querySelector('#staff-edit-post-intro-img-link-3').value},
+        ]
+    }
+
+    var xhr = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/staff/insertProject";
+    xhr.open("POST", api);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    console.log("nanana : " + JSON.stringify(object));
+    xhr.send(JSON.stringify(object));
+}

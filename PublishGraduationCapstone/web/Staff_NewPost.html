@@ -35,6 +35,10 @@
                 <p>ID</p>
                 <input required type="text" name="staff-edit-post-id" id="staff-edit-post-id">
             </div>
+            <div id="staff-edit-post-id-container">
+                <p>Avatar</p>
+                <input required type="text" name="staff-edit-post-id" id="staff-edit-post-ava">
+            </div>
             <div id="staff-edit-post-title-container">
                 <p>Title</p>
                 <input required type="text" name="staff-edit-post-title" id="staff-edit-post-title">
@@ -70,7 +74,7 @@
                 <!-- <td><input type="text" name="" class="staff-edit-post-teamname-content" placeholder="E.g. SE150999,...">
                 </td> -->
                 <td>
-                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);" required>
+                    <select name="staff-edit-post" id="id1" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);" required>
                         <option value="staff-edit-post-choose">Choose Student ID</option>
                     </select>
                 </td>
@@ -81,7 +85,7 @@
             </tr>
             <tr>
                 <td>
-                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                    <select name="staff-edit-post" id="id2" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
                         <option value="staff-edit-post-choose">Choose Student ID</option>
                     </select>
                 </td>
@@ -91,7 +95,7 @@
             </tr>
             <tr>
                 <td>
-                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                    <select name="staff-edit-post" id="id3" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
                         <option value="staff-edit-post-choose">Choose Student ID</option>
                     </select>
                 </td>
@@ -101,7 +105,7 @@
             </tr>
             <tr>
                 <td>
-                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                    <select name="staff-edit-post" id="id4" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
                         <option value="staff-edit-post-choose">Choose Student ID</option>
                     </select>
                 </td>
@@ -111,7 +115,7 @@
             </tr>
             <tr>
                 <td>
-                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                    <select name="staff-edit-post" id="id5" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
                         <option value="staff-edit-post-choose">Choose Student ID</option>
                     </select>
                 </td>
@@ -174,7 +178,7 @@
     </div>
 
     <div id="staff-edit-post-btn-container">
-        <input type="button" value="Submit" class="staff-edit-post-btn staff-edit-submit-btn">
+        <input type="button" value="Submit" class="staff-edit-post-btn staff-edit-submit-btn" onclick="sendProject()">
         <a href="Staff_Approving.html"><input type="button" value="Cancel" class="staff-edit-post-btn"></a>
     </div>
 
