@@ -314,10 +314,11 @@ public class SupervisorDAO {
         }
         return null;
     }
-    public void insertSupervisor(String email, SupervisorDTO supervisorDTO){
-        try{
+
+    public void insertSupervisor(String email, SupervisorDTO supervisorDTO) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null){
+            if (con != null) {
                 String sql = "INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account) "
                         + "VALUES(?, ?, ?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
@@ -340,6 +341,73 @@ public class SupervisorDAO {
                 if (rs != null) {
                     rs.close();
                 }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public boolean checkStatus(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select [Status] "
+                        + "From Supervisor "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    boolean st = rs.getBoolean("Status");
+                    return st;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
+    }
+
+    public void insertStatus(String email, boolean newStatus) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Update Supervisor "
+                        + "Set [Status] = ? "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setBoolean(1, newStatus);
+                stm.setString(2, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
                 if (stm != null) {
                     stm.close();
                 }

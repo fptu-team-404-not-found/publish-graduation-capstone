@@ -108,4 +108,32 @@ public class UpcomingProjectDAO implements Serializable {
             }
         }
     }
+
+    public void deleteUpcomingInAdmin(String id) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Delete From UpcomingProject "
+                        + "Where Id = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, id);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UpcomingProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(UpcomingProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(UpcomingProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
