@@ -175,6 +175,7 @@ body {
 table {
     border-collapse: collapse;
     text-align: left;
+    margin-bottom: 1em;
 }
 
 #upcoming-table-container td {
