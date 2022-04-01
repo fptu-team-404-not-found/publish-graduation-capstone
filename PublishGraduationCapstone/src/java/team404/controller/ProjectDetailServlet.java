@@ -38,15 +38,13 @@ public class ProjectDetailServlet extends HttpServlet {
             if (session.isNew()) {
                 dao.updateView(projectId);
             }
-            
-            //project details
+
             String jsProjectDetails = dao.showProjectDetails(projectId);
 
             out.print(jsProjectDetails);
             response.flushBuffer();
             out.flush();
-            // dùng xmlhttprequest bên servlet trả json ra FE lụm 
-            // từng project sẽ là thẻ <a> truyền vào servlet và projectId
+
         } catch (SQLException ex) {
             log("ProjectDetailServlet_SQL: " + ex.getMessage());
         } catch (NamingException ex) {

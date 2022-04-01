@@ -165,6 +165,7 @@ body {
 #table-container {
     margin: auto;
     width: 80%;
+    margin-bottom: 2em;
 }
 
 #table-container > table {
@@ -172,14 +173,17 @@ body {
     width: 100%;
 }
 
-#upcoming-table-container {
+table {
     border-collapse: collapse;
+    text-align: left;
+    margin-bottom: 2em;
 }
 
-#upcoming-table-container th, td {
+#upcoming-table-container td {
     border: 1px solid #ddd;
     padding: 8px;
     font-size: 80%;
+    font-weight: 500;
 }
 
 #upcoming-table-container tr:nth-child(even){
@@ -196,9 +200,17 @@ body {
     text-align: left;
     background-color: #F47124;
     color: white;
-    text-align: center;
+    padding-left: 1em;
     font-size: 90%;
     letter-spacing: 0.08em;
+}
+
+#upcoming-table-container th:first-child {
+    border-top-left-radius: 0.5em;
+}
+
+#upcoming-table-container th:last-child {
+    border-top-right-radius: 0.5em;
 }
 
 

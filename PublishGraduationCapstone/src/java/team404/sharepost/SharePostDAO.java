@@ -268,7 +268,7 @@ public class SharePostDAO implements Serializable {
             con = DBHelpers.makeConnection();
             if(con != null){
                 String sql = "INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId) "
-                        + "Values(?,?,?,?,?,1,?) ";
+                        + "Values(?,?,?,?,?,2,?) ";
                 stm = con.prepareStatement(sql);
                 stm.setNString(1, sharePost.getTitle());
                 stm.setNString(2, sharePost.getDetails());

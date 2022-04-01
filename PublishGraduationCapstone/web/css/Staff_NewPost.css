@@ -42,6 +42,26 @@ body {
     font-weight: 700;
 }
 
+.staff-edit-post {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.staff-edit-post-student {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 90%;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
 #staff-edit-post-id-container {
     background-color: #FFFFFF;
     width: 16%;
@@ -370,9 +390,6 @@ label {
     border: 1px solid #F47124;
     cursor: pointer;
 }
-
-
-
 
 
 

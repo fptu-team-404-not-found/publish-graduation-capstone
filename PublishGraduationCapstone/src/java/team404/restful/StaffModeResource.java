@@ -1,17 +1,25 @@
 package team404.restful;
 
+import com.google.gson.Gson;
+import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.projectimage.ProjectImageDTO;
+import team404.sharepost.SharePostDAO;
+import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDAO;
@@ -43,28 +51,24 @@ public class StaffModeResource {
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("listSupervisorName", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
     
-//    //-- TIENHUYNHTN --// --OK
-//    @Path("/loadStudentId")
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String loadStudentId() {
-//        TeamMemberDAO dao = new TeamMemberDAO();
-//        List<String> list = dao.getStudentId();
-//        JSONArray jsArr = new JSONArray();
-//        for (String studentId : list) {
-////            JSONObject jSONObject = new JSONObject();
-////            jSONObject.put("studentId", studentId);
-//            jsArr.add(studentId);
-//        }
-//        JSONObject jsObj = new JSONObject();
-//        jsObj.put("listStudentId", jsArr);
-//        return jsObj.toJSONString();
-//    }
+    //-- TIENHUYNHTN --// --OK
+    @Path("/loadStudentId")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String loadStudentId() {
+        TeamMemberDAO dao = new TeamMemberDAO();
+        List<String> list = dao.getStudentId();
+        JSONArray jsArr = new JSONArray();
+        for (String studentId : list) {
+            JSONObject jSONObject = new JSONObject();
+            jSONObject.put("studentId", studentId);
+            jsArr.add(jSONObject);
+        }
+        return jsArr.toJSONString();
+    }
     
     //-- TIENHUYNHTN --// --OK
     @Path("/loadTeamMemberInfo")
@@ -115,5 +119,21 @@ public class StaffModeResource {
             jsArr.add(jsObj);
         }
         return jsArr.toJSONString();
+    }
+    
+    //-- TIENHUYNHTN --//
+    @Path("/insertProject")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertProject(String project){
+//    public Response insertProject(String project){
+        Gson gson = new Gson();
+        ProjectDTO dto = gson.fromJson(project, ProjectDTO.class);
+        System.out.println("dto nene: " + dto);
+//        ProjectDAO dao = new ProjectDAO();
+//        boolean result = dao.insertProject(dto);
+//        if(result == false)
+//            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+//        return Response.status(Response.Status.CREATED).build();
     }
 }

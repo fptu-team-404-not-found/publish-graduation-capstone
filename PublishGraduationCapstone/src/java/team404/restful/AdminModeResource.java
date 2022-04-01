@@ -118,6 +118,12 @@ public class AdminModeResource {
                 supDto = supDao.getInforSupWithMail(supervisorDTO.getEmail());
                 if (supDto == null) {
                     supDao.insertSupervisor(supervisorDTO.getEmail(), supervisorDTO);
+                }else{
+                    boolean inDB = supDao.checkStatus(supervisorDTO.getEmail());
+                    boolean inClient = supervisorDTO.isStatus();
+                    if(inDB != inClient){
+                        supDao.insertStatus(supervisorDTO.getEmail(), inClient);
+                    }
                 }
                 accountDao.updateRoleInAdminMode(supervisorDTO.getEmail());
             } else {
@@ -125,7 +131,6 @@ public class AdminModeResource {
             }
         }
         
-        //Neu supervisor ton tai, status thay doi thi ta thay doi luon
     }
 
     @Path("/saveUpcomingList")
@@ -156,8 +161,8 @@ public class AdminModeResource {
         String idUpcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(idUpcoming);
-        //upcoming la con Upcoming da lay ve. Can xoa no trong database
-        //code day ne Dat
+        UpcomingProjectDAO upcomingDao = new UpcomingProjectDAO();
+        upcomingDao.deleteUpcomingInAdmin(idUpcoming);
     }
     
     @Path("/approveProject")
@@ -168,8 +173,8 @@ public class AdminModeResource {
         String idProject = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
         System.out.println(idProject);
-        //upcoming la con Upcoming da lay ve. Can xoa no trong database
-        //code day ne Dat
+        ProjectDAO projectDao = new ProjectDAO();
+        projectDao.updateState(idProject);
     }
     
     
@@ -181,12 +186,22 @@ public class AdminModeResource {
         Type listType = new TypeToken<ArrayList<AccountDTO>>() {
         }.getType();
         ArrayList<AccountDTO> list = new Gson().fromJson(object, listType);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
         for (AccountDTO accountDTO : list) {
             System.out.println(accountDTO);
+            accountDto = accountDao.getEmail(accountDTO.getEmail());
+            if(accountDto == null){
+                int inDB = accountDao.checkRole(accountDTO.getEmail());
+                int inClient = accountDTO.getRole().getRoleId();
+                if(inDB != inClient){
+                    accountDao.updateRole(accountDTO.getEmail(), inClient);
+                }
+            }else{
+                accountDao.createNewAcccount(accountDTO);
+            }
         }
-        //list la danh sach Account can them/sua.
-        //Neu chua ton tai mail: Them moi Account(Them mail voi role).
-        //Neu ton tai mail: Check role xem co khac khong, co thi doi role.
+        
     }
     
     

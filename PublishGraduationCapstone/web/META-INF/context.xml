@@ -8,8 +8,8 @@
             username="sa"/>
 </Context>-->
 
-<!--Đạt nè
-<Context path="/PublishGraduationCapstone">
+<!--Đạt nè-->
+<!--<Context path="/PublishGraduationCapstone">
     <Resource auth="Container" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
               name="JohnyEnglish" password="1234567890" 
               type="javax.sql.DataSource" 
