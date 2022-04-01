@@ -45,7 +45,7 @@ public class StaffModeResource {
     @Produces(MediaType.APPLICATION_JSON) 
     public String loadSupervisor() {
         SupervisorDAO dao = new SupervisorDAO();
-        List<SupervisorDTO> list = dao.getAllSupervisors();
+        List<SupervisorDTO> list = dao.loadSupervisor();
         JSONArray jsArr = new JSONArray();
         for (SupervisorDTO supervisorDTO : list) {
             JSONObject jsObj = new JSONObject();

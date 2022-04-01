@@ -419,4 +419,48 @@ public class SupervisorDAO {
             }
         }
     }
+    
+    public List<SupervisorDTO> loadSupervisor() {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select SupervisorID, SupervisorName "
+                        + "From Supervisor "
+                        + "Where Status = 1 ";
+                stm = con.prepareStatement(sql);
+                rs = stm.executeQuery();
+                List<SupervisorDTO> list = new ArrayList<>();
+
+                while (rs.next()) {
+                    String supervisorId = rs.getString("SupervisorID");
+                    String supervisorName = rs.getString("SupervisorName");
+
+                    SupervisorDTO dto = new SupervisorDTO();
+                    dto.setSupervisorId(supervisorId);
+                    dto.setSupervisorName(supervisorName);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(SupervisorDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
 }
