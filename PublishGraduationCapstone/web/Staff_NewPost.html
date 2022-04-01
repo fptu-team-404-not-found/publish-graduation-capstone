@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Staff_NewPost.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/ckeditor.js"></script>
+    <title>Edit Page</title>
+</head>
+
+<body>
+    <div id="staff-edit-post-info-container">
+        <div id="staff-edit-post-container">
+            <div id="staff-edit-post-semester-container">
+                <p>Semester</p>
+                <select name="staff-edit-post" id="staff-edit-post" required>
+                    <option value="2019-Spring">Spring-2019</option>
+                    <option value="2019-Summer">Summer-2019</option>
+                    <option value="2019-Fall">Fall-2019</option>
+                    <option value="2020-Spring">Spring-2020</option>
+                    <option value="2020-Summer">Summer-2020</option>
+                    <option value="2020-Fall">Fall-2020</option>
+                    <option value="2021-Spring">Spring-2021</option>
+                </select>
+            </div>
+            <div id="staff-edit-post-id-container">
+                <p>ID</p>
+                <input required type="text" name="staff-edit-post-id" id="staff-edit-post-id">
+            </div>
+            <div id="staff-edit-post-title-container">
+                <p>Title</p>
+                <input required type="text" name="staff-edit-post-title" id="staff-edit-post-title">
+            </div>
+        </div>
+        <div id="staff-edit-post-supervisor">
+            <div id="staff-edit-post-supervisor-container">
+                <p>Supervisors</p>
+                <select required name="staff-edit-post" class="staff-edit-post" onChange="getOptionValue(this);">
+                    <option value="">Choose supervisor</option>
+                    <!-- <option value="staff-edit-post-choose-1">Nguyễn Thế Hoàng</option>
+                    <option value="staff-edit-post-choose-2">Thân Thị Ngọc Vân</option> -->
+                    Choose supervisor</select>
+            </div>
+            <div id="staff-edit-post-supervisor-container">
+                <p>Supervisors</p>
+                <select name="staff-edit-post" class="staff-edit-post" onChange="getOptionValue(this);">
+                    <option value="staff-edit-post-choose">Choose supervisor</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="staff-edit-post-teamname-container">
+        <p>Members</p>
+        <table>
+            <tr id="staff-edit-post-teamname-title">
+                <th class="staff-edit-post-teamname">ID</th>
+                <th class="staff-edit-post-teamname">Name</th>
+                <th class="staff-edit-post-teamname">Mail</th>
+                <th class="staff-edit-post-teamname">Phone</th>
+            </tr>
+            <tr>
+                <!-- <td><input type="text" name="" class="staff-edit-post-teamname-content" placeholder="E.g. SE150999,...">
+                </td> -->
+                <td>
+                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);" required>
+                        <option value="staff-edit-post-choose">Choose Student ID</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td>
+                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                        <option value="staff-edit-post-choose">Choose Student ID</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                        <option value="staff-edit-post-choose">Choose Student ID</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                        <option value="staff-edit-post-choose">Choose Student ID</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="staff-edit-post" class="staff-edit-post-student" onChange="changeMemberOptionValue(this);">
+                        <option value="staff-edit-post-choose">Choose Student ID</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div id="staff-edit-post-intro-word-container">
+        <p>Introduction</p>
+        <div id="staff-edit-post-intro-word-box">
+            <div id="staff-edit-post-intro-video-container">
+                <label for="staff-edit-post-intro-video">Link embedded video here</label>
+                <input type="text" name="staff-edit-post-intro-video" id="staff-edit-post-intro-video"
+                    onchange="getLink()" required>
+                <iframe id="staff-edit-post-intro-video-onload-iframe" src="" frameborder="0"></iframe>
+            </div>
+            <div>
+                <label id="staff-edit-post-intro-word-label" for="staff-edit-post-intro-word">Text here</label>
+                <textarea required name="staff-edit-post-intro-word" id="staff-edit-post-intro-word"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div id="staff-edit-post-intro-word-container">
+        <p>Details</p>
+        <form>
+            <textarea required name="staff-edit-post-intro-detail" id="staff-edit-post-intro-detail"></textarea>
+        </form>
+    </div>
+
+    <div id="staff-edit-post-intro-word-container">
+        <p>Recap</p>
+        <form>
+            <textarea name="staff-edit-post-intro-recap" id="staff-edit-post-intro-recap"></textarea>
+        </form>
+    </div>
+
+    <div id="staff-edit-post-intro-img-link-container">
+        <p id="staff-edit-post-intro-img-link-text">Images Link</p>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" class="staff-edit-post-intro-img-link"
+                id="staff-edit-post-intro-img-link-1" placeholder="Place link image here then press enter to view image"
+                onchange="getLinkImg()">
+            <img id="staff-edit-post-intro-img-1" class="staff-edit-post-intro-img" src="" alt="">
+        </div>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" class="staff-edit-post-intro-img-link"
+                id="staff-edit-post-intro-img-link-2" placeholder="Place link image here then press enter to view image"
+                onchange="getLinkImg()">
+            <img id="staff-edit-post-intro-img-2" class="staff-edit-post-intro-img" src="" alt="">
+        </div>
+        <div id="staff-edit-post-intro-img-link-container-flex">
+            <input type="text" name="staff-edit-post-intro-img-link" class="staff-edit-post-intro-img-link"
+                id="staff-edit-post-intro-img-link-3" placeholder="Place link image here then press enter to view image"
+                onchange="getLinkImg()">
+            <img id="staff-edit-post-intro-img-3" class="staff-edit-post-intro-img" src="" alt="">
+        </div>
+    </div>
+
+    <div id="staff-edit-post-btn-container">
+        <input type="button" value="Submit" class="staff-edit-post-btn staff-edit-submit-btn">
+        <a href="Staff_Approving.html"><input type="button" value="Cancel" class="staff-edit-post-btn"></a>
+    </div>
+
+    <script>
+        CKEDITOR.replace('staff-edit-post-intro-detail', {
+            extraPlugins: 'justify',
+        });
+        CKEDITOR.replace('staff-edit-post-intro-recap', {
+            extraPlugins: 'justify',
+        });
+        CKEDITOR.on('instanceLoaded', function (e) {
+            e.editor.resize(1380, 720)
+        });
+
+        function getLink() {
+            var getLink = document.getElementById('staff-edit-post-intro-video').value;
+            var getEmbedLink = getLink.replace("watch?v=", "embed/")
+            document.getElementById('staff-edit-post-intro-video-onload-iframe').src = getEmbedLink;
+        };
+
+        function getLinkImg() {
+            var getLinkImg1 = document.getElementById('staff-edit-post-intro-img-link-1').value;
+            var getLinkImg2 = document.getElementById('staff-edit-post-intro-img-link-2').value;
+            var getLinkImg3 = document.getElementById('staff-edit-post-intro-img-link-3').value;
+            document.getElementById('staff-edit-post-intro-img-1').src = getLinkImg1;
+            document.getElementById('staff-edit-post-intro-img-2').src = getLinkImg2;
+            document.getElementById('staff-edit-post-intro-img-3').src = getLinkImg3;
+        };
+    </script>
+
+    <script src="./js/Staff_NewPost.js"></script>
+</body>
+
+</html>

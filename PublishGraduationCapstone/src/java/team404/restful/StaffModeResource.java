@@ -43,28 +43,24 @@ public class StaffModeResource {
             jsObj.put("supervisorName", supervisorDTO.getSupervisorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("listSupervisorName", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
     
-//    //-- TIENHUYNHTN --// --OK
-//    @Path("/loadStudentId")
-//    @GET
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public String loadStudentId() {
-//        TeamMemberDAO dao = new TeamMemberDAO();
-//        List<String> list = dao.getStudentId();
-//        JSONArray jsArr = new JSONArray();
-//        for (String studentId : list) {
-////            JSONObject jSONObject = new JSONObject();
-////            jSONObject.put("studentId", studentId);
-//            jsArr.add(studentId);
-//        }
-//        JSONObject jsObj = new JSONObject();
-//        jsObj.put("listStudentId", jsArr);
-//        return jsObj.toJSONString();
-//    }
+    //-- TIENHUYNHTN --// --OK
+    @Path("/loadStudentId")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String loadStudentId() {
+        TeamMemberDAO dao = new TeamMemberDAO();
+        List<String> list = dao.getStudentId();
+        JSONArray jsArr = new JSONArray();
+        for (String studentId : list) {
+//            JSONObject jSONObject = new JSONObject();
+//            jSONObject.put("studentId", studentId);
+            jsArr.add(studentId);
+        }
+        return jsArr.toJSONString();
+    }
     
     //-- TIENHUYNHTN --// --OK
     @Path("/loadTeamMemberInfo")
