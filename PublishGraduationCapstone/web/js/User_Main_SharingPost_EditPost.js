@@ -10,12 +10,37 @@ var memberId = null;
 var supervisorId = null;
 
 function getId(){
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/user/checkId?email=" + usermail;
+    xhttp.open("GET", api);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
+            if(jsonData.checkId[0].supervisorId)
+            supervisorId = jsonData.checkId[0].supervisorId
+            else
+            supervisorId = null;
+            if(jsonData.checkId[0].memberId)
+            memberId = jsonData.checkId[0].memberId
+            else
+            memberId = null
+        }
+    };
     
 }
+getId()
 
 var projectIdUser = sessionStorage.getItem('projectIdUser');
 
 function createSharePost(){
+    console.log("supervisorId: "+ supervisorId);
+    console.log("memberId: "+ memberId);
     var xhttp = new XMLHttpRequest();
     var api = "/PublishGraduationCapstone/api/share/addSharePost";
     xhttp.open("POST", api);
@@ -28,10 +53,10 @@ function createSharePost(){
     "details": details ,
     "note":null,
     "student":{
-        "memberId":"SE111111"
+        "memberId":memberId
     },
     "supervisor":{
-        "supervisorId":null
+        "supervisorId": supervisorId
     },"project":{
         "projectId": projectIdUser
     }
@@ -42,13 +67,9 @@ function createSharePost(){
     xhttp.send(jsonData);
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 201) {
-            var res = this.responseText;
-            console.log("rs: " + res);
             try {
-                if(1 == 1)
-                {
-                    alert(res);
-                }
+               alert("Success")
+               location.reload();
             } catch (e) {
                 alert(e);
             }

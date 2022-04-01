@@ -154,6 +154,8 @@ function showSharePostList(projectId) {
                 alert(e);
             }
 
+            document.getElementsByClassName("sharing-main-project-title")[0].innerHTML = jsonData.showSharePostList[0].projectTitle;
+
             const listProject = document.querySelector('#project-sharing-container-all');
 
             let projects = new Array();
