@@ -264,7 +264,8 @@ public class TeamMemberDAO {
             con = DBHelpers.makeConnection();
             if (con != null) {
                 String sql = "Select StudentId "
-                        + "From TeamMember ";
+                        + "From TeamMember "
+                        + "Where ProjectId IS NULL ";
                 stm = con.prepareStatement(sql);
                 rs = stm.executeQuery();
                 List<String> list = new ArrayList<>();

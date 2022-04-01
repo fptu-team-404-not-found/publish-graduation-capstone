@@ -1,5 +1,5 @@
 USE master
-GO 
+GO
 
 IF EXISTS (SELECT * FROM sys.databases WHERE name='SWP391')
 DROP DATABASE SWP391
@@ -234,6 +234,7 @@ INSERT INTO Roles(RoleName) VALUES('Admin') -- người có thể duyệt bài
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES( 'adam@gmail.com', 'Adam', 
 'https://i-giaitri.vnecdn.net/2019/03/28/adamlambert-1553749427-7614-1553749454_680x0.jpg', 3)
+
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES( 'eva@gmail.com', 'Eva', 
 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', 2)
@@ -335,36 +336,56 @@ INSERT INTO Account( Email, Name, Picture, RoleId)
 VALUES('nguyenlamthuyphuong25@gmail.com', N'Thúy Phượng Nguyễn Lâm', 
 'https://lh3.googleusercontent.com/a-/AOh14Gjj0GkGfeKuRDpY6IthUyo4-sY93CgGgFJaDetMBg=s96-c', 3)
 
-INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, Account ) 
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'lamthuyloan0303@gmail.com', N'Lâm Thúy Loan', 
+'https://lh3.googleusercontent.com/a/AATXAJz5NVtaYbmz_bsgWJGab3QR41REuCWivrKFLO25=s96-c', 2)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES
+('huongttdde150243@fpt.edu.vn', NULL, '', 2),
+('haidtse130137@fpt.edu.vn', NULL, '', 2),
+('khanhncse130527@fpt.edu.vn', NULL, '', 2),
+('cuongncse140042@fpt.edu.vn', NULL, '', 2),
+('khaipnse140528@fpt.edu.vn', NULL, '', 2)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES
+('lehuynhduc@gmail.com', NULL, '', 2),
+('vohuuloc@gmail.com', NULL, '', 2),
+('nguyenduchuy@gmail.com', NULL, '', 2),
+('nguyendoanquang@gmail.com', NULL, '', 2),
+('dangtrannam@gmail.com', NULL, '', 2)
+
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account ) 
 VALUES
 ('KTK', N'Kiều Trọng Khánh', 'https://scontent.fsgn13-1.fna.fbcdn.net/v/t31.18172-8/13662207_272322603140453_8701666325899781861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=abc084&_nc_ohc=jElVkoSIFrAAX8pXBUI&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-vYxg2D5mbOT8dz3tRF3AEc4LiOyaeBEWwgbSGg4W1DA&oe=62480A7A',
-N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 'khanhkt@gmail.com'),
+N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 1, 'khanhkt@gmail.com'),
 
 ('LHKP', N'Lâm Hữu Khánh Phương', 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 
-NULL, NULL, 'phuonglhk@gmail.com'),
+NULL, NULL, 1, 'phuonglhk@gmail.com'),
 
-('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=q44qqnBRN8AAX9pC9Ak&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT84riyGyTZx3Rd-mugwD_WgQTjvIzlkD1P2M3L5gnKI3g&oe=622FECD7', 
-N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 'hoangNT@gmail.com'),
+('NTH', N'Nguyễn Thế Hoàng', 'https://uni.fpt.edu.vn/Data/Sites/1/media/ng%C6%B0%E1%BB%9Di-truy%E1%BB%81n-l%E1%BB%ADa/gi%C3%A1o-l%C3%A0ng-nguy%E1%BB%85n-th%E1%BA%BF-ho%C3%A0ng/123835423_107646594490275_3866158663278802293_o.jpg', 
+N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 1, 'hoangNT@gmail.com'),
 
 ('TTNV', N'Thân Thị Ngọc Vân', 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04',
-'', N'Lecturer at FPT University HCM', 'vanTTN@gmail.com'),
+'', N'Lecturer at FPT University HCM', 1, 'vanTTN@gmail.com'),
 
 ('NTT', N'Nguyễn Trọng Tài', 'https://lh3.googleusercontent.com/a-/AOh14GiG-AjMkw2LfRrqtjyBJGssiIA1x6mLuJCxqYYDCA=s64-c',
-NULL, N'Lecturer at FPT University HCM', 'taiNT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'taiNT@gmail.com'),
 
 ('VTP', N'Vũ Thanh Phong', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 'phongVT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'phongVT@gmail.com'),
 
 ('LVT', N'Lê Vũ Trường', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 'truongLV@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 0, 'truongLV@gmail.com'),
 
 ('TVS', N'Thân Văn Sử', 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/151858679_267986801521509_9002274583163747363_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=5mSrCnjhnV4AX9Vq73T&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT8LBvIekLLFPfeUtnD7TUQIyjA2VlXZF2_rRF2MvgNTVQ&oe=624B385F', 
-N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 'suTV@gmail.com'),
+N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 1, 'suTV@gmail.com'),
 
 ('TTMN', N'Trương Thị Mỹ Ngọc', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 'ngocTTM@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1, 'ngocTTM@gmail.com'),
 ('DNTH', N'Đoàn Nguyễn Thành Hòa', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 'hoaDNT@gmail.com')
+NULL, N'Lecturer at FPT University HCM', 1, 'hoaDNT@gmail.com')
 
 INSERT INTO States(StateName) VALUES('Approving')
 INSERT INTO States(StateName) VALUES('Approved')
@@ -380,6 +401,42 @@ INSERT INTO Semester(SemesterName) VALUES('2021-Spring')
 INSERT INTO Semester(SemesterName) VALUES('2021-Summer')
 INSERT INTO Semester(SemesterName) VALUES('2021-Fall')
 INSERT INTO Semester(SemesterName) VALUES('2022-Spring')
+
+
+---Project hoan chinh
+INSERT INTO Project
+(ProjectId, ProjectName,VideoUrl,IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId,SemesterId) 
+values
+('SP20001',
+'Community COVID Market Application',
+'https://www.youtube.com/embed/miTShqyWE64',
+
+'The application was developed based on the requirements of District Doan District 1 - City. Ho Chi Minh City to serve the people of District 1 and small businesses in the traditional markets in the district during the time of social distancing as well as in the future. In this project, the implementation focuses onthe construction of a system that allows small traders to authorize the district union of district 1 to collect orders from people in district 1 placed and deliver goods according to the orders placed in the situation of social distancing or in the situation that the small traders of the traditional market are not convenient in using information technology in their operations. This project is oriented to maintain the traditional market and the small traders in the market with the ability to use information technology can receive and process orders directly through the application. The project facilitates people to buy and order online without needing to manage an account through phone number verification when transacting...',
+
+'<h1 style="text-align: center;">Why to do this capstone project?</h1>
+<p style="width:100%; text-align:center"><img alt="" src="https://hcmuni.fpt.edu.vn/Data/Sites/1/media/2021-huynh-anh/covid-market/screenshot_15.jpg" style="width:50%" /></p>
+<p style="text-align:center; font-style: italic; width: 80%; margin:auto">The website is full of necessary goods for people during the epidemic season. Delivery time depends on the items people order.</p>
+
+<p>FPT University faculty and students collaborated with District 1 (District 1, Ho Chi Minh City) to launch a Covid-19 season market shopping page for residents of District 1, solving the congestion of goods going to the market for the season.</p>
+
+<p style="width:100%; text-align:center"><img alt="" src="https://hcmuni.fpt.edu.vn/Data/Sites/1/media/2021-huynh-anh/covid-market/team-covid.jpg" style="width:50%" /></p>
+
+<p style="text-align:center; font-style: italic; width: 80%; margin:auto">The project implementation team includes Mr. Kieu Trong Khanh (project consultant) - Lecturer majoring in Software Engineering; and a group of software engineering students from FPT University: Le Huynh Duc (K12 - Team Leader), Vo Huu Loc (K13), Nguyen Duc Huy (K12), Nguyen Doan Quang (K13), Dang Tran Nam (K15). )</p>
+
+<p style="text-indent:20px">Mr. Kieu Trong Khanh was the first to approach the project from District 1, then gathered FPT University students to implement. However, at first, you were still quite afraid because the implementation time was too short, and it was during the final exam. But after consulting each other and agreeing that this is a very urgent job for the people, you quickly accepted the project and tried to implement it on schedule.
+<p style="text-indent:20px">During the implementation, the group also encountered a few difficulties because District 1 side changed its requirements continuously to adapt to the epidemic situation. Overcoming all obstacles, the project was finally completed and officially put into use after 3 weeks. Accompanying the project is the extremely important role of lecturer Kieu Trong Khanh, the teacher who made the connection. , generate ideas and directly mentor the student group on the right technologies for the project.<p>
+<p style="text-indent:20px">After the project was put into operation, the group received many positive feedbacks from District 1 as well as an offer to cooperate for a long time. People are also very excited about this project.</p>
+',
+'<p style="float:left"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="300" src="https://www.youtube.com/embed/miTShqyWE64" title="YouTube video player" width="485"></iframe></p>
+<p style="float:right; width: 44%; text-indent: 20px">In the future, the team plans to jump ahead with the idea of ​​an application called Community Covid Market Application . The system will collect the most accurate F0 data in district 1 and classify it by color representing severity. When accessing the application, people can know the status of their area to be proactive about health care. In addition, the system will help people to order consumer goods from many different places such as supermarkets, convenience stores and many stores associated with the system...</p>
+',
+100, 
+'Thuy Phuong',
+Null, 
+'https://thumbs.dreamstime.com/b/ordering-food-home-using-mobile-application-pandemic-covid-woman-surfing-online-restaurant-ordering-food-home-198721277.jpg',
+2,
+6)
+
 ---Project 1
 INSERT INTO Project
 (ProjectId, ProjectName, IntroductionContent, Details, Recap, ViewNumber, AuthorName, Note, ProjectAva, StateId, SemesterId) 
@@ -703,6 +760,10 @@ VALUES('SP19SE04', 'NTH'),
 ('SU78SE14', 'NTH'),
 ('SU78SE14', 'KTK')
 
+INSERT INTO Project_Supervisor(ProjectId, SupervisorID) 
+VALUES ('SP20001', 'NTH'),
+('SP20001', 'KTK')
+
 
 -- tới đây rồi 
 INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
@@ -726,13 +787,55 @@ VALUES
 'https://scontent.fsgn5-8.fna.fbcdn.net/v/t1.6435-9/117801229_1236226840044384_5312147700656844303_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=zNOOMXb-B4QAX-AUcGu&_nc_ht=scontent.fsgn5-8.fna&oh=00_AT_yrSl9IAmu7Hn5yEbIwyd8JIuuPowS_JgA8c5oO9AKRQ&oe=624BD9C2', 
 '0123456789', 'phuong@gmail.edu.com', 'SU78SE14', 'phuong@gmail.com'),
 
-('SE821131', N'Huỳnh Lê Thủy Tiên',
-'https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/272908202_3227262997503338_854943145488623253_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=wLSlLWzfnckAX84IoQp&_nc_ht=scontent.fsgn5-9.fna&oh=00_AT9aXr4lr3kZ7H067xvCyVpnMbY_2yBE9Ebr8uyNIHSiaQ&oe=622A9D44', 
-'0123456789', 'tien@gmail.edu.com', 'SU78SE14', 'tien@gmail.com'),
-
 ('SE921131', N'Trần Thành Đạt',
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
 '0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com')
+
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
+
+Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
+values('SE131313',N'Eva','https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', '0793808822', 'eva@gmail.com', 'SU19SE05')
+
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
+VALUES
+('DE150243', N'Trần Thị Dịu Hương',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'huongttdde150243@fpt.edu.vn'),
+('SE130137', N'Đặng Thanh Hải',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'haidtse130137@fpt.edu.vn'),
+('SE130527', N'Nguyễn Công Khánh',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'khanhncse130527@fpt.edu.vn'),
+('SE140042', N'Nguyễn Chí Cường',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'cuongncse140042@fpt.edu.vn'),
+('SE140528', N'Phạm Ngọc Khải',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, NULL, 'khaipnse140528@fpt.edu.vn')
+
+INSERT INTO TeamMember(StudentId, MemberName, MemberAvatar, Phone, BackupEmail,ProjectId, Account) 
+VALUES
+('SE123456', N'Lê Huỳnh Đức',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'lehuynhduc@gmail.com'),
+
+('SE130007', N'Võ Hữu Lộc',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'vohuuloc@gmail.com'),
+
+('SE789456', N'Nguyễn Doãn Quang',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'nguyendoanquang@gmail.com'),
+
+('SE456789', N'Đặng Trần Nam',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'dangtrannam@gmail.com'),
+
+('SE123457', N'Nguyễn Đức Huy',
+'https://guantanamocity.org/wp-content/uploads/2020/12/huong-dan-tao-anh-dai-dien-hoat-hinh-tren-facebook-cach-tao-avatar-facebook-1.png', 
+'0123456789', NULL, 'SP20001', 'nguyenduchuy@gmail.com')
 
 INSERT INTO ProjectImage(ImageUrl, ProjectId) 
 VALUES('https://cdn.pixabay.com/photo/2017/06/05/07/58/butterfly-2373175_960_720.png', 'SU20SE02')
@@ -752,10 +855,10 @@ INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, Pr
 VALUES(N'Cách để trở thành một leader vui vẻ mà vẫn hiệu quả',
 N'Đây là bài sharing của Rolls-Royce',
 NULL, 
-'SE111111', 
+'SE121212', 
 null,
 2,
-'SU20SE02')
+'SU19SE05')
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Hãy luôn luôn tìm hiểu thứ mới. Với châm ngôn code không chạy hãy đốt nhang cầu ông bà.', N'Đây là bài sharing của Kiều Trọng Khánh', NULL, Null, 'KTK', 2, 'SU20SE02')
 
@@ -774,10 +877,10 @@ N'<p><img alt="" src="https://cdn.pixabay.com/photo/2016/08/07/21/58/lion-157719
 <p><strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<strong>Lorem Ipsum</strong>&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing&nbsp;</p>
 ',
 NULL, 
-'SE151478', 
+'SE121212', 
 null,
 2,
-'SU78SE14')
+'SU19SE05')
 
 INSERT INTO SharePost(Title, Details, Note, StudentId, SupervisorID, StateId, ProjectId)
 VALUES(N'Đóng bỉm...',
@@ -823,9 +926,9 @@ VALUES (N'Đồ án rất hay, mình học hỏi rất được rất nhiều t�
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'Nhóm rất xuất sắc, đáng khen', 'vanTTN@gmail.com', NULL, 'SU78SE14')
 INSERT INTO Comment(CommentContent, Account, PostId, ProjectId) 
-VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 3, null)
+VALUES (N'Tuyệt hảo', 'vanTTN@gmail.com', 2, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
-VALUES (N'Thật cảm Động', 'chipchip@gmail.com', 3, null)
+VALUES (N'Thật cảm Động', 'chipchip@gmail.com', 2, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
 VALUES (N'gớt nước mắt mấy fen ơi', 'thang@gmail.com', 4, null)
 INSERT INTO Comment(CommentContent, Account , PostId, ProjectId) 
@@ -844,7 +947,38 @@ INSERT INTO Sensitive_word(banned_word)
 VALUES
 	('dume'), ('quan que'), ('duma')
 --------------------------------------
+Update Project 
+Set IntroductionContent = N'A police robot told a woman to go away after she tried to report a violent brawl breaking out nearby – then trundled off while singing a song. Cogo Guebara rushed over to the motorized police officer and pushed its emergency alert button on seeing the brawl break out in Salt Lake Park, Los Angeles, last month. But instead of offering assistance, the egg-shaped robot, whose official name is HP RoboCop, barked at Guebara to ‘Step out of the way’. To add insult to injury, the high-tech device then rolled away while humming an ‘intergalactic tune’, pausing periodically to say ‘Please keep the park clean.’',
+Details = N'<p><img alt="" src="https://metro.co.uk/wp-content/uploads/2019/10/comp-1570212652.png?quality=90&amp;strip=all&amp;zoom=1&amp;resize=644%2C362" style="float:right; height:337px; margin-left:10px; margin-right:10px; width:600px" /></p>
 
+<p style="text-align: justify;"><big>&lsquo;It just kept ringing and ringing, and I kept pushing and pushing.&rsquo; The concerned bystander thought the five-foot tall robot might have needed to see her face before it began to work, so she crouched down in front of its camera.Department cops finally arrived 15 minutes later, after the row had ended. It left one woman with a bad head wound which saw her stretchered into an ambulance and taken to hospital for emergency treatment. Local Police Chief Cosme Lozano says the robots, which cost between $60,000 and $70,000 a year to lease, are still in a trial phase and that their alert buttons have not yet been activated. He said that law enforcement have not yet started advertising the robots crime-fighting activities. Any help requests are currently sent to a company called Knightscope, which creates and leases the robots. Lozano added that once the robot completes its trial, calls made using its alert button will be sent straight to dispatch. Other versions of the same model have previously hit the headlines after one fell into a fountain in Washington DC. And a third HP RoboCop struck a child while patrolling a mall in California&rsquo;s Silicon Valley.</big></p>
+', 
+Recap = N'<p><img alt="" src="https://pbs.twimg.com/media/D9ZVtE0UEAAee8i?format=jpg&amp;name=900x900" style="float:left; height:400px; margin-left:10px; margin-right:10px; width:300px" /></p>
+
+<p style="text-align: justify;"><big>Knightscope&rsquo;s marketing materials and media&nbsp;<a href="https://www.houstonchronicle.com/business/technology/article/Security-robot-intrigues-River-Oaks-District-11946955.php">r</a>eporting&nbsp;suggest the technology can effectively recognize &ldquo;suspicious&rdquo; packages, vehicles, and people.&nbsp;</big></p>
+
+<p style="text-align: justify;"><big>But when a robot is scanning a crowd for someone or something suspicious, what is it actually looking for? It&rsquo;s unclear what the company means. The decision to characterize certain actions and attributes as &ldquo;suspicious&rdquo; has to be made by someone. If robots are designed to think people wearing hoods are suspicious, they may target youth of color. If robots are programmed to zero in on people moving quickly, they may harass a jogger, or a pedestrian on a rainy day.</big></p>
+
+<p style="text-align: justify;"><big>A robot&rsquo;s machine learning and so-called suspicious behavior detection will lead to racial profiling and other unfounded harrassement. This begs the question: Who gets reprimanded if a robot improperly harrasses an innocent person, or calls the police on them? Does the robot? The people who train or maintain the robot? When state violence is unleashed on a person because a robot falsely flagged them as suspicious, &ldquo;changing the programming&rdquo; of the robot and then sending it back onto the street will be little solace for a victim hoping that it won&rsquo;t happen again. And when programming errors cause harm, who will review changes to make sure they can address the real problem?&quot;</big></p>
+
+<p style="text-align: justify;"><big>The next time you&rsquo;re at a protest and are relieved to see a robot rather than a baton-wielding officer, know that that robot may be using the IP address of your phone to identify your participation. This makes protesters vulnerable to reprisal from police and thus chills future exercise of constitutional rights.</big></p>
+
+<p style="text-align: justify;"><big>&quot;When a device emitting a Wi-Fi signal passes within a nearly 500 foot radius of a robot,&rdquo; the company explains on its blog, &ldquo;actionable intelligence is captured from that device including information such as: where, when, distance between the robot and device, the duration the device was in the area and how many other times it was detected on site recently.&quot;</big></p>
+', 
+VideoUrl = 'https://www.youtube.com/embed/gIHXLVr44Nw'
+Where ProjectId = 'SU19SE05'
+
+
+INSERT INTO Project_Supervisor
+Values('SU19SE05','NTH')
+INSERT INTO Project_Supervisor
+Values('SU19SE05','TTNV')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('http://images6.fanpop.com/image/photos/37700000/Cyber-the-Police-Robot-robots-37755446-800-1032.jpg','SU19SE05')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('https://www.inceptivemind.com/wp-content/uploads/2019/08/police-robots-traffic-china.jpg','SU19SE05')
+insert into ProjectImage([ImageUrl],[ProjectId])
+Values('https://www.eff.org/files/banner_library/knightscope_banner_0.jpg','SU19SE05')
 
 ------------------------------------------------------------------------
 ----------------------------Create fulltext-----------------------------
@@ -987,4 +1121,7 @@ From Project p
 Where p.ProjectName LIKE N'%a%'
 */
 
-
+Select p.ProjectId, p.ProjectName, p.ProjectAva
+From TeamMember tm inner join Project p 
+on tm.ProjectId = p.ProjectId
+Where tm.Account = 'phuong@gmail.com'
