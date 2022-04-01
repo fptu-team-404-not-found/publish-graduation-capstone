@@ -118,6 +118,12 @@ public class AdminModeResource {
                 supDto = supDao.getInforSupWithMail(supervisorDTO.getEmail());
                 if (supDto == null) {
                     supDao.insertSupervisor(supervisorDTO.getEmail(), supervisorDTO);
+                }else{
+                    boolean inDB = supDao.checkStatus(supervisorDTO.getEmail());
+                    boolean inClient = supervisorDTO.isStatus();
+                    if(inDB != inClient){
+                        supDao.insertStatus(supervisorDTO.getEmail(), inClient);
+                    }
                 }
                 accountDao.updateRoleInAdminMode(supervisorDTO.getEmail());
             } else {
@@ -125,7 +131,6 @@ public class AdminModeResource {
             }
         }
         
-        //Neu supervisor ton tai, status thay doi thi ta thay doi luon
     }
 
     @Path("/saveUpcomingList")

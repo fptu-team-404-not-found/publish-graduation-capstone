@@ -340,36 +340,36 @@ INSERT INTO Account( Email, Name, Picture, RoleId)
 VALUES( 'lamthuyloan0303@gmail.com', N'Lâm Thúy Loan', 
 'https://lh3.googleusercontent.com/a/AATXAJz5NVtaYbmz_bsgWJGab3QR41REuCWivrKFLO25=s96-c', 2)
 
-INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, Account ) 
+INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, [Status], Account ) 
 VALUES
 ('KTK', N'Kiều Trọng Khánh', 'https://scontent.fsgn13-1.fna.fbcdn.net/v/t31.18172-8/13662207_272322603140453_8701666325899781861_o.jpg?_nc_cat=109&ccb=1-5&_nc_sid=abc084&_nc_ohc=jElVkoSIFrAAX8pXBUI&_nc_ht=scontent.fsgn13-1.fna&oh=00_AT-vYxg2D5mbOT8dz3tRF3AEc4LiOyaeBEWwgbSGg4W1DA&oe=62480A7A',
-N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 'khanhkt@gmail.com'),
+N'Môn này kỳ nào cũng có', N'Lecturer at FPT University HCM', 1,'khanhkt@gmail.com'),
 
 ('LHKP', N'Lâm Hữu Khánh Phương', 'https://f37-org-zp.zdn.vn/ed84b4ff94c1799f20d0.jpg', 
-NULL, NULL, 'phuonglhk@gmail.com'),
+NULL, NULL, 1,'phuonglhk@gmail.com'),
 
 ('NTH', N'Nguyễn Thế Hoàng', 'https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/270961679_10159870536636108_2642967668131478092_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=q44qqnBRN8AAX9pC9Ak&_nc_ht=scontent.fsgn5-6.fna&oh=00_AT84riyGyTZx3Rd-mugwD_WgQTjvIzlkD1P2M3L5gnKI3g&oe=622FECD7', 
-N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 'hoangNT@gmail.com'),
+N'HAPPY CODE - HAPPY MONEY - HAPPY LIFE',N'Lecturer at FPT University HCM', 1,'hoangNT@gmail.com'),
 
 ('TTNV', N'Thân Thị Ngọc Vân', 'https://scontent.fsgn8-2.fna.fbcdn.net/v/t39.30808-6/269863818_4454456994677258_94781311489606188_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=730e14&_nc_ohc=wnIG3y4cqK8AX_rSMxw&_nc_oc=AQmGn3hAz4Ph2zWS_yoJnCF3h5NydNG1aNLZEO-Jd39y2e6MY3Sz9OaWACL2gLT6QnlnbhMAANcv8Uj69ZdVsQOe&_nc_ht=scontent.fsgn8-2.fna&oh=00_AT_kmcCkmVx6A3iOswvdyfShD7jHrc1mQSdeSKFnat5WSg&oe=62255A04',
-'', N'Lecturer at FPT University HCM', 'vanTTN@gmail.com'),
+'', N'Lecturer at FPT University HCM', 1,'vanTTN@gmail.com'),
 
 ('NTT', N'Nguyễn Trọng Tài', 'https://lh3.googleusercontent.com/a-/AOh14GiG-AjMkw2LfRrqtjyBJGssiIA1x6mLuJCxqYYDCA=s64-c',
-NULL, N'Lecturer at FPT University HCM', 'taiNT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1,'taiNT@gmail.com'),
 
 ('VTP', N'Vũ Thanh Phong', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 'phongVT@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1,'phongVT@gmail.com'),
 
 ('LVT', N'Lê Vũ Trường', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 'truongLV@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 0,'truongLV@gmail.com'),
 
 ('TVS', N'Thân Văn Sử', 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/151858679_267986801521509_9002274583163747363_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=0debeb&_nc_ohc=5mSrCnjhnV4AX9Vq73T&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT8LBvIekLLFPfeUtnD7TUQIyjA2VlXZF2_rRF2MvgNTVQ&oe=624B385F', 
-N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 'suTV@gmail.com'),
+N'Thầy chỉ là người giới thiệu thôi còn đi con đường nào là do các em tự vạch ra.', N'Lecturer at FPT University HCM', 1,'suTV@gmail.com'),
 
 ('TTMN', N'Trương Thị Mỹ Ngọc', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png', 
-NULL, N'Lecturer at FPT University HCM', 'ngocTTM@gmail.com'),
+NULL, N'Lecturer at FPT University HCM', 1,'ngocTTM@gmail.com'),
 ('DNTH', N'Đoàn Nguyễn Thành Hòa', 'https://chanhviet.com/wp-content/themes/consultix/images/no-image-found-360x260.png',
-NULL, N'Lecturer at FPT University HCM', 'hoaDNT@gmail.com')
+NULL, N'Lecturer at FPT University HCM', 1,'hoaDNT@gmail.com')
 
 INSERT INTO States(StateName) VALUES('Approving')
 INSERT INTO States(StateName) VALUES('Approved')
@@ -1026,7 +1026,4 @@ From Project p
 Where p.ProjectName LIKE N'%a%'
 */
 
-Select p.ProjectId, p.ProjectName, p.ProjectAva
-From TeamMember tm inner join Project p 
-on tm.ProjectId = p.ProjectId
-Where tm.Account = 'phuong@gmail.com'
+
