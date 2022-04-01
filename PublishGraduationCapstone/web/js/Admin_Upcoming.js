@@ -22,6 +22,7 @@ function initLogin() {
     document.getElementById("admin-main-nav-login").innerHTML = username
     document.getElementById("user-main-small-name").innerHTML = username
 }
+initLogin();
 
 
 var userData = new Array;
