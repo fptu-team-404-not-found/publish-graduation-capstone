@@ -2,7 +2,10 @@ function login() {
     if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
         var username = localStorage.getItem("name")
         var picture = localStorage.getItem("picture")
-    
+        var role = localStorage.getItem("roleId")
+        if(role != 2){
+            document.getElementsByClassName("user-main-sharing-box")[0].style.display = "none"
+        }
             document.getElementById("icon-show-login").innerHTML = 
             `
             <img src="${picture}" alt=""> 
@@ -25,8 +28,9 @@ function login() {
             `
             <img id="user-main-detail-image" src="${picture}" alt="">
             `
+            document.getElementById("user-main-detail-name-container").innerHTML = username
             document.getElementById("user-name").innerHTML = username
-            document.getElementById("user-name").innerHTML = username
+            document.getElementsByClassName("user-profile-mail")[0].innerHTML = localStorage.getItem("email")
         
     }
 }
@@ -78,4 +82,3 @@ function logout() {
 
     `
 }
-

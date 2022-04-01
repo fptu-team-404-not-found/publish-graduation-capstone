@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div id="menu" onload="startup()">
+    <div id="menu">
         <ul>
             <li>
                 <a href="http://localhost:8084/PublishGraduationCapstone/">
@@ -43,14 +43,12 @@
         </div>
     </div>
 
-    <div id="web-name-container">
-        <div id="login-box" style="display: none;">
-            <div id="home-login">
-                <a style="text-decoration: none; color: #fff;"
-                    href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
-                    <div name="button" type="button">Login</div>
-                </a>
-            </div>
+    <div id="login-box" style="display: none;">
+        <div id="home-login">
+            <a style="text-decoration: none; color: #fff;"
+                href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+                <div name="button" type="button">Login</div>
+            </a>
         </div>
     </div>
 
@@ -139,7 +137,7 @@
         </div>
     </div>
    
-    
+    <script src="js/User_Profile.js"></script>
 </body>
 
 </html>

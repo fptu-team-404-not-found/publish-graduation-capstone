@@ -436,15 +436,11 @@ function bookmark() {
         alert("Please login before bookmark this project!");
     }
     else {
-        document.forms['bookmarkForm']['email'].value = userMail; 
-        document.forms['bookmarkForm']['projectId'].value = projectId;
-    
-        var form = document.getElementById("bookmarkForm");
-        var formData = new FormData(form);
-        var api = "/PublishGraduationCapstone/api/project/bookmark";
+        var formData = "projectId="+projectId+"&email="+userMail;
+        var api = "/PublishGraduationCapstone/api/project/bookmark?"+formData;
         var xhttp = new XMLHttpRequest();
-        xhttp.open("POST", api);
-        xhttp.send(formData);
+        xhttp.open("GET", api);
+        xhttp.send();
         xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 var res = this.responseText;
@@ -452,12 +448,11 @@ function bookmark() {
                 try {
                     if(res == "Added to favorite")
                     {
-                        localStorage.setItem("bookmark", "on");
-                        checkbookmark();
+                        alert(res);
                     }
                     else{
-                        localStorage.setItem("bookmark", '');
-                        checkbookmark();
+                        alert(res);
+                        
                     }
                 } catch (e) {
                     alert(e);
@@ -466,13 +461,3 @@ function bookmark() {
         };
     }
 };
-
-function checkbookmark(){
-    var flag = localStorage.getItem("bookmark");
-    if (flag != null || flag != ''){
-        document.getElementById("bookmark").style.opacity = "1";
-        document.getElementById("bookmark").style.backgroundColor = "rgb(205,238,238)";
-        document.getElementById("iconBookmark").style.color = "red";
-    }
-}
-

@@ -4,7 +4,7 @@ function login() {
         var picture = localStorage.getItem("picture")
         var role = localStorage.getItem("roleId")
         if(role != 2){
-            
+            document.getElementsByClassName("user-main-sharing-box")[0].style.display = "none"
         }
             document.getElementById("icon-show-login").innerHTML = 
             `
@@ -28,7 +28,7 @@ function login() {
             `
             <img id="user-main-detail-image" src="${picture}" alt="">
             `
-            document.getElementById("user-name").innerHTML = username
+            document.getElementById("user-main-detail-name-container").innerHTML = username
         
     }
 }
@@ -79,4 +79,55 @@ function logout() {
     </div>
 
     `
+}
+
+function showFavorite(){
+    var mail = localStorage.getItem("email")
+    var xhttp = new XMLHttpRequest();
+    var api = "/PublishGraduationCapstone/api/user/showFavoriteProject?email="+mail;
+    console.log("API: " + api)
+
+    xhttp.open("GET", api);
+    xhttp.send();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            var res = this.responseText;
+            try {
+                var jsonData = JSON.parse(res);
+            } catch (e) {
+                alert(e);
+            }
+            const listProject = document.querySelector('#upcomming-project-img');
+
+            let projects = new Array();
+                jsonData.showFavoriteProject.forEach(counter => {
+                    var project = `
+                    <div class="upcoming-img"  onclick=" projectRedirect(this)">
+                    <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
+                    <div class="upcoming-img-container">
+                    <p class="upcoming-text-img">${counter.projectName}</p>
+                    <p class="upcoming-img-line"></p>
+                    <p class="upcoming-img-content">${counter.introductionContent}</p>
+                        <p class="upcoming-img-more">More...</p>
+                    </div>
+                    <img class="hightlight-project-img-container"
+                        src="${counter.projectAva}">
+                        <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
+                    </a>
+                    </div>
+                    `
+    
+                    projects.push(project);
+                });
+                listProject.innerHTML = projects.join('');
+            
+        }
+    };
+}
+showFavorite();
+
+function projectRedirect(div) {
+    var projectId = div.querySelector('.upcoming-img-id').innerText;
+    console.log(projectId);
+    sessionStorage.setItem("projectId", projectId);
 }
