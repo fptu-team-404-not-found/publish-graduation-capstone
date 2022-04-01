@@ -234,6 +234,7 @@ INSERT INTO Roles(RoleName) VALUES('Admin') -- người có thể duyệt bài
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES( 'adam@gmail.com', 'Adam', 
 'https://i-giaitri.vnecdn.net/2019/03/28/adamlambert-1553749427-7614-1553749454_680x0.jpg', 3)
+
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES( 'eva@gmail.com', 'Eva', 
 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Eva_Simons_.jpg/1200px-Eva_Simons_.jpg', 2)
@@ -334,6 +335,10 @@ VALUES('phuongnltse150999@fpt.edu.vn', N'Nguyễn Lâm Thúy Phượng',
 INSERT INTO Account( Email, Name, Picture, RoleId) 
 VALUES('nguyenlamthuyphuong25@gmail.com', N'Thúy Phượng Nguyễn Lâm', 
 'https://lh3.googleusercontent.com/a-/AOh14Gjj0GkGfeKuRDpY6IthUyo4-sY93CgGgFJaDetMBg=s96-c', 3)
+
+INSERT INTO Account( Email, Name, Picture, RoleId) 
+VALUES( 'lamthuyloan0303@gmail.com', N'Lâm Thúy Loan', 
+'https://lh3.googleusercontent.com/a/AATXAJz5NVtaYbmz_bsgWJGab3QR41REuCWivrKFLO25=s96-c', 2)
 
 INSERT INTO Supervisor(SupervisorID, SupervisorName, SupervisorImage, Information, Position, Account ) 
 VALUES
