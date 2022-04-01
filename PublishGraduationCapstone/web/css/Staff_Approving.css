@@ -230,6 +230,7 @@ table {
     border-radius: 0 0 0.2em 0.2em;
     font-size: 700;
     border: 1px solid #FFFFFF;
+    z-index: 999;
 }
 
 .fa-right-from-bracket {

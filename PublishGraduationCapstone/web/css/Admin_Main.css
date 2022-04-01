@@ -170,9 +170,9 @@ body {
 #admin-main-supervisor-add {
     background-color: #FFFFFF;
     padding-left: 1%;
+    padding-right: 1%;
     border-radius: 1em;
     font-size: 80%;
-    width: 10em;
     display: inline-flex;
     height: 2em;
     margin-right: 1em;
@@ -217,6 +217,7 @@ body {
     border-radius: 0 0 0.2em 0.2em;
     font-size: 700;
     border: 1px solid #FFFFFF;
+    z-index: 999;
 }
 
 .fa-right-from-bracket {

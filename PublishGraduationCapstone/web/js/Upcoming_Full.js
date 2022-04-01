@@ -2,10 +2,7 @@ function login() {
     if (localStorage.getItem("email") != null && localStorage.getItem("email") != '') {
         var username = localStorage.getItem("name")
         var picture = localStorage.getItem("picture")
-        var role = localStorage.getItem("roleId")
-        if(role != 2){
-            document.getElementsByClassName("user-main-sharing-box")[0].style.display = "none"
-        }
+    
             document.getElementById("icon-show-login").innerHTML = 
             `
             <img src="${picture}" alt=""> 
@@ -24,12 +21,6 @@ function login() {
             </a>
             </div>
             `
-            document.getElementById("user-main-detail-image-container").innerHTML =
-            `
-            <img id="user-main-detail-image" src="${picture}" alt="">
-            `
-            document.getElementById("user-main-detail-name-container").innerHTML = username
-        
     }
 }
 login();
@@ -81,12 +72,9 @@ function logout() {
     `
 }
 
-function showFavorite(){
-    var mail = localStorage.getItem("email")
+function showUpcomingTable(){
     var xhttp = new XMLHttpRequest();
-    var api = "/PublishGraduationCapstone/api/user/showFavoriteProject?email="+mail;
-    console.log("API: " + api)
-
+    var api = "/PublishGraduationCapstone/api/project/getUpcomingProjects";
     xhttp.open("GET", api);
     xhttp.send();
     xhttp.onreadystatechange = function () {
@@ -97,37 +85,24 @@ function showFavorite(){
             } catch (e) {
                 alert(e);
             }
-            const listProject = document.querySelector('#upcomming-project-img');
+            const listUpcoming = document.querySelector('#table-body');
+            let comingProjects = new Array();
 
-            let projects = new Array();
-                jsonData.showFavoriteProject.forEach(counter => {
-                    var project = `
-                    <div class="upcoming-img"  onclick=" projectRedirect(this)">
-                    <a href="http://localhost:8084/PublishGraduationCapstone/Project_Main.html" style="text-decoration: none">
-                    <div class="upcoming-img-container">
-                    <p class="upcoming-text-img">${counter.projectName}</p>
-                    <p class="upcoming-img-line"></p>
-                    <p class="upcoming-img-content">${counter.introductionContent}</p>
-                        <p class="upcoming-img-more">More...</p>
-                    </div>
-                    <img class="hightlight-project-img-container"
-                        src="${counter.projectAva}">
-                        <p class="upcoming-img-id" style="display: none">${counter.projectId}</p>
-                    </a>
-                    </div>
-                    `
-    
-                    projects.push(project);
-                });
-                listProject.innerHTML = projects.join('');
-            
+            for (var i = 0; i < jsonData.length; i++) {
+                var counter = jsonData[i];
+
+                var project = `
+                <tr class="table-header">
+                <td>${counter.projectDate}</td>
+                <td>${counter.projectLocation}</td>
+                <td>${counter.projectName}</td>
+                </tr>
+                `
+
+                comingProjects.push(project);
+            };
+            listUpcoming.innerHTML = comingProjects.join('');
         }
     };
 }
-showFavorite();
-
-function projectRedirect(div) {
-    var projectId = div.querySelector('.upcoming-img-id').innerText;
-    console.log(projectId);
-    sessionStorage.setItem("projectId", projectId);
-}
+showUpcomingTable();

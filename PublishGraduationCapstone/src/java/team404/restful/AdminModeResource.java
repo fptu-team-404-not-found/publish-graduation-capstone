@@ -25,6 +25,8 @@ import team404.comment.CommentDAO;
 import team404.comment.CommentDTO;
 import team404.project.ProjectDAO;
 import team404.project.ProjectDTO;
+import team404.sensitiveword.SensitiveWordDAO;
+import team404.sensitiveword.SensitiveWordDTO;
 import team404.sharepost.SharePostDAO;
 import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
@@ -46,6 +48,27 @@ public class AdminModeResource {
      */
     public AdminModeResource() {
     }
+    
+    @Path("/saveSensitiveWords")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void saveSensitiveWords(String object) {
+        Type listType = new TypeToken<ArrayList<SensitiveWordDTO>>() {
+        }.getType();
+        ArrayList<SensitiveWordDTO> list = new Gson().fromJson(object, listType);
+        SensitiveWordDAO senDao = new SensitiveWordDAO();
+        SensitiveWordDTO senDto = new SensitiveWordDTO();
+        
+        for (SensitiveWordDTO sensitiveWordDTO : list) {
+            System.out.println(sensitiveWordDTO);
+            senDto = senDao.checkExist(sensitiveWordDTO.getBannedWord());
+            if(senDto == null){
+                senDao.insertSensitiveWord(sensitiveWordDTO.getBannedWord());
+            }
+        }
+        
+    }        
+            
 
     @Path("/saveSupervisor")
     @POST
@@ -95,12 +118,19 @@ public class AdminModeResource {
                 supDto = supDao.getInforSupWithMail(supervisorDTO.getEmail());
                 if (supDto == null) {
                     supDao.insertSupervisor(supervisorDTO.getEmail(), supervisorDTO);
+                }else{
+                    boolean inDB = supDao.checkStatus(supervisorDTO.getEmail());
+                    boolean inClient = supervisorDTO.isStatus();
+                    if(inDB != inClient){
+                        supDao.insertStatus(supervisorDTO.getEmail(), inClient);
+                    }
                 }
                 accountDao.updateRoleInAdminMode(supervisorDTO.getEmail());
             } else {
                 accountDao.createSupervisorAccountInAdminMode(supervisorDTO.getEmail(), supervisorDTO);
             }
         }
+        
     }
 
     @Path("/saveUpcomingList")
@@ -128,12 +158,53 @@ public class AdminModeResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteUpcoming(String object) {
         Gson gson = new Gson();
-        UpcomingProjectDTO upcoming = gson.fromJson(object, UpcomingProjectDTO.class);
+        String idUpcoming = gson.fromJson(object, String.class);
         System.out.println("in thu: ");
-        System.out.println(upcoming);
-        //upcoming la con Upcoming da lay ve. Can xoa no trong database
-        //code day ne Dat
+        System.out.println(idUpcoming);
+        UpcomingProjectDAO upcomingDao = new UpcomingProjectDAO();
+        upcomingDao.deleteUpcomingInAdmin(idUpcoming);
     }
+    
+    @Path("/approveProject")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void approveProject(String object) {
+        Gson gson = new Gson();
+        String idProject = gson.fromJson(object, String.class);
+        System.out.println("in thu: ");
+        System.out.println(idProject);
+        ProjectDAO projectDao = new ProjectDAO();
+        projectDao.updateState(idProject);
+    }
+    
+    
+    @Path("/changeAccountList")
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void changeAccountList(String object) {
+        Gson g = new Gson();
+        Type listType = new TypeToken<ArrayList<AccountDTO>>() {
+        }.getType();
+        ArrayList<AccountDTO> list = new Gson().fromJson(object, listType);
+        AccountDAO accountDao = new AccountDAO();
+        AccountDTO accountDto = new AccountDTO();
+        for (AccountDTO accountDTO : list) {
+            System.out.println(accountDTO);
+            accountDto = accountDao.getEmail(accountDTO.getEmail());
+            if(accountDto == null){
+                int inDB = accountDao.checkRole(accountDTO.getEmail());
+                int inClient = accountDTO.getRole().getRoleId();
+                if(inDB != inClient){
+                    accountDao.updateRole(accountDTO.getEmail(), inClient);
+                }
+            }else{
+                accountDao.createNewAcccount(accountDTO);
+            }
+        }
+        
+    }
+    
+    
 
     @Path("/saveAccountList")
     @POST
@@ -285,9 +356,7 @@ public class AdminModeResource {
             jsObj.put("authorName", projectDTO.getAuthorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showPostListWithApproving", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showPostListWithApproved")
@@ -305,9 +374,7 @@ public class AdminModeResource {
             jsObj.put("authorName", projectDTO.getAuthorName());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showPostListWithApproved", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showSharePostListWithApproving")
@@ -319,20 +386,18 @@ public class AdminModeResource {
         JSONArray jsArr = new JSONArray();
         for (SharePostDTO sharePostDTO : list) {
             JSONObject jsObj = new JSONObject();
-            jsObj.put("postId", sharePostDTO.getPostId());
-            jsObj.put("title", sharePostDTO.getTitle());
+            jsObj.put("sharingId", sharePostDTO.getPostId());
+            jsObj.put("sharingName", sharePostDTO.getTitle());
             jsObj.put("createDate", sharePostDTO.getCreateDate().toString());
             if (sharePostDTO.getStudent() != null) {
-                jsObj.put("memberName", sharePostDTO.getStudent().getMemberName());
+                jsObj.put("authorName", sharePostDTO.getStudent().getMemberName());
             }
             if (sharePostDTO.getSupervisor() != null) {
-                jsObj.put("supervisorName", sharePostDTO.getSupervisor().getSupervisorName());
+                jsObj.put("authorName", sharePostDTO.getSupervisor().getSupervisorName());
             }
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showSharePostListWithApproving", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     @Path("/showSharePostListWithApproved")

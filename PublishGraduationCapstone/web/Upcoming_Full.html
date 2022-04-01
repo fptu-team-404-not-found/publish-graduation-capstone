@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Upcoming_Full.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Project siu dink</title>
+</head>
+
+<body>
+    <div id="menu" onload="startup()">
+        <ul>
+            <li>
+                <a href="http://localhost:8084/PublishGraduationCapstone/">
+                    <img id="background-img" src="./img/logo-fptu.png">
+                </a>
+            </li>
+            <li class="nav-home-1"><a href="http://localhost:8084/PublishGraduationCapstone/">Home</a></li>
+            <li class="nav-home-2"><a href="#">Semester</a></li>
+            <li class="nav-home-3"><a href="#footer-home">Contact</a></li>
+        </ul>
+        <div id="icon-show-login" onclick="showLogin()">
+            <i class="fa-solid fa-user"></i>
+        </div>
+        <div id="SearchIcon" onclick="showSearch()">
+            <i class="fa-solid fa-magnifying-glass home-find-icon-normal"></i>
+
+        </div>
+        <div id="home-search-container">
+            <span>
+                <input type="text" name="home-search-text" id="home-search-text"
+                    placeholder="Student’s name, Project’s name, Lecturer’s name ">
+                <div class="SearchIcon" onclick="showSearchPage()">
+                    <i class="fa-solid fa-magnifying-glass home-find-icon-search"></i>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div id="web-name-container">
+        <div id="login-box" style="display: none;">
+            <div id="home-login">
+                <a style="text-decoration: none; color: #fff;"
+                    href="https://accounts.google.com/o/oauth2/auth?scope=openid%20email%20profile&redirect_uri=http://localhost:8084/PublishGraduationCapstone/LoginProcess&response_type=code&client_id=905648126821-fs0vnje6r097kc3u2nar0d2p3rnrlh4l.apps.googleusercontent.com&approval_prompt=force&access_type=offline">
+                    <div name="button" type="button">Login</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="upcoming-return-home-icon">
+        <span><a href="home.html"><i class="fa-solid fa-house"></i></a></span>
+        <span><i class="fa-solid fa-chevron-right"></i></span>
+        <span>Coming Project Defense Session</span>
+    </div>
+    <div id="table-container">
+        <table id="upcoming-table-container">
+            <tr class="table-header">
+                <th>Date</th>
+                <th>Place</th>
+                <th>Topic</th>
+            </tr>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="js/Upcoming_Full.js"></script>
+</body>

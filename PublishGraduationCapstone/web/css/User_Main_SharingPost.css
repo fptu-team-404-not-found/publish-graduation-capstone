@@ -185,15 +185,14 @@ body {
     color: #F47124;
     letter-spacing: 0.06em;
 }
+/* menu trái */
 
 #user-main-container {
-    background-color: #ffffff;
     width: 60%;
+    height: fit-content;
     margin: auto;
     margin-top: 4.5em;
     margin-bottom: 2em;
-    border: 3px solid rgba(244, 113, 36, 0.9);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 #user-main-container-flex {
@@ -208,15 +207,14 @@ body {
     background-color: #FFFFFF;
 }
 
-
 #user-main-detail-image-container {
     width: 6em;
     margin: auto;
 }
 
-#user-main-detail-image {
-    width: 100%;
-    border-radius: 50%;
+#user-main-detail-image-container {
+    width: 6em;
+    margin: auto;
 }
 
 #user-main-detail-name-mail-container {
@@ -239,21 +237,6 @@ body {
     background-color: #F47124;
 }
 
-
-#user-main-detail-mail-container {
-    font-size: 70%;
-} 
-
-#user-main-detail-alternative-mail-container {
-    font-size: 70%;
-}
-
-#user-main-detail-alternative-mail {
-    display: inline-block;
-    margin-left: 1em;
-    color: #F47124;
-}
-
 .user-main-bookmark {
     text-align: center;
     display: inline-block;
@@ -261,6 +244,13 @@ body {
     text-decoration: none;
 }
 
+.user-main-sharing {
+    text-align: center;
+    padding: 1em;
+    width: 70%;
+    border: 1px solid rgba(244, 113, 36, 0.2);
+    text-decoration: none;
+}
 
 .user-main-bookmark-box {
     padding: 1em;
@@ -272,6 +262,11 @@ body {
     font-size: 100%;
     border-bottom: 1px solid #BABABA;
     transition: all 0.5s;
+}
+
+.user-main-bookmark-box:hover {
+    color: #F47124;
+    border-bottom: 2px solid #F47124;
 }
 
 .user-main-sharing-box {
@@ -290,17 +285,44 @@ body {
     color: #F47124;
 }
 
-.active {
+/* -------------------------------------------- */
+
+
+#user-main-detail-image {
+    width: 100%;
+    border-radius: 50%;
+}
+
+#user-main-detail-mail-container {
+    font-size: 70%;
+} 
+
+#user-main-detail-alternative-mail-container {
+    font-size: 70%;
+}
+
+#user-main-detail-alternative-mail {
+    display: inline-block;
+    margin-left: 1em;
+    color: #F47124;
+}
+
+.user-main-sharing-box:hover {
     border-bottom: 2px solid #F47124;
     color: #F47124;
 }
 
-.user-main-sharing {
-    text-align: center;
-    padding: 1em;
-    width: 70%;
-    border: 1px solid rgba(244, 113, 36, 0.2);
-    text-decoration: none;
+#user-main-title {
+    padding: 0.5em 2.5em;
+    background-color: #F47124;
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    width: fit-content;
+}
+
+.active {
+    border-bottom: 2px solid #F47124;
+    color: #F47124;
 }
 
 #upcomming-project-img {
@@ -405,6 +427,12 @@ body {
 }
 
 /* đây là sharing post */
+#user-main-sharing-havepost-container-box {
+    background-color: #ffffff;
+    border: 3px solid rgba(244, 113, 36, 0.9);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 #user-main-sharing-havepost-container {
     display: flex;
     padding: 1em;
@@ -412,12 +440,12 @@ body {
 
 #user-main-sharing-havepost-img {
     width: 100%;
-    height: 24vh;
+    height: 34vh;
     margin-left: 2em;
 }
 
 .user-main-sharing-havepost-left-img {
-    width: 40%;
+    width: 30%;
     margin-right: 4em;
 }
 
@@ -426,77 +454,27 @@ body {
 }
 
 .user-main-sharing-havepost-title {
-    font-size: 95%;
+    font-size: 100%;
     line-height: 1.5em;
     letter-spacing: 0.06em;
     color: #F47124;
 }
 
-.user-main-sharing-havepost-title:hover {
-    color: #000000;
-    cursor: pointer;
-}
-
 .user-main-sharing-havepost-sharing {
-    padding-top: 1.5em;
+    padding-top: 0.8em;
     border-top: 3px solid #F47124;
-    width: 11em;
+    width: 6em;
     margin-top: 0.8em;
     font-size: 80%;
     letter-spacing: 0.08em;
 }
 
-/* day la nav của sharing post */
-.user-main-sharing-nav {
-    display: flex;
-    padding: 1em;
-    border-bottom: 1px solid rgba(244, 113, 36, 0.2);
-    padding-bottom: 1.5em;
-    margin-bottom: 1em;
-}
-
-.fa-circle-chevron-left {
-    width: 2em;
+.user-main-sharing-havepost-sharing:hover {
     color: #F47124;
-    font-size: 1.3em;
-}
-
-.user-main-sharing-title-post {
-    width: 18em;
-    margin-right: 9em;
-    color: #F47124;
-    letter-spacing: 0.04em;
-    line-height: 1.4em;
-    text-decoration: underline;
-    text-underline-position: under;
-}
-
-.user-main-sharing-new-post {
-    display: flex;
-    background-color: #FFFFFF;
-    border: 2px solid #F47124;
-    padding: 0.5em;
-    height: 2.4em;
-    width: 9em;
-    font-size: 80%;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    border-radius: 2em;
-    color: #F47124;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.user-main-sharing-new-post:hover {
-    background-color: #F47124;
-    color: #FFFFFF;
     cursor: pointer;
-    border: 2px solid #EEEEEE;
 }
 
-.fa-circle-plus {
-    font-size: 110%;
-    margin-right: 0.4em;
-}
+
 
 /*----------------------------------------------đây là footer--------------------------------------*/
 #footer-home-left {

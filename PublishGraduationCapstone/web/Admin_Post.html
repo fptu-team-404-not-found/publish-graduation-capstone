@@ -62,36 +62,39 @@
                 <a href="Admin_Post_Approved.html" >APPROVED</a>
             </div>
 
-            <select id="admin-main-account-list-nav-select-ps">
-                <option value="Post">Post</option>
-                <option value="Semester">Share</option>
-             </select>
-
             <div id="admin-main-account-list-search-container">
                 <span><i class="fa-solid fa-magnifying-glass"></i></span>
                 <span><input type="text" id="admin-main-account-list-search" placeholder="Search"></span>
             </div>
         </div>
 
-        <div id="admin-main-account-list-table">
-            <p class="admin-main-account-list-table-title">ID</p>
-            <p class="admin-main-account-list-table-title">Post Title</p>
-            <p class="admin-main-account-list-table-title">Date</p>
-            <p class="admin-main-account-list-table-title">Poster</p>
-            <p class="admin-main-account-list-table-title">Approve</p>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <div class="container ">
+            <!-- Table structure here -->
+            <table class="table table-dark" id="admin-main-account-list-table-container">
+                <tr id="admin-main-account-list-table">
+                    <th id="admin-main-account-list-table-title-id">ID</th>
+                    <th id="admin-main-account-list-table-title-post-title">Post Title</th>
+                    <th id="admin-main-account-list-table-title-date">Date</th>
+                    <th id="admin-main-account-list-table-title-poster">Poster</th>
+                    <th id="admin-main-account-list-table-title-approve">Approve</th>
+                </tr>
+                <tbody id="table-body">
+
+                </tbody>
+            </table>
         </div>
 
-        <div id="admin-main-post-list-infor-container">
-            <div id="admin-main-post-list-infor">
-                <span class="admin-main-post-list-infor-id">001</span>
-                <span class="admin-main-post-list-infor-topic">AI nhận diện trễ deadline</span>
-                <span class="admin-main-post-list-infor-date">05/01/2022</span>
-                <span class="admin-main-post-list-infor-poster">KHANHKT</span>
-                <span class="admin-main-post-list-infor-approve"><i class="fa-solid fa-circle-check"></i></span>
+        <div class="container">
+            <div class="admin-main-account-list-page-number">
+                <div id="pagination-wrapper"></div>
             </div>
         </div>
-
-
     </div>
+
     <script src="js/Admin_Post.js"></script>
 </body>

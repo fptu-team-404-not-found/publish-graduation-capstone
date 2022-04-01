@@ -131,6 +131,7 @@ public class TeamMemberDAO {
         }
         return null;
     }
+
     public TeamMemberDTO getInforMemberWithEmail(String email) {
         try {
             con = DBHelpers.makeConnection();
@@ -178,10 +179,11 @@ public class TeamMemberDAO {
         }
         return null;
     }
-    public void insertMember(String email, TeamMemberDTO teamMemberDTO){
-        try{
+
+    public void insertMember(String email, TeamMemberDTO teamMemberDTO) {
+        try {
             con = DBHelpers.makeConnection();
-            if(con != null){
+            if (con != null) {
                 String sql = "Insert Into TeamMember(StudentId, MemberName, MemberAvatar, Phone, Account) "
                         + "Values(?, ?, ?, ?, ?) ";
                 stm = con.prepareStatement(sql);
@@ -209,6 +211,7 @@ public class TeamMemberDAO {
             }
         }
     }
+
     public List<TeamMemberDTO> searchInFilter(String keyword) {
         try {
             con = DBHelpers.makeConnection();
@@ -218,12 +221,12 @@ public class TeamMemberDAO {
                         + "on tm.ProjectId = p.ProjectId "
                         + "Where tm.MemberName LIKE ? ";
                 stm = con.prepareStatement(sql);
-                stm.setString(1, "%"+keyword+"%");
+                stm.setString(1, "%" + keyword + "%");
                 rs = stm.executeQuery();
                 List<TeamMemberDTO> list = new ArrayList<>();
                 ProjectDAO projectDao = new ProjectDAO();
                 ProjectDTO projectDto = new ProjectDTO();
-                while(rs.next()){
+                while (rs.next()) {
                     String studentId = rs.getString("StudentId");
                     String memberName = rs.getNString("MemberName");
                     String projectId = rs.getString("ProjectId");
@@ -257,6 +260,78 @@ public class TeamMemberDAO {
         }
         return null;
     }
+
+
+    public void insertBackupMail(String email, String backupEmail) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Update TeamMember "
+                        + "Set BackupEmail = ? "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, backupEmail);
+                stm.setString(2, email);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public TeamMemberDTO checkTeamMember(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select * "
+                        + "From TeamMember "
+                        + "Where Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if(rs.next()){
+                    String studentId = rs.getString("StudentId");
+                    TeamMemberDTO dto = new TeamMemberDTO();
+                    dto.setMemberId(email);
+                    return dto;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if(rs != null){
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+
     
     //-- TIENHUYNHTN --//
     public List<String> getStudentId() {
@@ -287,6 +362,7 @@ public class TeamMemberDAO {
                 if (rs != null) {
                     rs.close();
                 }
+
                 if (stm != null) {
                     stm.close();
                 }
@@ -294,10 +370,9 @@ public class TeamMemberDAO {
                     con.close();
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TeamMemberDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         return null;
     }
 }

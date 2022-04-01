@@ -11,6 +11,7 @@ body {
     background-color: #EEEEEE;
 }
 
+
 #menu {
     font-size: 140%;
     background-color: #000000;
@@ -129,6 +130,7 @@ body {
     font-size: 90%;
     letter-spacing: 0.06em;
 }
+
 
 #icon-show-login i:hover {
     color: #ffffff;
@@ -973,6 +975,7 @@ body {
     letter-spacing: 0.12em;
     border-radius: 0.2em;
     font-size: 90%;
+    z-index: 999;
 }
 
 #user-main-small-name {

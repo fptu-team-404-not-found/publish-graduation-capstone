@@ -589,6 +589,133 @@ public class ProjectDAO implements Serializable {
         return null;
     }
 
+    public List<ProjectDTO> getProjectFromTeamByAccount(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select p.ProjectId, p.ProjectName, p.ProjectAva "
+                        + "From TeamMember tm inner join Project p "
+                        + "on tm.ProjectId = p.ProjectId "
+                        + "Where tm.Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                List<ProjectDTO> list = new ArrayList<>();
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    String projectId = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    String projectAva = rs.getString("ProjectAva");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
+                    list.add(dto);
+                }
+                return list;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public List<ProjectDTO> getProjectFromSupervisorByAccount(String email) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Select p.ProjectId, p.ProjectName, p.ProjectAva "
+                        + "From Project p inner join Project_Supervisor ps "
+                        + "on p.ProjectId = ps.ProjectId "
+                        + "inner join Supervisor s "
+                        + "on ps.SupervisorID = s.SupervisorID "
+                        + "Where s.Account = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, email);
+                List<ProjectDTO> list = new ArrayList<>();
+                rs = stm.executeQuery();
+                while (rs.next()) {
+                    String projectId = rs.getString("ProjectId");
+                    String projectName = rs.getNString("ProjectName");
+                    String projectAva = rs.getString("ProjectAva");
+                    ProjectDTO dto = new ProjectDTO();
+                    dto.setProjectId(projectId);
+                    dto.setProjectName(projectName);
+                    dto.setProjectAva(projectAva);
+                    list.add(dto);
+                }
+                return list;
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return null;
+    }
+
+    public void updateState(String projectId) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                String sql = "Update Project "
+                        + "Set StateId = 2 "
+                        + "Where ProjectId = ? ";
+                stm = con.prepareStatement(sql);
+                stm.setString(1, projectId);
+                stm.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     //-- TIENHUYNHTN --//
     public boolean insertProject(ProjectDTO project) {
         try {
@@ -615,7 +742,7 @@ public class ProjectDAO implements Serializable {
                     String sqlImage = "INSERT INTO ProjectImage(ImageUrl, ProjectId) "
                             + "Values(?,?) ";
                     stm = con.prepareStatement(sqlImage);
-                    int affectedRows =  0;
+                    int affectedRows = 0;
                     List<ProjectImageDTO> list = project.getListImages();
                     for (ProjectImageDTO projectImageDTO : list) {
                         stm.setNString(1, projectImageDTO.getImageUrl());
@@ -624,7 +751,7 @@ public class ProjectDAO implements Serializable {
                     }
                     con.commit();
                     if (affectedRows == list.size()) {
-                        return true; 
+                        return true;
                     } else {
                         return false;
                     }

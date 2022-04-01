@@ -67,7 +67,7 @@ takeUserData(function(table) {
         'querySet': userData,
         
         'page': 1,
-        'rows': 3,
+        'rows': 5,
         'window': 5,
     }
     
@@ -81,7 +81,7 @@ takeUserData(function(table) {
             'querySet': userData,
             
             'page': 1,
-            'rows': 3,
+            'rows': 5,
             'window': 5,
         }
         buildTable()
@@ -104,7 +104,7 @@ takeUserData(function(table) {
                 'querySet': subTable,
                 
                 'page': 1,
-                'rows': 3,
+                'rows': 5,
                 'window': 5,
             }
             buildTable()

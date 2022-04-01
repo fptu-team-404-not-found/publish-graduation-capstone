@@ -301,6 +301,7 @@ body {
   text-align: center;
   letter-spacing: 0.12em;
   border-radius: 0.2em;
+  z-index: 999;
 }
 
 #user-main-small-name {

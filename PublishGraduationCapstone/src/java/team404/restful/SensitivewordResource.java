@@ -53,9 +53,7 @@ public class SensitivewordResource {
             jsObj.put("bannedWord", sensitiveWordDTO.getBannedWord());
             jsArr.add(jsObj);
         }
-        JSONObject jsObj = new JSONObject();
-        jsObj.put("showSensitiveWord", jsArr);
-        return jsObj.toJSONString();
+        return jsArr.toJSONString();
     }
 
     

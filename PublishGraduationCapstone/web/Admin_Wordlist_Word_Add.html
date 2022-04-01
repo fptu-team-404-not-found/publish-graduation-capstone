@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Admin_Main_Add.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5158aec7cd.js" crossorigin="anonymous"></script>
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div id="admin-main-nav">
+        <p id="admin-main-nav-title">ADMIN MODE</p>
+        <p id="admin-main-nav-login">QUANNDD2</p>
+        <p id="admin-main-nav-login-img-container">
+            <img id="admin-main-nav-login-img" src="img/Quan-img.jpg" alt="">
+        </p>
+    </div>
+
+    <!-- menu dọc trái -->
+    <div id="admin-main-menu-container">
+        <a href="Admin_Main.html" class="admin-main-menu-list active">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-address-card"></i></p>
+            <p class="admin-main-menu-list-text">Account list</p>
+        </a>
+        <a href="Admin_Post.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-list"></i></p>
+            <p class="admin-main-menu-list-text">Post list</p>
+        </a>
+        <a href="Admin_Supervision.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-chalkboard-user"></i></p>
+            <p class="admin-main-menu-list-text">Supervisor list</p>
+        </a>
+        <a href="Admin_Wordlist.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-comments"></i></p>
+            <p class="admin-main-menu-list-text">Word list</p>
+        </a>
+        <a href="Admin_Upcoming.html" class="admin-main-menu-list">
+            <p class="admin-main-menu-list-icon"><i class="fa-solid fa-angles-up"></i></p>
+            <p class="admin-main-menu-list-text">Upcoming</p>
+        </a>
+    </div>
+
+    <div id="back-icon"><i class="fa-solid fa-circle-chevron-left" onclick="navigationBack()"></i></div>
+    <div id="admin-main-supervisor-create-new-container">
+        
+        <div id="admin-main-supervisor-create-btn-container-excel-container">
+            <div id="admin-main-supervisor-create-btn-container-excel">
+                <form enctype="multipart/form-data">
+                    <input type=file  name="files[]" value="Add new TEAM MEMBERS by excel" id="admin-main-supervisor-create-btn-excel">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <script>
+        var ExcelToJSON = function() {
+    
+        this.parseExcel = function(file) {
+            var reader = new FileReader();
+    
+            reader.onload = function(e) {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, {
+                type: 'binary'
+            });
+                workbook.SheetNames.forEach(function(sheetName) {
+                // Here is your object
+                var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                var json_object = JSON.stringify(XL_row_object);
+                console.log(JSON.parse(json_object));
+                jQuery( '#xlx_json' ).val( json_object );
+                sendUserData(json_object);
+            })
+            };
+    
+            reader.onerror = function(ex) {
+            console.log(ex);
+            };
+    
+            reader.readAsBinaryString(file);
+        };
+    };
+ 
+    function handleFileSelect(evt) {
+    
+        var files = evt.target.files; // FileList object
+        var xl2json = new ExcelToJSON();
+        xl2json.parseExcel(files[0]);
+    }
+    </script>
+ 
+    <script>
+        document.getElementById('admin-main-supervisor-create-btn-excel').addEventListener('change', handleFileSelect, false);
+    </script>
+
+    <script type="text/javascript">
+        function navigationBack() {
+            location.assign("Admin_Wordlist_Word.html")
+        };
+    </script>
+
+    <script src="js/Admin_Wordlist_Word_Add.js"></script>
+</body>
+
+</html>
