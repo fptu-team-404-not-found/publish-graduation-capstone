@@ -21,10 +21,6 @@ function login() {
             </a>
             </div>
             `
-            document.getElementById("project-comment-img").innerHTML =
-        `
-            <img id="project-comment-img-1" src="${picture}" alt="">
-        `
     }
 }
 login();
