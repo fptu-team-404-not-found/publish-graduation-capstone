@@ -14,8 +14,11 @@ import javax.naming.NamingException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import team404.projectimage.ProjectImageDAO;
+import team404.projectimage.ProjectImageDTO;
 import team404.semester.SemesterDAO;
 import team404.semester.SemesterDTO;
+import team404.sharepost.SharePostDAO;
+import team404.sharepost.SharePostDTO;
 import team404.supervisor.SupervisorDAO;
 import team404.supervisor.SupervisorDTO;
 import team404.teammember.TeamMemberDAO;
@@ -711,5 +714,67 @@ public class ProjectDAO implements Serializable {
                 Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+
+    //-- TIENHUYNHTN --//
+    public boolean insertProject(ProjectDTO project) {
+        try {
+            con = DBHelpers.makeConnection();
+            if (con != null) {
+                if ("".equals(project.getProjectAva())) {
+                    project.setProjectAva("https://play-lh.googleusercontent.com/BFYTO8vhN2ZveSWA7XGoQVwei9cCvpi2je5eyDI2a1WoKxTjJJw5Sv8ULoQEGqAYo0g");
+                }
+                String sql = "INSERT INTO Project(ProjectId, ProjectName, ProjectAva, VideoUrl, IntroductionContent, Details, Recap, AuthorName, StateId, SemesterId) "
+                        + "Values(?,?,?,?,?,?,?,?,1,?) ";
+                stm = con.prepareStatement(sql);
+                stm.setNString(1, project.getProjectId());
+                stm.setNString(2, project.getProjectName());
+                stm.setString(3, project.getProjectAva());
+                stm.setString(4, project.getVideoUrl());
+                stm.setNString(5, project.getIntroductionContent());
+                stm.setNString(6, project.getDetails());
+                stm.setNString(7, project.getRecap());
+                stm.setNString(8, project.getAuthorName());
+                stm.setInt(9, project.getSemester().getSemesterId());
+                int affectedRow = stm.executeUpdate();
+                if (affectedRow > 0) {
+                    con.setAutoCommit(false);
+                    String sqlImage = "INSERT INTO ProjectImage(ImageUrl, ProjectId) "
+                            + "Values(?,?) ";
+                    stm = con.prepareStatement(sqlImage);
+                    int affectedRows = 0;
+                    List<ProjectImageDTO> list = project.getListImages();
+                    for (ProjectImageDTO projectImageDTO : list) {
+                        stm.setNString(1, projectImageDTO.getImageUrl());
+                        stm.setNString(2, project.getProjectId());
+                        affectedRows += stm.executeUpdate();
+                    }
+                    con.commit();
+                    if (affectedRows == list.size()) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NamingException ex) {
+            Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (stm != null) {
+                    stm.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(ProjectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return false;
     }
 }

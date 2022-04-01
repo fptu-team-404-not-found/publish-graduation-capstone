@@ -1,9 +1,10 @@
 package team404.project;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
+import team404.projectimage.ProjectImageDTO;
 import team404.semester.SemesterDTO;
 import team404.states.StatesDTO;
 
@@ -23,6 +24,7 @@ public class ProjectDTO implements Serializable {
     private String note;
     private StatesDTO state;
     private SemesterDTO semester;
+    private List<ProjectImageDTO> listImages;
 
     public ProjectDTO() {
         projectId = "";
@@ -238,10 +240,16 @@ public class ProjectDTO implements Serializable {
         this.semester = semester;
     }
 
-    @Override
-    public String toString() {
-        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + '}';
+    public List<ProjectImageDTO> getListImages() {
+        return listImages;
     }
 
-    
+    public void setListImages(List<ProjectImageDTO> listImages) {
+        this.listImages = listImages;
+    }
+
+    @Override
+    public String toString() {
+        return "ProjectDTO{" + "projectId=" + projectId + ", projectName=" + projectName + ", projectAva=" + projectAva + ", videoUrl=" + videoUrl + ", introductionContent=" + introductionContent + ", details=" + details + ", recap=" + recap + ", createDate=" + createDate + ", authorName=" + authorName + ", viewNumber=" + viewNumber + ", note=" + note + ", state=" + state + ", semester=" + semester + ", listImages=" + listImages + '}';
+    }
 }
