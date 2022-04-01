@@ -77,6 +77,36 @@ public class UserResource {
 
     }
 
+    @Path("/checkId")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String checkId(
+            @QueryParam("email") String email) {
+        TeamMemberDAO teamDao = new TeamMemberDAO();
+        TeamMemberDTO teamDto = teamDao.getInforMemberWithEmail(email);
+        JSONArray jsArr = new JSONArray();
+        if (teamDto != null) {
+            TeamMemberDTO teamMemberDTO = teamDao.checkTeamMember(email);
+            if (teamMemberDTO != null) {
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("memberId", teamMemberDTO.getMemberId());
+                jsArr.add(jsObj);
+            }
+
+        } else {
+            SupervisorDAO superDao = new SupervisorDAO();
+            SupervisorDTO superDto = superDao.getInforSupWithMail(email);
+            if(superDto != null){
+                JSONObject jsObj = new JSONObject();
+                jsObj.put("supervisorId", superDto.getSupervisorId());
+                jsArr.add(jsObj);
+            }
+        }
+        JSONObject jsObjM = new JSONObject();
+        jsObjM.put("checkId", jsArr);
+        return jsObjM.toJSONString();
+    }
+
     @Path("/showFavoriteProject")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -122,7 +152,7 @@ public class UserResource {
             jsObj.put("showSharingPost", jsArr);
             String result = jsObj.toJSONString();
             return result;
-        }else{
+        } else {
             for (ProjectDTO projectDTO : list2) {
                 JSONObject jsObj = new JSONObject();
                 jsObj.put("projectId", projectDTO.getProjectId());
@@ -136,4 +166,12 @@ public class UserResource {
             return result;
         }
     }
+
+//    @Path("/getAlternativeEmail")
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public String getAlternativeEmail(
+//            @QueryParam("email") String email) {
+//
+//    }
 }
