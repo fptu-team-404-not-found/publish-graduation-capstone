@@ -814,9 +814,9 @@ VALUES
 'https://scontent.fsgn5-14.fna.fbcdn.net/v/t1.6435-9/103791127_1336281569909415_2852411701540184908_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=174925&_nc_ohc=YGjrghkcZfIAX_ylhUf&_nc_ht=scontent.fsgn5-14.fna&oh=00_AT9Tha7hTQlTFG2eE_GdWevFDRVTsEuh2c8T80adQBNjQw&oe=624A0CEB', 
 '0123456789', 'dat@gmail.edu.com', 'SU78SE14', 'dat@gmail.com'),
 
-('SE921132', N'Huỳnh Lê Thủy Tiên',
-'https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-6/259473877_3177840482445590_4096319024506889240_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=174925&_nc_ohc=SRAcztyIBu0AX9LWTrF&tn=7cDtuPt63gqAvA51&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-OfLzQ0uB-XRu-SX8wA7U_jJiynTyZlWGi2on4e6tVbA&oe=624C1D58', 
-'0123456789', 'huynhlethuytien2001@gmail.com', 'SU78SE14', 'huynhlethuytien2001@gmail.com')
+('SE151104', N'Huỳnh Lê Thủy Tiên',
+'https://scontent.fsgn1-1.fna.fbcdn.net/v/t39.30808-6/272908202_3227262997503338_854943145488623253_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=WY1x0P27cqwAX_zWCaU&_nc_ht=scontent.fsgn1-1.fna&oh=00_AT9dAt6dQlbTQiLdWZCxnUoKNQ68kH_OA8e2am_C7AYx7Q&oe=624C3B84', 
+'0123456789', NULL, NULL, 'tienhltse151104@fpt.edu.vn')
 
 Insert into TeamMember([StudentId], [MemberName], [MemberAvatar], [Phone],[Account],[ProjectId])
 values('SE121212',N'Con mèo','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtCLUHMov7xIQpDc7Wl8t2k34-AswYwSQeOQ&usqp=CAU', '0793808821', 'meowmeow@gmail.com', 'SU19SE05')
@@ -1146,7 +1146,7 @@ Yêu cả nhà 3000 ❤ </p>
 </p>
 ',
 NULL, 
-'SE921132', 
+'SE921131', 
 null,
 2,
 'SU78SE14')

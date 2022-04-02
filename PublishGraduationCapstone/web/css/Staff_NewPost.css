@@ -94,6 +94,15 @@ body {
     border-radius: 5px;
 }
 
+#staff-edit-post-ava {
+    border: 1px solid #F47124;
+    color: #F47124;
+    margin-top: 0.5em;
+    padding: 0.4em;
+    width: 100%;
+    border-radius: 5px;
+}
+
 #staff-edit-post-title-container {
     background-color: #FFFFFF;
     width: 80%;
