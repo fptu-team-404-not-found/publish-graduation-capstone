@@ -57,21 +57,21 @@
 - [x] Login by Gmail
 - [x] View projects
 - [x] Search projects by project's name, supervisor's name, team member's name
-- [ ] Bookmark favorite project
-- [ ] Comment in project
+- [x] Bookmark favorite project
+- [x] Comment in project
 
 **2. Contributor (Team member, suppervior, company)**
 - [x] Basic functions of normal users
-- [ ] Share related to the project
-- [ ] Post the sharing of the project
+- [x] Share related to the project
+- [x] Post the sharing of the project
 
 **3. Editor (Academic staff)**
-- [ ] Post basic information of the project such as name, project defense date, member,...
+- [x] Post basic information of the project such as name, project defense date, member,...
 
 **4. Admin:**
-- [ ] Approve post from the editor
-- [ ] Approve shared post the contributor
-- [ ] Filter comments
+- [x] Approve post from the editor
+- [x] Approve shared post the contributor
+- [x] Filter comments
 - [x] Managing supervisors
 - [x] Account Management
 
