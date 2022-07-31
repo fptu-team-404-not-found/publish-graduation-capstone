@@ -17,7 +17,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: myfunctionname
+        working-directory: PublishGraduationCapstone
         
     steps:
       - name: Check-out repository
