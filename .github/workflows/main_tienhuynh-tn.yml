@@ -14,7 +14,11 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    
+    defaults:
+      run:
+        working-directory: myfunctionname
+        
     steps:
       - name: Check-out repository
         uses: actions/checkout@v2
