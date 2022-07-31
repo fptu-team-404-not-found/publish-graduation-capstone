@@ -21,7 +21,7 @@ jobs:
           java-version: '8'
 
       - name: Build project with Ant
-        run: ant -noinput -buildfile /PublishGraduationCapstone/build.xml
+        run: ant -noinput -buildfile cd /PublishGraduationCapstone/build.xml
 		
       - name: Distribute jar-war file
         run: mkdir staging && cp dist/*.jar staging
