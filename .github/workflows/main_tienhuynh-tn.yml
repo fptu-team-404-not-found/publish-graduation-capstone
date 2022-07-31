@@ -23,7 +23,7 @@ jobs:
       - name: Build project with Ant
         run: ant -noinput -buildfile /PublishGraduationCapstone/build.xml
 		
-	  - name: Distribute jar-war file
+      - name: Distribute jar-war file
         run: mkdir staging && cp dist/*.jar staging
 
       - name: Upload artifact for deployment job
