@@ -7,22 +7,26 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Check-out repository
+        uses: actions/checkout@v2
 
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
-          java-version: '8'
+          java-version: 1.8
 
       - name: Build project with Ant
-        run: ant -noinput -buildfile PublishGraduationCapstone/build.xml
-
+        run: ant -noinput -buildfile /PublishGraduationCapstone/build.xml
+        
       - name: Distribute jar-war file
         run: mkdir staging && cp dist/*.jar staging
 
