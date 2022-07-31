@@ -1,13 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy WAR app to Azure Web App - tienhuynh-tn
+name: Publish Graduation Capstone Project | © 2022 by fptu-team-404-not-found
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build:
@@ -21,11 +20,17 @@ jobs:
         with:
           java-version: '8'
 
+      - name: Build project with Ant
+        run: ant -noinput -buildfile /PublishGraduationCapstone/build.xml
+		
+	  - name: Distribute jar-war file
+        run: mkdir staging && cp dist/*.jar staging
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: java-app
-          path: '${{ github.workspace }}/PublishGraduationCapstone/target/*.war'
+          name: 1.0-SNAPSHOT.jar
+          path: staging
 
   deploy:
     runs-on: windows-latest
@@ -35,6 +40,10 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: 1.0-SNAPSHOT.jar
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
