@@ -32,12 +32,12 @@ jobs:
         run: ant -noinput -buildfile build.xml
 
       - name: Distribute jar-war file 
-        run: mkdir staging && cp ./dist/*.jar staging 
+        run: mkdir staging && cp ./dist/*.war staging 
      
       - name: Make hyperlink to jar-war file 
         uses: actions/upload-artifact@v1
         with:
-          name: 1.0-SNAPSHOT.jar 
+          name: 1.0-SNAPSHOT.war
           path: ./././PublishGraduationCapstone/staging
 
   deploy:
@@ -51,7 +51,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: 1.0-SNAPSHOT.jar
+          name: 1.0-SNAPSHOT.war
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
