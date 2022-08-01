@@ -57,7 +57,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'tienhuynh-tn'
+          app-name: 'publish-graduation-capstone'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1715195CA61E4C9EB9966FE024BEDC2F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_04768950C5A846BB81CE86F66E62806D }}
           package: '*.war'
