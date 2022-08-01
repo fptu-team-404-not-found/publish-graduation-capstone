@@ -831,7 +831,7 @@ exists or setup the property manually. For example like this:
  ant -Dlibs.CopyLibs.classpath=a/path/to/org-netbeans-modules-java-j2seproject-copylibstask.jar
                 </fail>
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/> -->
-        <taskdef classpath="${libs.CopyLibs.classpath}" resource="../lib"/>
+        <taskdef classpath="${libs.CopyLibs.classpath}" resource="${file.reference.org-netbeans-modules-java-j2seproject-copylibstask.jar}"/>
     </target>
     <target name="-init-ap-cmdline-properties">
         <property name="annotation.processing.enabled" value="true"/>
