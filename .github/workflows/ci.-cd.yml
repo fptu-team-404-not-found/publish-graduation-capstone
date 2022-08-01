@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: 1.0-SNAPSHOT
-          path: '${{ github.workspace }}/target/*.war'
+          path: '${{ github.workspace }}/PublishGraduationCapstone/target/*.war'
 
   deploy:
     runs-on: windows-latest
