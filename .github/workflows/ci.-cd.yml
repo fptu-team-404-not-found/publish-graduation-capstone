@@ -30,15 +30,12 @@ jobs:
 
       - name: Build project with Ant
         run: ant -noinput -buildfile build.xml
-        
-      - name: Distribute jar-war file
-        run: mkdir staging && cp dist/*.jar staging
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: 1.0-SNAPSHOT.jar
-          path: staging
+          name: 1.0-SNAPSHOT
+          path: '${{ github.workspace }}/target/*.war'
 
   deploy:
     runs-on: windows-latest
@@ -51,8 +48,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: 1.0-SNAPSHOT.jar
-          path: staging
+          name: 1.0-SNAPSHOT
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
