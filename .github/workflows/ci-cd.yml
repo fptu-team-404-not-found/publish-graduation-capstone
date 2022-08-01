@@ -34,8 +34,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: 1.0-SNAPSHOT
-          path: '${{ github.workspace }}/PublishGraduationCapstone/target/*.war'
+          name: 1.0-SNAPSHOT.war
+          path: /target
 
   deploy:
     runs-on: windows-latest
@@ -48,7 +48,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: 1.0-SNAPSHOT
+          name: 1.0-SNAPSHOT.war
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
