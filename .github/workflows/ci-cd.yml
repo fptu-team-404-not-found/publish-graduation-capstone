@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: 1.0-SNAPSHOT.jar 
-          path: staging
+          path: ./././PublishGraduationCapstone/staging
 
   deploy:
     runs-on: windows-latest
