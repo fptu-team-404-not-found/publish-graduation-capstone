@@ -96,10 +96,9 @@
 - [Tran Thanh Dat](https://github.com/DatTranLK) - SE151444 - **Back-end Developer**
 
 ## Reference
-- [OpenID Connect](https://developers.google.com/identity/protocols/oauth2/openid-connect)
-- [Hướng dẫn thực hiện chức năng login vào ứng dụng bằng tài khoản facebook - Phạm Huy Hoàng](http://www.kieutrongkhanh.net/2016/08/huong-dan-thuc-hien-chuc-nang-login-vao.html)
-- [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
-- [Giới thiệu về RESTful Web Services – công nghệ tạo web services đơn giản so với các dạng web services trước kia](http://www.kieutrongkhanh.net/2016/08/gioi-thieu-ve-restful-web-services-cong.html)
+
+- [Integrating Google Sign-In into your web app]([http://www.kieutrongkhanh.net/2016/08/huong-dan-thuc-hien-chuc-nang-login-vao.html](https://developers.google.com/identity/sign-in/web/sign-in))
+
 
 ## License & Copyright
 &copy; 2022 fptu-team-404-not-found Licensed under the [GPL-3.0 LICENSE](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/LICENSE).
