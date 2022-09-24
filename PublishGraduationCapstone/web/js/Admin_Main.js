@@ -77,7 +77,7 @@ function takeUserData(callback) {
                 };
                 table.push(obj);
             };
-            if (callback) callback(table);
+            callback(table);
         }
     };
 }

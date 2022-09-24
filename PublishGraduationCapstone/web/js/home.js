@@ -33,8 +33,10 @@ function showOtherProject() {
 
 
             var res = this.responseText;
+            console.log("ht: ", res);
             try {
                 var jsonData = JSON.parse(res);
+                console.log("ht2: ", jsonData);
             } catch (e) {
                 alert(e);
             }
