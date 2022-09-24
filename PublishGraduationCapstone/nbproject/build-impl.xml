@@ -820,7 +820,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         </macrodef>
     </target>
     <target name="-init-taskdefs">
-<!--         <fail unless="libs.CopyLibs.classpath">
+        <fail unless="libs.CopyLibs.classpath">
 The libs.CopyLibs.classpath property is not set up.
 This property must point to 
 org-netbeans-modules-java-j2seproject-copylibstask.jar file which is part
@@ -830,7 +830,6 @@ Either open the project in the IDE and make sure CopyLibs library
 exists or setup the property manually. For example like this:
  ant -Dlibs.CopyLibs.classpath=a/path/to/org-netbeans-modules-java-j2seproject-copylibstask.jar
                 </fail>
-        <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/> -->
         <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
     </target>
     <target name="-init-ap-cmdline-properties">
@@ -897,7 +896,7 @@ exists or setup the property manually. For example like this:
             <fileset dir="${webinf.dir}" excludes="${build.web.excludes}"/>
         </copy>
     </target>
-    <target depends="init, deps-jar, -pre-pre-compile, -pre-compile, -copy-manifest, -copy-persistence-xml, -copy-webdir, library-inclusion-in-archive, library-inclusion-in-manifest" if="have.sources" name="-do-compile">
+    <target depends="init, deps-jar, -pre-pre-compile, -pre-compile, -copy-manifest, -copy-persistence-xml, -copy-webdir, library-inclusion-in-archive,library-inclusion-in-manifest" if="have.sources" name="-do-compile">
         <webproject2:javac destdir="${build.classes.dir}" gensrcdir="${build.generated.sources.dir}"/>
         <copy todir="${build.classes.dir}">
             <fileset dir="${src.dir}" excludes="${build.classes.excludes},${excludes}" includes="${includes}"/>
