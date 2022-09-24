@@ -108,6 +108,9 @@
 - [Hướng dẫn thực hiện chức năng login vào ứng dụng bằng tài khoản facebook - Phạm Huy Hoàng](http://www.kieutrongkhanh.net/2016/08/huong-dan-thuc-hien-chuc-nang-login-vao.html)
 - [XMLHttpRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 - [Giới thiệu về RESTful Web Services – công nghệ tạo web services đơn giản so với các dạng web services trước kia](http://www.kieutrongkhanh.net/2016/08/gioi-thieu-ve-restful-web-services-cong.html)
+- [Java + JSP: Login Google - Youtube](https://youtu.be/bCkGaym6SSQ)
+- [Login with Google using Java - Tutorial](http://blog.sodhanalibrary.com/2014/11/login-with-google-with-java-tutorial.html#.Yy6SJ3bP23B)
+- [Integrate login with google in Websites with JAVA](https://chillyfacts.com/integrate-login-with-google-in-websites-with-java/)
 
 ## License & Copyright
 &copy; 2022 fptu-team-404-not-found Licensed under the [GPL-3.0 LICENSE](https://github.com/fptu-team-404-not-found/publish-graduation-capstone/blob/main/LICENSE).
